@@ -6,7 +6,7 @@ The project centers on a full-width editorial homepage made from short video cli
 
 ## Project status
 
-**Current phase:** Documentation and setup
+**Current phase:** Technical proof
 
 The build has been approved at a fixed price of $9,500. Development may begin in temporary 2520 Consulting accounts so prototyping is not blocked by client account setup. All production infrastructure will be moved to or created in client-owned accounts before launch.
 
@@ -53,7 +53,27 @@ These should use real browser routes even if transitions make the experience fee
 
 ## Getting started
 
-Application setup will be added after the homepage and CMS proof-of-concept requirements are confirmed. Until then, this repository is the source of truth for project decisions, scope, and milestones.
+Requirements:
+
+- Node.js 24
+- pnpm 11
+
+Install dependencies and start the development server:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). The current homepage is an interaction study using representative content; no client media or CMS credentials are required.
+
+Run the complete local verification:
+
+```bash
+pnpm check
+```
+
+The production build is statically exported to `out/`, which can be served directly by Cloudflare Pages. Copy `.env.example` to `.env.local` only when CMS development begins, and never commit secrets.
 
 ## Ownership
 
@@ -61,4 +81,3 @@ Application setup will be added after the homepage and CMS proof-of-concept requ
 - **Jonathan:** creative direction and approved visual compositions
 - **Andrew:** content direction and primary CMS workflow feedback
 - **2520 Consulting:** technical planning, implementation, deployment, migration, and handoff
-

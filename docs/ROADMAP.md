@@ -6,9 +6,9 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 | Phase | Chapter | Status | Milestone |
 | --- | --- | --- | --- |
-| 0 | Documentation and setup | In progress | Repository is ready for implementation |
-| 1 | Inputs and content model | Not started | Build requirements are agreed |
-| 2 | Technical proof | Not started | Motion and CMS approaches are approved |
+| 0 | Documentation and setup | Complete | Repository is ready for implementation |
+| 1 | Inputs and content model | In progress | Build requirements are agreed |
+| 2 | Technical proof | In progress | Motion and CMS approaches are approved |
 | 3 | Application foundation | Not started | Core site and CMS architecture work together |
 | 4 | Homepage experience | Not started | Approved editorial compositions work responsively |
 | 5 | Content routes | Not started | Core public site is feature-complete |
@@ -21,8 +21,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Establish project primer and working principles.
 - [x] Record initial architecture and ownership decisions.
 - [x] Define phased roadmap and milestone criteria.
-- [ ] Initialize the application and development tooling.
-- [ ] Add a safe environment-variable template with no secrets.
+- [x] Initialize the application and development tooling.
+- [x] Add a safe environment-variable template with no secrets.
 - [ ] Establish staging deployment in temporary 2520 infrastructure.
 
 **Milestone:** A new contributor can understand the project, run the application once it exists, and find the current decisions without relying on chat history.
@@ -39,8 +39,9 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 ## Phase 2: Technical proof
 
-- [ ] Build the header and first homepage composition with representative clips.
-- [ ] Prototype clip expansion and layout changes with GSAP Flip.
+- [x] Build the header and first homepage composition with representative tiles.
+- [x] Prototype tile expansion and layout changes with GSAP Flip.
+- [ ] Replace representative tiles with approved sample clips.
 - [ ] Test desktop, mobile, touch, keyboard, and reduced-motion behavior.
 - [ ] Create a small Sanity Studio with Homepage, Clip, and Appearance schemas.
 - [ ] Let Andrew perform common editing tasks without coaching.
@@ -127,4 +128,3 @@ Ideas outside the approved build belong here until separately prioritized:
 - Advanced search or media filtering
 - New homepage composition families
 - Expanded analytics or marketing automation
-
