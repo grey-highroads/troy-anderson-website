@@ -15,14 +15,17 @@ The design reference supplied for this pass is a collage with hard rectangular c
 - `--color-cream: #fef8c2` - primary warm light field and reversed type
 - `--color-yellow: #fcf3ae` - secondary warm light field
 
-### Brand accents
+### Editorial fields
 
 - `--color-oxblood: #97231d` - primary red field, taken from the header and book panel
-- `--color-warm-red: #aa3624` - secondary red with a warmer, more human cast
+- `--color-warm-red: #aa3624` - secondary red field with a warmer, more human cast
 - `--color-vermilion: #ba271a` - high-energy red reserved for large display moments
-- `--color-teal: #285b66` - deep counterpoint to red and cream
-- `--color-cyan: #4dabe8` - electric graphic accent
-- `--color-soft-cyan: #55bacf` - cyan variant for larger text or fields
+
+### Friendly accents
+
+- `--color-teal: #285b66` - calm interactive counterpoint to red and cream
+- `--color-cyan: #4dabe8` - primary link, focus, and directional accent
+- `--color-soft-cyan: #55bacf` - cyan variant for larger type or fields
 
 ### Functional aliases
 
@@ -37,8 +40,9 @@ Do not introduce purple, pink, gradients, muted beige UI cards, or soft drop sha
 ## Color usage
 
 - Black, cream, and oxblood should carry most of the page.
-- Cyan is a sharp editorial accent, not a general button color.
+- Cyan and teal carry interactive emphasis so calls to action do not default to red.
 - Teal provides a quieter media field and should appear less often than black or red.
+- Red is a large-scale editorial field, not the default link, button, or focus color.
 - Pale yellow can support portrait/video fields and oversized type.
 - Avoid equal distribution of every color. Compositions should have one dominant field and one or two accents.
 - Contrast must remain strong; decorative text may overlap imagery only when legibility is preserved.
