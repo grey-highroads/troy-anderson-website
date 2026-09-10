@@ -15,6 +15,7 @@ coverage/
 work/
 tmp/
 outputs/
+.superdesign/tmp/
 
 # Editor and operating-system files
 .DS_Store

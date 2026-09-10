@@ -67,13 +67,15 @@ pnpm dev
 
 Open [http://localhost:3000](http://localhost:3000). The current homepage is an interaction study using representative content; no client media or CMS credentials are required.
 
+The latest version pushed to `main` is also published as a browser preview at [grey-highroads.github.io/troy-anderson-website](https://grey-highroads.github.io/troy-anderson-website/). GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
+
 Run the complete local verification:
 
 ```bash
 pnpm check
 ```
 
-The production build is statically exported to `out/`, which can be served directly by Cloudflare Pages. Copy `.env.example` to `.env.local` only when CMS development begins, and never commit secrets.
+The production build is statically exported to `out/`, which can be served directly by Cloudflare Pages. Repository preview builds set `GITHUB_PAGES=true` so Next.js generates URLs beneath the repository path. Copy `.env.example` to `.env.local` only when CMS development begins, and never commit secrets.
 
 ## Ownership
 
