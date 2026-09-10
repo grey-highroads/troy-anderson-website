@@ -1,5 +1,6 @@
 :root {
   --ink: #000000;
+  --white: #ffffff;
   --blue-black: #0e1217;
   --paper: #fef8c2;
   --yellow: #fcf3ae;
@@ -8,7 +9,6 @@
   --teal: #285b66;
   --cyan: #4dabe8;
   --soft-cyan: #55bacf;
-  --line: rgba(254, 248, 194, 0.28);
 }
 
 * {
@@ -38,90 +38,72 @@ button {
 
 .site-header {
   display: grid;
-  grid-template-columns: 1.5fr 1fr auto;
-  gap: 2rem;
-  align-items: start;
-  min-height: 13rem;
-  padding: 1.25rem 1.5rem 2rem;
-  border-top: 0.55rem solid var(--ink);
-  border-bottom: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1fr) clamp(5.75rem, 11vw, 7.5rem);
+  gap: 0;
+  align-items: stretch;
+  min-height: clamp(8.75rem, 15vw, 10rem);
+  padding: 0;
+  border: 0;
   background: var(--ink);
   color: var(--paper);
 }
 
+.site-header__identity {
+  display: grid;
+  grid-template-rows: minmax(4rem, 1fr) auto;
+  min-width: 0;
+}
+
 .wordmark {
-  width: fit-content;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: clamp(3.9rem, 8.5vw, 9rem);
-  font-weight: 900;
-  letter-spacing: -0.055em;
-  line-height: 0.73;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.7rem 1.5rem 0.6rem;
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.45rem, 3vw, 2.7rem);
+  font-weight: 400;
+  letter-spacing: 0.504em;
+  line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.site-header__meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 1.3rem;
-  padding-top: 0.25rem;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.prototype-label {
+.site-header__strapline {
   margin: 0;
-  padding: 0.45rem 0.65rem;
-  border: 1px solid currentColor;
-  color: var(--cyan);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  padding: 0.12rem 1.5rem 0.45rem;
+  background: var(--oxblood);
+  color: var(--white);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(1.8rem, 3.7vw, 3.4rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  line-height: 0.95;
   text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.menu-mark {
+  display: grid;
+  place-content: center;
+  gap: 0.65rem;
+  background: var(--yellow);
+  color: var(--cyan);
+}
+
+.menu-mark span {
+  display: block;
+  width: clamp(2.6rem, 5.2vw, 3.5rem);
+  height: clamp(0.35rem, 0.7vw, 0.55rem);
+  background: currentColor;
 }
 
 .hero {
-  padding: 1.5rem;
+  padding: 0;
   background: var(--oxblood);
   color: var(--paper);
-}
-
-.hero__intro {
-  display: grid;
-  grid-template-columns: 1fr 4fr 1.3fr;
-  gap: 1.5rem;
-  align-items: end;
-  margin-bottom: 1.5rem;
-}
-
-.hero__intro p {
-  margin: 0;
-}
-
-.eyebrow,
-.hero__note {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
-.hero h1 {
-  max-width: 13ch;
-  margin: 0;
-  font-size: clamp(2.7rem, 6vw, 6.8rem);
-  letter-spacing: -0.065em;
-  line-height: 0.86;
-}
-
-.hero__note {
-  max-width: 28ch;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  text-transform: none;
 }
 
 .editorial-grid {
@@ -175,48 +157,6 @@ button {
   transform: scale(1);
 }
 
-.media-tile__copy {
-  position: absolute;
-  right: 1rem;
-  bottom: 0.9rem;
-  left: 1rem;
-  display: grid;
-  gap: 0.25rem;
-}
-
-.media-tile__eyebrow,
-.media-tile__action,
-.media-tile__index {
-  font-size: 0.64rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.media-tile__title {
-  max-width: 10ch;
-  font-size: clamp(1.1rem, 2.15vw, 2.4rem);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  line-height: 0.95;
-}
-
-.media-tile__index,
-.media-tile__action {
-  position: absolute;
-  top: 0.8rem;
-}
-
-.media-tile__index {
-  left: 0.9rem;
-}
-
-.media-tile__action {
-  right: 0.9rem;
-  padding-bottom: 0.15rem;
-  border-bottom: 1px solid currentColor;
-}
-
 .tone-cream,
 .tone-sand,
 .tone-blue {
@@ -248,24 +188,6 @@ button {
 .tone-ink {
   background: var(--blue-black);
   color: var(--paper);
-}
-
-.tone-cream .media-tile__action,
-.tone-sand .media-tile__action {
-  color: var(--teal);
-}
-
-.tone-blue .media-tile__action {
-  color: var(--ink);
-}
-
-.tone-orange .media-tile__action,
-.tone-green .media-tile__action {
-  color: var(--paper);
-}
-
-.tone-ink .media-tile__action {
-  color: var(--cyan);
 }
 
 .layout-a .media-tile--1 {
@@ -332,49 +254,20 @@ button {
   grid-row: span 2;
 }
 
-.editorial-grid.is-expanded .media-tile__title {
-  font-size: clamp(1rem, 1.7vw, 2rem);
-}
-
-.editorial-grid.is-expanded .media-tile.is-selected .media-tile__title {
-  max-width: 9ch;
-  font-size: clamp(3rem, 7vw, 8rem);
-}
-
-.site-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.1rem 1.5rem 1.4rem;
-  border-top: 1px solid var(--line);
-  background: var(--oxblood);
-  color: var(--paper);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.site-footer p {
-  margin: 0;
-}
-
 @media (max-width: 900px) {
   .site-header {
-    grid-template-columns: 1fr auto;
-    min-height: 10rem;
+    grid-template-columns: minmax(0, 1fr) 5.75rem;
+    min-height: 8.5rem;
   }
 
-  .site-header__meta {
-    display: none;
+  .wordmark {
+    font-size: clamp(1.2rem, 3.2vw, 1.75rem);
+    letter-spacing: 0.408em;
   }
 
-  .hero__intro {
-    grid-template-columns: 1fr 3fr;
-  }
-
-  .hero__note {
-    grid-column: 2;
+  .site-header__strapline {
+    font-size: clamp(1.55rem, 4.5vw, 2.35rem);
+    letter-spacing: 0.3em;
   }
 
   .editorial-grid {
@@ -384,32 +277,30 @@ button {
 }
 
 @media (max-width: 640px) {
-  .site-header,
-  .hero {
-    padding-right: 0.85rem;
-    padding-left: 0.85rem;
-  }
-
   .site-header {
-    min-height: 8rem;
-    border-top-width: 0.4rem;
+    grid-template-columns: minmax(0, 1fr) 4.5rem;
+    min-height: 6.75rem;
   }
 
   .wordmark {
-    font-size: clamp(3.25rem, 18vw, 5.25rem);
+    padding: 0.55rem 0.85rem 0.45rem;
+    font-size: clamp(0.88rem, 4vw, 1.15rem);
+    letter-spacing: 0.336em;
   }
 
-  .prototype-label {
-    font-size: 0.58rem;
+  .site-header__strapline {
+    padding: 0.12rem 0.85rem 0.32rem;
+    font-size: clamp(1.08rem, 5.4vw, 1.35rem);
+    letter-spacing: 0.14em;
   }
 
-  .hero__intro {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
+  .menu-mark {
+    gap: 0.42rem;
   }
 
-  .hero__note {
-    grid-column: auto;
+  .menu-mark span {
+    width: 2.15rem;
+    height: 0.28rem;
   }
 
   .editorial-grid,
@@ -437,14 +328,6 @@ button {
     order: -1;
   }
 
-  .editorial-grid.is-expanded .media-tile.is-selected .media-tile__title {
-    font-size: clamp(2.5rem, 14vw, 5rem);
-  }
-
-  .site-footer {
-    padding-right: 0.85rem;
-    padding-left: 0.85rem;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

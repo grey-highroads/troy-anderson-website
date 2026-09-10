@@ -88,20 +88,10 @@ export function EditorialGrid() {
               isSelected ? "is-selected" : ""
             } ${isDimmed ? "is-dimmed" : ""}`}
             aria-expanded={isSelected}
-            aria-label={`${isSelected ? "Close" : "Open"} ${tile.title}`}
+            aria-label={`${isSelected ? "Close" : "Open"} ${tile.eyebrow}: ${tile.title}`}
             onClick={() => updateComposition(isSelected ? null : tile.id)}
           >
             <span className="media-tile__texture" aria-hidden="true" />
-            <span className="media-tile__copy">
-              <span className="media-tile__eyebrow">{tile.eyebrow}</span>
-              <span className="media-tile__title">{tile.title}</span>
-            </span>
-            <span className="media-tile__index" aria-hidden="true">
-              {String(index + 1).padStart(2, "0")}
-            </span>
-            <span className="media-tile__action" aria-hidden="true">
-              {isSelected ? "Close" : "Play"}
-            </span>
           </button>
         );
       })}
