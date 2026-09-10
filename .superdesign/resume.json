@@ -19,7 +19,7 @@
         "app/layout.tsx": "48a5530120e6ad31ede09febba458140ab47558d05bdcafbb2d33a961ed08ab7",
         "app/page.tsx": "17b8bb94aa7332cd0c40962fe6ede1787cf38ae4618e7584aaf2db5beb0530e0",
         "components/editorial-grid.tsx": "9f893fa6fa6335506bd0844342b6d310f3054da8cbc0e601c8e962ac29ea09b8",
-        "app/globals.css": "1edf161dee41a015fcf872a55a6579680f80bcf32ed01e9239d1b6eea223a296"
+        "app/globals.css": "a9ef29dc0eb967605e860c66bdfdb618537ea4e5577352187db223e9256d840f"
       },
       "components": [],
       "drafts": {
@@ -41,7 +41,7 @@
           "currentVersion": 1
         }
       },
-      "updatedAt": "2026-09-10T22:39:31Z"
+      "updatedAt": "2026-09-10T22:45:31Z"
     }
   }
 }
