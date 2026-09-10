@@ -29,7 +29,7 @@ The design reference supplied for this pass is a collage with hard rectangular c
 
 ### Functional aliases
 
-- Page background: cream
+- Homepage background: oxblood, extending through the hero and surrounding editorial grid
 - Primary text on light: black or blue-black
 - Primary text on dark/red: cream
 - Focus outline: cyan with a black offset edge on light fields, cream with a black offset edge on dark fields
@@ -39,10 +39,12 @@ Do not introduce purple, pink, gradients, muted beige UI cards, or soft drop sha
 
 ## Color usage
 
-- Black, cream, and oxblood should carry most of the page.
+- Oxblood is the homepage's dominant visual ground, not an isolated accent panel.
+- Black anchors the header and selected media fields; cream provides primary type and high-contrast panels.
 - Cyan and teal carry interactive emphasis so calls to action do not default to red.
 - Teal provides a quieter media field and should appear less often than black or red.
 - Red is a large-scale editorial field, not the default link, button, or focus color.
+- Preserve flat, vivid complementary fields; do not mute cream, yellow, teal, or cyan with a global dark overlay.
 - Pale yellow can support portrait/video fields and oversized type.
 - Avoid equal distribution of every color. Compositions should have one dominant field and one or two accents.
 - Contrast must remain strong; decorative text may overlap imagery only when legibility is preserved.

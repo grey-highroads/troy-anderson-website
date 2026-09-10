@@ -5,7 +5,7 @@
       "targetKind": "existing-ui",
       "projectId": "946e479d-0a82-47a4-80f0-422120e500f8",
       "baselineDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
-      "activeDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
+      "activeDraftId": "25827ecc-7228-4c31-ad11-8bdab9a8e5b5",
       "designSystemPath": ".superdesign/design-system.md",
       "contextFiles": [
         ".superdesign/design-system.md",
@@ -15,7 +15,7 @@
         "app/globals.css"
       ],
       "fingerprints": {
-        ".superdesign/design-system.md": "ff20fd0e7fa84aa9cb08f92940b967109b2d70c1878527a9e94b610196ff9d34",
+        ".superdesign/design-system.md": "77f7ae17ebfec465af6dc7bb229070fe3c755781e1daf3e80771319464d58f2b",
         "app/layout.tsx": "48a5530120e6ad31ede09febba458140ab47558d05bdcafbb2d33a961ed08ab7",
         "app/page.tsx": "17b8bb94aa7332cd0c40962fe6ede1787cf38ae4618e7584aaf2db5beb0530e0",
         "components/editorial-grid.tsx": "9f893fa6fa6335506bd0844342b6d310f3054da8cbc0e601c8e962ac29ea09b8",
@@ -30,9 +30,9 @@
         },
         "25827ecc-7228-4c31-ad11-8bdab9a8e5b5": {
           "title": "Color-forward editorial",
-          "visualDirection": "black, cream, and oxblood fields with cyan and teal interactive accents",
+          "visualDirection": "oxblood homepage ground with black header, vivid complementary fields, and cyan and teal interactive accents",
           "parentDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
-          "currentVersion": 1
+          "currentVersion": 3
         },
         "0777dea1-28f4-4e73-92da-7d747b920aea": {
           "title": "Warm-light editorial",
@@ -41,7 +41,7 @@
           "currentVersion": 1
         }
       },
-      "updatedAt": "2026-09-10T21:09:46Z"
+      "updatedAt": "2026-09-10T22:39:31Z"
     }
   }
 }
