@@ -1,0 +1,28 @@
+# Dependencies and build output
+node_modules/
+.next/
+dist/
+coverage/
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Temporary Codex working files and deliverables
+work/
+tmp/
+outputs/
+
+# Editor and operating-system files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
