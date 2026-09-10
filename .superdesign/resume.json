@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "/": {
+      "targetKind": "existing-ui",
+      "projectId": "946e479d-0a82-47a4-80f0-422120e500f8",
+      "baselineDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
+      "activeDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
+      "designSystemPath": ".superdesign/design-system.md",
+      "contextFiles": [
+        ".superdesign/design-system.md",
+        "app/layout.tsx",
+        "app/page.tsx",
+        "components/editorial-grid.tsx",
+        "app/globals.css"
+      ],
+      "fingerprints": {
+        ".superdesign/design-system.md": "ff20fd0e7fa84aa9cb08f92940b967109b2d70c1878527a9e94b610196ff9d34",
+        "app/layout.tsx": "48a5530120e6ad31ede09febba458140ab47558d05bdcafbb2d33a961ed08ab7",
+        "app/page.tsx": "17b8bb94aa7332cd0c40962fe6ede1787cf38ae4618e7584aaf2db5beb0530e0",
+        "components/editorial-grid.tsx": "9f893fa6fa6335506bd0844342b6d310f3054da8cbc0e601c8e962ac29ea09b8",
+        "app/globals.css": "1edf161dee41a015fcf872a55a6579680f80bcf32ed01e9239d1b6eea223a296"
+      },
+      "components": [],
+      "drafts": {
+        "1eb4881d-7b53-4568-8d3a-710527548c41": {
+          "title": "Current homepage prototype",
+          "visualDirection": "faithful current-state baseline",
+          "currentVersion": 1
+        },
+        "25827ecc-7228-4c31-ad11-8bdab9a8e5b5": {
+          "title": "Color-forward editorial",
+          "visualDirection": "black, cream, and oxblood fields with cyan and teal interactive accents",
+          "parentDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
+          "currentVersion": 1
+        },
+        "0777dea1-28f4-4e73-92da-7d747b920aea": {
+          "title": "Warm-light editorial",
+          "visualDirection": "cream and pale-yellow fields with restrained red and friendly blue accents",
+          "parentDraftId": "1eb4881d-7b53-4568-8d3a-710527548c41",
+          "currentVersion": 1
+        }
+      },
+      "updatedAt": "2026-09-10T21:09:46Z"
+    }
+  }
+}
