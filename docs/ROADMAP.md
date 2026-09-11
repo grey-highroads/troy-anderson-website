@@ -50,7 +50,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build, populate, publish, and connect the About content type.
 - [x] Extend and verify automatic deployment for published About changes.
 - [x] Build, populate, publish, and connect the Contact content type.
-- [ ] Rotate the webhook credential, then extend and verify automatic deployment for published Contact changes.
+- [x] Extend and verify automatic deployment for published Contact changes.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
 - [ ] Record prototype decisions and unresolved risks.
 

@@ -3,11 +3,11 @@
 **Project:** Troy Anderson website  
 **Prepared:** September 11, 2026  
 **Prepared by:** 2520 Consulting  
-**Handoff point:** Book, About, and Contact CMS vertical slices are connected; Contact publish automation awaits credential rotation
+**Handoff point:** Book, About, and Contact CMS vertical slices and automated preview deployment are proven end to end
 
 ## Why this is the right handoff point
 
-This is a stable chapter boundary. The repository, visual foundation, core public routes, local Sanity Studio, Book, About, and Contact schemas, authenticated build-time content queries, and the Book/About automatic publish-to-deploy path all work. Contact is deployed and browser-verified; its webhook trigger is intentionally pending until the existing GitHub webhook credential is rotated.
+This is a stable chapter boundary. The repository, visual foundation, core public routes, local Sanity Studio, Book, About, and Contact schemas, authenticated build-time content queries, and the automatic publish-to-deploy path all work. All three connected routes have been deployed and browser-verified with their published CMS content.
 
 Do not wait until the entire Sanity model is complete to hand off this conversation. That would make the context larger while adding several similar implementation loops. Start a fresh conversation from this document, and update it again when the CMS layer is complete or before another major architecture change.
 
@@ -82,9 +82,9 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - GitHub repository secret: `SANITY_API_READ_TOKEN`.
 - The secret is a Sanity Viewer token; its value must never be committed or documented.
 - GitHub Actions exposes the secret only to the build step.
-- A Sanity GROQ-powered webhook named `Rebuild website when Book or About content is published` is enabled.
+- A Sanity GROQ-powered webhook named `Rebuild website when Book, About, or Contact content is published` is enabled.
 - Webhook dataset: `production`.
-- Webhook filter: `_type in ["book", "about"]`.
+- Webhook filter: `_type in ["book", "about", "contact"]`.
 - Webhook events: create and update.
 - Draft and version triggers are disabled.
 - Destination: the GitHub workflow-dispatch endpoint for `.github/workflows/pages.yml`.
@@ -98,7 +98,8 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The live About page was checked in a browser and rendered every published CMS value and the uploaded portrait.
 - Contact integration deployment: GitHub Actions run `34638437331` / run number 24, completed successfully.
 - The live Contact page was checked in a browser and rendered every published CMS value and the uploaded portrait.
-- The webhook filter remains `_type in ["book", "about"]`. Add `contact` only after rotating the existing GitHub webhook credential; no Contact publish-trigger test has been completed yet.
+- A no-visible-change Contact update produced a successful webhook delivery with HTTP 204, and GitHub Actions run `34639151595` / run number 26 completed successfully.
+- The live Contact page was checked again after the webhook-triggered deployment and retained every published CMS value and the uploaded portrait.
 
 ## Important implementation files
 
@@ -127,7 +128,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Local `main` and `origin/main` both point to `1328ea3` before this documentation update.
+- Local `main` and `origin/main` both point to `7cde43d` before this documentation update.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -139,7 +140,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 - The current Sanity Book, About, and Contact documents contain test copy entered to validate every field. They are not final client copy.
 - The homepage still uses representative imagery and an interaction prototype rather than approved video media.
-- Contact content is connected to Sanity, but publish-triggered deployment is pending webhook credential rotation.
+- Contact content and publish-triggered deployment are connected and verified.
 - Media is not currently a public route, consistent with the supplied launch-content guide indicating it may be added later.
 - Contact form behavior is not connected to a delivery service.
 - GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
@@ -159,15 +160,15 @@ pnpm check
 
 ## Recommended next slice
 
-Finish the Contact automation boundary, then continue the CMS build one content type at a time. Keep form-delivery behavior separate until the client-approved service and recipient are known.
+Continue the CMS build one content type at a time. The next candidate is a narrow shared site-settings slice, but only if the existing header/footer content guidance identifies useful editor-controlled fields. Keep form-delivery behavior separate until the client-approved service and recipient are known.
 
 Suggested sequence:
 
-1. Rotate the fine-grained GitHub token used by the Sanity webhook; do not paste the replacement into chat or commit it.
-2. Replace only the webhook `Authorization` header value.
-3. Extend the filter to `_type in ["book", "about", "contact"]`.
-4. Publish a no-visible-change Contact revision and confirm the delivery returns HTTP 204 and triggers a successful deployment.
-5. Consider a narrow shared site-settings slice only if the existing header/footer content guidance identifies useful editor-controlled fields.
+1. Review the existing header/footer content and the project guidance.
+2. Define only the smallest useful shared settings document; do not create a general-purpose page builder.
+3. Ask the user to populate and publish every field before connecting it.
+4. Add a typed authenticated build-time query with intentional local fallback content.
+5. Extend the webhook only to the exact connected type, then deploy and browser-verify the published values.
 
 After Contact/site settings, proceed to homepage content and clips. Do not model Appearances, Testimonials, or Media until their launch status and content requirements are confirmed.
 
@@ -186,22 +187,21 @@ After Contact/site settings, proceed to homepage content and clips. Do not model
 
 ## Credential rotation note
 
-Rotate the current webhook credential before adding Contact to the filter, and no later than December 10, 2026:
+Rotate the current webhook credential no later than December 10, 2026:
 
 1. Create a replacement fine-grained GitHub token.
 2. Limit it to `grey-highroads/troy-anderson-website`.
 3. Grant repository Actions read/write permission only.
 4. Replace the `Authorization` webhook header value in Sanity using `Bearer <new token>`.
-5. Extend the exact filter to `_type in ["book", "about", "contact"]`.
-6. Publish a no-visible-change Contact revision or a real approved content update.
-7. Confirm a new GitHub workflow run succeeds.
-8. Revoke the old token.
+5. Publish a no-visible-change revision to one connected type or make a real approved content update.
+6. Confirm a new GitHub workflow run succeeds.
+7. Revoke the old token.
 
 Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. First rotate the Sanity webhook's fine-grained GitHub credential, extend its exact filter to include `contact`, and verify one Contact publish-triggered deployment. Then evaluate the next one-at-a-time CMS slice without adding speculative fields.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Evaluate the smallest useful shared site-settings slice from the existing header/footer and content guidance, then follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields.
 
 ## Next handoff milestone
 
