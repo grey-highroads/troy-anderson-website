@@ -1,3 +1,4 @@
+import {aboutType} from './about'
 import {bookType} from './book'
 
-export const schemaTypes = [bookType]
+export const schemaTypes = [bookType, aboutType]
