@@ -578,6 +578,13 @@ button {
   color: var(--paper);
 }
 
+.portrait-image {
+  display: block;
+  width: 100%;
+  height: clamp(25rem, 47vw, 47rem);
+  object-fit: cover;
+}
+
 .portrait-placeholder span,
 .contact-portrait span {
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
@@ -641,6 +648,7 @@ button {
 }
 
 .copy-columns > p,
+.copy-columns > .portable-copy,
 .book-note blockquote,
 .endorsement-grid blockquote {
   margin: 0;
@@ -962,6 +970,10 @@ button {
   .portrait-placeholder,
   .contact-portrait {
     min-height: 65vw;
+  }
+
+  .portrait-image {
+    height: 65vw;
   }
 
   .book-detail__cover {
