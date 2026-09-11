@@ -256,6 +256,93 @@ button {
   grid-row: span 2;
 }
 
+.book-promo {
+  display: grid;
+  grid-template-columns: 17vw minmax(0, 1fr);
+  align-items: start;
+  gap: 1.4vw;
+  min-height: 50vw;
+  padding: 6.1vw 4.6vw 5vw;
+  overflow: hidden;
+  background: var(--oxblood);
+  color: var(--paper);
+}
+
+.book-promo__cover {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.book-promo__message {
+  min-width: 0;
+}
+
+.book-promo__title {
+  width: 70%;
+  margin: -0.5vw 0 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(3.5rem, 8vw, 9rem);
+  font-style: italic;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.86;
+  text-transform: uppercase;
+  transform: scaleX(1.43);
+  transform-origin: left center;
+  white-space: nowrap;
+}
+
+.book-promo__title span {
+  display: block;
+}
+
+.book-promo__availability {
+  display: grid;
+  grid-template-columns: minmax(4rem, 14vw) minmax(0, 1fr);
+  align-items: center;
+  gap: 1.7vw;
+  margin-top: -0.15vw;
+  color: var(--soft-cyan);
+}
+
+.book-promo__availability p {
+  margin: 0;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: clamp(2.5rem, 5.55vw, 6.25rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  transform: scaleX(1.24);
+  transform-origin: left center;
+  white-space: nowrap;
+}
+
+.book-promo__arrow {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 0.42vw;
+  min-height: 0.2rem;
+  background: currentColor;
+}
+
+.book-promo__arrow::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 1.55vw;
+  height: 1.55vw;
+  min-width: 0.75rem;
+  min-height: 0.75rem;
+  border-bottom: 0.42vw solid currentColor;
+  border-left: 0.42vw solid currentColor;
+  content: "";
+  transform: translateY(-50%) rotate(45deg);
+  transform-origin: center;
+}
+
 @media (max-width: 900px) {
   .site-header {
     grid-template-columns: minmax(0, 1fr) 5.75rem;
@@ -328,6 +415,35 @@ button {
     grid-column: 1 / -1;
     grid-row: span 3;
     order: -1;
+  }
+
+  .book-promo {
+    grid-template-columns: 28vw minmax(0, 1fr);
+    gap: 2.5vw;
+    min-height: 57vw;
+    padding: 7vw 4.5vw 8vw;
+  }
+
+  .book-promo__title {
+    margin-top: -0.8vw;
+    font-size: 7.7vw;
+    letter-spacing: -0.03em;
+  }
+
+  .book-promo__availability {
+    grid-template-columns: 10vw minmax(0, 1fr);
+    gap: 2vw;
+    margin-top: 1.8vw;
+  }
+
+  .book-promo__availability p {
+    font-size: 4.5vw;
+    letter-spacing: -0.015em;
+  }
+
+  .book-promo__arrow,
+  .book-promo__arrow::before {
+    border-width: 0.18rem;
   }
 
 }
