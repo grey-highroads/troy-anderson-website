@@ -5,6 +5,8 @@
   "packageManager": "pnpm@11.19.0",
   "scripts": {
     "dev": "next dev",
+    "studio:dev": "pnpm --filter troy-anderson-website-1 dev",
+    "studio:build": "pnpm --filter troy-anderson-website-1 build",
     "build": "next build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
