@@ -155,7 +155,18 @@ For each content type:
 - Add forms, analytics, SEO refinements, redirects, and social metadata only when their requirements are known.
 - Keep launch-only infrastructure work out of early creative iterations.
 
-### 10. Migrate before launch pressure begins
+### 10. Add privacy and security at the integration boundaries
+
+- Inventory every form, analytics tool, embedded player, social widget, third-party request, cookie, and browser-storage use before adding consent UI.
+- Do not add a cookie banner by default. Add consent controls only when the approved production behavior includes non-essential storage or tracking, and prevent those tools from loading before consent when required.
+- Publish an accurate privacy notice before collecting real form submissions or analytics data. Describe the actual information, purposes, processors, retention, and contact path; obtain legal review when the audience or jurisdiction warrants it.
+- Prefer privacy-preserving analytics, click-to-load third-party media, minimal form fields, and short documented retention over collecting data speculatively.
+- Before client beta, scan repository history and deployed assets for secrets; review dependencies, third-party scripts, content-security and related response headers, form abuse controls, and least-privilege credentials.
+- Treat public project identifiers differently from credentials, but verify that no private token or privileged operation appears in browser code or static output.
+
+**Gate:** Production data flows are documented, privacy and consent behavior matches the deployed site, and the front-end security review has no unresolved release blocker.
+
+### 11. Migrate before launch pressure begins
 
 - Start client account creation after the technical proof is approved.
 - Move the repository, CMS, hosting, analytics, and form credentials before client beta.
@@ -239,4 +250,3 @@ At launch, preserve a clean project record:
 - Final deployed revision.
 - Access-removal confirmation.
 - A short retrospective that updates this playbook.
-

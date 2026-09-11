@@ -66,6 +66,14 @@ Fetch the private Sanity production dataset during the static site build using a
 
 **Reason:** The browser never receives the private credential, local development remains unblocked, and an editor can publish content without asking a developer to redeploy. The pattern remains portable when the production deployment moves to the client's Cloudflare account.
 
+## D-009: Privacy and front-end security gates
+
+**Status:** Accepted
+
+Do not add a cookie banner before approved integrations establish a real need for consent. Inventory forms, analytics, embeds, cookies, browser storage, and other third-party data flows during scope definition; publish an accurate privacy notice before real form submissions or analytics begin; and complete a focused front-end security review before client beta.
+
+**Reason:** Consent UI must reflect actual site behavior, privacy promises must match real data handling, and credentials or privileged operations must never reach the browser. Scheduling the work at integration and beta boundaries avoids premature controls without deferring launch-critical privacy and security checks.
+
 ## New decision template
 
 ### D-XXX: Short title

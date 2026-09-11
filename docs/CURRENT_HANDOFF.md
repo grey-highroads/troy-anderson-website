@@ -143,6 +143,8 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Contact content and publish-triggered deployment are connected and verified.
 - Media is not currently a public route, consistent with the supplied launch-content guide indicating it may be added later.
 - Contact form behavior is not connected to a delivery service.
+- No analytics, advertising pixels, consent manager, or cookie banner is currently installed.
+- Add a privacy notice before enabling real form submissions or analytics. Decide on a cookie banner only after inventorying the actual cookies, embeds, and browser storage introduced by approved integrations.
 - GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
 - No client-owned production migration has occurred.
 - Draft preview is not implemented and should not be added unless the client workflow requires it.
@@ -161,6 +163,8 @@ pnpm check
 ## Recommended next slice
 
 Continue the CMS build one content type at a time. The next candidate is a narrow shared site-settings slice, but only if the existing header/footer content guidance identifies useful editor-controlled fields. Keep form-delivery behavior separate until the client-approved service and recipient are known.
+
+Privacy and security are later integration gates, not reasons to interrupt the next editorial slice. When forms, analytics, or third-party media are selected, follow the Phase 6 privacy inventory and notice work; complete the formal front-end security review during Phase 7 before client beta.
 
 Suggested sequence:
 

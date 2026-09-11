@@ -34,6 +34,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Confirm which routes ship at launch and which remain hidden.
 - [ ] Define CMS fields, validation, ordering, and publishing behavior.
 - [ ] Agree on representative content for prototype testing.
+- [ ] Inventory planned forms, analytics, embedded media, social widgets, cookies, browser storage, and other third-party data flows.
+- [ ] Confirm the intended audience and jurisdictions so privacy, consent, and legal-review requirements can be scoped accurately.
 
 **Milestone:** Stakeholders approve the launch content model and the inputs needed for the technical proof are available.
 
@@ -94,8 +96,11 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 - [ ] Load and review the agreed initial content set.
 - [ ] Prepare approved preview clips and poster images.
-- [ ] Connect contact forms to the client-approved delivery service.
-- [ ] Configure analytics and search metadata if approved.
+- [ ] Connect contact forms to the client-approved delivery service with server-side validation, spam controls, minimal collection, and an agreed retention path.
+- [ ] Configure analytics and search metadata only if approved, preferring a privacy-preserving approach with no unnecessary identifiers or browser storage.
+- [ ] Recheck every third-party request, embed, cookie, and browser-storage use after forms, media, and analytics are selected.
+- [ ] Decide whether consent controls are required from the actual tracker inventory; do not add a cookie banner when the site has no non-essential storage or tracking.
+- [ ] Draft, legally review as appropriate, and publish an accurate privacy notice before real form submissions or analytics collection begin.
 - [ ] Confirm the existing email service and DNS records will remain intact.
 - [ ] Complete an editorial review with Andrew.
 
@@ -107,6 +112,10 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Verify keyboard navigation, focus management, contrast, and reduced motion.
 - [ ] Check performance, visual stability, media loading, and error states.
 - [ ] Validate redirects, metadata, forms, and unpublished content behavior.
+- [ ] Run a front-end security review covering repository history, deployed artifacts, environment-variable exposure, dependency findings, third-party scripts, and browser security headers.
+- [ ] Confirm no private credential or privileged operation reaches browser code, and verify production Sanity, webhook, analytics, and form credentials use least privilege.
+- [ ] Test form validation, spam protection, rate limiting, logging, and failure behavior without retaining unnecessary personal data.
+- [ ] Verify the privacy notice and any consent controls match the site’s actual production behavior.
 - [ ] Resolve release-blocking defects.
 - [ ] Obtain stakeholder approval for the release candidate.
 
@@ -119,6 +128,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Create and verify the production deployment in the client's Cloudflare account.
 - [ ] Transfer or migrate the approved Sanity configuration and production content.
 - [ ] Configure production secrets and client billing.
+- [ ] Rotate temporary credentials, record expiration and ownership outside the repository, and enable available secret scanning or push protection.
+- [ ] Assign an owner for privacy-notice updates and consent configuration when services change.
 - [ ] Validate DNS changes without disturbing existing email records.
 - [ ] Launch and complete smoke testing.
 - [ ] Train the client team and deliver operating documentation.

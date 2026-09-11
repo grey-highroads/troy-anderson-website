@@ -50,7 +50,7 @@ Recommended checkpoints:
 1. **Prototype approved:** send the client a short account checklist.
 2. **Application foundation complete:** create client organizations and invite 2520.
 3. **Before client beta:** establish the client-owned production deployment and CMS.
-4. **Before DNS cutover:** verify billing, permissions, secrets, backups, forms, and analytics.
+4. **Before DNS cutover:** verify billing, permissions, secrets, backups, forms, analytics, privacy disclosures, consent behavior, and security headers.
 5. **After launch:** remove temporary dependencies and confirm client access.
 
 ## Resource handoff matrix
@@ -64,6 +64,7 @@ Recommended checkpoints:
 | Forms | Test credentials | Client-owned delivery credentials | Test submission reaches the approved recipient |
 | Analytics | None or test property | Client-owned property | Client can view verified production traffic |
 | Secrets | Local/staging values | Client production environment | No production secret depends on a personal account |
+| Privacy and consent | No banner before tracker inventory | Client-approved notice and consent configuration | Published disclosures and consent behavior match the production data flows |
 
 ## Cutover procedure
 
@@ -89,7 +90,10 @@ Recommended checkpoints:
 - [ ] Existing email delivery is verified after DNS changes.
 - [ ] Forms and notifications use client-owned credentials.
 - [ ] Analytics belongs to the client.
+- [ ] The published privacy notice matches production forms, analytics, embeds, processors, retention, and contact details.
+- [ ] Consent controls are present only where required by the production cookie and storage inventory, and non-essential tools respect the selected choice.
+- [ ] Production response headers, dependencies, browser bundles, and repository history have passed the release security review.
 - [ ] Secrets and recovery methods are documented securely outside the repository.
+- [ ] Temporary credentials are rotated or revoked, and production credential owners and expiration dates are recorded securely.
 - [ ] 2520 and Jonathan access is removed or reduced according to the support agreement.
 - [ ] Temporary staging resources are archived after the agreed retention period.
-
