@@ -343,6 +343,71 @@ button {
   transform-origin: center;
 }
 
+.site-footer {
+  display: grid;
+  grid-template-columns: minmax(13rem, 1fr) minmax(20rem, 1.35fr) auto;
+  align-items: end;
+  gap: clamp(2rem, 5vw, 6rem);
+  padding: clamp(2.25rem, 4.5vw, 5rem) clamp(1.5rem, 4.6vw, 5rem);
+  border-top: clamp(0.3rem, 0.55vw, 0.6rem) solid var(--soft-cyan);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+.site-footer__name {
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(1.2rem, 2.2vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.site-footer__role {
+  margin-top: 0.65rem !important;
+  color: var(--soft-cyan);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.8rem, 1vw, 1.15rem);
+  font-style: italic;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.site-footer__label {
+  margin-bottom: 0.7rem !important;
+  color: var(--soft-cyan);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.68rem, 0.8vw, 0.9rem);
+  letter-spacing: 0.16em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem clamp(1.1rem, 2.2vw, 2.5rem);
+  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+  font-size: clamp(1.35rem, 2vw, 2.25rem);
+  letter-spacing: 0.025em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.site-footer__legal {
+  color: rgba(254, 248, 194, 0.68);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.62rem, 0.72vw, 0.78rem);
+  letter-spacing: 0.08em;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
 @media (max-width: 900px) {
   .site-header {
     grid-template-columns: minmax(0, 1fr) 5.75rem;
@@ -362,6 +427,14 @@ button {
   .editorial-grid {
     grid-template-rows: repeat(7, minmax(4rem, 8vw));
     min-height: 39rem;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  .site-footer__legal {
+    grid-column: 1 / -1;
   }
 }
 
@@ -425,6 +498,17 @@ button {
   .book-promo__arrow,
   .book-promo__arrow::before {
     border-width: 0.18rem;
+  }
+
+  .site-footer {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 2rem;
+    padding: 2.5rem 1.25rem 2rem;
+  }
+
+  .site-footer__legal {
+    grid-column: auto;
   }
 
 }
