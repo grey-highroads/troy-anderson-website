@@ -3,11 +3,11 @@
 **Project:** Troy Anderson website  
 **Prepared:** September 11, 2026  
 **Prepared by:** 2520 Consulting  
-**Handoff point:** First CMS vertical slice and automated preview deployment are proven end to end
+**Handoff point:** Book and About CMS vertical slices and automated preview deployment are proven end to end
 
 ## Why this is the right handoff point
 
-This is a stable chapter boundary. The repository, visual foundation, core public routes, local Sanity Studio, Book schema, authenticated build-time content query, and automatic publish-to-deploy path all work. A future builder can now repeat a known pattern for the remaining content types without reconstructing the earlier conversation.
+This is a stable chapter boundary. The repository, visual foundation, core public routes, local Sanity Studio, Book and About schemas, authenticated build-time content queries, and automatic publish-to-deploy path all work. A future builder can now repeat a known pattern for the remaining content types without reconstructing the earlier conversation.
 
 Do not wait until the entire Sanity model is complete to hand off this conversation. That would make the context larger while adding several similar implementation loops. Start a fresh conversation from this document, and update it again when the CMS layer is complete or before another major architecture change.
 
@@ -17,7 +17,7 @@ Do not wait until the entire Sanity model is complete to hand off this conversat
 - Temporary public preview: <https://grey-highroads.github.io/troy-anderson-website/>
 - Live Book route: <https://grey-highroads.github.io/troy-anderson-website/book/>
 - Default branch: `main`
-- Implementation baseline before this documentation update: `835c476` (`Expose Sanity token to site build`). Use the latest `main` revision as authoritative.
+- About implementation baseline before this documentation update: `cf1ffa7` (`Connect About page to Sanity content`). Use the latest `main` revision as authoritative.
 - Sanity project: `Troy Anderson Website 1`
 - Sanity project ID: `gknd24m7`
 - Sanity dataset: `production` (private)
@@ -58,25 +58,28 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - GitHub Pages publishes the `main` branch as the temporary browser review environment.
 - `pnpm check` runs linting, TypeScript validation, and the production build.
 
-### Sanity proof of concept
+### Sanity content slices
 
 - Local Studio lives in `studio/` and is part of the pnpm workspace.
 - Root commands include `pnpm studio:dev` and `pnpm studio:build`.
-- Current schema registry contains one document type: `book`.
+- Current schema registry contains two document types: `book` and `about`.
 - The Book model supports title, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
 - The intended editor populated every field and successfully published the document.
 - The Book page fetches the newest published Book document during the static build.
 - The page renders Sanity image metadata, Portable Text, retailer links, endorsement attribution, and optional sample link.
-- Local builds without the private Sanity credential render intentional fallback content.
+- The About model supports its page heading and introduction, portrait plus alt text, biography heading and Portable Text, story heading and Portable Text, and a pull quote.
+- The intended editor populated and published every About field successfully.
+- The About page fetches the newest published About document during the static build and renders its portrait and Portable Text without changing the established page composition.
+- Local builds without the private Sanity credential render intentional fallback content on both connected pages.
 
 ### Deployment and automation
 
 - GitHub repository secret: `SANITY_API_READ_TOKEN`.
 - The secret is a Sanity Viewer token; its value must never be committed or documented.
 - GitHub Actions exposes the secret only to the build step.
-- A Sanity GROQ-powered webhook named `Rebuild website when Book content is published` is enabled.
+- A Sanity GROQ-powered webhook named `Rebuild website when Book or About content is published` is enabled.
 - Webhook dataset: `production`.
-- Webhook filter: `_type == "book"`.
+- Webhook filter: `_type in ["book", "about"]`.
 - Webhook events: create and update.
 - Draft and version triggers are disabled.
 - Destination: the GitHub workflow-dispatch endpoint for `.github/workflows/pages.yml`.
@@ -85,6 +88,9 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - GitHub token expiration: December 10, 2026. Rotate it before that date and update only the Sanity webhook header.
 - Automated test deployment: GitHub Actions run `34625761031` / run number 17, completed successfully.
 - The live Book page was checked after the test and retained the published CMS content.
+- About integration deployment: GitHub Actions run `34629651918` / run number 20, completed successfully.
+- About webhook delivery returned HTTP 204 and GitHub Actions run `34629920336` / run number 21 completed successfully.
+- The live About page was checked in a browser and rendered every published CMS value and the uploaded portrait.
 
 ## Important implementation files
 
@@ -93,13 +99,16 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | Global app and fonts | `app/layout.tsx` |
 | Homepage | `app/page.tsx` |
 | Book page integration | `app/book/page.tsx` |
+| About page integration | `app/about/page.tsx` |
 | Shared styling and design tokens | `app/globals.css` |
 | Header and navigation | `components/site-header.tsx` |
 | Footer | `components/site-footer.tsx` |
 | Subpage structure | `components/subpage-shell.tsx` |
 | Book query and content types | `lib/sanity/book.ts` |
+| About query and content types | `lib/sanity/about.ts` |
 | Sanity configuration | `studio/sanity.config.ts` |
 | Book schema | `studio/schemaTypes/book.ts` |
+| About schema | `studio/schemaTypes/about.ts` |
 | Schema registry | `studio/schemaTypes/index.ts` |
 | Static export and image rules | `next.config.ts` |
 | Preview deployment | `.github/workflows/pages.yml` |
@@ -107,7 +116,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Local `main` and `origin/main` both point to `835c476`.
+- Local `main` and `origin/main` both point to `cf1ffa7` before this documentation update.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -117,9 +126,9 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Known temporary content and limitations
 
-- The current Sanity Book document contains test copy entered to validate every field. It is not final client copy.
+- The current Sanity Book and About documents contain test copy entered to validate every field. They are not final client copy.
 - The homepage still uses representative imagery and an interaction prototype rather than approved video media.
-- About and Contact are visual/content stubs and are not connected to Sanity.
+- Contact remains a visual/content stub and is not connected to Sanity.
 - Media is not currently a public route, consistent with the supplied launch-content guide indicating it may be added later.
 - Contact form behavior is not connected to a delivery service.
 - GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
@@ -139,20 +148,19 @@ pnpm check
 
 ## Recommended next slice
 
-Continue the CMS build one content type at a time. The recommended next vertical slice is **About** because it has a simple, representative combination of portrait media, short biography, and long-form story copy.
+Continue the CMS build one content type at a time. The recommended next vertical slice is **Contact/site settings**, keeping form-delivery behavior separate until the client-approved service and recipient are known.
 
 Suggested sequence:
 
-1. Confirm the minimum About fields from the existing page and client guide.
-2. Add an `about` Sanity document schema with clear editor-facing descriptions.
-3. Ask the user to populate and publish the document in the local Studio.
-4. Add a typed build-time query with the same private-token/fallback pattern used for Book.
-5. Connect `/about` without changing its approved visual structure unnecessarily.
-6. Extend the Sanity webhook filter from Book-only to the exact set of connected public document types.
-7. Publish and verify the About page and automatic deployment.
-8. Update this handoff and the roadmap.
+1. Confirm the minimum editable Contact and shared site-information fields from the existing page and client guide.
+2. Keep contact content separate from form-delivery configuration unless the approved model clearly benefits from one focused document.
+3. Add only the narrow schema needed by the existing public route and shared footer.
+4. Ask the user to populate and publish every field in the local Studio.
+5. Add a typed authenticated build-time query with intentional local fallback content.
+6. Extend the Sanity webhook only after the public content type is connected.
+7. Deploy and verify the actual published values in a browser.
 
-After About, proceed to Contact/site settings, then homepage content and clips. Do not model Appearances, Testimonials, or Media until their launch status and content requirements are confirmed.
+After Contact/site settings, proceed to homepage content and clips. Do not model Appearances, Testimonials, or Media until their launch status and content requirements are confirmed.
 
 ## Regression guardrails
 
@@ -183,7 +191,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Start the next one-at-a-time Sanity vertical slice for the About page, using the established Book schema/query/fallback/deploy pattern and avoiding scope creep.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Start the next one-at-a-time Sanity vertical slice for Contact/site settings, using the established Book and About schema/query/fallback/deploy pattern and avoiding scope creep.
 
 ## Next handoff milestone
 

@@ -47,6 +47,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Let the intended editor populate and publish the first content type without coaching.
 - [x] Connect published Book content to the temporary public preview.
 - [x] Trigger and verify automatic deployment after a published Book change.
+- [x] Build, populate, publish, and connect the About content type.
+- [x] Extend and verify automatic deployment for published About changes.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
 - [ ] Record prototype decisions and unresolved risks.
 
@@ -76,7 +78,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 ## Phase 5: Content routes
 
-- [x] Stub About with its approved general content areas.
+- [x] Build and connect About to Sanity.
 - [x] Build and connect the Book page to Sanity.
 - [ ] Build Appearances.
 - [ ] Build Media or keep it unpublished according to launch scope.
