@@ -24,7 +24,7 @@ body {
   margin: 0;
   background: var(--oxblood);
   color: var(--paper);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
 }
 
 button,
@@ -60,10 +60,10 @@ button {
   width: 100%;
   padding: 0.7rem 1.5rem 0;
   color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-source-code-pro), monospace;
   font-size: clamp(1.45rem, 3vw, 2.7rem);
   font-weight: 400;
-  letter-spacing: 0.504em;
+  letter-spacing: 1.65em;
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
@@ -77,11 +77,11 @@ button {
   padding: 0.12rem 1.5rem 0.45rem;
   background: var(--oxblood);
   color: var(--paper);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-source-code-pro), monospace;
   font-size: clamp(1.2rem, 2.49vw, 2.24rem);
   font-style: italic;
   font-weight: 400;
-  letter-spacing: 0.42em;
+  letter-spacing: 1.357em;
   line-height: 0.95;
   text-transform: uppercase;
   white-space: nowrap;
@@ -275,21 +275,20 @@ button {
 }
 
 .book-promo__message {
+  position: relative;
   min-width: 0;
+  height: 25.67vw;
 }
 
 .book-promo__title {
-  width: 70%;
-  margin: -0.5vw 0 0;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: clamp(3.5rem, 8vw, 9rem);
+  margin: 0.8vw 0 0;
+  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+  font-size: 13.8vw;
   font-style: italic;
-  font-weight: 900;
-  letter-spacing: -0.035em;
-  line-height: 0.86;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 0.71;
   text-transform: uppercase;
-  transform: scaleX(1.43);
-  transform-origin: left center;
   white-space: nowrap;
 }
 
@@ -298,24 +297,25 @@ button {
 }
 
 .book-promo__availability {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   display: grid;
   grid-template-columns: minmax(4rem, 14vw) minmax(0, 1fr);
   align-items: center;
   gap: 1.7vw;
-  margin-top: -0.15vw;
   color: var(--soft-cyan);
 }
 
 .book-promo__availability p {
   margin: 0;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: clamp(2.5rem, 5.55vw, 6.25rem);
+  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+  font-size: 8.4vw;
   font-weight: 400;
-  letter-spacing: -0.025em;
-  line-height: 0.92;
+  letter-spacing: 0;
+  line-height: 0.714;
   text-transform: uppercase;
-  transform: scaleX(1.24);
-  transform-origin: left center;
   white-space: nowrap;
 }
 
@@ -351,12 +351,12 @@ button {
 
   .wordmark {
     font-size: clamp(1.2rem, 3.2vw, 1.75rem);
-    letter-spacing: 0.408em;
+    letter-spacing: 1.4em;
   }
 
   .site-header__strapline {
     font-size: clamp(1rem, 2.77vw, 1.51rem);
-    letter-spacing: 0.3em;
+    letter-spacing: 1.1em;
   }
 
   .editorial-grid {
@@ -374,13 +374,13 @@ button {
   .wordmark {
     padding: 0.55rem 0.85rem 0;
     font-size: clamp(0.88rem, 4vw, 1.15rem);
-    letter-spacing: 0.336em;
+    letter-spacing: 0.83em;
   }
 
   .site-header__strapline {
     padding: 0.12rem 0.85rem 0.32rem;
     font-size: clamp(0.86rem, 3.93vw, 1.13rem);
-    letter-spacing: 0.14em;
+    letter-spacing: 0.46em;
   }
 
   .menu-mark {
@@ -418,27 +418,8 @@ button {
   }
 
   .book-promo {
-    grid-template-columns: 28vw minmax(0, 1fr);
-    gap: 2.5vw;
-    min-height: 57vw;
-    padding: 7vw 4.5vw 8vw;
-  }
-
-  .book-promo__title {
-    margin-top: -0.8vw;
-    font-size: 7.7vw;
-    letter-spacing: -0.03em;
-  }
-
-  .book-promo__availability {
-    grid-template-columns: 10vw minmax(0, 1fr);
-    gap: 2vw;
-    margin-top: 1.8vw;
-  }
-
-  .book-promo__availability p {
-    font-size: 4.5vw;
-    letter-spacing: -0.015em;
+    min-height: 50vw;
+    padding: 6.1vw 4.6vw 5vw;
   }
 
   .book-promo__arrow,
