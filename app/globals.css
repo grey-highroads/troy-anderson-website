@@ -729,7 +729,8 @@ button {
   border-left: 1px solid rgba(254, 248, 194, 0.5);
 }
 
-.retailer-list span {
+.retailer-list span,
+.retailer-list a {
   display: grid;
   place-items: center;
   min-height: clamp(6rem, 10vw, 11rem);
@@ -741,6 +742,39 @@ button {
   line-height: 1;
   text-align: center;
   text-transform: uppercase;
+}
+
+.retailer-list a {
+  color: inherit;
+  text-decoration: none;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.retailer-list a:hover,
+.retailer-list a:focus-visible {
+  background: var(--paper);
+  color: var(--oxblood);
+}
+
+.portable-copy > * {
+  margin: 0 0 1.25rem;
+}
+
+.portable-copy > *:last-child {
+  margin-bottom: 0;
+}
+
+.portable-copy,
+.book-note blockquote cite {
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.95rem, 1.15vw, 1.2rem);
+  line-height: 1.65;
+}
+
+.book-note blockquote cite {
+  display: block;
+  margin-top: 1.5rem;
+  font-style: normal;
 }
 
 .endorsements-panel {
@@ -771,6 +805,16 @@ button {
   font-size: clamp(1.5rem, 2vw, 2rem);
   font-style: normal;
   text-transform: uppercase;
+}
+
+.endorsement-grid cite small {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+  text-transform: none;
 }
 
 .contact-layout {
