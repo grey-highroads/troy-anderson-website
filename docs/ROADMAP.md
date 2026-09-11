@@ -6,12 +6,12 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 | Phase | Chapter | Status | Milestone |
 | --- | --- | --- | --- |
-| 0 | Documentation and setup | Complete | Repository is ready for implementation |
+| 0 | Documentation and setup | Complete | Repository and temporary review deployment are operational |
 | 1 | Inputs and content model | In progress | Build requirements are agreed |
 | 2 | Technical proof | In progress | Motion and CMS approaches are approved |
-| 3 | Application foundation | Not started | Core site and CMS architecture work together |
+| 3 | Application foundation | In progress | Core site and CMS architecture work together |
 | 4 | Homepage experience | Not started | Approved editorial compositions work responsively |
-| 5 | Content routes | Not started | Core public site is feature-complete |
+| 5 | Content routes | In progress | Core public site is feature-complete |
 | 6 | Content and integrations | Not started | Real content and external services work end to end |
 | 7 | QA and client beta | Not started | Release candidate is approved |
 | 8 | Migration, launch, and handoff | Not started | Client owns and operates production |
@@ -23,7 +23,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Define phased roadmap and milestone criteria.
 - [x] Initialize the application and development tooling.
 - [x] Add a safe environment-variable template with no secrets.
-- [ ] Establish staging deployment in temporary 2520 infrastructure.
+- [x] Establish staging deployment in temporary 2520 infrastructure.
 
 **Milestone:** A new contributor can understand the project, run the application once it exists, and find the current decisions without relying on chat history.
 
@@ -43,19 +43,23 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Prototype tile expansion and layout changes with GSAP Flip.
 - [ ] Replace representative tiles with approved sample clips.
 - [ ] Test desktop, mobile, touch, keyboard, and reduced-motion behavior.
-- [ ] Create a small Sanity Studio with Homepage, Clip, and Appearance schemas.
-- [ ] Let Andrew perform common editing tasks without coaching.
+- [x] Create the local Sanity Studio and prove the first structured Book schema.
+- [x] Let the intended editor populate and publish the first content type without coaching.
+- [x] Connect published Book content to the temporary public preview.
+- [x] Trigger and verify automatic deployment after a published Book change.
+- [ ] Extend the proven CMS pattern to the remaining approved content types.
 - [ ] Record prototype decisions and unresolved risks.
 
 **Milestone:** Jonathan approves the motion direction and Andrew confirms the CMS workflow is understandable.
 
 ## Phase 3: Application foundation
 
-- [ ] Establish application structure, routes, shared layout, and environment configuration.
-- [ ] Connect typed Sanity queries and preview behavior.
-- [ ] Create shared typography, spacing, color, and media rules from the approved design.
-- [ ] Add global navigation, metadata, error handling, and baseline accessibility.
-- [ ] Establish staging checks and deployment documentation.
+- [x] Establish application structure, initial routes, shared layout, and environment configuration.
+- [x] Connect the first typed Sanity query with authenticated build-time rendering and local fallback content.
+- [x] Create shared typography, spacing, color, and media rules from the approved design.
+- [x] Add global navigation, metadata, and baseline accessibility.
+- [x] Establish temporary preview checks and deployment documentation.
+- [ ] Extend content queries, error handling, and metadata across every approved launch route.
 
 **Milestone:** The application, CMS, and staging deployment work together using representative content.
 
@@ -72,12 +76,12 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 ## Phase 5: Content routes
 
-- [ ] Build About.
-- [ ] Build Books.
+- [x] Stub About with its approved general content areas.
+- [x] Build and connect the Book page to Sanity.
 - [ ] Build Appearances.
 - [ ] Build Media or keep it unpublished according to launch scope.
 - [ ] Build Testimonials.
-- [ ] Build Contact.
+- [x] Stub Contact with its approved general content areas.
 - [ ] Verify navigation, shareable URLs, metadata, and empty states.
 
 **Milestone:** All approved launch routes are responsive, accessible, and connected to the CMS.

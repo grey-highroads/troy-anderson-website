@@ -29,6 +29,8 @@ The first technical milestone is intentionally narrow: prove the homepage intera
 - [Roadmap](docs/ROADMAP.md)
 - [Infrastructure and handoff](docs/INFRASTRUCTURE_AND_HANDOFF.md)
 - [Decision log](docs/DECISIONS.md)
+- [2520 site build delivery playbook](docs/SITE_BUILD_DELIVERY_PLAYBOOK.md)
+- [Current project handoff](docs/CURRENT_HANDOFF.md)
 
 ## Working principles
 
