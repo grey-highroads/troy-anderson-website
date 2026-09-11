@@ -49,6 +49,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Trigger and verify automatic deployment after a published Book change.
 - [x] Build, populate, publish, and connect the About content type.
 - [x] Extend and verify automatic deployment for published About changes.
+- [x] Build, populate, publish, and connect the Contact content type.
+- [ ] Rotate the webhook credential, then extend and verify automatic deployment for published Contact changes.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
 - [ ] Record prototype decisions and unresolved risks.
 
@@ -83,7 +85,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Build Appearances.
 - [ ] Build Media or keep it unpublished according to launch scope.
 - [ ] Build Testimonials.
-- [x] Stub Contact with its approved general content areas.
+- [x] Build and connect Contact to Sanity while preserving the approved form stub.
 - [ ] Verify navigation, shareable URLs, metadata, and empty states.
 
 **Milestone:** All approved launch routes are responsive, accessible, and connected to the CMS.
