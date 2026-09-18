@@ -79,6 +79,18 @@ pnpm check
 
 The production build is statically exported to `out/`, which can be served directly by Cloudflare Pages. Repository preview builds set `GITHUB_PAGES=true` so Next.js generates URLs beneath the repository path. Copy `.env.example` to `.env.local` only when CMS development begins, and never commit secrets.
 
+## Content editing
+
+Open [Troy Anderson Sanity Studio](https://troy-anderson.sanity.studio/) and sign in with an account authorized for the existing Sanity project. Select Book, About, or Contact, edit the structured fields, and click Publish. Published changes trigger the website preview build; allow the deployment to finish before checking the public page.
+
+The hosted Studio and local Studio use the same content, not separate copies. A local server is no longer needed for routine editing. Schema or Studio-code changes still require a separate Studio deployment:
+
+```bash
+pnpm --filter troy-anderson-website-1 deploy
+```
+
+This hosted Studio remains in the current development infrastructure. Confirm ownership and the hosted address during the client transfer or migration before launch.
+
 ## Ownership
 
 - **Troy Anderson / client team:** production accounts, domain, billing, and final content approval

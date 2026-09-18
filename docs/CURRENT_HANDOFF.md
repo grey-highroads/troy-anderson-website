@@ -1,7 +1,7 @@
 # Current Project Handoff
 
 **Project:** Troy Anderson website  
-**Prepared:** September 11, 2026  
+**Prepared:** September 18, 2026<br>
 **Prepared by:** 2520 Consulting  
 **Handoff point:** Book, About, and Contact CMS vertical slices and automated preview deployment are proven end to end
 
@@ -23,6 +23,8 @@ Do not wait until the entire Sanity model is complete to hand off this conversat
 - Sanity project: `Troy Anderson Website 1`
 - Sanity project ID: `gknd24m7`
 - Sanity dataset: `production` (private)
+- Hosted Studio: <https://troy-anderson.sanity.studio/>
+- Hosted Studio application ID: `t79qynbc05nitxgc59r4fq63` (public deployment identifier, not a credential)
 - Local Studio URL when running: <http://127.0.0.1:3333/>
 
 The repository documents are authoritative. Do not rely on a prior chat or a design-tool draft when the code or these documents say otherwise.
@@ -64,6 +66,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 - Local Studio lives in `studio/` and is part of the pnpm workspace.
 - Root commands include `pnpm studio:dev` and `pnpm studio:build`.
+- Studio was deployed to Sanity hosting on September 18, 2026; routine editing no longer requires a local server.
+- Hosted and local Studio use the same project and dataset. Existing content and publish automation were not migrated or duplicated.
+- The hosted address was browser-verified to reach Sanity’s sign-in screen. An authorized editor still needs to confirm the signed-in content list and one online publish cycle.
+- `studio/sanity.cli.ts` records the hosted application ID with automatic Studio updates disabled. Deploy Studio/schema changes separately with `pnpm --filter troy-anderson-website-1 deploy`; website pushes do not update the hosted Studio.
 - Current schema registry contains three document types: `book`, `about`, and `contact`.
 - The Book model supports title, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
 - The intended editor populated every field and successfully published the document.
@@ -128,7 +134,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Local `main` and `origin/main` both point to `7cde43d` before this documentation update.
+- Local `main` and `origin/main` both point to `3abf7be` before this hosted-Studio update.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -147,6 +153,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Add a privacy notice before enabling real form submissions or analytics. Decide on a cookie banner only after inventorying the actual cookies, embeds, and browser storage introduced by approved integrations.
 - GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
 - No client-owned production migration has occurred.
+- Hosted Studio ownership remains with the existing development project. Confirm transfer or migration and retention of the editing address before client beta; no new collaborator access was granted during deployment.
 - Draft preview is not implemented and should not be added unless the client workflow requires it.
 
 ## Verified commands

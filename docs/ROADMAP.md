@@ -53,6 +53,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Extend and verify automatic deployment for published About changes.
 - [x] Build, populate, publish, and connect the Contact content type.
 - [x] Extend and verify automatic deployment for published Contact changes.
+- [x] Deploy the existing Studio to a stable online editing address with authenticated access.
+- [ ] Confirm an authorized editor can sign in to the hosted Studio and complete an online publish-to-deploy cycle.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
 - [ ] Record prototype decisions and unresolved risks.
 

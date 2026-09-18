@@ -60,6 +60,7 @@ Recommended checkpoints:
 | GitHub | Private 2520 repository | Client-owned organization/repository | Client administrator can manage access and the default branch deploys |
 | Cloudflare | 2520 staging project | Client-owned production project | Production deploy succeeds and client controls billing/settings |
 | Sanity | Development project or dataset | Client-owned project/organization | Andrew can edit and publish approved content |
+| Sanity Studio | `https://troy-anderson.sanity.studio/` on the existing development project | Studio attached to the client-owned project | Confirm whether the address is retained during transfer/migration; authorized editors can sign in and publish |
 | Domain and DNS | Remain untouched | Existing client-controlled registrar/DNS | Site resolves correctly and email records remain valid |
 | Forms | Test credentials | Client-owned delivery credentials | Test submission reaches the approved recipient |
 | Analytics | None or test property | Client-owned property | Client can view verified production traffic |
