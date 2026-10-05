@@ -110,7 +110,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - GitHub token expiration: December 10, 2026. Rotate it before that date and update only the Sanity webhook header.
 - Automated test deployment: GitHub Actions run `34625761031` / run number 17, completed successfully.
 - The live Book page was checked after the test and retained the published CMS content.
-- Book subheader integration deployment: GitHub Actions run `37384768872` / run number 58 completed successfully. The live route rendered the published `MAKING MENTORS OUT OF TORMENTORS` value with no browser errors or horizontal overflow at desktop or mobile widths.
+- Book subheader integration deployment: GitHub Actions run `37384768872` / run number 58 completed successfully. The live route rendered the published `MAKING MENTORS OUT OF TORMENTORS` value with no browser errors or horizontal overflow at desktop or mobile widths. Run `37385576539` / run number 60 then refined the full-width subheader into the paper-colored condensed display treatment while intentionally retaining the cyan monospace treatment on mobile; both layouts were browser-verified again.
 - About integration deployment: GitHub Actions run `34629651918` / run number 20, completed successfully.
 - About webhook delivery returned HTTP 204 and GitHub Actions run `34629920336` / run number 21 completed successfully.
 - The live About page was checked in a browser and rendered every published CMS value and the uploaded portrait.
