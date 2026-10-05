@@ -8,7 +8,8 @@ const navigation = [
   { href: "/", label: "Home", number: "01" },
   { href: "/about", label: "About", number: "02" },
   { href: "/book", label: "Book", number: "03" },
-  { href: "/contact", label: "Contact", number: "04" },
+  { href: "/media", label: "Media", number: "04" },
+  { href: "/contact", label: "Contact", number: "05" },
 ];
 
 export function SiteHeader() {
@@ -61,7 +62,6 @@ export function SiteHeader() {
             );
           })}
         </ul>
-        <p>Media will be added when the library is ready.</p>
       </nav>
     </header>
   );
