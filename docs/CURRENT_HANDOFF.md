@@ -125,8 +125,9 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Shared social-link integration deployment: GitHub Actions run `37361801626` / run number 39, completed successfully.
 - The live footer was checked in a browser and rendered the published Instagram, YouTube, and LinkedIn destinations with no browser warnings or errors.
 - Media integration deployment: GitHub Actions run `37368104814` / run number 44, attempt 2, completed successfully after an earlier attempt was cancelled during a GitHub Actions hosted-runner incident.
+- The Media Publish action also produced workflow-dispatch run `37379435948` / run number 45, which completed successfully and independently reconfirmed the Sanity publish webhook path.
 - The live Media page was checked in a browser and rendered the published heading, video URL, share copy, three photographs and alternative text values, and publicity download directly from Sanity. The share-copy control worked, all images loaded, and the route had no browser warnings, errors, or horizontal overflow at desktop or mobile widths.
-- The webhook is enabled with the six-type filter above. A future real edit to Media or another connected type should be used to reconfirm the next publish-triggered workflow delivery independently of the successful code-push deployment.
+- The webhook is enabled with the six-type filter above and the Media publish-to-deploy path is verified.
 
 ## Important implementation files
 
