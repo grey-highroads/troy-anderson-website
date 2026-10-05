@@ -56,7 +56,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build, populate, publish, and connect the Homepage Meet Troy content slice.
 - [x] Build, populate, publish, and connect the Homepage testimonials content slice.
 - [x] Build, populate, publish, and connect the shared footer social-link settings.
-- [x] Limit the publish webhook to Homepage, Book, About, Contact, and Site settings content.
+- [x] Build, populate, publish, and connect the Media page content slice.
+- [x] Limit the publish webhook to Homepage, Book, About, Contact, Site settings, and Media page content.
 - [x] Deploy the existing Studio to a stable online editing address with authenticated access.
 - [x] Confirm an authorized editor can sign in to the hosted Studio and complete an online publish-to-deploy cycle.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
@@ -93,7 +94,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build and connect About to Sanity.
 - [x] Build and connect the Book page to Sanity.
 - [ ] Build Appearances.
-- [ ] Build Media or keep it unpublished according to launch scope.
+- [x] Build and connect Media to Sanity.
 - [ ] Build Testimonials.
 - [x] Build and connect Contact to Sanity while preserving the approved form stub.
 - [ ] Verify navigation, shareable URLs, metadata, and empty states.

@@ -3,11 +3,11 @@
 **Project:** Troy Anderson website  
 **Prepared:** October 5, 2026<br>
 **Prepared by:** 2520 Consulting  
-**Handoff point:** Homepage, Book, About, Contact, and shared footer social-link CMS slices are connected to the preview site
+**Handoff point:** Homepage, Book, About, Contact, Media, and shared footer social-link CMS slices are connected to the preview site
 
 ## Why this is the right handoff point
 
-This is a stable chapter boundary. The repository, visual foundation, core public routes, hosted Sanity Studio, Homepage, Book, About, Contact, and Site settings schemas, authenticated build-time content queries, and the automatic publish-to-deploy path all work. The three content routes, approved Homepage sections, and shared footer social links are connected to published CMS content.
+This is a stable chapter boundary. The repository, visual foundation, core public routes, hosted Sanity Studio, Homepage, Book, About, Contact, Media, and Site settings schemas, authenticated build-time content queries, and the automatic publish-to-deploy path all work. The four content routes, approved Homepage sections, Media library, and shared footer social links are connected to published CMS content.
 
 Do not wait until the entire Sanity model is complete to hand off this conversation. That would make the context larger while adding several similar implementation loops. Start a fresh conversation from this document, and update it again when the CMS layer is complete or before another major architecture change.
 
@@ -18,6 +18,7 @@ Do not wait until the entire Sanity model is complete to hand off this conversat
 - Live Book route: <https://grey-highroads.github.io/troy-anderson-website/book/>
 - Live About route: <https://grey-highroads.github.io/troy-anderson-website/about/>
 - Live Contact route: <https://grey-highroads.github.io/troy-anderson-website/contact/>
+- Live Media route: <https://grey-highroads.github.io/troy-anderson-website/media/>
 - Default branch: `main`
 - Homepage schema baseline before its page integration: `ee02553` (`Add homepage Meet Troy content model`). Use the latest `main` revision as authoritative.
 - Sanity project: `Troy Anderson Website 1`
@@ -57,7 +58,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Next.js 16.3.4, React 19, TypeScript, pnpm 11, and Node.js 24.
 - Static export configured in `next.config.ts`.
 - Shared site header, navigation, subpage shell, and footer.
-- Public routes currently present: `/`, `/about`, `/book`, and `/contact`.
+- Public routes currently present: `/`, `/about`, `/book`, `/contact`, and `/media`.
 - Homepage editorial grid interaction prototype uses GSAP and Flip.
 - GitHub Pages publishes the `main` branch as the temporary browser review environment.
 - `pnpm check` runs linting, TypeScript validation, and the production build.
@@ -70,7 +71,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Hosted and local Studio use the same project and dataset. Existing content and publish automation were not migrated or duplicated.
 - The hosted address, authenticated content list, Homepage editing form, and online publish operation were browser-verified with the intended editor account.
 - `studio/sanity.cli.ts` records the hosted application ID with automatic Studio updates disabled. Deploy Studio/schema changes separately with `pnpm --filter troy-anderson-website-1 deploy`; website pushes do not update the hosted Studio.
-- Current schema registry contains five document types: `homepage`, `book`, `about`, `contact`, and `siteSettings`.
+- Current schema registry contains six document types: `homepage`, `book`, `about`, `contact`, `siteSettings`, and `mediaPage`.
 - The Homepage model deliberately covers the approved Meet Troy teaser and testimonial section: Meet Troy heading, short introduction, portrait plus alt text, testimonial heading, and an ordered list of quote, name, and credentials.
 - The intended editor populated and published every Homepage section successfully in the hosted Studio.
 - The homepage fetches the newest published Homepage document during the static build and preserves intentional local fallback content when the private credential is absent.
@@ -87,6 +88,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The Site settings model deliberately contains only the three approved shared destinations: Instagram, YouTube, and LinkedIn.
 - The intended editor populated and published all three Site settings fields successfully in the hosted Studio.
 - The shared footer fetches the newest published Site settings document during the static build and renders all three destinations without changing the established footer composition.
+- The Media model supports a page heading, video introduction, ordered platform-agnostic video or channel links with share copy, photography introduction, ordered downloadable photos with alternative text, publicity introduction, and ordered downloadable files.
+- The intended editor populated and published every Media field successfully in the hosted Studio.
+- The Media page fetches the newest published Media document during the static build and renders the outbound video link, share-copy control, all three approved photos, and the publicity download.
+- Media is present in the primary navigation. The page intentionally keeps outbound media URLs provider-neutral while the separate homepage video experience and clean hosted-video provider work continue.
 - Local builds without the private Sanity credential render intentional fallback content on all connected surfaces.
 
 ### Deployment and automation
@@ -96,7 +101,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - GitHub Actions exposes the secret only to the build step.
 - A Sanity GROQ-powered webhook named `Rebuild website when connected content is published` is enabled.
 - Webhook dataset: `production`.
-- Webhook filter: `_type in ["homepage", "book", "about", "contact", "siteSettings"]`.
+- Webhook filter: `_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage"]`.
 - Webhook events: create and update.
 - Draft and version triggers are disabled.
 - Destination: the GitHub workflow-dispatch endpoint for `.github/workflows/pages.yml`.
@@ -119,7 +124,9 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The live homepage was checked again and rendered the published testimonial heading, quote, name, and credentials directly from Sanity with no browser errors or horizontal overflow.
 - Shared social-link integration deployment: GitHub Actions run `37361801626` / run number 39, completed successfully.
 - The live footer was checked in a browser and rendered the published Instagram, YouTube, and LinkedIn destinations with no browser warnings or errors.
-- The webhook is enabled with the five-type filter above. The latest editor Publish click did not create a distinct workflow run, so a fresh publish-triggered delivery remains to be reconfirmed during the next real connected-content update.
+- Media integration deployment: GitHub Actions run `37368104814` / run number 44, attempt 2, completed successfully after an earlier attempt was cancelled during a GitHub Actions hosted-runner incident.
+- The live Media page was checked in a browser and rendered the published heading, video URL, share copy, three photographs and alternative text values, and publicity download directly from Sanity. The share-copy control worked, all images loaded, and the route had no browser warnings, errors, or horizontal overflow at desktop or mobile widths.
+- The webhook is enabled with the six-type filter above. A future real edit to Media or another connected type should be used to reconfirm the next publish-triggered workflow delivery independently of the successful code-push deployment.
 
 ## Important implementation files
 
@@ -130,6 +137,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | Book page integration | `app/book/page.tsx` |
 | About page integration | `app/about/page.tsx` |
 | Contact page integration | `app/contact/page.tsx` |
+| Media page integration | `app/media/page.tsx` |
 | Shared styling and design tokens | `app/globals.css` |
 | Header and navigation | `components/site-header.tsx` |
 | Footer | `components/site-footer.tsx` |
@@ -139,12 +147,14 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | Contact query and content types | `lib/sanity/contact.ts` |
 | Homepage query and content types | `lib/sanity/homepage.ts` |
 | Site settings query and content types | `lib/sanity/site-settings.ts` |
+| Media query and content types | `lib/sanity/media.ts` |
 | Sanity configuration | `studio/sanity.config.ts` |
 | Book schema | `studio/schemaTypes/book.ts` |
 | About schema | `studio/schemaTypes/about.ts` |
 | Contact schema | `studio/schemaTypes/contact.ts` |
 | Homepage schema | `studio/schemaTypes/homepage.ts` |
 | Site settings schema | `studio/schemaTypes/siteSettings.ts` |
+| Media schema | `studio/schemaTypes/mediaPage.ts` |
 | Schema registry | `studio/schemaTypes/index.ts` |
 | Static export and image rules | `next.config.ts` |
 | Preview deployment | `.github/workflows/pages.yml` |
@@ -152,7 +162,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Shared social-link integration baseline: `888039b` (`Connect footer social links to Sanity`). Use the latest `main` revision as authoritative.
+- Media integration baseline: `f7afcdd` (`Connect Media page to Sanity`). Use the latest `main` revision as authoritative.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -162,10 +172,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Known temporary content and limitations
 
-- The current Sanity Homepage, Book, About, and Contact documents contain test copy entered to validate every field. They are not final client copy. Site settings contains the current published social destinations.
+- The current Sanity Homepage, Book, About, Contact, and Media documents contain test copy entered to validate every field. They are not final client copy. Site settings contains the current published social destinations.
 - The homepage still uses representative imagery and an interaction prototype rather than approved video media.
 - Contact content and publish-triggered deployment are connected and verified.
-- Media is not currently a public route, consistent with the supplied launch-content guide indicating it may be added later.
+- Media is now a public route. Its video entries are outbound provider-neutral links; clean in-site hosted playback and the homepage video experience remain separate parallel work.
 - Contact form behavior is not connected to a delivery service.
 - No analytics, advertising pixels, consent manager, or cookie banner is currently installed.
 - Add a privacy notice before enabling real form submissions or analytics. Decide on a cookie banner only after inventorying the actual cookies, embeds, and browser storage introduced by approved integrations.
@@ -183,17 +193,17 @@ pnpm studio:dev
 pnpm check
 ```
 
-`pnpm check` passed after the shared social-link integration. The static build produces the public site in `out/`.
+`pnpm check` passed after the Media integration. The static build produces the public site in `out/`.
 
 ## Recommended next slice
 
-Continue the CMS build one approved content section at a time. The next candidate is the approved Media/publicity content shell, kept separate from the parallel homepage video-experience work. Do not introduce a general-purpose page builder, and do not model Appearances until its launch status and content requirements are confirmed.
+Continue the CMS build one approved content section at a time. The next likely net-new candidate is the dedicated Testimonials route, using only the approved content guidance and keeping it distinct from the existing Homepage testimonial slice. Do not introduce a general-purpose page builder, and do not model Appearances until its launch status and content requirements are confirmed.
 
 Privacy and security are later integration gates, not reasons to interrupt the next editorial slice. When forms, analytics, or third-party media are selected, follow the Phase 6 privacy inventory and notice work; complete the formal front-end security review during Phase 7 before client beta.
 
 Suggested sequence:
 
-1. Review the reconciled content plan and identify the smallest Media/publicity section that can be populated now.
+1. Review the reconciled content plan and confirm the smallest dedicated Testimonials composition that can be populated now.
 2. Define only the fields needed by that approved composition; do not create a general-purpose page builder or couple it to homepage video delivery.
 3. Ask the user to populate and publish every field before connecting it.
 4. Add a typed authenticated build-time query with intentional local fallback content.
@@ -228,7 +238,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Build the smallest approved Media/publicity content shell that the team can populate now, keep it separate from the parallel homepage video-experience work, and follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields or an Appearances model.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Review the reconciled content guidance for the smallest approved dedicated Testimonials slice, keep it distinct from the existing Homepage testimonial section, and follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields or an Appearances model.
 
 ## Next handoff milestone
 
