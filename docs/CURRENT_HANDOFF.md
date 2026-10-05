@@ -75,10 +75,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The Homepage model deliberately covers the approved Meet Troy teaser and testimonial section: Meet Troy heading, short introduction, portrait plus alt text, testimonial heading, and an ordered list of quote, name, and credentials.
 - The intended editor populated and published every Homepage section successfully in the hosted Studio.
 - The homepage fetches the newest published Homepage document during the static build and preserves intentional local fallback content when the private credential is absent.
-- The Book model supports title, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
+- The Book model supports title, required subheader, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
 - The intended editor populated every field and successfully published the document.
 - The Book page fetches the newest published Book document during the static build.
-- The page renders Sanity image metadata, Portable Text, retailer links, endorsement attribution, and optional sample link.
+- The page renders the published subheader beneath the title, plus Sanity image metadata, Portable Text, retailer links, endorsement attribution, and optional sample link.
 - The About model supports its page heading and introduction, portrait plus alt text, biography heading and Portable Text, story heading and Portable Text, and a pull quote.
 - The intended editor populated and published every About field successfully.
 - The About page fetches the newest published About document during the static build and renders its portrait and Portable Text without changing the established page composition.
@@ -110,6 +110,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - GitHub token expiration: December 10, 2026. Rotate it before that date and update only the Sanity webhook header.
 - Automated test deployment: GitHub Actions run `34625761031` / run number 17, completed successfully.
 - The live Book page was checked after the test and retained the published CMS content.
+- Book subheader integration deployment: GitHub Actions run `37384768872` / run number 58 completed successfully. The live route rendered the published `MAKING MENTORS OUT OF TORMENTORS` value with no browser errors or horizontal overflow at desktop or mobile widths.
 - About integration deployment: GitHub Actions run `34629651918` / run number 20, completed successfully.
 - About webhook delivery returned HTTP 204 and GitHub Actions run `34629920336` / run number 21 completed successfully.
 - The live About page was checked in a browser and rendered every published CMS value and the uploaded portrait.

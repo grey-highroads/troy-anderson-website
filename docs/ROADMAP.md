@@ -92,7 +92,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 ## Phase 5: Content routes
 
 - [x] Build and connect About to Sanity.
-- [x] Build and connect the Book page to Sanity.
+- [x] Build and connect the Book page to Sanity, including its published subheader.
 - [ ] Build Appearances.
 - [x] Build and connect Media to Sanity.
 - [x] Deliver the approved Testimonials content through the connected Homepage section; no separate Testimonials route is currently approved.
