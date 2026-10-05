@@ -109,6 +109,9 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The live Contact page was checked in a browser and rendered every published CMS value and the uploaded portrait.
 - A no-visible-change Contact update produced a successful webhook delivery with HTTP 204, and GitHub Actions run `34639151595` / run number 26 completed successfully.
 - The live Contact page was checked again after the webhook-triggered deployment and retained every published CMS value and the uploaded portrait.
+- Homepage Meet Troy integration deployment: GitHub Actions run `37351756738` / run number 31, completed successfully.
+- The live homepage was checked in a browser and rendered the published Homepage heading, introduction, portrait, and alternative text directly from Sanity with no browser errors or horizontal overflow.
+- The Homepage webhook scope was added after that content was published. Its configuration is verified, but the next real Homepage publish should be used to confirm the first Homepage-triggered workflow delivery.
 
 ## Important implementation files
 
@@ -139,7 +142,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Local `main` and `origin/main` both point to `ee02553` before the Homepage page integration.
+- Homepage page integration baseline: `da973d0` (`Connect homepage Meet Troy content`). Use the latest `main` revision as authoritative.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
