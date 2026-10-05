@@ -12,6 +12,15 @@ export type HomepageContent = {
   meetTroyPortraitWidth?: number
   meetTroyPortraitHeight?: number
   meetTroyPortraitAlt?: string
+  testimonialsHeading?: string
+  testimonials?: HomepageTestimonial[]
+}
+
+export type HomepageTestimonial = {
+  _key?: string
+  quote: string
+  name: string
+  credentials: string
 }
 
 const homepageQuery = `*[_type == "homepage"] | order(_updatedAt desc)[0]{
@@ -20,7 +29,14 @@ const homepageQuery = `*[_type == "homepage"] | order(_updatedAt desc)[0]{
   "meetTroyPortraitUrl": meetTroyPortrait.asset->url,
   "meetTroyPortraitWidth": meetTroyPortrait.asset->metadata.dimensions.width,
   "meetTroyPortraitHeight": meetTroyPortrait.asset->metadata.dimensions.height,
-  "meetTroyPortraitAlt": meetTroyPortrait.alt
+  "meetTroyPortraitAlt": meetTroyPortrait.alt,
+  testimonialsHeading,
+  testimonials[]{
+    _key,
+    quote,
+    name,
+    credentials
+  }
 }`
 
 function isWebUrl(value: unknown): value is string {
@@ -35,11 +51,22 @@ function isWebUrl(value: unknown): value is string {
 }
 
 function cleanHomepageContent(content: HomepageContent): HomepageContent {
+  const testimonials = content.testimonials?.filter(
+    (testimonial) =>
+      typeof testimonial.quote === 'string' &&
+      testimonial.quote.trim().length > 0 &&
+      typeof testimonial.name === 'string' &&
+      testimonial.name.trim().length > 0 &&
+      typeof testimonial.credentials === 'string' &&
+      testimonial.credentials.trim().length > 0,
+  )
+
   return {
     ...content,
     meetTroyPortraitUrl: isWebUrl(content.meetTroyPortraitUrl)
       ? content.meetTroyPortraitUrl
       : undefined,
+    testimonials: testimonials?.length ? testimonials : undefined,
   }
 }
 

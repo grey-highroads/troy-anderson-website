@@ -533,6 +533,83 @@ button {
   letter-spacing: 0.18em;
 }
 
+.testimonials {
+  display: grid;
+  grid-template-columns: minmax(19rem, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(3rem, 7vw, 8rem);
+  padding: clamp(5rem, 9vw, 10rem) 4.6vw;
+  background: var(--oxblood);
+  color: var(--paper);
+}
+
+.testimonials__heading p {
+  margin: 0 0 clamp(1.2rem, 2vw, 2rem);
+  color: var(--soft-cyan);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.72rem, 0.9vw, 1rem);
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.testimonials__heading h2 {
+  max-width: 8ch;
+  margin: 0;
+  font-size: clamp(4.75rem, 8.6vw, 10rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.testimonials__list {
+  border-top: 0.3rem solid var(--soft-cyan);
+}
+
+.testimonial {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(10rem, 0.36fr);
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: end;
+  margin: 0;
+  padding: clamp(2.5rem, 4.5vw, 5rem) 0;
+  border-bottom: 0.15rem solid rgba(254, 248, 194, 0.55);
+}
+
+.testimonial > p {
+  max-width: 20ch;
+  margin: 0;
+  font-size: clamp(3rem, 5vw, 6rem);
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.testimonial footer {
+  font-family: var(--font-source-code-pro), monospace;
+  text-transform: uppercase;
+}
+
+.testimonial cite,
+.testimonial span {
+  display: block;
+}
+
+.testimonial cite {
+  color: var(--soft-cyan);
+  font-size: clamp(0.9rem, 1.15vw, 1.25rem);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.testimonial span {
+  margin-top: 0.45rem;
+  font-size: clamp(0.72rem, 0.85vw, 0.95rem);
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: minmax(13rem, 1fr) minmax(20rem, 1.35fr) auto;
@@ -1100,6 +1177,14 @@ button {
     max-height: 48rem;
   }
 
+  .testimonials {
+    grid-template-columns: 1fr;
+  }
+
+  .testimonials__heading h2 {
+    max-width: 11ch;
+  }
+
   .retailer-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1201,6 +1286,25 @@ button {
   .meet-troy__portrait,
   .meet-troy__portrait-placeholder {
     min-height: 118vw;
+  }
+
+  .testimonials {
+    gap: 3.5rem;
+    padding: 4.5rem 1.25rem;
+  }
+
+  .testimonials__heading h2 {
+    font-size: clamp(4.5rem, 22vw, 7rem);
+  }
+
+  .testimonial {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 3rem 0;
+  }
+
+  .testimonial > p {
+    font-size: clamp(2.75rem, 13vw, 4rem);
   }
 
   .site-footer {

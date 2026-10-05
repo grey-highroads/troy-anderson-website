@@ -71,8 +71,8 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The hosted address, authenticated content list, Homepage editing form, and online publish operation were browser-verified with the intended editor account.
 - `studio/sanity.cli.ts` records the hosted application ID with automatic Studio updates disabled. Deploy Studio/schema changes separately with `pnpm --filter troy-anderson-website-1 deploy`; website pushes do not update the hosted Studio.
 - Current schema registry contains four document types: `homepage`, `book`, `about`, and `contact`.
-- The first Homepage model deliberately covers only the approved Meet Troy teaser: heading, short introduction, and portrait plus alt text.
-- The intended editor populated and published every Homepage field successfully in the hosted Studio.
+- The Homepage model deliberately covers the approved Meet Troy teaser and testimonial section: Meet Troy heading, short introduction, portrait plus alt text, testimonial heading, and an ordered list of quote, name, and credentials.
+- The intended editor populated and published every Homepage section successfully in the hosted Studio.
 - The homepage fetches the newest published Homepage document during the static build and preserves intentional local fallback content when the private credential is absent.
 - The Book model supports title, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
 - The intended editor populated every field and successfully published the document.
@@ -111,7 +111,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The live Contact page was checked again after the webhook-triggered deployment and retained every published CMS value and the uploaded portrait.
 - Homepage Meet Troy integration deployment: GitHub Actions run `37351756738` / run number 31, completed successfully.
 - The live homepage was checked in a browser and rendered the published Homepage heading, introduction, portrait, and alternative text directly from Sanity with no browser errors or horizontal overflow.
-- The Homepage webhook scope was added after that content was published. Its configuration is verified, but the next real Homepage publish should be used to confirm the first Homepage-triggered workflow delivery.
+- The first Homepage-triggered webhook delivery produced GitHub Actions run `37356158546` / run number 34, which completed successfully.
 
 ## Important implementation files
 
@@ -142,7 +142,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Homepage page integration baseline: `da973d0` (`Connect homepage Meet Troy content`). Use the latest `main` revision as authoritative.
+- Homepage Meet Troy integration baseline: `da973d0` (`Connect homepage Meet Troy content`). Use the latest `main` revision as authoritative.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -173,23 +173,23 @@ pnpm studio:dev
 pnpm check
 ```
 
-`pnpm check` passed after the Homepage Meet Troy integration. The static build produces the public site in `out/`.
+`pnpm check` passed after the Homepage testimonial integration. The static build produces the public site in `out/`.
 
 ## Recommended next slice
 
-Continue the CMS build one approved content section at a time. The next candidate is the smallest useful testimonial or quote slice identified in the reconciled content plan. Do not introduce a general-purpose page builder, and keep form-delivery behavior separate until the client-approved service and recipient are known.
+Continue the CMS build one approved content section at a time. The next candidate is a narrow shared social-links slice for the existing footer, limited to the Instagram, YouTube, and LinkedIn destinations in the supplied content plan. Do not introduce a general-purpose page builder, and keep form-delivery behavior separate until the client-approved service and recipient are known.
 
 Privacy and security are later integration gates, not reasons to interrupt the next editorial slice. When forms, analytics, or third-party media are selected, follow the Phase 6 privacy inventory and notice work; complete the formal front-end security review during Phase 7 before client beta.
 
 Suggested sequence:
 
-1. Review the approved testimonial or quote content and its intended homepage placement.
-2. Define only the fields needed for that section; do not create a general-purpose page builder.
+1. Review the existing footer placeholders and the approved social destinations.
+2. Define only the shared social-link fields needed by the existing footer; do not create a general-purpose page builder.
 3. Ask the user to populate and publish every field before connecting it.
 4. Add a typed authenticated build-time query with intentional local fallback content.
 5. Extend the webhook only to the exact connected type, then deploy and browser-verify the published values.
 
-Continue through the approved net-new homepage sections before returning to clips. Do not model Appearances or Media until their launch status and content requirements are confirmed.
+After social links, model the approved Media and publicity content shell without coupling it to the separate homepage video-experience work. Do not model Appearances until its launch status and content requirements are confirmed.
 
 ## Regression guardrails
 
@@ -220,7 +220,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Select the smallest useful approved testimonial or quote slice from the reconciled content plan, then follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Build the narrow shared social-links slice for the existing footer, limited to the approved Instagram, YouTube, and LinkedIn destinations, then follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields.
 
 ## Next handoff milestone
 

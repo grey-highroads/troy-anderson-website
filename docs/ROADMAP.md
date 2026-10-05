@@ -54,9 +54,10 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build, populate, publish, and connect the Contact content type.
 - [x] Extend and verify automatic deployment for published Contact changes.
 - [x] Build, populate, publish, and connect the Homepage Meet Troy content slice.
+- [x] Build, populate, publish, and connect the Homepage testimonials content slice.
 - [x] Limit the publish webhook to Homepage, Book, About, and Contact content.
 - [x] Deploy the existing Studio to a stable online editing address with authenticated access.
-- [ ] Confirm an authorized editor can sign in to the hosted Studio and complete an online publish-to-deploy cycle.
+- [x] Confirm an authorized editor can sign in to the hosted Studio and complete an online publish-to-deploy cycle.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
 - [ ] Record prototype decisions and unresolved risks.
 
@@ -80,6 +81,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Complete preview playback and full-media expansion.
 - [ ] Add book, appearance, quote, or promotional blocks approved for the homepage.
 - [x] Add and connect the approved Meet Troy homepage teaser.
+- [x] Add and connect the approved homepage testimonial section.
 - [ ] Tune focus behavior, reduced motion, loading, and recovery states.
 - [ ] Validate performance with realistic media.
 
