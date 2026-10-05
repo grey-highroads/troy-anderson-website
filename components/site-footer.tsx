@@ -1,6 +1,22 @@
 import Link from "next/link";
 
-export function SiteFooter() {
+import { getSiteSettingsContent } from "@/lib/sanity/site-settings";
+
+const fallbackSocialLinks = {
+  instagramUrl: "https://www.instagram.com/lifecoachtroy/",
+  youtubeUrl: "https://www.youtube.com/@troyhinotelc",
+  linkedinUrl: "https://www.linkedin.com/in/troyandersonwriter/",
+};
+
+export async function SiteFooter() {
+  const siteSettings = await getSiteSettingsContent();
+  const socialLinks = {
+    instagramUrl:
+      siteSettings?.instagramUrl || fallbackSocialLinks.instagramUrl,
+    youtubeUrl: siteSettings?.youtubeUrl || fallbackSocialLinks.youtubeUrl,
+    linkedinUrl: siteSettings?.linkedinUrl || fallbackSocialLinks.linkedinUrl,
+  };
+
   return (
     <footer className="site-footer">
       <div className="site-footer__identity">
@@ -15,9 +31,9 @@ export function SiteFooter() {
         <p className="site-footer__label">Contact / Social</p>
         <div className="site-footer__links">
           <Link href="/contact">Contact</Link>
-          <span>Instagram</span>
-          <span>YouTube</span>
-          <span>LinkedIn</span>
+          <a href={socialLinks.instagramUrl}>Instagram</a>
+          <a href={socialLinks.youtubeUrl}>YouTube</a>
+          <a href={socialLinks.linkedinUrl}>LinkedIn</a>
         </div>
       </div>
 
