@@ -24,7 +24,7 @@ export const mediaPageType = defineType({
       name: 'videos',
       title: 'Promotional videos',
       type: 'array',
-      description: 'Add the approved YouTube videos in the order they should appear.',
+      description: 'Add the approved hosted videos in the order they should appear.',
       validation: (rule) => rule.required().min(1),
       of: [
         defineArrayMember({
@@ -40,10 +40,11 @@ export const mediaPageType = defineType({
               validation: (rule) => rule.required(),
             }),
             defineField({
-              name: 'youtubeUrl',
-              title: 'YouTube URL',
+              name: 'playbackUrl',
+              title: 'Video playback URL',
               type: 'url',
-              description: 'The full link to the approved YouTube video, including https://.',
+              description:
+                'The full playback URL from the approved clean video host, including https://. Do not use a YouTube page or embed URL.',
               validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
             }),
             defineField({
@@ -56,7 +57,7 @@ export const mediaPageType = defineType({
             }),
           ],
           preview: {
-            select: {title: 'title', subtitle: 'youtubeUrl'},
+            select: {title: 'title', subtitle: 'playbackUrl'},
           },
         }),
       ],

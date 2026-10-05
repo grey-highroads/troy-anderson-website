@@ -57,7 +57,8 @@ Editors should control content, ordering, visibility, links, images, and media. 
 | Layout | CSS Grid |
 | Motion | GSAP with Flip |
 | Preview media | Optimized native MP4/WebM loops |
-| Full media | Existing YouTube, Vimeo, podcast, or approved native sources |
+| Primary site video | Clean playback from an approved managed video host; Cloudflare Stream is the leading candidate |
+| External media | YouTube remains a social-channel destination, not the primary embedded video source |
 | CMS | Sanity |
 | Hosting | Cloudflare |
 | Source control | GitHub |
@@ -85,4 +86,3 @@ The project is successful when:
 - Large-scale video production or editing
 - Unapproved new features added during implementation
 - Ongoing content entry or post-launch design work unless separately agreed
-

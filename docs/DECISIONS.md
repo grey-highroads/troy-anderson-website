@@ -74,6 +74,14 @@ Do not add a cookie banner before approved integrations establish a real need fo
 
 **Reason:** Consent UI must reflect actual site behavior, privacy promises must match real data handling, and credentials or privileged operations must never reach the browser. Scheduling the work at integration and beta boundaries avoids premature controls without deferring launch-critical privacy and security checks.
 
+## D-010: Clean hosted video playback
+
+**Status:** Accepted
+
+Use a clean, brand-neutral playback source for the site's primary video experience rather than YouTube embeds. Keep the CMS video source provider-neutral until the delivery implementation is finalized. Cloudflare Stream is the leading candidate; Cloudflare R2 remains an object-storage option if the team deliberately chooses to own the additional encoding and playback work. Troy's YouTube channel may remain an external social link.
+
+**Reason:** The site should not inherit third-party player logos, recommendations, or interface baggage. A provider-neutral content field preserves the editorial workflow while Jonathan and 2520 finalize the video experience in parallel.
+
 ## New decision template
 
 ### D-XXX: Short title
