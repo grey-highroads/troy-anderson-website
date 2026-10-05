@@ -12,6 +12,13 @@ export const bookType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'subheader',
+      title: 'Subheader',
+      type: 'string',
+      description: 'The supporting line shown between the book title and introduction.',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'intro',
       title: 'Introduction',
       type: 'text',
