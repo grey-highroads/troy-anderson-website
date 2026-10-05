@@ -112,6 +112,8 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Homepage Meet Troy integration deployment: GitHub Actions run `37351756738` / run number 31, completed successfully.
 - The live homepage was checked in a browser and rendered the published Homepage heading, introduction, portrait, and alternative text directly from Sanity with no browser errors or horizontal overflow.
 - The first Homepage-triggered webhook delivery produced GitHub Actions run `37356158546` / run number 34, which completed successfully.
+- Homepage testimonial integration deployment: GitHub Actions run `37356694819` / run number 35, completed successfully.
+- The live homepage was checked again and rendered the published testimonial heading, quote, name, and credentials directly from Sanity with no browser errors or horizontal overflow.
 
 ## Important implementation files
 
@@ -142,7 +144,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Homepage Meet Troy integration baseline: `da973d0` (`Connect homepage Meet Troy content`). Use the latest `main` revision as authoritative.
+- Homepage testimonial integration baseline: `6c3726d` (`Connect homepage testimonials content`). Use the latest `main` revision as authoritative.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
