@@ -198,14 +198,14 @@ pnpm check
 
 ## Recommended next slice
 
-Continue the CMS build one approved content section at a time. The next likely net-new candidate is the dedicated Testimonials route, using only the approved content guidance and keeping it distinct from the existing Homepage testimonial slice. Do not introduce a general-purpose page builder, and do not model Appearances until its launch status and content requirements are confirmed.
+The approved Testimonials content already lives in the connected Homepage model and works on the public site. Do not add a separate Testimonials document type or route unless the client later approves a distinct page and supplies requirements for it. The remaining possible net-new content route is Appearances, but do not model it until its launch status and content requirements are confirmed.
 
 Privacy and security are later integration gates, not reasons to interrupt the next editorial slice. When forms, analytics, or third-party media are selected, follow the Phase 6 privacy inventory and notice work; complete the formal front-end security review during Phase 7 before client beta.
 
 Suggested sequence:
 
-1. Review the reconciled content plan and confirm the smallest dedicated Testimonials composition that can be populated now.
-2. Define only the fields needed by that approved composition; do not create a general-purpose page builder or couple it to homepage video delivery.
+1. Confirm whether Appearances is a launch route and obtain its approved content requirements before creating a schema.
+2. If it is approved, define only the fields needed by that composition; do not create a general-purpose page builder or couple it to homepage video delivery.
 3. Ask the user to populate and publish every field before connecting it.
 4. Add a typed authenticated build-time query with intentional local fallback content.
 5. Extend the webhook only to the exact connected type, then deploy and browser-verify the published values.
@@ -239,7 +239,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Review the reconciled content guidance for the smallest approved dedicated Testimonials slice, keep it distinct from the existing Homepage testimonial section, and follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields or an Appearances model.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. The approved Testimonials content is already connected through the Homepage model; do not create a separate Testimonials schema or route without new approval. Confirm the launch status and content requirements for Appearances before modeling it, then follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields.
 
 ## Next handoff milestone
 

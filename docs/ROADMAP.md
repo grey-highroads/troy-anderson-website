@@ -95,7 +95,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build and connect the Book page to Sanity.
 - [ ] Build Appearances.
 - [x] Build and connect Media to Sanity.
-- [ ] Build Testimonials.
+- [x] Deliver the approved Testimonials content through the connected Homepage section; no separate Testimonials route is currently approved.
 - [x] Build and connect Contact to Sanity while preserving the approved form stub.
 - [ ] Verify navigation, shareable URLs, metadata, and empty states.
 
