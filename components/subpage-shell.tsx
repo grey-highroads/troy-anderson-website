@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 type SubpageShellProps = {
   eyebrow: string;
   title: string;
+  subheader?: string;
   intro: string;
   children: ReactNode;
 };
@@ -10,6 +11,7 @@ type SubpageShellProps = {
 export function SubpageShell({
   eyebrow,
   title,
+  subheader,
   intro,
   children,
 }: SubpageShellProps) {
@@ -17,7 +19,12 @@ export function SubpageShell({
     <main className="subpage">
       <header className="subpage-hero">
         <p className="subpage-hero__eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
+        <div className="subpage-hero__title-group">
+          <h1>{title}</h1>
+          {subheader ? (
+            <p className="subpage-hero__subheader">{subheader}</p>
+          ) : null}
+        </div>
         <p className="subpage-hero__intro">{intro}</p>
       </header>
       {children}

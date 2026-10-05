@@ -30,6 +30,7 @@ export default async function BookPage() {
     <SubpageShell
       eyebrow="The Book"
       title={book?.title || "Never Waste A Kick In The Nuts"}
+      subheader={book?.subheader || "Making Mentors Out of Tormentors"}
       intro={
         book?.intro ||
         "A book about making the most of moments—even the ones you never would have chosen."

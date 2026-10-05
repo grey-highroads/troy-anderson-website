@@ -20,6 +20,7 @@ type Endorsement = {
 
 export type BookContent = {
   title?: string;
+  subheader?: string;
   intro?: string;
   coverImageUrl?: string;
   coverImageWidth?: number;
@@ -38,6 +39,7 @@ export type BookContent = {
 
 const bookQuery = `*[_type == "book"] | order(_updatedAt desc)[0]{
   title,
+  subheader,
   intro,
   "coverImageUrl": coverImage.asset->url,
   "coverImageWidth": coverImage.asset->metadata.dimensions.width,

@@ -716,6 +716,11 @@ button {
   align-self: start;
 }
 
+.subpage-hero__title-group {
+  display: grid;
+  gap: clamp(1rem, 1.8vw, 1.75rem);
+}
+
 .subpage-hero h1 {
   max-width: 9ch;
   margin: 0;
@@ -725,6 +730,20 @@ button {
   font-weight: 400;
   letter-spacing: -0.015em;
   line-height: 0.78;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.subpage-hero__subheader {
+  max-width: 32rem;
+  margin: 0;
+  color: var(--soft-cyan);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.82rem, 1.05vw, 1.15rem);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  line-height: 1.4;
   text-transform: uppercase;
   text-wrap: balance;
 }
