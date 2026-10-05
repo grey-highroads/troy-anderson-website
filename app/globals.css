@@ -755,6 +755,22 @@ button {
   line-height: 1.55;
 }
 
+@media (min-width: 901px) {
+  .subpage-hero__title-group {
+    gap: clamp(0.7rem, 1vw, 1.15rem);
+  }
+
+  .subpage-hero__subheader {
+    max-width: none;
+    color: var(--paper);
+    font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+    font-size: clamp(1.65rem, 2.2vw, 2.5rem);
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    line-height: 1;
+  }
+}
+
 .subpage-split,
 .book-detail,
 .contact-layout {
