@@ -1,13 +1,13 @@
 # Current Project Handoff
 
 **Project:** Troy Anderson website  
-**Prepared:** September 18, 2026<br>
+**Prepared:** October 5, 2026<br>
 **Prepared by:** 2520 Consulting  
-**Handoff point:** Book, About, and Contact CMS vertical slices and automated preview deployment are proven end to end
+**Handoff point:** Homepage Meet Troy, Book, About, and Contact CMS vertical slices are connected to the preview site
 
 ## Why this is the right handoff point
 
-This is a stable chapter boundary. The repository, visual foundation, core public routes, local Sanity Studio, Book, About, and Contact schemas, authenticated build-time content queries, and the automatic publish-to-deploy path all work. All three connected routes have been deployed and browser-verified with their published CMS content.
+This is a stable chapter boundary. The repository, visual foundation, core public routes, hosted Sanity Studio, Homepage Meet Troy, Book, About, and Contact schemas, authenticated build-time content queries, and the automatic publish-to-deploy path all work. The three content routes and the first Homepage section are connected to published CMS content.
 
 Do not wait until the entire Sanity model is complete to hand off this conversation. That would make the context larger while adding several similar implementation loops. Start a fresh conversation from this document, and update it again when the CMS layer is complete or before another major architecture change.
 
@@ -19,7 +19,7 @@ Do not wait until the entire Sanity model is complete to hand off this conversat
 - Live About route: <https://grey-highroads.github.io/troy-anderson-website/about/>
 - Live Contact route: <https://grey-highroads.github.io/troy-anderson-website/contact/>
 - Default branch: `main`
-- Contact implementation baseline before this documentation update: `1328ea3` (`Connect Contact page to Sanity content`). Use the latest `main` revision as authoritative.
+- Homepage schema baseline before its page integration: `ee02553` (`Add homepage Meet Troy content model`). Use the latest `main` revision as authoritative.
 - Sanity project: `Troy Anderson Website 1`
 - Sanity project ID: `gknd24m7`
 - Sanity dataset: `production` (private)
@@ -68,9 +68,12 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Root commands include `pnpm studio:dev` and `pnpm studio:build`.
 - Studio was deployed to Sanity hosting on September 18, 2026; routine editing no longer requires a local server.
 - Hosted and local Studio use the same project and dataset. Existing content and publish automation were not migrated or duplicated.
-- The hosted address was browser-verified to reach Sanity’s sign-in screen. An authorized editor still needs to confirm the signed-in content list and one online publish cycle.
+- The hosted address, authenticated content list, Homepage editing form, and online publish operation were browser-verified with the intended editor account.
 - `studio/sanity.cli.ts` records the hosted application ID with automatic Studio updates disabled. Deploy Studio/schema changes separately with `pnpm --filter troy-anderson-website-1 deploy`; website pushes do not update the hosted Studio.
-- Current schema registry contains three document types: `book`, `about`, and `contact`.
+- Current schema registry contains four document types: `homepage`, `book`, `about`, and `contact`.
+- The first Homepage model deliberately covers only the approved Meet Troy teaser: heading, short introduction, and portrait plus alt text.
+- The intended editor populated and published every Homepage field successfully in the hosted Studio.
+- The homepage fetches the newest published Homepage document during the static build and preserves intentional local fallback content when the private credential is absent.
 - The Book model supports title, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
 - The intended editor populated every field and successfully published the document.
 - The Book page fetches the newest published Book document during the static build.
@@ -81,16 +84,16 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The Contact model supports its page heading and introduction, portrait plus alt text, and form heading.
 - The intended editor populated and published every Contact field successfully.
 - The Contact page fetches the newest published Contact document during the static build while preserving the existing form fields, disabled delivery state, and page composition.
-- Local builds without the private Sanity credential render intentional fallback content on all three connected pages.
+- Local builds without the private Sanity credential render intentional fallback content on all four connected surfaces.
 
 ### Deployment and automation
 
 - GitHub repository secret: `SANITY_API_READ_TOKEN`.
 - The secret is a Sanity Viewer token; its value must never be committed or documented.
 - GitHub Actions exposes the secret only to the build step.
-- A Sanity GROQ-powered webhook named `Rebuild website when Book, About, or Contact content is published` is enabled.
+- A Sanity GROQ-powered webhook named `Rebuild website when Homepage, Book, About, or Contact content is published` is enabled.
 - Webhook dataset: `production`.
-- Webhook filter: `_type in ["book", "about", "contact"]`.
+- Webhook filter: `_type in ["homepage", "book", "about", "contact"]`.
 - Webhook events: create and update.
 - Draft and version triggers are disabled.
 - Destination: the GitHub workflow-dispatch endpoint for `.github/workflows/pages.yml`.
@@ -123,10 +126,12 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | Book query and content types | `lib/sanity/book.ts` |
 | About query and content types | `lib/sanity/about.ts` |
 | Contact query and content types | `lib/sanity/contact.ts` |
+| Homepage query and content types | `lib/sanity/homepage.ts` |
 | Sanity configuration | `studio/sanity.config.ts` |
 | Book schema | `studio/schemaTypes/book.ts` |
 | About schema | `studio/schemaTypes/about.ts` |
 | Contact schema | `studio/schemaTypes/contact.ts` |
+| Homepage schema | `studio/schemaTypes/homepage.ts` |
 | Schema registry | `studio/schemaTypes/index.ts` |
 | Static export and image rules | `next.config.ts` |
 | Preview deployment | `.github/workflows/pages.yml` |
@@ -134,7 +139,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Local `main` and `origin/main` both point to `3abf7be` before this hosted-Studio update.
+- Local `main` and `origin/main` both point to `ee02553` before the Homepage page integration.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -144,7 +149,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Known temporary content and limitations
 
-- The current Sanity Book, About, and Contact documents contain test copy entered to validate every field. They are not final client copy.
+- The current Sanity Homepage, Book, About, and Contact documents contain test copy entered to validate every field. They are not final client copy.
 - The homepage still uses representative imagery and an interaction prototype rather than approved video media.
 - Contact content and publish-triggered deployment are connected and verified.
 - Media is not currently a public route, consistent with the supplied launch-content guide indicating it may be added later.
@@ -165,23 +170,23 @@ pnpm studio:dev
 pnpm check
 ```
 
-`pnpm check` passed after the Contact integration. The static build produces the public site in `out/`.
+`pnpm check` passed after the Homepage Meet Troy integration. The static build produces the public site in `out/`.
 
 ## Recommended next slice
 
-Continue the CMS build one content type at a time. The next candidate is a narrow shared site-settings slice, but only if the existing header/footer content guidance identifies useful editor-controlled fields. Keep form-delivery behavior separate until the client-approved service and recipient are known.
+Continue the CMS build one approved content section at a time. The next candidate is the smallest useful testimonial or quote slice identified in the reconciled content plan. Do not introduce a general-purpose page builder, and keep form-delivery behavior separate until the client-approved service and recipient are known.
 
 Privacy and security are later integration gates, not reasons to interrupt the next editorial slice. When forms, analytics, or third-party media are selected, follow the Phase 6 privacy inventory and notice work; complete the formal front-end security review during Phase 7 before client beta.
 
 Suggested sequence:
 
-1. Review the existing header/footer content and the project guidance.
-2. Define only the smallest useful shared settings document; do not create a general-purpose page builder.
+1. Review the approved testimonial or quote content and its intended homepage placement.
+2. Define only the fields needed for that section; do not create a general-purpose page builder.
 3. Ask the user to populate and publish every field before connecting it.
 4. Add a typed authenticated build-time query with intentional local fallback content.
 5. Extend the webhook only to the exact connected type, then deploy and browser-verify the published values.
 
-After Contact/site settings, proceed to homepage content and clips. Do not model Appearances, Testimonials, or Media until their launch status and content requirements are confirmed.
+Continue through the approved net-new homepage sections before returning to clips. Do not model Appearances or Media until their launch status and content requirements are confirmed.
 
 ## Regression guardrails
 
@@ -212,7 +217,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Evaluate the smallest useful shared site-settings slice from the existing header/footer and content guidance, then follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. Select the smallest useful approved testimonial or quote slice from the reconciled content plan, then follow the proven one-at-a-time schema, editor input, typed query, fallback, webhook, deployment, and browser-verification workflow without adding speculative fields.
 
 ## Next handoff milestone
 

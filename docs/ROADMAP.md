@@ -10,7 +10,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 | 1 | Inputs and content model | In progress | Build requirements are agreed |
 | 2 | Technical proof | In progress | Motion and CMS approaches are approved |
 | 3 | Application foundation | In progress | Core site and CMS architecture work together |
-| 4 | Homepage experience | Not started | Approved editorial compositions work responsively |
+| 4 | Homepage experience | In progress | Approved editorial compositions work responsively |
 | 5 | Content routes | In progress | Core public site is feature-complete |
 | 6 | Content and integrations | Not started | Real content and external services work end to end |
 | 7 | QA and client beta | Not started | Release candidate is approved |
@@ -53,6 +53,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Extend and verify automatic deployment for published About changes.
 - [x] Build, populate, publish, and connect the Contact content type.
 - [x] Extend and verify automatic deployment for published Contact changes.
+- [x] Build, populate, publish, and connect the Homepage Meet Troy content slice.
+- [x] Limit the publish webhook to Homepage, Book, About, and Contact content.
 - [x] Deploy the existing Studio to a stable online editing address with authenticated access.
 - [ ] Confirm an authorized editor can sign in to the hosted Studio and complete an online publish-to-deploy cycle.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
@@ -77,6 +79,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Implement authored tablet and mobile compositions.
 - [ ] Complete preview playback and full-media expansion.
 - [ ] Add book, appearance, quote, or promotional blocks approved for the homepage.
+- [x] Add and connect the approved Meet Troy homepage teaser.
 - [ ] Tune focus behavior, reduced motion, loading, and recovery states.
 - [ ] Validate performance with realistic media.
 

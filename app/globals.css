@@ -423,6 +423,116 @@ button {
   transform-origin: center;
 }
 
+.meet-troy {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
+  min-height: min(58rem, 74vw);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.meet-troy__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(4rem, 8vw, 9rem) 4.6vw;
+}
+
+.meet-troy__eyebrow {
+  margin: 0 0 clamp(1.2rem, 2.2vw, 2.5rem);
+  color: var(--oxblood);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.72rem, 0.9vw, 1rem);
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.meet-troy h2 {
+  max-width: 8ch;
+  margin: 0;
+  color: var(--oxblood);
+  font-size: clamp(6rem, 12vw, 13rem);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.78;
+  text-transform: uppercase;
+}
+
+.meet-troy__summary {
+  max-width: 38rem;
+  margin: clamp(2.5rem, 4vw, 4.5rem) 0 0;
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(1rem, 1.35vw, 1.45rem);
+  line-height: 1.55;
+}
+
+.meet-troy__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(100%, 38rem);
+  margin-top: clamp(2.25rem, 3.5vw, 4rem);
+  padding: 1rem 0;
+  border-top: 0.2rem solid currentColor;
+  border-bottom: 0.2rem solid currentColor;
+  color: var(--teal);
+  font-size: clamp(1.8rem, 3vw, 3.5rem);
+  line-height: 0.9;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.meet-troy__link:hover,
+.meet-troy__link:focus-visible {
+  color: var(--oxblood);
+}
+
+.meet-troy__link:focus-visible {
+  outline: 0.22rem solid currentColor;
+  outline-offset: 0.3rem;
+}
+
+.meet-troy__link span {
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: 0.62em;
+}
+
+.meet-troy__portrait,
+.meet-troy__portrait-placeholder {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 42rem;
+}
+
+.meet-troy__portrait {
+  object-fit: cover;
+  object-position: center;
+}
+
+.meet-troy__portrait-placeholder {
+  display: grid;
+  place-content: center;
+  background: var(--teal);
+  color: var(--paper);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.meet-troy__portrait-placeholder span {
+  font-size: clamp(4rem, 8vw, 8rem);
+  line-height: 0.8;
+}
+
+.meet-troy__portrait-placeholder small {
+  margin-top: 1rem;
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+}
+
 .site-footer {
   display: grid;
   grid-template-columns: minmax(13rem, 1fr) minmax(20rem, 1.35fr) auto;
@@ -980,6 +1090,16 @@ button {
     width: min(58vw, 25rem);
   }
 
+  .meet-troy {
+    grid-template-columns: 1fr;
+  }
+
+  .meet-troy__portrait,
+  .meet-troy__portrait-placeholder {
+    min-height: 70vw;
+    max-height: 48rem;
+  }
+
   .retailer-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1064,6 +1184,23 @@ button {
   .book-promo__arrow,
   .book-promo__arrow::before {
     border-width: 0.18rem;
+  }
+
+  .meet-troy__copy {
+    padding: 4.5rem 1.25rem;
+  }
+
+  .meet-troy h2 {
+    font-size: clamp(5rem, 24vw, 8rem);
+  }
+
+  .meet-troy__summary {
+    font-size: 1rem;
+  }
+
+  .meet-troy__portrait,
+  .meet-troy__portrait-placeholder {
+    min-height: 118vw;
   }
 
   .site-footer {
