@@ -4,6 +4,7 @@ import {contactType} from './contact'
 import {homepageType} from './homepage'
 import {mediaPageType} from './mediaPage'
 import {siteSettingsType} from './siteSettings'
+import {testimonialsPageType} from './testimonialsPage'
 
 export const schemaTypes = [
   homepageType,
@@ -12,4 +13,5 @@ export const schemaTypes = [
   contactType,
   siteSettingsType,
   mediaPageType,
+  testimonialsPageType,
 ]
