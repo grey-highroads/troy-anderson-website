@@ -78,7 +78,7 @@ Do not add a cookie banner before approved integrations establish a real need fo
 
 **Status:** Accepted
 
-Use a clean, brand-neutral playback source for the site's primary video experience rather than YouTube embeds. Keep the CMS video source provider-neutral until the delivery implementation is finalized. Cloudflare Stream is the leading candidate; Cloudflare R2 remains an object-storage option if the team deliberately chooses to own the additional encoding and playback work. Troy's YouTube channel may remain an external social link.
+Use a clean, brand-neutral playback source for the site's primary video experience rather than YouTube embeds. Keep the CMS video source provider-neutral until the delivery implementation is finalized. Cloudflare Stream is the leading candidate; Cloudflare R2 remains an object-storage option if the team deliberately chooses to own the additional encoding and playback work. Outbound links on the Media page may point to an approved YouTube video or channel when the intended experience is to leave the site, and Troy's YouTube channel may remain an external social link.
 
 **Reason:** The site should not inherit third-party player logos, recommendations, or interface baggage. A provider-neutral content field preserves the editorial workflow while Jonathan and 2520 finalize the video experience in parallel.
 

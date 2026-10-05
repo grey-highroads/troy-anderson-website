@@ -40,11 +40,11 @@ export const mediaPageType = defineType({
               validation: (rule) => rule.required(),
             }),
             defineField({
-              name: 'playbackUrl',
-              title: 'Video playback URL',
+              name: 'mediaUrl',
+              title: 'Video or channel URL',
               type: 'url',
               description:
-                'The full playback URL from the approved clean video host, including https://. Do not use a YouTube page or embed URL.',
+                'The full approved destination, including https://. Use the clean hosted playback URL for video shown on this site, or an external video or channel URL when the link should intentionally open that platform.',
               validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
             }),
             defineField({
@@ -57,7 +57,7 @@ export const mediaPageType = defineType({
             }),
           ],
           preview: {
-            select: {title: 'title', subtitle: 'playbackUrl'},
+            select: {title: 'title', subtitle: 'mediaUrl'},
           },
         }),
       ],
