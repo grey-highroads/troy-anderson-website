@@ -95,7 +95,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build and connect the Book page to Sanity, including its published subheader.
 - [ ] Build Appearances.
 - [x] Build and connect Media to Sanity.
-- [ ] Complete Media video poster rendering using a custom Sanity override when supplied, the current YouTube host poster otherwise, and a branded fallback when neither is available. Add Cloudflare Stream resolution only after its production URL or identifier format is selected.
+- [x] Complete Media video poster rendering using a custom Sanity override when supplied, the current YouTube host poster otherwise, and a branded fallback when neither is available. Deployed in `d67a796` (Actions run `37501781317`) and live-verified at desktop and mobile widths on October 6, 2026, including loaded poster, alternative text, keyboard focus, outbound links, and the unchanged 17-photo library. Add Cloudflare Stream resolution only after its production URL or identifier format is selected.
 - [x] Deliver the approved Testimonials content through the connected Homepage section; no separate Testimonials route is currently approved.
 - [x] Build and connect Contact to Sanity while preserving the approved form stub.
 - [ ] Verify navigation, shareable URLs, metadata, and empty states.

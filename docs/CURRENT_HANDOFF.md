@@ -3,7 +3,7 @@
 **Project:** Troy Anderson website  
 **Prepared:** October 6, 2026<br>
 **Prepared by:** 2520 Consulting  
-**Handoff point:** Core CMS slices are connected; the Media photo library is populated and refined, while video poster rendering remains the next incomplete Media task
+**Handoff point:** Core CMS slices are connected; the Media photo library and video poster implementation are complete and live-verified
 
 ## Why this is the right handoff point
 
@@ -90,10 +90,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The shared footer fetches the newest published Site settings document during the static build and renders all three destinations without changing the established footer composition.
 - The Media model supports a page heading, video introduction, ordered platform-agnostic video or channel links with share copy and an optional custom thumbnail override, photography introduction, ordered downloadable photos with alternative text, publicity introduction, and ordered downloadable files.
 - The intended editor populated and published every required Media field successfully in the hosted Studio. The current sample video intentionally has no custom thumbnail override.
-- The Media page fetches the newest published Media document during the static build and renders the outbound video link, share-copy control, 17 approved portraits, and the publicity download.
+- The Media page fetches the newest published Media document during the static build and renders a linked video poster, outbound video action, share-copy control, 17 approved portraits, and the publicity download.
 - The Media photo gallery now uses a conventional responsive thumbnail grid: six columns at the wide desktop review size, four below 1200px, three below 900px, and two below 640px. Every portrait is centered and contained in a consistent 4:3 frame. Visible filenames were removed; each card now exposes only a consistent `Download image` action while retaining the Sanity title in its accessible label.
 - The 17 portrait files were uploaded to Sanity, given consistent editor titles and alternative text, and published as 17 separate structured photo entries. A stale draft initially masked them with the original three sample entries and one incomplete row. On October 6, 2026, the draft's `photos` field was revision-guarded and synchronized to the published 17-entry array without changing any other draft field. The hosted Studio was then browser-verified in Draft view with editable portrait entries and no incomplete `Untitled` item.
-- Video poster rendering is **not implemented yet**. The schema contains the optional `thumbnail` override, but `lib/sanity/media.ts` does not query it and `app/media/page.tsx` renders no image, video, or poster element for video cards. The sample YouTube URL therefore appears as text and actions only. The next implementation should prefer a supplied Sanity override; otherwise resolve an available host poster (initially the current YouTube sample, later Cloudflare Stream when selected); otherwise render a branded fallback.
+- Video poster rendering is complete. The authenticated build-time Media query includes the optional Sanity thumbnail URL, dimensions, and alt text. `lib/media-poster.ts` prefers that override, otherwise resolves a recognized YouTube video URL and checks its high-resolution poster (then standard poster) at build time, otherwise returns the local branded SVG. Unsupported providers, channel URLs, and provider request failures use the branded fallback. The existing video card renders a contained 16:9 linked poster with useful alternative text, a named outbound action, and visible keyboard focus. No embeds, playback infrastructure, dependencies, schemas, or routes were added. Cloudflare URL handling remains deferred until its production format is selected.
 - Media is present in the primary navigation. The page intentionally keeps outbound media URLs provider-neutral while the separate homepage video experience and clean hosted-video provider work continue.
 - Local builds without the private Sanity credential render intentional fallback content on all connected surfaces.
 
@@ -133,6 +133,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The initial live Media page was checked in a browser and rendered the published heading, video URL, share copy, three sample photographs and alternative text values, and publicity download directly from Sanity. The share-copy control worked, all images loaded, and the route had no browser warnings, errors, or horizontal overflow at desktop or mobile widths. The later 17-photo replacement is recorded below.
 - The webhook is enabled with the six-type filter above and the Media publish-to-deploy path is verified.
 - Media photo-library refinements were deployed through commits `ad8edb4`, `e555199`, `86bfd52`, and `4367d75`. The final live route was browser-verified with all 17 CMS portraits, six desktop columns, two mobile columns, constrained 4:3 frames, complete uncropped portraits, simplified `Download image` actions, and no browser errors.
+- Media video-poster implementation: commit `d67a796` (`Render Media video posters with provider fallback`), GitHub Actions run `37501781317` / run number 70, completed successfully. On October 6, 2026, the actual live sample loaded `https://i.ytimg.com/vi/9kY0iaKlYQM/maxresdefault.jpg` at its intrinsic 1280 × 720 dimensions. Browser verification at 1537px desktop and 390px mobile widths confirmed the visible poster, alternative text, keyboard focus, and functional poster and text links opening the correct YouTube destination. Neither Media view had browser warnings/errors or horizontal overflow; all 17 photo entries remained present and the mobile photo grid retained two columns. The deployed branded SVG was also viewed in a browser. Focused checks verified custom override precedence, supported YouTube URL forms, lower-resolution recovery, unsupported URLs, provider failures, authenticated thumbnail metadata normalization, and token-free local content; `pnpm check` passed locally and in deployment. No Sanity documents were changed.
 
 ## Important implementation files
 
@@ -154,6 +155,8 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | Homepage query and content types | `lib/sanity/homepage.ts` |
 | Site settings query and content types | `lib/sanity/site-settings.ts` |
 | Media query and content types | `lib/sanity/media.ts` |
+| Build-time video poster resolver | `lib/media-poster.ts` |
+| Branded video poster fallback | `public/images/media-video-fallback.svg` |
 | Sanity configuration | `studio/sanity.config.ts` |
 | Book schema | `studio/schemaTypes/book.ts` |
 | About schema | `studio/schemaTypes/about.ts` |
@@ -168,7 +171,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Current implementation baseline: `4367d75` (`Simplify Media photo cards`). Use the latest `main` revision as authoritative.
+- Latest handoff baseline before this slice: `90d249d` (`Refresh handoff after Media refinements`). Current implementation baseline: `d67a796` (`Render Media video posters with provider fallback`). Use the latest `main` revision as authoritative.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -182,7 +185,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The homepage still uses representative imagery and an interaction prototype rather than approved video media.
 - Contact content and publish-triggered deployment are connected and verified.
 - Media is now a public route. Its video entries are outbound provider-neutral links; clean in-site hosted playback and the homepage video experience remain separate parallel work.
-- The optional Sanity video-thumbnail override is editor-facing only at this handoff. Neither that override nor provider-generated posters are queried or rendered on the public Media page yet. The current sample YouTube card has no visible thumbnail for this reason; this is an implementation gap, not a failed upload.
+- Video poster selection occurs during the static build. Provider availability is checked at that time; later image removal requires a rebuild to select a fallback. The current sample has no Sanity override and displays its YouTube poster. Custom override precedence was checked with a fixture without changing the published or draft Media documents. Cloudflare Stream poster resolution remains deferred until the production provider and URL or identifier format are selected.
 - Contact form behavior is not connected to a delivery service.
 - No analytics, advertising pixels, consent manager, or cookie banner is currently installed.
 - Add a privacy notice before enabling real form submissions or analytics. Decide on a cookie banner only after inventorying the actual cookies, embeds, and browser storage introduced by approved integrations.
@@ -200,20 +203,13 @@ pnpm studio:dev
 pnpm check
 ```
 
-`pnpm check` passed after the latest Media gallery refinements. The static build produces the public site in `out/`.
+`pnpm check` passed after the Media video-poster implementation. The static build produces the public site in `out/`.
 
 ## Recommended next slice
 
-Complete the missing Media video-poster path before starting another content type. This is a contained correction to an already approved route, not a new video-hosting decision.
+The Media video-poster correction is complete and live-verified. Before starting another content type, confirm whether Appearances is a launch route and obtain its approved content requirements. Do not create its schema until that product scope is established.
 
-Suggested sequence:
-
-1. Extend the typed Media query to include the optional Sanity thumbnail URL, dimensions, and alternative text.
-2. Add a small server-side poster resolver with explicit precedence: Sanity override when supplied; otherwise a host-generated poster for a recognized provider; otherwise a branded fallback. Support the current YouTube sample first. Add Cloudflare Stream resolution only after the team selects that provider and supplies its real URL or identifier shape.
-3. Render the resolved poster as part of the existing linked video card without adding embeds, playback infrastructure, dependencies, or a general provider framework.
-4. Preserve intentional local fallback behavior when the private Sanity token is unavailable.
-5. Run linting, type checks, and the production build; deploy; then verify the actual thumbnail, accessible alternative text, fallback state, and responsive layout in a browser.
-6. After that correction, confirm whether Appearances is a launch route and obtain its approved content requirements before creating a schema.
+Keep the completed Media poster precedence: custom Sanity override, then an available recognized YouTube video poster, then the branded fallback. Extend provider resolution only when the production video provider and real URL or identifier format are selected. Clean hosted playback and the homepage video experience remain separate work.
 
 The approved Testimonials content already lives in the connected Homepage model and works on the public site. Do not add a separate Testimonials document type or route unless the client later approves a distinct page and supplies requirements for it. Privacy and security remain later integration gates: follow the Phase 6 privacy inventory when forms, analytics, or third-party media are selected, and complete the formal front-end security review during Phase 7 before client beta.
 
@@ -246,7 +242,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. First complete the missing Media video-poster path: query the optional Sanity override, otherwise resolve the current YouTube poster, otherwise use a branded fallback; do not add embeds or commit to Cloudflare URL handling until the provider format is selected. Verify the deployed thumbnail and responsive card in a browser. The approved Testimonials content is already connected through the Homepage model; do not create a separate Testimonials schema or route without new approval. Confirm the launch status and requirements for Appearances before modeling it.
+> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant installed Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. The Media photo library and video posters are complete and live-verified; retain the custom Sanity override, YouTube poster, branded fallback precedence. Do not add Cloudflare URL handling until the production format is selected. The approved Testimonials content is already connected through the Homepage model; do not create a separate Testimonials schema or route without new approval. Confirm the launch status and requirements for Appearances before modeling it.
 
 ## Next handoff milestone
 
