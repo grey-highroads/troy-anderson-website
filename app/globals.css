@@ -1246,8 +1246,8 @@ button {
 
 .media-photo-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: clamp(1rem, 1.5vw, 1.5rem);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1vw, 1rem);
 }
 
 .media-photo-card {
@@ -1263,8 +1263,9 @@ button {
 }
 
 .media-photo-card h3 {
-  margin: 1rem 0 0.75rem;
-  font-size: clamp(1.75rem, 2.2vw, 2.75rem);
+  margin: 0.75rem 0 0.6rem;
+  font-size: clamp(1.25rem, 1.4vw, 1.65rem);
+  line-height: 1;
 }
 
 .media-download-list {
@@ -1313,6 +1314,12 @@ button {
   letter-spacing: 0.05em;
   line-height: 1.4;
   text-transform: uppercase;
+}
+
+@media (max-width: 1200px) {
+  .media-photo-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 900px) {
@@ -1403,7 +1410,7 @@ button {
   }
 
   .media-photo-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
@@ -1561,9 +1568,12 @@ button {
   .book-notes-grid,
   .endorsement-grid,
   .contact-form,
-  .media-video-list,
-  .media-photo-grid {
+  .media-video-list {
     grid-template-columns: 1fr;
+  }
+
+  .media-photo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .media-download-list a {
