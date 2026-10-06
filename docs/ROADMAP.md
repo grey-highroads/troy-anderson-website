@@ -95,6 +95,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Build and connect the Book page to Sanity, including its published subheader.
 - [ ] Build Appearances.
 - [x] Build and connect Media to Sanity.
+- [ ] Complete Media video poster rendering using a custom Sanity override when supplied, the current YouTube host poster otherwise, and a branded fallback when neither is available. Add Cloudflare Stream resolution only after its production URL or identifier format is selected.
 - [x] Deliver the approved Testimonials content through the connected Homepage section; no separate Testimonials route is currently approved.
 - [x] Build and connect Contact to Sanity while preserving the approved form stub.
 - [ ] Verify navigation, shareable URLs, metadata, and empty states.
@@ -104,7 +105,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 ## Phase 6: Content and integrations
 
 - [ ] Load and review the agreed initial content set.
-- [ ] Prepare approved preview clips, connect host-generated poster images by default, and add custom Sanity poster overrides only where editorially needed.
+- [ ] Prepare approved preview clips and connect clean hosted-video delivery. Preserve the Media-card poster precedence established in Phase 5: custom Sanity override, then recognized host poster, then branded fallback.
 - [ ] Connect contact forms to the client-approved delivery service with server-side validation, spam controls, minimal collection, and an agreed retention path.
 - [ ] Configure analytics and search metadata only if approved, preferring a privacy-preserving approach with no unnecessary identifiers or browser storage.
 - [ ] Recheck every third-party request, embed, cookie, and browser-storage use after forms, media, and analytics are selected.
