@@ -84,17 +84,15 @@ export default async function MediaPage() {
                     sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 17vw"
                   />
                 </div>
-                <div>
-                  <h3>{photo.title}</h3>
-                  <a
-                    href={photo.imageUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    download
-                  >
-                    Download photo <span aria-hidden="true">↓</span>
-                  </a>
-                </div>
+                <a
+                  href={photo.imageUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  download
+                  aria-label={`Download ${photo.title}`}
+                >
+                  Download image <span aria-hidden="true">↓</span>
+                </a>
               </article>
             ))}
           </div>

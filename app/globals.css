@@ -1206,8 +1206,7 @@ button {
   letter-spacing: 0.12em;
 }
 
-.media-video-card h3,
-.media-photo-card h3 {
+.media-video-card h3 {
   margin: clamp(2rem, 5vw, 5rem) 0 1rem;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
   font-size: clamp(2.5rem, 4vw, 4.5rem);
@@ -1274,10 +1273,9 @@ button {
   object-fit: contain;
 }
 
-.media-photo-card h3 {
-  margin: 0.75rem 0 0.6rem;
-  font-size: clamp(1.25rem, 1.4vw, 1.65rem);
-  line-height: 1;
+.media-photo-card > a {
+  align-self: flex-start;
+  margin-top: 0.75rem;
 }
 
 .media-download-list {
