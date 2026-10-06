@@ -3,6 +3,7 @@ import Image from "next/image";
 
 import { CopyShareText } from "@/components/copy-share-text";
 import { SubpageShell } from "@/components/subpage-shell";
+import { resolveMediaPoster } from "@/lib/media-poster";
 import { getMediaPageContent } from "@/lib/sanity/media";
 
 export const metadata: Metadata = {
@@ -13,7 +14,12 @@ export const metadata: Metadata = {
 
 export default async function MediaPage() {
   const media = await getMediaPageContent();
-  const videos = media?.videos?.length ? media.videos : null;
+  const videos = media?.videos?.length
+    ? await Promise.all(media.videos.map(async (video) => ({
+        ...video,
+        poster: await resolveMediaPoster(video),
+      })))
+    : null;
   const photos = media?.photos?.length ? media.photos : null;
   const materials = media?.publicityMaterials?.length
     ? media.publicityMaterials
@@ -40,6 +46,21 @@ export default async function MediaPage() {
                 <p className="media-item-number">
                   {String(index + 1).padStart(2, "0")}
                 </p>
+                <a
+                  className="media-video-card__poster"
+                  href={video.mediaUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Open ${video.title} (opens in a new tab)`}
+                >
+                  <Image
+                    src={video.poster.imageUrl}
+                    width={video.poster.width}
+                    height={video.poster.height}
+                    alt={video.poster.alt}
+                    sizes="(max-width: 640px) 100vw, 80vw"
+                  />
+                </a>
                 <h3>{video.title}</h3>
                 <p>{video.shareCopy}</p>
                 <div className="media-card-actions">
@@ -47,6 +68,7 @@ export default async function MediaPage() {
                     href={video.mediaUrl}
                     target="_blank"
                     rel="noreferrer"
+                    aria-label={`Open ${video.title} (opens in a new tab)`}
                   >
                     Open media <span aria-hidden="true">↗</span>
                   </a>

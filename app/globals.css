@@ -1206,8 +1206,29 @@ button {
   letter-spacing: 0.12em;
 }
 
+.media-video-card__poster {
+  display: block;
+  aspect-ratio: 16 / 9;
+  margin-top: 1.5rem;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.media-video-card__poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.media-video-card__poster:focus-visible,
+.media-card-actions a:focus-visible {
+  outline: 0.2rem solid var(--oxblood);
+  outline-offset: 0.3rem;
+}
+
 .media-video-card h3 {
-  margin: clamp(2rem, 5vw, 5rem) 0 1rem;
+  margin: 1.5rem 0 1rem;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
   font-size: clamp(2.5rem, 4vw, 4.5rem);
   font-weight: 400;

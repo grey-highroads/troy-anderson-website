@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#97231d"/>
+  <rect width="1280" height="170" fill="#000"/>
+  <text x="70" y="110" fill="#fef8c2" font-family="monospace" font-size="48" letter-spacing="10">TROY ANDERSON</text>
+  <path d="M570 290 570 510 760 400Z" fill="#fef8c2"/>
+  <path d="M70 650H1210" stroke="#fef8c2" stroke-width="4"/>
+</svg>

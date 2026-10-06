@@ -10,6 +10,12 @@ export type MediaVideo = {
   title: string;
   mediaUrl: string;
   shareCopy: string;
+  thumbnail?: {
+    imageUrl: string;
+    width: number;
+    height: number;
+    alt: string;
+  };
 };
 
 export type MediaPhoto = {
@@ -47,6 +53,12 @@ type MediaPageResult = Omit<
     title?: string;
     mediaUrl?: string;
     shareCopy?: string;
+    thumbnail?: {
+      imageUrl?: string;
+      width?: number;
+      height?: number;
+      alt?: string;
+    } | null;
   }>;
   photos?: Array<{
     _key?: string;
@@ -67,7 +79,15 @@ type MediaPageResult = Omit<
 const mediaPageQuery = `*[_type == "mediaPage"] | order(_updatedAt desc)[0]{
   heading,
   videoIntroduction,
-  videos[]{_key, title, mediaUrl, shareCopy},
+  videos[]{
+    _key, title, mediaUrl, shareCopy,
+    thumbnail{
+      "imageUrl": asset->url,
+      "width": asset->metadata.dimensions.width,
+      "height": asset->metadata.dimensions.height,
+      alt
+    }
+  },
   photographyIntroduction,
   photos[]{
     _key,
@@ -114,6 +134,16 @@ function cleanMediaPage(content: MediaPageResult): MediaPageContent {
         title: video.title,
         mediaUrl: video.mediaUrl,
         shareCopy: video.shareCopy,
+        thumbnail: isWebUrl(video.thumbnail?.imageUrl)
+          ? {
+              imageUrl: video.thumbnail.imageUrl,
+              width: video.thumbnail.width && video.thumbnail.width > 0
+                ? video.thumbnail.width : 1280,
+              height: video.thumbnail.height && video.thumbnail.height > 0
+                ? video.thumbnail.height : 720,
+              alt: video.thumbnail.alt?.trim() || `Video poster for ${video.title}`,
+            }
+          : undefined,
       },
     ];
   });
