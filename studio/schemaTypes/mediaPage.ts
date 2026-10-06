@@ -40,6 +40,25 @@ export const mediaPageType = defineType({
               validation: (rule) => rule.required(),
             }),
             defineField({
+              name: 'thumbnail',
+              title: 'Thumbnail',
+              type: 'image',
+              description:
+                'Upload the approved preview image or poster shown with this video. This stays independent of the video hosting platform.',
+              options: {hotspot: true},
+              validation: (rule) => rule.required(),
+              fields: [
+                defineField({
+                  name: 'alt',
+                  title: 'Alternative text',
+                  type: 'string',
+                  description:
+                    'Briefly describe the thumbnail for visitors using assistive technology.',
+                  validation: (rule) => rule.required(),
+                }),
+              ],
+            }),
+            defineField({
               name: 'mediaUrl',
               title: 'Video or channel URL',
               type: 'url',
@@ -57,7 +76,7 @@ export const mediaPageType = defineType({
             }),
           ],
           preview: {
-            select: {title: 'title', subtitle: 'mediaUrl'},
+            select: {title: 'title', subtitle: 'mediaUrl', media: 'thumbnail'},
           },
         }),
       ],

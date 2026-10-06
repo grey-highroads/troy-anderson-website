@@ -80,7 +80,7 @@ export default async function MediaPage() {
                   width={photo.width}
                   height={photo.height}
                   alt={photo.alt}
-                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 33vw"
+                  sizes="(max-width: 640px) 100vw, (max-width: 900px) 50vw, 25vw"
                 />
                 <div>
                   <h3>{photo.title}</h3>

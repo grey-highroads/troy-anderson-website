@@ -1246,8 +1246,8 @@ button {
 
 .media-photo-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1rem, 2vw, 2rem);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .media-photo-card {
@@ -1263,8 +1263,8 @@ button {
 }
 
 .media-photo-card h3 {
-  margin: 1.25rem 0 0.9rem;
-  font-size: clamp(2rem, 3vw, 3.5rem);
+  margin: 1rem 0 0.75rem;
+  font-size: clamp(1.75rem, 2.2vw, 2.75rem);
 }
 
 .media-download-list {
