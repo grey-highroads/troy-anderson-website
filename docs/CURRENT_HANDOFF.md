@@ -3,7 +3,7 @@
 **Project:** Troy Anderson website  
 **Prepared:** October 6, 2026<br>
 **Prepared by:** 2520 Consulting  
-**Handoff point:** Core CMS slices are connected; the Media photo library and video poster implementation are complete and live-verified
+**Handoff point:** Core CMS slices and Media are connected; the three-clip homepage video review proof is deployed and live-verified
 
 ## Why this is the right handoff point
 
@@ -59,7 +59,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Static export configured in `next.config.ts`.
 - Shared site header, navigation, subpage shell, and footer.
 - Public routes currently present: `/`, `/about`, `/book`, `/contact`, and `/media`.
-- Homepage editorial grid interaction prototype uses GSAP and Flip.
+- Homepage editorial grid review proof uses GSAP and Flip, three prepared clips, source-proportioned previews, native playback, and Close/Escape controls. See `docs/HOMEPAGE_VIDEO_POC.md`.
 - GitHub Pages publishes the `main` branch as the temporary browser review environment.
 - `pnpm check` runs linting, TypeScript validation, and the production build.
 
@@ -182,7 +182,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 ## Known temporary content and limitations
 
 - The current Sanity Homepage, Book, About, Contact, and Media documents contain test copy entered to validate every field. They are not final client copy. Site settings contains the current published social destinations.
-- The homepage still uses representative imagery and an interaction prototype rather than approved video media.
+- The homepage now uses three user-supplied clips in a deployed review proof; three collage tiles remain placeholders. Prepared files are served directly with the static site, with no CMS clip controls or selected client production video service. Clip 08 is only 2.7 seconds long. Captions and editorial titles remain outstanding.
 - Contact content and publish-triggered deployment are connected and verified.
 - Media is now a public route. Its video entries are outbound provider-neutral links; clean in-site hosted playback and the homepage video experience remain separate parallel work.
 - Video poster selection occurs during the static build. Provider availability is checked at that time; later image removal requires a rebuild to select a fallback. The current sample has no Sanity override and displays its YouTube poster. Custom override precedence was checked with a fixture without changing the published or draft Media documents. Cloudflare Stream poster resolution remains deferred until the production provider and URL or identifier format are selected.
@@ -206,6 +206,10 @@ pnpm check
 `pnpm check` passed after the Media video-poster implementation. The static build produces the public site in `out/`.
 
 ## Recommended next slice
+
+The homepage review proof was published in `89ca3f8` (`Publish three-clip homepage video collage proof`) via Actions run `37537815252` (#73), which completed in 50 seconds (build 32s, deploy 10s). On October 6, 2026, Chrome verification of the actual public homepage at 1440px and 390px confirmed loaded posters; source preview ratios of 2:1, 1:2, and 1:1; native playback for all three served MP4s; switching; Close/Escape; keyboard focus return; and no horizontal overflow or browser warnings/errors. Silent preview playback was also observed. Both desktop arrangements were verified locally. Reduced-motion suppression is implemented but has not been browser-emulated.
+
+Continue creative review of the collage and compression. Obtain the longer clip 08 if intended, finalize captions and descriptive titles, and decide whether CMS editing and separate media hosting are needed before client beta. The current proof is enabled by `GITHUB_PAGES=true` or locally by `HOMEPAGE_VIDEO_POC=true`. Its prepared media and source details are in `docs/HOMEPAGE_VIDEO_POC.md`; originals remain outside the repository and untouched. No Sanity documents, Media photo entries, dependencies, routes, client-domain settings, or production accounts were changed. The two user-owned Superdesign modifications remain uncommitted.
 
 The Media video-poster correction is complete and live-verified. Before starting another content type, confirm whether Appearances is a launch route and obtain its approved content requirements. Do not create its schema until that product scope is established.
 
