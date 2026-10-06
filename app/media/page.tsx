@@ -75,13 +75,15 @@ export default async function MediaPage() {
           <div className="media-photo-grid">
             {photos.map((photo) => (
               <article className="media-photo-card" key={photo.key}>
-                <Image
-                  src={photo.imageUrl}
-                  width={photo.width}
-                  height={photo.height}
-                  alt={photo.alt}
-                  sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 17vw"
-                />
+                <div className="media-photo-card__image">
+                  <Image
+                    src={photo.imageUrl}
+                    width={photo.width}
+                    height={photo.height}
+                    alt={photo.alt}
+                    sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 17vw"
+                  />
+                </div>
                 <div>
                   <h3>{photo.title}</h3>
                   <a
