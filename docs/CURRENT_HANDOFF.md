@@ -88,7 +88,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The Site settings model deliberately contains only the three approved shared destinations: Instagram, YouTube, and LinkedIn.
 - The intended editor populated and published all three Site settings fields successfully in the hosted Studio.
 - The shared footer fetches the newest published Site settings document during the static build and renders all three destinations without changing the established footer composition.
-- The Media model supports a page heading, video introduction, ordered platform-agnostic video or channel links with share copy, photography introduction, ordered downloadable photos with alternative text, publicity introduction, and ordered downloadable files.
+- The Media model supports a page heading, video introduction, ordered platform-agnostic video or channel links with share copy and an optional custom thumbnail override, photography introduction, ordered downloadable photos with alternative text, publicity introduction, and ordered downloadable files. The future hosted-video integration should use the provider-generated poster by default, then the Sanity override, then a branded fallback.
 - The intended editor populated and published every Media field successfully in the hosted Studio.
 - The Media page fetches the newest published Media document during the static build and renders the outbound video link, share-copy control, all three approved photos, and the publicity download.
 - Media is present in the primary navigation. The page intentionally keeps outbound media URLs provider-neutral while the separate homepage video experience and clean hosted-video provider work continue.

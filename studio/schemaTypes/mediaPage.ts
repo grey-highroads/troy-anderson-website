@@ -41,12 +41,11 @@ export const mediaPageType = defineType({
             }),
             defineField({
               name: 'thumbnail',
-              title: 'Thumbnail',
+              title: 'Custom thumbnail override',
               type: 'image',
               description:
-                'Upload the approved preview image or poster shown with this video. This stays independent of the video hosting platform.',
+                'Optional. Upload an approved poster only when it should replace the thumbnail supplied automatically by the video host.',
               options: {hotspot: true},
-              validation: (rule) => rule.required(),
               fields: [
                 defineField({
                   name: 'alt',

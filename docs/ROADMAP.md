@@ -104,7 +104,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 ## Phase 6: Content and integrations
 
 - [ ] Load and review the agreed initial content set.
-- [ ] Prepare approved preview clips and poster images.
+- [ ] Prepare approved preview clips, connect host-generated poster images by default, and add custom Sanity poster overrides only where editorially needed.
 - [ ] Connect contact forms to the client-approved delivery service with server-side validation, spam controls, minimal collection, and an agreed retention path.
 - [ ] Configure analytics and search metadata only if approved, preferring a privacy-preserving approach with no unnecessary identifiers or browser storage.
 - [ ] Recheck every third-party request, embed, cookie, and browser-storage use after forms, media, and analytics are selected.
