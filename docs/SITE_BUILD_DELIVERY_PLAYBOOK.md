@@ -92,7 +92,7 @@ The service can be sold and managed as eight chapters. Each chapter has a concre
 - Keep content retrieval separate from motion choreography.
 - Prefer a few authored destination states over randomized or overly configurable behavior.
 
-**Finding from Troy Anderson:** CSS Grid plus GSAP Flip supports the desired authored editorial rearrangement. The proof should still be revisited with real video assets before declaring the motion system complete.
+**Finding from Troy Anderson:** CSS Grid plus GSAP Flip supports the desired authored editorial rearrangement. The three-clip real-media proof is live, including simultaneous preview loops (D-012). Final compositions, device/performance QA, captions, and reduced-motion browser verification remain before production acceptance.
 
 ### 6. Add the CMS one vertical slice at a time
 
@@ -137,7 +137,9 @@ For each content type:
 - Test with a revision that does not change visible content.
 - Verify both the webhook delivery and the completed deployment.
 
-**Reusable GitHub Pages pattern**
+**Finding from Troy Anderson, October 7:** This static path is appropriate for temporary review, but observed dispatch failures, long Pages deploys, and ten-minute cache lifetimes make it unsuitable for successive production CMS edits. D-011 requires a secure Cloudflare Workers runtime proof during Phase 6, before beta QA: targeted content refresh plus missed-notification recovery, with full builds reserved for code/design. Establish hosting before testing publishing; do not treat runtime setup as a QA-only task.
+
+**Reusable temporary GitHub Pages pattern**
 
 - Destination: GitHub's workflow-dispatch endpoint for the selected workflow.
 - Method: `POST`.

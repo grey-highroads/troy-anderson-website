@@ -14,7 +14,7 @@ Use a custom Next.js front end with Sanity rather than a general-purpose visual 
 
 **Status:** Accepted
 
-Use stable routes for About, Books, Appearances, Media, Testimonials, and Contact, even if transitions make the site feel continuous.
+Use stable routes for approved standalone pages, even if transitions make the site feel continuous. Current routes are `/`, `/about`, `/book`, `/media`, and `/contact`. The earlier list of possible areas is not approval to create every route: Testimonials is delivered through the Homepage, and Appearances requires confirmed launch scope/content before implementation.
 
 **Reason:** Permanent URLs support publicity, sharing, search, campaigns, and future expansion.
 

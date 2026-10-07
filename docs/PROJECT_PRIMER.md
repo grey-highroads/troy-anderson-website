@@ -19,7 +19,7 @@ This is not a generic video gallery or a flexible page-builder project. The publ
 
 The homepage is a full-width editorial composition rather than a gallery with a sidebar.
 
-- Short, muted video loops appear inside deliberately sized and cropped tiles.
+- Short, muted video loops preserve the supplied GIF aspect ratios without cropping; tile dimensions follow those proportions. Full videos use their own source proportions.
 - Typography, book promotion, appearances, quotes, and similar blocks may share the same visual field.
 - All available hero previews loop together without hover, per the October 7 creative direction (D-012); the grid itself only moves on selection/close.
 - Selecting a clip expands it into the primary viewing position.
@@ -35,19 +35,9 @@ Mobile should use its own editorial sequence. It may alternate full-width and pa
 
 ## Content model
 
-The CMS should expose known content types instead of unrestricted page editing:
+The implemented CMS types are `homepage`, `book`, `about`, `contact`, `siteSettings`, and `mediaPage`. Homepage includes Meet Troy and testimonials. Media includes outbound video links, photo downloads, and publicity files. Hero clips and the homepage book promotion remain code-managed.
 
-- Site settings
-- Homepage content
-- Clips
-- Books
-- Appearances
-- Media items
-- Testimonials
-- About content
-- Contact information
-
-Editors should control content, ordering, visibility, links, images, and media. Layout, typography, responsive behavior, and motion remain in the codebase.
+Clip CMS controls and Appearances require approved requirements before modeling; a separate Testimonials route/type is not approved. Editors control structured content and supported ordering, images, and links. Layout, typography, responsive rules, and motion remain in code.
 
 ## Technical direction
 
@@ -60,7 +50,7 @@ Editors should control content, ordering, visibility, links, images, and media. 
 | Primary site video | Clean playback from an approved managed video host; Cloudflare Stream is the leading candidate |
 | External media | YouTube remains a social-channel destination, not the primary embedded video source |
 | CMS | Sanity |
-| Hosting | Cloudflare |
+| Hosting | Temporary static GitHub Pages; production Cloudflare Workers runtime refresh required by D-011, not implemented |
 | Source control | GitHub |
 | Email | Existing provider remains unchanged |
 

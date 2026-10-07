@@ -12,9 +12,15 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 | 3 | Application foundation | In progress | Core site and CMS architecture work together |
 | 4 | Homepage experience | In progress | Approved editorial compositions work responsively |
 | 5 | Content routes | In progress | Core public site is feature-complete |
-| 6 | Content and integrations | Not started | Real content and external services work end to end |
+| 6 | Content and integrations | In progress; production runtime migration not started | Real content and external services work end to end |
 | 7 | QA and client beta | Not started | Release candidate is approved |
 | 8 | Migration, launch, and handoff | Not started | Client owns and operates production |
+
+## October 7 continuation snapshot
+
+Current implementation is `74a33f3`, verified documentation `f645d60`, followed by the latest handoff refresh on `main`. Five public routes, six CMS types, 17 Media photos/poster rendering, rich-text Meet Troy, and the three-clip hero proof are live. Recent creative refinements (charcoal/white/mint, flush SVG header reaching the menu, mobile top-anchored portraits, flat homepage cover, content-sized banners, and exact text accents) are complete; see the handoff's revision/evidence table.
+
+Open broad checkboxes below represent final scope or production acceptance, not absence of the partial proofs. Three collage tiles remain placeholders; reduced-motion browser emulation, real-device/media performance QA, final content/captions/titles, Appearances scope, clip CMS/production delivery, forms, metadata/analytics/privacy, and client-owned migration remain unresolved. No new implementation task was selected at handoff. D-011's Worker setup must precede QA/beta; do not interpret the Phase 7 tests as the place to first configure hosting.
 
 ## Phase 0: Documentation and setup
 
@@ -43,7 +49,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 - [x] Build the header and first homepage composition with representative tiles.
 - [x] Prototype tile expansion and layout changes with GSAP Flip.
-- [ ] Replace representative tiles with approved sample clips.
+- [ ] Complete replacement of representative tiles with approved clips. Three of six are live (`74a33f3`); the other three remain placeholders.
 - [ ] Test desktop, mobile, touch, keyboard, and reduced-motion behavior.
 - [x] Create the local Sanity Studio and prove the first structured Book schema.
 - [x] Let the intended editor populate and publish the first content type without coaching.
@@ -61,7 +67,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [x] Deploy the existing Studio to a stable online editing address with authenticated access.
 - [x] Confirm an authorized editor can sign in to the hosted Studio and complete an online publish-to-deploy cycle.
 - [ ] Extend the proven CMS pattern to the remaining approved content types.
-- [ ] Record prototype decisions and unresolved risks.
+- [x] Record current prototype decisions and unresolved risks in D-010/D-011/D-012, the hero proof document, and the current handoff. Continue updating them as scope is finalized.
 
 **Milestone:** Jonathan approves the motion direction and Andrew confirms the CMS workflow is understandable.
 
@@ -121,7 +127,7 @@ Approved October 7, 2026. Implement this as part of the production migration bui
 
 - [ ] Load and review the agreed initial content set.
 - [ ] Prepare approved preview clips and connect clean hosted-video delivery. Preserve the Media-card poster precedence established in Phase 5: custom Sanity override, then recognized host poster, then branded fallback.
-- [x] Publish the three-clip homepage review proof with source-proportioned stills and muted previews, native playback, switching, Close/Escape, and authored rearrangements. Commit `89ca3f8`, Actions run `37537815252` (#73), deployed and browser-verified at 1440px desktop and 390px mobile on October 6, 2026. Prepared media is served directly with the static review site (about 6 MB); three remaining tiles are placeholders. Clip 08 is a 2.7-second vertical source. Captions, editorial titles, CMS clip controls, production delivery/ownership, and reduced-motion browser emulation remain unfinished; the broader hosted-video item above remains open.
+- [x] Publish the three-clip homepage review proof with source-proportioned stills and muted previews, native playback, switching, Close/Escape, and authored rearrangements. Commit `89ca3f8`, Actions run `37537815252` (#73), deployed and browser-verified at 1440px desktop and 390px mobile on October 6, 2026. This is the historical first proof: its approximately 6 MB media and 2.7-second vertical clip 08 were replaced by `74a33f3` below. Current prepared assets total about 8.8 MB, and clip 08 is a 53-second 16:9 full video; its preview remains vertical. Three tiles remain placeholders. Captions, editorial titles, CMS clip controls, production delivery/ownership, and reduced-motion browser emulation remain unfinished; the broader hosted-video item above remains open.
 - [x] Replace all three hero clips/GIF previews and enable simultaneous looping without visible per-tile play icons (D-012). `74a33f3`, run `37676230220`, live-verified October 7, 2026 on desktop and at 390px with source proportions, pause/resume, full playback, switching, Escape/focus return, and no overflow or browser errors. Clip 08 is now a 53-second widescreen full video. Lint/type/build passed; reduced-motion suppression remains implemented but not browser-emulated.
 - [x] Remove collage gutters and empty cells while preserving preview proportions. Commit `525c29d`, Actions run `37539965894` (#75), live-verified in both desktop arrangements at 1440px and on mobile at 390px on October 6, 2026. Native opening/closing remains functional; lint, type checking, and production build passed.
 - [ ] Connect contact forms to the client-approved delivery service with server-side validation, spam controls, minimal collection, and an agreed retention path.

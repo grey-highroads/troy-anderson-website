@@ -3,13 +3,40 @@
 **Project:** Troy Anderson website  
 **Prepared:** October 7, 2026<br>
 **Prepared by:** 2520 Consulting  
-**Handoff point:** Core CMS slices and Media are connected; the three-clip homepage video review proof is deployed and live-verified
+**Handoff point:** October 7 creative refinements and replacement hero clips are live; core CMS slices are connected; production runtime publishing is approved and scheduled, not implemented
 
 ## Why this is the right handoff point
 
-This is a stable chapter boundary. The repository, visual foundation, core public routes, hosted Sanity Studio, Homepage, Book, About, Contact, Media, and Site settings schemas, authenticated build-time content queries, and the automatic publish-to-deploy path all work. The four content routes, approved Homepage sections, Media library, and shared footer social links are connected to published CMS content.
+This is a stable chapter boundary. The repository, visual foundation, core public routes, hosted Sanity Studio, Homepage, Book, About, Contact, Media, and Site settings schemas, authenticated build-time content queries, and the automatic publish-to-deploy path are implemented. The temporary GitHub publishing path has observed dispatch, deployment, and cache failures; recovery of individual updates does not resolve those infrastructure limitations. The four content routes, approved Homepage sections, Media library, and shared footer social links are connected to published CMS content.
 
-Do not wait until the entire Sanity model is complete to hand off this conversation. That would make the context larger while adding several similar implementation loops. Start a fresh conversation from this document, and update it again when the CMS layer is complete or before another major architecture change.
+The latest requested hero replacement is complete and live-verified. No website implementation is left half-finished in this chat. Continue from current `main`, with the guardrails and remaining gates below. Historical verification records are retained to explain decisions, not to prescribe old behavior.
+
+## Start here in the next chat
+
+1. Read `AGENTS.md` completely. Then read this handoff, `PROJECT_PRIMER.md`, `WORKING_GUIDELINES.md`, `ROADMAP.md`, `DECISIONS.md`, `INFRASTRUCTURE_AND_HANDOFF.md`, `SITE_BUILD_DELIVERY_PLAYBOOK.md`, and `HOMEPAGE_VIDEO_POC.md` under `docs/`. Read `studio/README.md` when touching CMS work.
+2. Inspect branch, recent commits, working-tree status, and remote synchronization before editing. Work from current `main`; do not check out an old handoff revision or reconstruct earlier chats.
+3. Preserve `.superdesign/design-system.md` and `.superdesign/resume.json` exactly. They are user-owned uncommitted changes: never overwrite, discard, stage, or include them in unrelated commits. Do not use a Superdesign draft as the implementation source.
+4. Before changing Next.js code, read the relevant installed guides under `node_modules/next/dist/docs/`. Installed Next.js 16.3.4 documentation takes precedence over older assumptions.
+5. Report the branch/tree state, any discrepancy with this handoff, and the smallest intended file/change scope. Follow the user's next requested slice; do not begin speculative CMS/provider work just because it appears on the roadmap.
+6. The user gave standing permission to push completed website work. Routine scoped commits/pushes do not need renewed permission. Verify lint/type/build and the actual deployed page for implementation changes; update milestone documentation after live verification. No subagents or new chats are requested by this handoff.
+
+Workspace: `/Users/greygarner/Documents/Codex/2026-09-10/referenced-chatgpt-conversation-this-is-an-2`.
+
+## Latest verified state and revisions
+
+| Change | Revision | Evidence / current behavior |
+| --- | --- | --- |
+| Replacement hero media and simultaneous previews | `74a33f3` | Actions `37676230220` succeeded; actual live desktop/390px checks passed. All three previews loop without hover; no visible per-tile play icons; whole-tile playback, pause/resume, switching, Escape/focus return work. |
+| Hero verification documentation | `f645d60` | Actions `37676678654` succeeded. This was `main` at the start of this handoff refresh; the handoff commit follows it. |
+| Latest text accents | `2904187` | Actions `37669107772` succeeded and live computed colors were verified on Homepage, About, and Media. |
+| Header flush to top/left | `11758fd` | Actions `37667593260` succeeded; live image origin (0,0), menu gap zero, no overflow at desktop/mobile. |
+| White banner eyebrows / mint H1s | `8f6368b` | Actions `37667165489` succeeded; live colors verified. Scope is subpage banners, not all labels on white backgrounds. |
+| Header reaches menu / mobile portrait crop | `3d895b3` | Live-verified; top-anchored About/Contact portrait styling below 900px. |
+| Charcoal/white/mint palette and SVG header | `74d6040`, `51886d4` | Live-verified across all five routes; second revision preserves label contrast. |
+| Content-sized subpage banners / flat homepage cover | `1be3390`, `2729eb4` | Live-verified desktop/mobile. |
+| Homepage rich-text introduction | `ff541e4` | Website/Studio deployed; draft and published introduction converted separately and verified without publishing the draft. |
+
+The original inherited handoff `90d249d` and Media poster implementation `d67a796` are historical milestones. They are not the current starting revision. This documentation-only refresh does not change application code, media, CMS documents, or infrastructure. Recheck the latest deployment after future pushes; do not treat the table as proof of an unverified later revision.
 
 ## Sources of truth
 
@@ -20,7 +47,7 @@ Do not wait until the entire Sanity model is complete to hand off this conversat
 - Live Contact route: <https://grey-highroads.github.io/troy-anderson-website/contact/>
 - Live Media route: <https://grey-highroads.github.io/troy-anderson-website/media/>
 - Default branch: `main`
-- Homepage schema baseline before its page integration: `ee02553` (`Add homepage Meet Troy content model`). Use the latest `main` revision as authoritative.
+- Current implementation baseline: `74a33f3`; last preceding documentation revision: `f645d60`. Use the latest `main` revision as authoritative.
 - Sanity project: `Troy Anderson Website 1`
 - Sanity project ID: `gknd24m7`
 - Sanity dataset: `production` (private)
@@ -47,20 +74,23 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Header name and subtitle use the supplied, unmodified `public/images/ta-site-header.svg` on a white background instead of live text. The artwork fills the available width up to the navigation button, flush to the top and left header edges; height follows its proportions. Only the existing bottom padding remains. The menu button background is pale mint `#cee5de`. It remains an accessible home link.
 - Menu bars and small labels on white sections use charcoal for contrast; mint remains the highlight on dark sections and highlighted surfaces. The October 7 follow-up (`3d895b3`) also anchors About/Contact portraits to the top below 900px so mobile crops preserve Troy’s face; the mobile About portrait and header/menu alignment at 390px, 768px, and 1440px were live browser-verified. Lint, type checks, and production build passed.
 - Palette/header implementation (`74d6040`, `51886d4`) is deployed and browser-verified across all five routes at desktop/mobile widths; header sizing was also checked at 768px and 320px. Navigation opens/closes with keyboard and pointer, and the SVG home link works. Lint, type checks, and production build passed.
-- Display and thumbnail typography: Bebas Neue Pro where available, with the current repository fallback strategy.
+- Installed headline font is Google Bebas Neue, weight 400, loaded through `next/font/google` in `app/layout.tsx`; Arial Narrow/sans-serif fallback. CSS supplies italic styling. Bebas Neue Pro is not installed. Body copy uses Source Code Pro, weight 400, with normal/italic styles. Header lettering is SVG artwork, not live font text.
 - Homepage book promotion follows the supplied reference: book cover, large condensed italic title, directional arrow, and availability line.
 - October 7 refinements are live: the homepage promotion uses the supplied flat book cover (`2729eb4`); shared About, Book, Media, and Contact banners size to their content instead of enforcing minimum heights (`1be3390`). Existing typography and padding remain. All four banners were checked at 1440px and 390px with no horizontal overflow; the short About banner measures approximately 393px on desktop and 269px on mobile. Lint, type checks, and the production build passed.
-- Future changes were expected to focus more on layout than palette.
+- Final text accents: subpage banner eyebrows white and H1s mint; homepage book-promo and testimonial titles mint, availability copy white; About story heading and pull quote mint; Media `Approved images` mint with no period. Small labels on white backgrounds remain charcoal for contrast. Do not turn every eyebrow white indiscriminately.
+- Homepage Meet Troy body copy shares Biography's `.portable-copy` font, responsive size (`clamp(0.95rem, 1.15vw, 1.2rem)`), 1.65 line height, and paragraph spacing.
+- Homepage flat cover is `public/images/troy-anderson-book-flat.jpg`, supplied from `/Users/greygarner/Desktop/Higher Roads/Clients/Troy Anderson/Book image/NeverWasteKick_FLAT.jpg`. The separate Book route retains its own existing cover; the homepage replacement did not change it.
+- Supplied header source: `/Users/greygarner/Desktop/Higher Roads/Clients/Troy Anderson/Assets/TA_siteheader.svg`. Preserve the committed artwork. The initial 75% width request was superseded by fill-to-menu and flush-top/left requests; do not restore that inset or width.
 
 ## What is implemented
 
 ### Repository and application
 
-- Next.js 16.3.4, React 19, TypeScript, pnpm 11, and Node.js 24.
+- Next.js 16.3.4, React 19.2.8, TypeScript, pnpm 11.19.0, and Node.js 24.
 - Static export configured in `next.config.ts`.
 - Shared site header, navigation, subpage shell, and footer.
 - Public routes currently present: `/`, `/about`, `/book`, `/contact`, and `/media`.
-- Homepage editorial grid review proof uses GSAP and Flip, three prepared clips, source-proportioned previews, native playback, and Close/Escape controls. See `docs/HOMEPAGE_VIDEO_POC.md`.
+- Homepage editorial grid uses GSAP/Flip, two authored layouts, zero gutters, three replacement clips, three placeholder tiles, simultaneous source-proportioned silent previews, native full playback, and Close/Escape controls. See `docs/HOMEPAGE_VIDEO_POC.md` and D-012. Hero media and homepage book promotion are still local/code-managed, not fields in the Homepage schema.
 - GitHub Pages publishes the `main` branch as the temporary browser review environment.
 - `pnpm check` runs linting, TypeScript validation, and the production build.
 
@@ -90,7 +120,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The intended editor populated and published all three Site settings fields successfully in the hosted Studio.
 - The shared footer fetches the newest published Site settings document during the static build and renders all three destinations without changing the established footer composition.
 - The Media model supports a page heading, video introduction, ordered platform-agnostic video or channel links with share copy and an optional custom thumbnail override, photography introduction, ordered downloadable photos with alternative text, publicity introduction, and ordered downloadable files.
-- The intended editor populated and published every required Media field successfully in the hosted Studio. The current sample video intentionally has no custom thumbnail override.
+- The intended editor populated and published every required Media field successfully in the hosted Studio. The first sample video intentionally has no custom thumbnail override. Two sample YouTube video cards were present at the last live Media check; do not revert to a one-video fixture.
 - The Media page fetches the newest published Media document during the static build and renders a linked video poster, outbound video action, share-copy control, 17 approved portraits, and the publicity download.
 - The Media photo gallery now uses a conventional responsive thumbnail grid: six columns at the wide desktop review size, four below 1200px, three below 900px, and two below 640px. Every portrait is centered and contained in a consistent 4:3 frame. Visible filenames were removed; each card now exposes only a consistent `Download image` action while retaining the Sanity title in its accessible label.
 - The 17 portrait files were uploaded to Sanity, given consistent editor titles and alternative text, and published as 17 separate structured photo entries. A stale draft initially masked them with the original three sample entries and one incomplete row. On October 6, 2026, the draft's `photos` field was revision-guarded and synchronized to the published 17-entry array without changing any other draft field. The hosted Studio was then browser-verified in Draft view with editable portrait entries and no incomplete `Untitled` item.
@@ -102,7 +132,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 - GitHub repository secret: `SANITY_API_READ_TOKEN`.
 - The secret is a Sanity Viewer token; its value must never be committed or documented.
-- GitHub Actions exposes the secret only to the build step.
+- GitHub Actions exposes the secret only to the build step. Workflow is push-to-main or manual dispatch, with concurrency group `pages` and `cancel-in-progress: false`. Do not change/cancel queued publishing as an unrequested workaround; first diagnose the failing stage.
 - A Sanity GROQ-powered webhook named `Rebuild website when connected content is published` is enabled.
 - Webhook dataset: `production`.
 - Webhook filter: `_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage"]`.
@@ -142,6 +172,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | --- | --- |
 | Global app and fonts | `app/layout.tsx` |
 | Homepage | `app/page.tsx` |
+| Hero interaction, clip names, dimension metadata | `components/editorial-grid.tsx` |
+| Current prepared hero files | `public/videos/collage-poc/TA_BB_*-v2*` |
+| Hero sources, encoding, operation, verification | `docs/HOMEPAGE_VIDEO_POC.md` |
+| Introduction migration (already completed) | `studio/scripts/migrate-homepage-introduction.ts` |
 | Book page integration | `app/book/page.tsx` |
 | About page integration | `app/about/page.tsx` |
 | Contact page integration | `app/contact/page.tsx` |
@@ -172,7 +206,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Local working state at handoff
 
-- Latest handoff baseline before this slice: `90d249d` (`Refresh handoff after Media refinements`). Current implementation baseline: `d67a796` (`Render Media video posters with provider fallback`). Use the latest `main` revision as authoritative.
+- Branch is `main`. All application work through `74a33f3` and verification documentation through `f645d60` are pushed. This refresh adds a documentation-only commit; use latest `main`, not a historical baseline.
 - All implementation and automation work is pushed.
 - Two pre-existing Superdesign files remain modified locally and were deliberately not committed:
   - `.superdesign/design-system.md`
@@ -183,7 +217,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 ## Known temporary content and limitations
 
 - Publishing diagnosis, October 7, 2026: Book overview published at 16:53:32 UTC was saved correctly as two paragraphs, but GitHub's workflow-dispatch endpoint returned HTTP 500 on all three Sanity delivery attempts (16:53:33, 16:54:05, 16:54:35), so no rebuild started. Earlier run #87 (`37653513187`) built successfully but Pages rejected deployment with HTTP 400 because it still considered the previous deployment active; run #88 (`37654462021`) built in 46 seconds but spent over six minutes deploying. A recovery dispatch using the existing webhook credential returned HTTP 204 and run #89 (`37655882421`) succeeded in about 66 seconds. The actual Book page was browser-verified with both new paragraphs using `?publish=37655882421`; the ordinary URL still showed the older cached five-paragraph version. Response headers confirmed `cache-control: max-age=600`. No CMS content, credentials, or workflow configuration were changed. This recovers the update, not the underlying provider reliability/cache limitations. The build uses Node 24; Node 20 warnings refer to older helper-action declarations being forced to run under Node 24. Updating those action versions is maintenance, separate from the publishing failures.
-- The current Sanity Homepage, Book, About, Contact, and Media documents contain test copy entered to validate every field. They are not final client copy. Site settings contains the current published social destinations.
+- The current Sanity documents contain a mixture of client-entered copy and review/test content. Final editorial approval is pending; do not replace user copy with earlier placeholders or assume every value is final. Site settings contains the current published social destinations.
 - The homepage now uses three user-supplied clips in a deployed review proof; three collage tiles remain placeholders. Prepared files are served directly with the static site, with no CMS clip controls or selected client production video service. Clip 08 now uses the supplied 53-second full video. Captions and editorial titles remain outstanding.
 - Contact content and publish-triggered deployment are connected and verified.
 - Media is now a public route. Its video entries are outbound provider-neutral links; clean in-site hosted playback and the homepage video experience remain separate parallel work.
@@ -205,12 +239,27 @@ pnpm studio:dev
 pnpm check
 ```
 
-`pnpm check` passed after the Media video-poster implementation. The static build produces the public site in `out/`.
+`GITHUB_PAGES=true pnpm check` passed after the latest hero replacement. The static review build produces `out/` and repository-prefixed URLs. `HOMEPAGE_VIDEO_POC=true pnpm dev` enables the same three clips locally without that prefix; plain `pnpm dev` uses the placeholder prototype. Build without a private token intentionally uses local content; this is not a CMS regression. The read token must remain server/build-only.
 
-## Recommended next slice
+For Studio changes run `pnpm studio:build` and `pnpm --filter troy-anderson-website-1 exec tsc --noEmit`, then deploy the hosted Studio separately. A website push does not deploy schema/editor changes.
+
+The introduction migration has already been applied. Do not rerun it to repair publishing or formatting. Its dry run, private local backup, field-only transaction, and revision guards exist for a future deliberately authorized migration; never replace a draft with published values or publish it automatically.
+
+The last local hero preview server (127.0.0.1:3012) was stopped. Temporary extracted originals and conversion tools lived in `/private/tmp/`; they are not dependencies. Recreate them if needed rather than assuming temporary paths survive. Originals at the recorded client asset paths remain unchanged.
+
+## Continuation priorities and unresolved gates
+
+No new product work was selected at handoff. Resume the user's next creative/content request against the current site. Useful bounded work while content is being prepared is reduced-motion browser/device verification, real-device autoplay checks, and media/performance review; do not mark these complete from code inspection alone.
+
+Before expanding scope, confirm Appearances' launch status and content requirements. Testimonials already lives on the Homepage; a separate route/schema is not approved. Clip CMS controls, the final six-tile creative composition, captions, descriptive titles, and production video delivery still need definition/approval. Three local clips do not mean the homepage is production-complete.
+
+For the approved production build, follow D-011 in order: establish compatible Cloudflare Workers runtime/adapter and client account/secret prerequisites during Phase 6; prove secure Book runtime content refresh; extend to all connected content/shared settings; coordinate caches and missed-notification recovery; run rapid-publish/failure/freshness QA in Phase 7; reconfirm client-owned production configuration before Phase 8 DNS cutover. The 30-second freshness target is unmeasured, not a current promise. Do not replace this with a static Pages migration or move Worker configuration into a downstream QA-only step.
+
+Keep the current static Sanity/GitHub publishing path until its runtime replacement is verified. Do not disable the webhook or expose private CMS credentials to the browser. When diagnosing delayed content, distinguish published CMS state, webhook delivery, Actions build, Pages deployment, and browser/CDN cache; successful Publish or build alone is not proof of a visible update. Temporary diagnosis can inspect a fresh query URL, but that is not a production editing solution.
+
+## Completed slices and historical verification
 
 Homepage hero replacements (October 7, 2026): `74a33f3` replaces all three clips, preview loops, and first-frame stills from `TA_BB_output 2.zip`. Actions run `37676230220` succeeded. The actual public homepage was browser-verified on desktop and at 390px: all three previews run together without hover on desktop, source preview proportions remain 2:1 / 1:2 / 1:1, play icons are absent, and neither viewport overflows horizontally. The section-level pause/resume control stops/restarts previews. All three replacement full videos played successfully; clip 08 now opens as a 53-second 16:9 video. Switching, keyboard activation, Escape, and focus return work; no browser warnings/errors were observed. Lint, type checks, and production build passed. Prepared assets use versioned filenames and total about 8.8 MB; silent previews total 317 KB. D-012 supersedes hover-only guidance. Reduced-motion stills and live preference changes are implemented; OS/browser reduced-motion emulation remains unverified. The three other tiles remain placeholders. Originals, CMS content, and user-owned Superdesign changes were preserved.
-
 
 Production migration requirement approved October 7, 2026: implement D-011, secure runtime content refresh on Cloudflare Workers, as part of the production migration build. The Phase 6 Book proof and rollout must precede Phase 7 client beta; Phase 8 must repeat publishing checks with client-owned configuration before DNS cutover. Include rapid successive publishes, missed-notification recovery, and browser/CDN cache checks. The proposed normal-condition freshness target is 30 seconds and must be measured. This work is scheduled, not implemented; retain the existing temporary GitHub Pages workflow until the replacement is verified. See `docs/ROADMAP.md` for the ordered gates.
 
@@ -235,7 +284,10 @@ The approved Testimonials content already lives in the connected Homepage model 
 ## Regression guardrails
 
 - Read `AGENTS.md` and the installed Next.js version documentation before changing framework code.
-- Preserve the charcoal/white/mint palette and responsive SVG header unless the user requests a change.
+- Preserve the charcoal/white/mint palette, exact text-accent scopes, flat homepage book cover, content-sized page banners, and flush SVG header that reaches the mint menu.
+- Preserve D-012: simultaneous silent loops, GIF-native preview shapes, 16:9 replacement full videos, no visible play icons, whole-tile keyboard/touch playback, section pause, and reduced-motion stills. Do not revert to hover-only preview behavior.
+- Preserve all 17 structured Media photos in both published and draft documents. No replacement, migration, or synchronization is needed.
+- Keep rich-text Meet Troy paragraphs/soft breaks and the removed Book foreword fields/panel. Use Studio Draft for editing; Published is read-only.
 - Do not restore removed homepage taglines, card metadata, or instructional labels.
 - Do not expose the private Sanity token through a `NEXT_PUBLIC_` variable or browser request.
 - Do not replace the build-time CMS approach with client-side fetching for the private dataset.
@@ -261,7 +313,7 @@ Never record either token value in this document.
 
 ## Suggested opening prompt for the next chat
 
-> Continue the Troy Anderson website from `docs/CURRENT_HANDOFF.md`. Read that file plus `AGENTS.md`, `docs/ROADMAP.md`, `docs/DECISIONS.md`, and the relevant installed Next.js documentation before editing. Preserve the two uncommitted `.superdesign` files. The Media photo library and video posters are complete and live-verified; retain the custom Sanity override, YouTube poster, branded fallback precedence. Do not add Cloudflare URL handling until the production format is selected. The approved Testimonials content is already connected through the Homepage model; do not create a separate Testimonials schema or route without new approval. Confirm the launch status and requirements for Appearances before modeling it.
+> Continue the Troy Anderson website from the repository's current `main`. Read `AGENTS.md` completely and the startup reading list in `docs/CURRENT_HANDOFF.md` before editing; read relevant installed Next.js 16.3.4 docs before framework code. Report branch/tree state, discrepancies, and the smallest intended change scope. Preserve the user-owned `.superdesign/design-system.md` and `.superdesign/resume.json` changes untouched and unstaged. Latest hero implementation is `74a33f3`, with live verification recorded in `f645d60`; these are milestones, not instructions to roll back newer main. Preserve simultaneous silent hero loops, supplied GIF proportions, 16:9 full clips, no visible play icons, whole-tile playback, pause/reduced-motion behavior, zero gutters, charcoal/white/mint styling, the flush SVG header reaching the mint menu, content-sized banners, rich-text Meet Troy introduction, and the removed Book foreword. Media posters and all 17 photos are complete; do not disturb them or add speculative provider handling. D-011 requires Cloudflare Workers runtime content refresh before beta, not a static Pages production migration; it is planned, not implemented. Follow my next requested task, avoid inventing routes/CMS scope, and use the recorded standing permission to push scoped completed changes. Verify the real deployed outcome before updating completion notes.
 
 ## Next handoff milestone
 
