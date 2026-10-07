@@ -93,6 +93,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 - [x] Build and connect About to Sanity.
 - [x] Build and connect the Book page to Sanity, including its published subheader.
+- [x] Remove the Book foreword fields and public panel at the user’s request. Implementation `e14685c` passed website and Studio checks; the hosted Studio was updated and browser-confirmed editable in Draft view. Run `37648524559` (#80) succeeded, and the public removal and full-width remaining panel were verified at 1440px and 390px on October 7, 2026.
 - [ ] Build Appearances.
 - [x] Build and connect Media to Sanity.
 - [x] Complete Media video poster rendering using a custom Sanity override when supplied, the current YouTube host poster otherwise, and a branded fallback when neither is available. Deployed in `d67a796` (Actions run `37501781317`) and live-verified at desktop and mobile widths on October 6, 2026, including loaded poster, alternative text, keyboard focus, outbound links, and the unchanged 17-photo library. Add Cloudflare Stream resolution only after its production URL or identifier format is selected.

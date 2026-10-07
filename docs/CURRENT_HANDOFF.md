@@ -75,7 +75,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The Homepage model deliberately covers the approved Meet Troy teaser and testimonial section: Meet Troy heading, short introduction, portrait plus alt text, testimonial heading, and an ordered list of quote, name, and credentials.
 - The intended editor populated and published every Homepage section successfully in the hosted Studio.
 - The homepage fetches the newest published Homepage document during the static build and preserves intentional local fallback content when the private credential is absent.
-- The Book model supports title, required subheader, introduction, cover plus alt text, overview heading and Portable Text, foreword excerpt and byline, inspiration heading and Portable Text, sample URL, retailers, and endorsements.
+- The Book model supports title, required subheader, introduction, cover plus alt text, overview heading and Portable Text, inspiration heading and Portable Text, sample URL, retailers, and endorsements. The foreword fields and public panel were removed at the user's request on October 7, 2026 (`e14685c`); the remaining Behind the Book panel spans the notes section.
 - The intended editor populated every field and successfully published the document.
 - The Book page fetches the newest published Book document during the static build.
 - The page renders the published subheader beneath the title, plus Sanity image metadata, Portable Text, retailer links, endorsement attribution, and optional sample link.
@@ -206,6 +206,8 @@ pnpm check
 `pnpm check` passed after the Media video-poster implementation. The static build produces the public site in `out/`.
 
 ## Recommended next slice
+
+Book editor correction (October 7, 2026): the apparent editing lock was the read-only Published perspective left selected during deployment diagnosis. The editor was returned to Draft, and editable plain-text and Portable Text fields were browser-confirmed. Use Draft for editing; Published is for read-only review. The hosted Studio was redeployed without the foreword fields, and only those two stored values were revision-guarded and removed from the existing Book document (no draft existed at that time). Other content was preserved. Website lint/type/build and Studio build passed. Website run `37648524559` (#80) completed successfully in 2m 2s. The actual public Book page was browser-verified at 1440px and 390px: no foreword, a full-width Behind the Book panel, and no horizontal overflow. A reload was needed to refresh the previously cached page.
 
 The zero-gutter homepage collage refinement is live in `525c29d` (`Remove homepage collage gutters and empty cells`). Actions run `37539965894` (#75) completed successfully in 59 seconds. On October 6, 2026, live Chrome checks confirmed both desktop arrangements at 1440px fill the grid without gaps or empty cells, and the 390px mobile grid has zero spacing and no horizontal overflow. Clip 02 still opens and closes correctly. Preview proportions remain unchanged. Lint, type checking, and the production build passed before publication.
 
