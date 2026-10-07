@@ -107,6 +107,18 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 ## Phase 6: Content and integrations
 
+### Required production publishing migration (D-011)
+
+Approved October 7, 2026. Implement this as part of the production migration build, before client beta. Begin the Phase 8 client-account, runtime-hosting, and secret-configuration prerequisites here; the final domain cutover remains in Phase 8. GitHub Pages remains the temporary static review site until the replacement passes verification.
+
+- [ ] Establish a Cloudflare Workers review deployment and verify compatibility with the installed Next.js version using the supported adapter selected at implementation time.
+- [ ] Prove secure runtime fetching of published Book content, page-specific cache refresh on an authenticated Sanity publish notification, and automatic time-based recovery when a notification is missed. Keep private credentials on the server and preserve intentional local fallback content.
+- [ ] Extend the proven publishing path to Homepage, About, Contact, Media, and shared Site settings, including all affected pages for shared content. Preserve Media poster precedence, the photo library, and existing content and visual behavior.
+- [ ] Separate content publishing from code deployment: Sanity publishes refresh content without triggering a full build; code/design changes still deploy through source control. Configure browser, CDN, and application caches together so normal page visits expose fresh content without special URLs or hard refreshes.
+- [ ] Define and measure the freshness targets before beta: published changes visible within 30 seconds under normal conditions, and a documented, tested recovery bound for a missed notification. Record measured results rather than treating the target as an existing guarantee. Preserve the last good content during temporary CMS failures and provide useful operational failure reporting.
+
+### Other content and integrations
+
 - [ ] Load and review the agreed initial content set.
 - [ ] Prepare approved preview clips and connect clean hosted-video delivery. Preserve the Media-card poster precedence established in Phase 5: custom Sanity override, then recognized host poster, then branded fallback.
 - [x] Publish the three-clip homepage review proof with source-proportioned stills and muted previews, native playback, switching, Close/Escape, and authored rearrangements. Commit `89ca3f8`, Actions run `37537815252` (#73), deployed and browser-verified at 1440px desktop and 390px mobile on October 6, 2026. Prepared media is served directly with the static review site (about 6 MB); three remaining tiles are placeholders. Clip 08 is a 2.7-second vertical source. Captions, editorial titles, CMS clip controls, production delivery/ownership, and reduced-motion browser emulation remain unfinished; the broader hosted-video item above remains open.
@@ -127,6 +139,8 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Verify keyboard navigation, focus management, contrast, and reduced motion.
 - [ ] Check performance, visual stability, media loading, and error states.
 - [ ] Validate redirects, metadata, forms, and unpublished content behavior.
+- [ ] Verify production publishing with several pages published in quick succession, repeated edits to one page, and duplicate or out-of-order notifications. Confirm the latest published values appear at normal URLs without full builds, missing updates, or stale content replacing newer content.
+- [ ] Verify missed/failed publish notifications, temporary CMS failures, shared-setting updates, draft exclusion, and browser/CDN cache behavior on desktop and mobile. Measure the Phase 6 freshness and recovery targets; resolve failures before client beta.
 - [ ] Run a front-end security review covering repository history, deployed artifacts, environment-variable exposure, dependency findings, third-party scripts, and browser security headers.
 - [ ] Confirm no private credential or privileged operation reaches browser code, and verify production Sanity, webhook, analytics, and form credentials use least privilege.
 - [ ] Test form validation, spam protection, rate limiting, logging, and failure behavior without retaining unnecessary personal data.
@@ -138,20 +152,24 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 ## Phase 8: Migration, launch, and handoff
 
+Account and hosting prerequisites begin during Phase 6 so the runtime publishing path can be verified before Phase 7 client beta. Complete the production-account verification below before DNS cutover.
+
 - [ ] Establish client-owned GitHub, Cloudflare, Sanity, analytics, and form-service access.
 - [ ] Transfer the repository or create the client-owned production source of truth.
-- [ ] Create and verify the production deployment in the client's Cloudflare account.
+- [ ] Create and verify the production Cloudflare Workers deployment in the client's account with the runtime content-refresh approach from D-011; a static Pages migration alone does not meet this requirement.
 - [ ] Transfer or migrate the approved Sanity configuration and production content.
 - [ ] Configure production secrets and client billing.
+- [ ] Connect the authenticated Sanity publish notifications to the verified production refresh endpoint and reconfirm rapid-publish and missed-notification recovery with client-owned credentials. Retire the Sanity-to-GitHub rebuild trigger after the replacement is verified; retain code deployment independently.
 - [ ] Rotate temporary credentials, record expiration and ownership outside the repository, and enable available secret scanning or push protection.
 - [ ] Assign an owner for privacy-notice updates and consent configuration when services change.
 - [ ] Validate DNS changes without disturbing existing email records.
 - [ ] Launch and complete smoke testing.
 - [ ] Train the client team and deliver operating documentation.
+- [ ] Document expected publish-to-visible timing, automatic recovery, and the support escalation path; routine editing must not require GitHub access, manual rebuilds, cache-busting links, or hard refreshes.
 - [ ] Remove or downgrade 2520 and Jonathan access as agreed.
 - [ ] Archive temporary infrastructure after the retention period.
 
-**Milestone:** The client owns the functioning production system and can perform routine content updates without developer assistance.
+**Milestone:** The client owns the functioning production system and can publish successive content updates without developer assistance or full-site rebuilds. The D-011 publishing checks must pass before launch.
 
 ## Later ideas
 
