@@ -39,6 +39,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Temporary 2520 GitHub, Sanity, Cloudflare, or review infrastructure may be used to avoid blocking development.
 - The public experience is editorial and content-led; avoid explanatory card labels, metadata panels, or generic gallery chrome.
 - Editors control structured content. Code controls layout, styling, responsive behavior, and motion.
+- On October 7, 2026, the user gave standing permission to push completed website changes. Do not ask again for routine commits and pushes within the requested scope; preserve the user-owned Superdesign changes.
 
 ## Current visual direction
 
@@ -206,6 +207,8 @@ pnpm check
 `pnpm check` passed after the Media video-poster implementation. The static build produces the public site in `out/`.
 
 ## Recommended next slice
+
+Homepage About Troy typography (October 7, 2026): `1d9c86e` shares the biography's body-copy font, responsive size, and 1.65 line height through the existing CSS rule. Content and section layout were preserved. Lint, type checking, and the production build passed. Actions run `37650783720` (#83) completed successfully in 1m 1s. The actual public homepage was browser-verified at 1440px and 390px: the shared typography was applied, with no horizontal overflow.
 
 Book editor correction (October 7, 2026): the apparent editing lock was the read-only Published perspective left selected during deployment diagnosis. The editor was returned to Draft, and editable plain-text and Portable Text fields were browser-confirmed. Use Draft for editing; Published is for read-only review. The hosted Studio was redeployed without the foreword fields, and only those two stored values were revision-guarded and removed from the existing Book document (no draft existed at that time). Other content was preserved. Website lint/type/build and Studio build passed. Website run `37648524559` (#80) completed successfully in 2m 2s. The actual public Book page was browser-verified at 1440px and 390px: no foreword, a full-width Behind the Book panel, and no horizontal overflow. A reload was needed to refresh the previously cached page.
 

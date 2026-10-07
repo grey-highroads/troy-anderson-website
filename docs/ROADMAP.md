@@ -83,6 +83,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 - [ ] Complete preview playback and full-media expansion.
 - [ ] Add book, appearance, quote, or promotional blocks approved for the homepage.
 - [x] Add and connect the approved Meet Troy homepage teaser.
+- [x] Match About Troy body typography to the biography's shared font, responsive size, and line spacing. Commit `1d9c86e`, Actions run `37650783720` (#83), live-verified at 1440px and 390px on October 7, 2026 with no horizontal overflow; lint, type checking, and production build passed.
 - [x] Add and connect the approved homepage testimonial section.
 - [ ] Tune focus behavior, reduced motion, loading, and recovery states.
 - [ ] Validate performance with realistic media.
