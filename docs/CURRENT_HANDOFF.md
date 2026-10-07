@@ -50,6 +50,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Header black and oxblood bands are equal height. The name is bottom-aligned in black; the subhead is top-aligned in oxblood.
 - Display and thumbnail typography: Bebas Neue Pro where available, with the current repository fallback strategy.
 - Homepage book promotion follows the supplied reference: book cover, large condensed italic title, directional arrow, and availability line.
+- October 7 refinements are live: the homepage promotion uses the supplied flat book cover (`2729eb4`); shared About, Book, Media, and Contact banners size to their content instead of enforcing minimum heights (`1be3390`). Existing typography and padding remain. All four banners were checked at 1440px and 390px with no horizontal overflow; the short About banner measures approximately 393px on desktop and 269px on mobile. Lint, type checks, and the production build passed.
 - Future changes were expected to focus more on layout than palette.
 
 ## What is implemented
