@@ -73,7 +73,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - The hosted address, authenticated content list, Homepage editing form, and online publish operation were browser-verified with the intended editor account.
 - `studio/sanity.cli.ts` records the hosted application ID with automatic Studio updates disabled. Deploy Studio/schema changes separately with `pnpm --filter troy-anderson-website-1 deploy`; website pushes do not update the hosted Studio.
 - Current schema registry contains six document types: `homepage`, `book`, `about`, `contact`, `siteSettings`, and `mediaPage`.
-- The Homepage model deliberately covers the approved Meet Troy teaser and testimonial section: Meet Troy heading, short introduction, portrait plus alt text, testimonial heading, and an ordered list of quote, name, and credentials.
+- The Homepage model deliberately covers the approved Meet Troy section and testimonials: Meet Troy heading, rich-text introduction, portrait plus alt text, testimonial heading, and an ordered list of quote, name, and credentials.
 - The intended editor populated and published every Homepage section successfully in the hosted Studio.
 - The homepage fetches the newest published Homepage document during the static build and preserves intentional local fallback content when the private credential is absent.
 - The Book model supports title, required subheader, introduction, cover plus alt text, overview heading and Portable Text, inspiration heading and Portable Text, sample URL, retailers, and endorsements. The foreword fields and public panel were removed at the user's request on October 7, 2026 (`e14685c`); the remaining Behind the Book panel spans the notes section.
@@ -207,6 +207,8 @@ pnpm check
 `pnpm check` passed after the Media video-poster implementation. The static build produces the public site in `out/`.
 
 ## Recommended next slice
+
+Homepage introduction editor (October 7, 2026): `ff541e4` changes `meetTroySummary` to the same Portable Text editor used for Biography and renders it through the existing library and shared typography. The query remains authenticated at build time, accepts legacy text during migration, and retains the token-free fallback. The migration script backs up content locally, defaults to a dry run, and revision-guards changes to this field only. Both existing published and draft introductions were converted separately into five paragraphs; their wording and all other fields were verified against the backup. The draft was not published. Website lint/type/build, Studio build/type checks, and focused paragraph, soft-break, and bold-rendering checks passed. The hosted Studio was deployed and browser-confirmed editable in Draft with working formatting controls. Actions run `37653062247` (#85) succeeded in 1m 4s; the CMS conversion triggered successful run `37653230029` (#86) in 1m 5s. The public homepage displays all five paragraphs, verified at 1440px and 390px without horizontal overflow. Editors use Enter for paragraphs, Shift+Enter for a line break, and Publish when their draft is ready.
 
 Homepage About Troy typography (October 7, 2026): `1d9c86e` shares the biography's body-copy font, responsive size, and 1.65 line height through the existing CSS rule. Content and section layout were preserved. Lint, type checking, and the production build passed. Actions run `37650783720` (#83) completed successfully in 1m 1s. The actual public homepage was browser-verified at 1440px and 390px: the shared typography was applied, with no horizontal overflow.
 

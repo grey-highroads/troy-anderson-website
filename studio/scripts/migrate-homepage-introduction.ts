@@ -1,6 +1,7 @@
 import {writeFile} from 'node:fs/promises'
 import {tmpdir} from 'node:os'
 import {join} from 'node:path'
+import {isDeepStrictEqual} from 'node:util'
 import {getCliClient} from 'sanity/cli'
 import {introductionToBlocks} from '../../lib/sanity/homepage'
 
@@ -34,12 +35,12 @@ async function migrate() {
   await transaction.commit()
   for (const document of pending) {
     const saved = await client.getDocument(document._id)
-    if (JSON.stringify(saved?.meetTroySummary) !== JSON.stringify(introductionToBlocks(document.meetTroySummary as string))) {
+    if (!isDeepStrictEqual(saved?.meetTroySummary, introductionToBlocks(document.meetTroySummary as string))) {
       throw new Error(`Introduction verification failed: ${document._id}`)
     }
     for (const [field, value] of Object.entries(document)) {
       if (field === 'meetTroySummary' || ['_rev', '_updatedAt'].includes(field)) continue
-      if (JSON.stringify(saved?.[field]) !== JSON.stringify(value)) {
+      if (!isDeepStrictEqual(saved?.[field], value)) {
         throw new Error(`Unexpected field change: ${document._id}.${field}`)
       }
     }
