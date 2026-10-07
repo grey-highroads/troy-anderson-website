@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import headerArtwork from "../public/images/ta-site-header.svg";
 
 const navigation = [
   { href: "/", label: "Home", number: "01" },
@@ -20,9 +22,14 @@ export function SiteHeader() {
     <header className={`site-header${isOpen ? " is-menu-open" : ""}`}>
       <div className="site-header__identity">
         <Link className="wordmark" href="/" aria-label="Troy Anderson, home">
-          Troy Anderson
+          <Image
+            className="site-header__artwork"
+            src={headerArtwork}
+            alt="Troy Anderson — Life Coach, Author"
+            sizes="75vw"
+            preload
+          />
         </Link>
-        <p className="site-header__strapline">Life Coach, Author</p>
       </div>
 
       <button
