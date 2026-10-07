@@ -72,16 +72,6 @@ export default async function BookPage() {
       </section>
 
       <section className="book-notes-grid">
-        <article className="book-note book-note--ink">
-          <p className="section-label">From the Foreword</p>
-          <blockquote>
-            {book?.forewordExcerpt ||
-              "A selected passage from William Paul Young’s foreword will live in this focused reading panel."}
-            {book?.forewordByline ? (
-              <cite>— {book.forewordByline}</cite>
-            ) : null}
-          </blockquote>
-        </article>
         <article className="book-note book-note--cyan">
           <p className="section-label">Behind the Book</p>
           <h2>

@@ -52,18 +52,6 @@ export const bookType = defineType({
       of: [defineArrayMember({type: 'block'})],
     }),
     defineField({
-      name: 'forewordExcerpt',
-      title: 'Foreword excerpt',
-      type: 'text',
-      rows: 5,
-    }),
-    defineField({
-      name: 'forewordByline',
-      title: 'Foreword byline',
-      type: 'string',
-      description: 'For example: William Paul Young.',
-    }),
-    defineField({
       name: 'inspirationHeading',
       title: 'Behind the book heading',
       type: 'string',

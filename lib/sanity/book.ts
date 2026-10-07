@@ -28,8 +28,6 @@ export type BookContent = {
   coverImageAlt?: string;
   overviewHeading?: string;
   overviewBody?: PortableTextBlock[];
-  forewordExcerpt?: string;
-  forewordByline?: string;
   inspirationHeading?: string;
   inspirationBody?: PortableTextBlock[];
   sampleUrl?: string;
@@ -47,8 +45,6 @@ const bookQuery = `*[_type == "book"] | order(_updatedAt desc)[0]{
   "coverImageAlt": coverImage.alt,
   overviewHeading,
   overviewBody,
-  forewordExcerpt,
-  forewordByline,
   inspirationHeading,
   inspirationBody,
   sampleUrl,
