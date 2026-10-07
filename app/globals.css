@@ -770,6 +770,7 @@ button {
 .subpage-hero__eyebrow {
   grid-column: 1 / -1;
   align-self: start;
+  color: var(--white);
 }
 
 .subpage-hero__title-group {
@@ -780,6 +781,7 @@ button {
 .subpage-hero h1 {
   max-width: 9ch;
   margin: 0;
+  color: var(--soft-cyan);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
   font-size: clamp(5.2rem, 13vw, 13rem);
   font-style: italic;
