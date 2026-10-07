@@ -1,3 +1,5 @@
+import type {PortableTextBlock} from '@portabletext/react'
+
 const projectId =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim() || 'gknd24m7'
 const dataset =
@@ -7,7 +9,7 @@ const apiVersion =
 
 export type HomepageContent = {
   meetTroyHeading?: string
-  meetTroySummary?: string
+  meetTroySummary?: PortableTextBlock[]
   meetTroyPortraitUrl?: string
   meetTroyPortraitWidth?: number
   meetTroyPortraitHeight?: number
@@ -50,7 +52,22 @@ function isWebUrl(value: unknown): value is string {
   }
 }
 
-function cleanHomepageContent(content: HomepageContent): HomepageContent {
+// Keep older documents readable while their plain-text field is migrated.
+export function introductionToBlocks(text: string): PortableTextBlock[] {
+  return text.replace(/\r\n?/g, '\n').split(/\n(?:[\t ]*\n)+/).map((paragraph, index) => ({
+    _type: 'block',
+    _key: `introduction-${index}`,
+    style: 'normal',
+    markDefs: [],
+    children: [{_type: 'span', _key: `text-${index}`, text: paragraph, marks: []}],
+  }))
+}
+
+type HomepageQueryContent = Omit<HomepageContent, 'meetTroySummary'> & {
+  meetTroySummary?: PortableTextBlock[] | string
+}
+
+function cleanHomepageContent(content: HomepageQueryContent): HomepageContent {
   const testimonials = content.testimonials?.filter(
     (testimonial) =>
       typeof testimonial.quote === 'string' &&
@@ -63,6 +80,9 @@ function cleanHomepageContent(content: HomepageContent): HomepageContent {
 
   return {
     ...content,
+    meetTroySummary: typeof content.meetTroySummary === 'string'
+      ? introductionToBlocks(content.meetTroySummary)
+      : content.meetTroySummary,
     meetTroyPortraitUrl: isWebUrl(content.meetTroyPortraitUrl)
       ? content.meetTroyPortraitUrl
       : undefined,
@@ -89,6 +109,6 @@ export async function getHomepageContent(): Promise<HomepageContent | null> {
     throw new Error(`Sanity Homepage query failed with status ${response.status}.`)
   }
 
-  const payload = (await response.json()) as {result?: HomepageContent | null}
+  const payload = (await response.json()) as {result?: HomepageQueryContent | null}
   return payload.result ? cleanHomepageContent(payload.result) : null
 }

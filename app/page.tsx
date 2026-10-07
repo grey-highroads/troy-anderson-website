@@ -1,6 +1,7 @@
 import { EditorialGrid } from "@/components/editorial-grid";
 import Image from "next/image";
 import Link from "next/link";
+import { PortableText } from "@portabletext/react";
 
 import {
   getHomepageContent,
@@ -71,10 +72,13 @@ export default async function Home() {
           <h2 id="meet-troy-title">
             {homepage?.meetTroyHeading || "Meet Troy"}
           </h2>
-          <p className="meet-troy__summary">
-            {homepage?.meetTroySummary ||
-              "Troy Anderson is a life coach and author who helps people turn difficult moments into useful perspective and purposeful action."}
-          </p>
+          <div className="meet-troy__summary portable-copy">
+            {homepage?.meetTroySummary?.length ? (
+              <PortableText value={homepage.meetTroySummary} />
+            ) : (
+              <p>Troy Anderson is a life coach and author who helps people turn difficult moments into useful perspective and purposeful action.</p>
+            )}
+          </div>
           <Link className="meet-troy__link" href="/about">
             Read Troy&apos;s story
             <span aria-hidden="true">↗</span>

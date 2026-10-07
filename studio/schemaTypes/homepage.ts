@@ -15,11 +15,11 @@ export const homepageType = defineType({
     defineField({
       name: 'meetTroySummary',
       title: 'Meet Troy introduction',
-      type: 'text',
+      type: 'array',
       description:
         'A brief introduction to Troy that encourages visitors to continue to the About page.',
-      rows: 5,
-      validation: (rule) => rule.required(),
+      of: [defineArrayMember({type: 'block'})],
+      validation: (rule) => rule.required().min(1),
     }),
     defineField({
       name: 'meetTroyPortrait',
