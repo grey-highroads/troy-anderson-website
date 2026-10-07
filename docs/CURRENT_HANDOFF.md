@@ -43,11 +43,10 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 
 ## Current visual direction
 
-- Dominant homepage color: oxblood.
-- Supporting palette: black/blue-black, warm paper/yellow, cyan/blue, and warm red.
-- Header name: Source Code Pro, white, widely tracked.
-- Header subhead: Source Code Pro italic, paper/light color, sized so `AUTHOR` ends with the final `N` in `ANDERSON`.
-- Header black and oxblood bands are equal height. The name is bottom-aligned in black; the subhead is top-aligned in oxblood.
+- October 7 palette update: charcoal `#1f2322` replaces oxblood; white `#ffffff` replaces both paper/yellow tokens; pale mint `#cee5de` replaces both blue highlight tokens. Existing secondary colors remain.
+- Header name and subtitle use the supplied, unmodified `public/images/ta-site-header.svg` on a white background instead of live text. The artwork targets 75% of the full header width, capped to leave room for the navigation button on narrow screens; height follows its proportions. It remains an accessible home link.
+- Menu bars and small labels on white sections use charcoal for contrast; mint remains the highlight on dark sections and highlighted surfaces.
+- Palette/header implementation (`74d6040`, `51886d4`) is deployed and browser-verified across all five routes at desktop/mobile widths; header sizing was also checked at 768px and 320px. Navigation opens/closes with keyboard and pointer, and the SVG home link works. Lint, type checks, and production build passed.
 - Display and thumbnail typography: Bebas Neue Pro where available, with the current repository fallback strategy.
 - Homepage book promotion follows the supplied reference: book cover, large condensed italic title, directional arrow, and availability line.
 - October 7 refinements are live: the homepage promotion uses the supplied flat book cover (`2729eb4`); shared About, Book, Media, and Contact banners size to their content instead of enforcing minimum heights (`1be3390`). Existing typography and padding remain. All four banners were checked at 1440px and 390px with no horizontal overflow; the short About banner measures approximately 393px on desktop and 269px on mobile. Lint, type checks, and the production build passed.
@@ -233,7 +232,7 @@ The approved Testimonials content already lives in the connected Homepage model 
 ## Regression guardrails
 
 - Read `AGENTS.md` and the installed Next.js version documentation before changing framework code.
-- Preserve the oxblood-led palette and current header proportions unless the user requests a change.
+- Preserve the charcoal/white/mint palette and responsive SVG header unless the user requests a change.
 - Do not restore removed homepage taglines, card metadata, or instructional labels.
 - Do not expose the private Sanity token through a `NEXT_PUBLIC_` variable or browser request.
 - Do not replace the build-time CMS approach with client-side fetching for the private dataset.
