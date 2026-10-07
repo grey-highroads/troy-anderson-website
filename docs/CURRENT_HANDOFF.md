@@ -44,8 +44,8 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 ## Current visual direction
 
 - October 7 palette update: charcoal `#1f2322` replaces oxblood; white `#ffffff` replaces both paper/yellow tokens; pale mint `#cee5de` replaces both blue highlight tokens. Existing secondary colors remain.
-- Header name and subtitle use the supplied, unmodified `public/images/ta-site-header.svg` on a white background instead of live text. The artwork targets 75% of the full header width, capped to leave room for the navigation button on narrow screens; height follows its proportions. It remains an accessible home link.
-- Menu bars and small labels on white sections use charcoal for contrast; mint remains the highlight on dark sections and highlighted surfaces.
+- Header name and subtitle use the supplied, unmodified `public/images/ta-site-header.svg` on a white background instead of live text. The artwork fills the available width up to the navigation button, retaining a 2vw left inset; height follows its proportions. The menu button background is pale mint `#cee5de`. It remains an accessible home link.
+- Menu bars and small labels on white sections use charcoal for contrast; mint remains the highlight on dark sections and highlighted surfaces. The October 7 follow-up (`3d895b3`) also anchors About/Contact portraits to the top below 900px so mobile crops preserve Troy’s face; the mobile About portrait and header/menu alignment at 390px, 768px, and 1440px were live browser-verified. Lint, type checks, and production build passed.
 - Palette/header implementation (`74d6040`, `51886d4`) is deployed and browser-verified across all five routes at desktop/mobile widths; header sizing was also checked at 768px and 320px. Navigation opens/closes with keyboard and pointer, and the SVG home link works. Lint, type checks, and production build passed.
 - Display and thumbnail typography: Bebas Neue Pro where available, with the current repository fallback strategy.
 - Homepage book promotion follows the supplied reference: book cover, large condensed italic title, directional arrow, and availability line.
