@@ -92,6 +92,14 @@ Prove the Book page first during Phase 6, then cover all connected content and s
 
 **Reason:** Editors must be able to publish successive changes without deployment queues, manual rebuilds, or stale-page troubleshooting. Observed GitHub dispatch failures, Pages deployment delays, and ten-minute cache lifetimes make the temporary review publishing path unsuitable for the required production workflow.
 
+## D-012: Simultaneous homepage preview animation
+
+**Status:** Accepted October 7, 2026
+
+Use the supplied GIFs as optimized, silent MP4 loops that autoplay together in the homepage hero. Preserve their individual aspect ratios and remove visible per-tile play icons. Keep whole-tile explicit full-video playback, keyboard focus, Close/Escape, reduced-motion stills, and a single section-level pause control. This supersedes the previous hover-only preview and no-simultaneous-autoplay guidance. Browser autoplay/power policies still apply.
+
+**Reason:** The artist requested an animated, energetic collage. Compact previews deliver that direction without downloading every full video automatically or adding a provider framework.
+
 ## New decision template
 
 ### D-XXX: Short title

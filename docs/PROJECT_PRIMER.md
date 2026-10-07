@@ -21,7 +21,7 @@ The homepage is a full-width editorial composition rather than a gallery with a 
 
 - Short, muted video loops appear inside deliberately sized and cropped tiles.
 - Typography, book promotion, appearances, quotes, and similar blocks may share the same visual field.
-- Hover or focus can activate a preview without making the whole page move constantly.
+- All available hero previews loop together without hover, per the October 7 creative direction (D-012); the grid itself only moves on selection/close.
 - Selecting a clip expands it into the primary viewing position.
 - GSAP Flip moves the surrounding composition into another approved arrangement.
 - Closing a clip may settle the page into a different authored layout.

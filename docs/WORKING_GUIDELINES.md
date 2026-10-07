@@ -13,7 +13,7 @@ These guidelines are the default rules for project decisions. Exceptions should 
 ## User experience
 
 - The content is the show; interface chrome stays minimal.
-- Motion should clarify selection and composition, not create constant activity.
+- Layout motion should clarify selection and composition. The October 7 approved hero direction uses simultaneous looping previews for deliberate visual activity (D-012).
 - No persistent clip labels, metadata cards, or explanatory sidebar on the homepage.
 - Keyboard, touch, and pointer interactions must reach the same outcomes.
 - Respect `prefers-reduced-motion` with a calm, usable alternative.
@@ -40,7 +40,7 @@ These guidelines are the default rules for project decisions. Exceptions should 
 
 ## Performance
 
-- Do not autoplay every video tile.
+- The homepage hero autoplays compact, muted preview loops together (D-012); full videos still require explicit selection.
 - Use compact, muted preview loops with appropriate poster images.
 - Lazy-load media outside the initial viewport.
 - Avoid shipping desktop video assets to mobile when smaller variants are available.
