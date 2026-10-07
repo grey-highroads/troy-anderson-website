@@ -1740,10 +1740,9 @@ button {
 }
 
 /* Pale mint remains a highlight; small labels on white need dark contrast. */
-.meet-troy__eyebrow,
 .subpage-split--paper .section-label,
 .book-detail .section-label,
-.retailers-panel .section-label,
+.endorsements-panel .section-label,
 .contact-layout .section-label {
   color: var(--oxblood);
 }
