@@ -541,9 +541,6 @@ button {
 .meet-troy__summary {
   max-width: 38rem;
   margin: clamp(2.5rem, 4vw, 4.5rem) 0 0;
-  font-family: var(--font-source-code-pro), monospace;
-  font-size: clamp(1rem, 1.35vw, 1.45rem);
-  line-height: 1.55;
 }
 
 .meet-troy__link {
@@ -1072,6 +1069,7 @@ button {
   margin-bottom: 0;
 }
 
+.meet-troy__summary,
 .portable-copy,
 .book-note blockquote cite {
   font-family: var(--font-source-code-pro), monospace;
@@ -1610,10 +1608,6 @@ button {
 
   .meet-troy h2 {
     font-size: clamp(5rem, 24vw, 8rem);
-  }
-
-  .meet-troy__summary {
-    font-size: 1rem;
   }
 
   .meet-troy__portrait,
