@@ -87,7 +87,7 @@ export default async function MediaPage() {
       <section className="media-section media-section--ink">
         <header className="media-section__heading">
           <p className="section-label">Photography</p>
-          <h2>Approved images.</h2>
+          <h2>Approved images</h2>
           <p>
             {media?.photographyIntroduction ||
               "Download approved photography for editorial and publicity use."}
