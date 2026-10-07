@@ -8,7 +8,7 @@ import {
   type HomepageTestimonial,
 } from "@/lib/sanity/homepage";
 
-import bookCover from "../public/images/troy-anderson-book-cover.png";
+import bookCover from "../public/images/troy-anderson-book-flat.jpg";
 
 const fallbackTestimonials: HomepageTestimonial[] = [
   {
