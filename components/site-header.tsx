@@ -26,7 +26,7 @@ export function SiteHeader() {
             className="site-header__artwork"
             src={headerArtwork}
             alt="Troy Anderson — Life Coach, Author"
-            sizes="75vw"
+            sizes="100vw"
             preload
           />
         </Link>

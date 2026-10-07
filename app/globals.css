@@ -55,8 +55,7 @@ button {
 
 .wordmark {
   display: block;
-  width: 75vw;
-  max-width: calc(100% - 4vw);
+  width: calc(100% - 2vw);
   margin-left: 2vw;
   text-decoration: none;
 }
@@ -78,7 +77,7 @@ button {
   gap: 0.65rem;
   padding: 0;
   border: 0;
-  background: var(--yellow);
+  background: var(--cyan);
   color: var(--oxblood);
   cursor: pointer;
 }
@@ -1455,6 +1454,7 @@ button {
 
   .portrait-image {
     height: 65vw;
+    object-position: center top;
   }
 
   .book-detail__cover {
