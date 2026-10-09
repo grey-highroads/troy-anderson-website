@@ -1697,6 +1697,7 @@ button {
 
 /* The supplied preview proportions drive the local video collage. */
 .editorial-grid.has-video-previews {
+  grid-template-columns: repeat(16, minmax(0, 1fr));
   grid-template-rows: auto auto;
   min-height: 0;
 }
@@ -1705,17 +1706,17 @@ button {
   aspect-ratio: var(--preview-ratio);
 }
 .has-video-previews.layout-a .media-tile--1 { grid-area: 1 / 1 / 2 / 9; }
-.has-video-previews.layout-a .media-tile--2 { grid-area: 2 / 1 / 3 / 3; }
-.has-video-previews.layout-a .media-tile--3 { grid-area: 1 / 9 / 3 / 13; }
-.has-video-previews.layout-a .media-tile--4 { grid-area: 2 / 3 / 3 / 4; }
-.has-video-previews.layout-a .media-tile--5 { grid-area: 2 / 4 / 3 / 5; }
-.has-video-previews.layout-a .media-tile--6 { grid-area: 2 / 5 / 3 / 9; }
+.has-video-previews.layout-a .media-tile--2 { grid-area: 1 / 9 / 2 / 13; }
+.has-video-previews.layout-a .media-tile--3 { grid-area: 1 / 13 / 3 / 17; }
+.has-video-previews.layout-a .media-tile--4 { grid-area: 2 / 5 / 3 / 9; }
+.has-video-previews.layout-a .media-tile--5 { grid-area: 2 / 9 / 3 / 13; }
+.has-video-previews.layout-a .media-tile--6 { grid-area: 2 / 1 / 3 / 5; }
 .has-video-previews.layout-b .media-tile--1 { grid-area: 2 / 5 / 3 / 13; }
-.has-video-previews.layout-b .media-tile--2 { grid-area: 1 / 5 / 2 / 7; }
+.has-video-previews.layout-b .media-tile--2 { grid-area: 2 / 13 / 3 / 17; }
 .has-video-previews.layout-b .media-tile--3 { grid-area: 1 / 1 / 3 / 5; }
-.has-video-previews.layout-b .media-tile--4 { grid-area: 1 / 7 / 2 / 8; }
-.has-video-previews.layout-b .media-tile--5 { grid-area: 1 / 8 / 2 / 9; }
-.has-video-previews.layout-b .media-tile--6 { grid-area: 1 / 9 / 2 / 13; }
+.has-video-previews.layout-b .media-tile--4 { grid-area: 1 / 9 / 2 / 13; }
+.has-video-previews.layout-b .media-tile--5 { grid-area: 1 / 13 / 2 / 17; }
+.has-video-previews.layout-b .media-tile--6 { grid-area: 1 / 5 / 2 / 9; }
 .editorial-grid.has-video-previews.is-expanded {
   grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
   grid-template-rows: repeat(5, auto);
@@ -1758,6 +1759,12 @@ button {
   .has-video-previews.is-expanded .media-tile.is-selected {
     grid-column: 1 / -1;
   }
+  .has-video-previews:not(.is-expanded) .media-tile--1 { grid-area: 1 / 1 / 2 / 3; }
+  .has-video-previews:not(.is-expanded) .media-tile--2 { grid-area: 2 / 1 / 3 / 2; }
+  .has-video-previews:not(.is-expanded) .media-tile--6 { grid-area: 2 / 2 / 3 / 3; }
+  .has-video-previews:not(.is-expanded) .media-tile--3 { grid-area: 3 / 1 / 5 / 2; }
+  .has-video-previews:not(.is-expanded) .media-tile--4 { grid-area: 3 / 2 / 4 / 3; }
+  .has-video-previews:not(.is-expanded) .media-tile--5 { grid-area: 4 / 2 / 5 / 3; }
 }
 
 /* Pale mint remains a highlight; small labels on white need dark contrast. */

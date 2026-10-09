@@ -15,14 +15,15 @@ type Tile = {
   title: string;
   tone: string;
   clip?: string;
+  previewClip?: string;
   previewDimensions?: [number, number];
   playbackDimensions?: [number, number];
 };
 
 const tiles: Tile[] = [
   { id: "conversation", eyebrow: "Conversation", title: "Troy Anderson — clip 02", tone: "ink", clip: "TA_BB_02-v2", previewDimensions: [700, 350] },
-  { id: "purpose", eyebrow: "Field note", title: "Purpose.", tone: "cream" },
-  { id: "stage", eyebrow: "On stage", title: "Troy Anderson — clip 08", tone: "blue", clip: "TA_BB_08-v2", previewDimensions: [350, 700], playbackDimensions: [960, 540] },
+  { id: "purpose", eyebrow: "Field note", title: "Troy Anderson — clip 04", tone: "cream", clip: "TA_BB_04-v1", previewDimensions: [350, 350], playbackDimensions: [960, 540] },
+  { id: "stage", eyebrow: "On stage", title: "Troy Anderson — clip 08", tone: "blue", clip: "TA_BB_08-v2", previewClip: "TA_BB_08-v3", previewDimensions: [350, 700], playbackDimensions: [960, 540] },
   { id: "book", eyebrow: "The book", title: "Begin here", tone: "orange" },
   { id: "podcast", eyebrow: "Podcast", title: "A longer answer", tone: "sand" },
   { id: "portrait", eyebrow: "Portrait", title: "Troy Anderson — clip 09", tone: "green", clip: "TA_BB_09-v2", previewDimensions: [350, 350] },
@@ -134,6 +135,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
           const isSelected = selectedId === tile.id;
           const isDimmed = Boolean(selectedId && !isSelected);
           const clipPath = videoBasePath && tile.clip ? `${videoBasePath}/${tile.clip}` : null;
+          const previewPath = videoBasePath && tile.clip ? `${videoBasePath}/${tile.previewClip || tile.clip}` : null;
           const canOpen = Boolean(clipPath || !videoBasePath);
   
           return (
@@ -156,7 +158,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                 <>
                   <Image
                     className="media-tile__poster"
-                    src={`${clipPath}-poster.jpg`}
+                    src={`${previewPath}-poster.jpg`}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
                     loading={index === 0 ? "eager" : "lazy"}
@@ -165,7 +167,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                   {!previewsPaused && !reducedMotion && (
                     <video
                       className="media-tile__preview"
-                      src={`${clipPath}-preview.mp4`}
+                      src={`${previewPath}-preview.mp4`}
                       autoPlay
                       muted
                       loop
@@ -183,7 +185,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                       ref={playerRef}
                       className="media-tile__player"
                       src={`${clipPath}.mp4`}
-                      poster={`${clipPath}-poster.jpg`}
+                      poster={`${previewPath}-poster.jpg`}
                       controls
                       playsInline
                       preload="none"
