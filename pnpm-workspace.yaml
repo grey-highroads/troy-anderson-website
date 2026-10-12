@@ -4,6 +4,7 @@ packages:
 allowBuilds:
   esbuild: true
   unrs-resolver: false
+  workerd: true
 
 minimumReleaseAgeExclude:
   - '@sanity/access-ui@6.13.2'

@@ -3,6 +3,7 @@ import { Bebas_Neue, Source_Code_Pro } from "next/font/google";
 
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ContentFreshness } from "@/components/content-freshness";
 
 import "./globals.css";
 
@@ -42,6 +43,7 @@ export default function RootLayout({
       className={`${sourceCodePro.variable} ${bebasNeue.variable}`}
     >
       <body>
+        {process.env.CLOUDFLARE_RUNTIME === "true" ? <ContentFreshness /> : null}
         <SiteHeader />
         {children}
         <SiteFooter />

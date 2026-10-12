@@ -1,5 +1,13 @@
 # Current Project Handoff
 
+## October 12 Cloudflare migration update
+
+Authenticated Book was proved first on <https://troy-anderson-website.grey-4fe.workers.dev/book/>, followed by D-011 across all five routes and shared Site settings. The existing repository, Sanity project/Studio, GitHub Pages deployment and rebuild webhook remain intact. Live-domain cutover is not approved or performed.
+
+Published revision timing was 1.28–3.90 seconds; missed-notification recovery measured 20.81 seconds through ordinary requests and 59.98 seconds through a background alarm with no Book visits. Duplicate/out-of-order notifications, last-good content during CMS failure across Worker version changes, browser cache headers, desktop/mobile routes, Media's 17 photos, hero controls, and reduced-motion suppression were verified. Field values and existing drafts were preserved. GitHub code-deployment verification is the remaining migration check while this record is being committed.
+
+Read [Cloudflare runtime operations](CLOUDFLARE_RUNTIME.md) for the pinned beta integration, native build-output packaging, dedicated cache, secrets, commands, costs, measured limits and rollback evidence. Sanity now reports a Free project and **public** production dataset after its trial expired, contrary to the historical private-dataset notes below; no plan/visibility change was made. Resolve this before release. Contact delivery, privacy/security, editorial approval and other launch gates remain open. Preserve the two user-owned Superdesign changes exactly.
+
 **Project:** Troy Anderson website  
 **Prepared:** October 9, 2026<br>
 **Prepared by:** 2520 Consulting  

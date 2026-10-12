@@ -1,11 +1,5 @@
+import { readSanity } from "@/lib/sanity/client";
 import type { PortableTextBlock } from "@portabletext/react";
-
-const projectId =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim() || "gknd24m7";
-const dataset =
-  process.env.NEXT_PUBLIC_SANITY_DATASET?.trim() || "production";
-const apiVersion =
-  process.env.NEXT_PUBLIC_SANITY_API_VERSION?.trim() || "2026-09-11";
 
 type Retailer = {
   name: string;
@@ -35,23 +29,6 @@ export type BookContent = {
   endorsements?: Endorsement[];
 };
 
-const bookQuery = `*[_type == "book"] | order(_updatedAt desc)[0]{
-  title,
-  subheader,
-  intro,
-  "coverImageUrl": coverImage.asset->url,
-  "coverImageWidth": coverImage.asset->metadata.dimensions.width,
-  "coverImageHeight": coverImage.asset->metadata.dimensions.height,
-  "coverImageAlt": coverImage.alt,
-  overviewHeading,
-  overviewBody,
-  inspirationHeading,
-  inspirationBody,
-  sampleUrl,
-  retailers[]{name, url},
-  endorsements[]{quote, name, attribution}
-}`;
-
 function isWebUrl(value: unknown): value is string {
   if (typeof value !== "string") return false;
 
@@ -77,24 +54,6 @@ function cleanBookContent(content: BookContent): BookContent {
 }
 
 export async function getBookContent(): Promise<BookContent | null> {
-  const token = process.env.SANITY_API_READ_TOKEN?.trim();
-
-  if (!token) return null;
-
-  const endpoint = new URL(
-    `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`,
-  );
-  endpoint.searchParams.set("query", bookQuery);
-  endpoint.searchParams.set("perspective", "published");
-
-  const response = await fetch(endpoint, {
-    headers: {Authorization: `Bearer ${token}`},
-  });
-
-  if (!response.ok) {
-    throw new Error(`Sanity book query failed with status ${response.status}.`);
-  }
-
-  const payload = (await response.json()) as {result?: BookContent | null};
-  return payload.result ? cleanBookContent(payload.result) : null;
+  const result = await readSanity<BookContent>("book");
+  return result ? cleanBookContent(result) : null;
 }

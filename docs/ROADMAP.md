@@ -12,7 +12,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 | 3 | Application foundation | In progress | Core site and CMS architecture work together |
 | 4 | Homepage experience | In progress | Approved editorial compositions work responsively |
 | 5 | Content routes | In progress | Core public site is feature-complete |
-| 6 | Content and integrations | In progress; production runtime migration not started | Real content and external services work end to end |
+| 6 | Content and integrations | In progress; Cloudflare runtime review deployment verified | Real content and external services work end to end |
 | 7 | QA and client beta | Not started | Release candidate is approved |
 | 8 | Migration, launch, and handoff | Not started | Managed production works; client edits content and controls the domain |
 
@@ -117,11 +117,11 @@ Open broad checkboxes below represent final scope or production acceptance, not 
 
 Approved October 7, 2026. Implement this as part of the production migration build, before client beta. Begin the Phase 8 managed-account, runtime-hosting, and secret-configuration prerequisites here; the final domain cutover remains in Phase 8. GitHub Pages remains the temporary static review site until the replacement passes verification.
 
-- [ ] Establish a Cloudflare Workers review deployment and verify compatibility with the installed Next.js version using the supported adapter selected at implementation time.
-- [ ] Prove secure runtime fetching of published Book content, page-specific cache refresh on an authenticated Sanity publish notification, and automatic time-based recovery when a notification is missed. Keep private credentials on the server and preserve intentional local fallback content.
-- [ ] Extend the proven publishing path to Homepage, About, Contact, Media, and shared Site settings, including all affected pages for shared content. Preserve Media poster precedence, the photo library, and existing content and visual behavior.
+- [x] Establish a Cloudflare Workers review deployment and verify compatibility with the installed Next.js version using the supported adapter selected at implementation time. October 12: vinext 1.1.0 native Workers output, real test URL, no domain cutover; see `CLOUDFLARE_RUNTIME.md`.
+- [x] Prove secure runtime fetching of published Book content, page-specific cache refresh on an authenticated Sanity publish notification, and automatic time-based recovery when a notification is missed. Keep private credentials on the server and preserve intentional local fallback content.
+- [x] Extend the proven publishing path to Homepage, About, Contact, Media, and shared Site settings, including all affected pages for shared content. Preserve Media poster precedence, the photo library, and existing content and visual behavior.
 - [ ] Separate content publishing from code deployment: Sanity publishes refresh content without triggering a full build; code/design changes still deploy through source control. Configure browser, CDN, and application caches together so normal page visits expose fresh content without special URLs or hard refreshes.
-- [ ] Define and measure the freshness targets before beta: published changes visible within 30 seconds under normal conditions, and a documented, tested recovery bound for a missed notification. Record measured results rather than treating the target as an existing guarantee. Preserve the last good content during temporary CMS failures and provide useful operational failure reporting.
+- [x] Define and measure the freshness targets before beta: revision-only publishes measured 1.28–3.90 seconds, missed-notification request recovery 20.81 seconds, background recovery 59.98 seconds. Active-content recovery operating target 70 seconds under healthy CMS/network conditions; last-good content and failure reporting tested. Repeat visible approved editorial changes and managed-production acceptance before beta/cutover.
 
 ### Other content and integrations
 

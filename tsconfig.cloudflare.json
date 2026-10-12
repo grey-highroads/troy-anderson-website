@@ -1,0 +1,6 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": { "incremental": false },
+  "include": [".cloudflare/types/index.d.ts", "cloudflare/**/*.ts", "cloudflare.config.ts", "vite.config.ts", "lib/sanity/queries.ts"],
+  "exclude": ["node_modules"]
+}

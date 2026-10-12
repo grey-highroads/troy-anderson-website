@@ -86,13 +86,15 @@ Use a clean, brand-neutral playback source for the site's primary video experien
 
 ## D-011: Production content refresh without full-site rebuilds
 
-**Status:** Accepted October 7, 2026; implementation pending the production migration build
+**Status:** Accepted October 7, 2026; implemented and measured on the October 12 Cloudflare test deployment; managed-production release/cutover acceptance remains open
 
 Run the production site on Cloudflare Workers with secure server-side reads of published Sanity content. Publish notifications refresh the affected cached content directly; a short time-based refresh provides recovery for missed notifications. Full builds remain for code and design changes. Configure application, CDN, and browser caching together. Preserve draft exclusion, least-privilege credentials, local fallback content, and the existing CMS and visual behavior.
 
 Prove the Book page first during Phase 6, then cover all connected content and shared settings. Select and verify the framework adapter against the installed Next.js version at implementation time. Complete rapid-publish, latest-value, missed-notification, and cache checks before client beta and repeat them with the managed production configuration before DNS cutover. The initial normal-condition freshness target is 30 seconds; measure it and define a tested recovery bound before handoff. A static migration to Cloudflare Pages alone does not satisfy this decision.
 
 **Reason:** Editors must be able to publish successive changes without deployment queues, manual rebuilds, or stale-page troubleshooting. Observed GitHub dispatch failures, Pages deployment delays, and ten-minute cache lifetimes make the temporary review publishing path unsuitable for the required production workflow.
+
+**Implementation evidence:** [Runtime operations](CLOUDFLARE_RUNTIME.md). Book was proved first with vinext 1.1.0, followed by all connected types. Persistent per-type SQLite Durable Objects serialize current published reads and preserve last-good content. Notifications measured 1.28–3.90 seconds; request recovery 20.81 seconds; background recovery 59.98 seconds. GitHub Pages remains enabled. The Sanity dataset's current public visibility differs from the prior private-plan assumption and remains a release issue.
 
 ## D-012: Simultaneous homepage preview animation
 

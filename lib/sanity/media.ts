@@ -1,9 +1,4 @@
-const projectId =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID?.trim() || "gknd24m7";
-const dataset =
-  process.env.NEXT_PUBLIC_SANITY_DATASET?.trim() || "production";
-const apiVersion =
-  process.env.NEXT_PUBLIC_SANITY_API_VERSION?.trim() || "2026-09-11";
+import { readSanity } from "@/lib/sanity/client";
 
 export type MediaVideo = {
   key: string;
@@ -75,36 +70,6 @@ type MediaPageResult = Omit<
     originalFilename?: string;
   }>;
 };
-
-const mediaPageQuery = `*[_type == "mediaPage"] | order(_updatedAt desc)[0]{
-  heading,
-  videoIntroduction,
-  videos[]{
-    _key, title, mediaUrl, shareCopy,
-    thumbnail{
-      "imageUrl": asset->url,
-      "width": asset->metadata.dimensions.width,
-      "height": asset->metadata.dimensions.height,
-      alt
-    }
-  },
-  photographyIntroduction,
-  photos[]{
-    _key,
-    title,
-    "imageUrl": image.asset->url,
-    "width": image.asset->metadata.dimensions.width,
-    "height": image.asset->metadata.dimensions.height,
-    "alt": image.alt
-  },
-  publicityIntroduction,
-  publicityMaterials[]{
-    _key,
-    title,
-    "fileUrl": file.asset->url,
-    "originalFilename": file.asset->originalFilename
-  }
-}`;
 
 function isWebUrl(value: unknown): value is string {
   if (typeof value !== "string") return false;
@@ -191,26 +156,6 @@ function cleanMediaPage(content: MediaPageResult): MediaPageContent {
 }
 
 export async function getMediaPageContent(): Promise<MediaPageContent | null> {
-  const token = process.env.SANITY_API_READ_TOKEN?.trim();
-
-  if (!token) return null;
-
-  const endpoint = new URL(
-    `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`,
-  );
-  endpoint.searchParams.set("query", mediaPageQuery);
-  endpoint.searchParams.set("perspective", "published");
-
-  const response = await fetch(endpoint, {
-    headers: {Authorization: `Bearer ${token}`},
-  });
-
-  if (!response.ok) {
-    throw new Error(
-      `Sanity Media page query failed with status ${response.status}.`,
-    );
-  }
-
-  const payload = (await response.json()) as {result?: MediaPageResult | null};
-  return payload.result ? cleanMediaPage(payload.result) : null;
+  const result = await readSanity<MediaPageResult>("mediaPage");
+  return result ? cleanMediaPage(result) : null;
 }

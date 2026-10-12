@@ -12,7 +12,7 @@ Sign in with an authorized account and use **Draft** to edit; **Published** is r
 - Media has platform-neutral video links with optional thumbnail overrides, 17 approved structured photos, and publicity downloads. Preserve the existing draft and published photo arrays.
 - Publish only when the editor's draft is ready. Never publish a draft automatically or replace it with published content during troubleshooting.
 
-The temporary publish webhook starts a GitHub Pages build. Publishing and visible updates are separate stages, and dispatch/deployment/cache delays have occurred. Production runtime refresh is approved but not implemented; see D-011 and the roadmap.
+The temporary publish webhook still starts a GitHub Pages build. A separate filtered webhook now refreshes the Cloudflare Workers test site without building: <https://troy-anderson-website.grey-4fe.workers.dev/>. Runtime publishing, timed recovery, and last-good content were verified October 12; see D-011 and [runtime operations](../docs/CLOUDFLARE_RUNTIME.md). Retain the preview webhook until production acceptance and retirement are approved. Inspection found the dataset public following the expired Growth trial; resolve intended private visibility before release.
 
 ## Local checks and hosted deployment
 

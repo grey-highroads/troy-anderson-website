@@ -10,7 +10,12 @@
     "build": "next build",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "check": "eslint . && tsc --noEmit && next build"
+    "check": "eslint . && tsc --noEmit && next build",
+    "cloudflare:check": "vinext check",
+    "cloudflare:dev": "node --env-file-if-exists=.dev.vars node_modules/vite/bin/vite.js dev --mode test",
+    "cloudflare:build": "vite build --mode test && node scripts/package-cloudflare.mjs && tsc --noEmit -p tsconfig.cloudflare.json && next typegen",
+    "cloudflare:preview": "node --env-file-if-exists=.dev.vars node_modules/vite/bin/vite.js preview --mode test",
+    "cloudflare:deploy:test": "cf deploy --prebuilt --mode test --secrets-file .dev.vars"
   },
   "dependencies": {
     "@portabletext/react": "^8.0.1",
@@ -20,11 +25,18 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@cloudflare/build-output-utils": "0.9.0",
+    "@cloudflare/vite-plugin": "1.63.1",
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-rsc": "0.5.36",
+    "cf": "1.0.0-beta.14",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.3.4",
-    "typescript": "^5.9.0"
-  }
+    "typescript": "^5.9.0",
+    "vinext": "1.1.0",
+    "vite": "8.3.0"
+  },
+  "type": "module"
 }

@@ -2,6 +2,8 @@
 
 Prepared October 12, 2026. Technical instructions for the next implementation chat.
 
+**October 12 implementation record:** Authenticated Book proof and site-wide D-011 are now deployed and measured on <https://troy-anderson-website.grey-4fe.workers.dev/>. Read [runtime operations](CLOUDFLARE_RUNTIME.md) and the current handoff update before continuing. The original sequence below is retained for release/cutover requirements. GitHub Pages remains active, no domain/DNS changed, and launch gates remain open. Current Sanity production visibility is public after the Growth trial expired; resolve the discrepancy with this handoff's historical private-dataset assumption before release.
+
 Move Troy's website from the temporary GitHub Pages preview to permanent Cloudflare Workers hosting in Grey's existing business account. GitHub remains the code repository. Keep the existing Sanity project and editor address. Troy retains domain registration control; Grey manages hosting and service billing under D-006.
 
 This is an implementation handoff, not a completed deployment. Build and verify the Cloudflare version first; coordinate the live domain switch separately after approval.
