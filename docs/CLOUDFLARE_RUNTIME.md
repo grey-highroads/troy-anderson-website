@@ -27,6 +27,10 @@ Shared Site settings use their own snapshot and affect all five routes. The fram
 
 ## Verified results
 
+- Published code `707948a` has the identical Git tree `d8280e7879eaf919d11a5ea0aad290d5231b16b3` to tested local commit `2896077`. The terminal OAuth credential lacks workflow scope; the connected GitHub account successfully published the same tree using its supported Git API. Main is synchronized locally.
+- Clean GitHub Cloudflare workflow [38314286687](https://github.com/grey-highroads/troy-anderson-website/actions/runs/38314286687) passed dependency installation, lint, website/Worker type checks, build, scoped deployment and deployed-behavior verification. Current Worker version `38b964c7-13db-4314-802e-e36da386160f` records that GitHub commit. A separate local deployed check again passed all five routes, authenticated notifications, shared settings, duplicate events and rejection checks.
+- Retained GitHub Pages workflow [38314286625](https://github.com/grey-highroads/troy-anderson-website/actions/runs/38314286625) passed; all five actual public Pages routes returned 200 after deployment. Neither its workflow nor its Sanity rebuild webhook was retired.
+
 - First milestone: authenticated Book content rendered on the real test URL, including cover, rich text, subheader, retailers, and shared settings. First version `8cf41d56-f8a7-4044-a268-50ed10c9e1cb`.
 - All five normal URLs returned 200 and exposed runtime cache revision evidence with `no-store` headers.
 - Three successive Book revision-only publishes: 1.83, 1.28, and 2.73 seconds. A quick multi-page batch: About 1.58, Contact 3.48, Media 3.67, Homepage 3.90 seconds. These tests created published revisions without changing any content field values or publishing existing drafts.
