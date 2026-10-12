@@ -20,6 +20,8 @@ export default defineConfig({
       NEXT_PUBLIC_SANITY_API_VERSION: bindings.text("2026-09-11"),
       SANITY_API_READ_TOKEN: bindings.secret(),
       SANITY_PUBLISH_SECRET: bindings.secret(),
+      // Dedicated test recipient; production delivery requires release approval.
+      CONTACT_FORM_ID: bindings.text("xbgdabdr"),
       CONTENT_CACHE: bindings.durableObject({ worker: "troy-anderson-website", exportName: "ContentCache" }),
     },
     exports: { ContentCache: exports.durableObject({ storage: "sqlite" }) },

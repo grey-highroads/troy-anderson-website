@@ -3,6 +3,7 @@ import { env } from "cloudflare:workers";
 import { createHash, timingSafeEqual } from "node:crypto";
 import { contentQueries, type ContentType } from "../lib/sanity/queries";
 import type { ContentCache } from "./content-cache";
+import { handleContact } from "./contact";
 export { ContentCache } from "./content-cache";
 
 const routes: Record<ContentType, string[]> = {
@@ -50,6 +51,7 @@ async function refresh(request: Request): Promise<Response> {
 const worker = {
   async fetch(request: Request, workerEnv: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    if (url.pathname.replace(/\/$/, "") === "/api/contact") return handleContact(request, workerEnv);
     const response = url.pathname.replace(/\/$/, "") === "/api/sanity/refresh"
       ? await refresh(request)
       : await app.fetch(request, workerEnv, ctx);

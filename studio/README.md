@@ -1,6 +1,6 @@
 # Troy Anderson Sanity Studio
 
-The hosted editor is <https://troy-anderson.sanity.studio/>. Project `gknd24m7`, private dataset `production`; local and hosted Studio connect to the same content. The dataset name does not mean client-owned production migration is complete.
+The hosted editor is <https://troy-anderson.sanity.studio/>. Project `gknd24m7`, dataset `production` (public, confirmed October 12); local and hosted Studio connect to the same content. The dataset name does not mean client-owned production migration is complete.
 
 ## Editing
 
@@ -12,7 +12,7 @@ Sign in with an authorized account and use **Draft** to edit; **Published** is r
 - Media has platform-neutral video links with optional thumbnail overrides, 17 approved structured photos, and publicity downloads. Preserve the existing draft and published photo arrays.
 - Publish only when the editor's draft is ready. Never publish a draft automatically or replace it with published content during troubleshooting.
 
-The temporary publish webhook still starts a GitHub Pages build. A separate filtered webhook now refreshes the Cloudflare Workers test site without building: <https://troy-anderson-website.grey-4fe.workers.dev/>. Runtime publishing, timed recovery, and last-good content were verified October 12; see D-011 and [runtime operations](../docs/CLOUDFLARE_RUNTIME.md). Retain the preview webhook until production acceptance and retirement are approved. Inspection found the dataset public following the expired Growth trial; resolve intended private visibility before release.
+The temporary publish webhook still starts a GitHub Pages build. A separate filtered webhook now refreshes the Cloudflare Workers test site without building: <https://troy-anderson-website.grey-4fe.workers.dev/>. Runtime publishing, timed recovery, and last-good content were verified October 12; see D-011 and [runtime operations](../docs/CLOUDFLARE_RUNTIME.md). Retain the preview webhook until production acceptance and retirement are approved. Inspection found the dataset public following the expired Growth trial. The working plan is Growth with Grey as Administrator plus one named client Editor. The upgrade has not been performed, publisher selection/invitation is deferred, and private visibility is undecided. See D-013 in [the decision log](../docs/DECISIONS.md) and [the launch plan](../docs/CLIENT_ACCOUNT_SETUP.md).
 
 ## Local checks and hosted deployment
 

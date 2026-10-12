@@ -64,7 +64,7 @@ Default to the simplest solution that meets the approved requirement. New featur
 
 **Status:** Accepted for the temporary GitHub Pages review site; replaced for production by D-011
 
-Fetch the private Sanity production dataset during the static site build using a Viewer-only deployment secret. Keep intentional fallback content for local builds without the token. Trigger the temporary GitHub Pages build with a narrowly filtered Sanity webhook after published content changes.
+Fetch published Sanity production content during the static site build using a Viewer-only deployment secret. Keep intentional fallback content for local builds without the token. Trigger the temporary GitHub Pages build with a narrowly filtered Sanity webhook after published content changes.
 
 **Reason:** The browser never receives the private credential, local development remains unblocked, and an editor can publish content without asking a developer to redeploy. Production retains these credential safeguards while replacing rebuild-based content publishing through D-011.
 
@@ -94,7 +94,7 @@ Prove the Book page first during Phase 6, then cover all connected content and s
 
 **Reason:** Editors must be able to publish successive changes without deployment queues, manual rebuilds, or stale-page troubleshooting. Observed GitHub dispatch failures, Pages deployment delays, and ten-minute cache lifetimes make the temporary review publishing path unsuitable for the required production workflow.
 
-**Implementation evidence:** [Runtime operations](CLOUDFLARE_RUNTIME.md). Book was proved first with vinext 1.1.0, followed by all connected types. Persistent per-type SQLite Durable Objects serialize current published reads and preserve last-good content. Notifications measured 1.28–3.90 seconds; request recovery 20.81 seconds; background recovery 59.98 seconds. GitHub Pages remains enabled. The Sanity dataset's current public visibility differs from the prior private-plan assumption and remains a release issue.
+**Implementation evidence:** [Runtime operations](CLOUDFLARE_RUNTIME.md). Book was proved first with vinext 1.1.0, followed by all connected types. Persistent per-type SQLite Durable Objects serialize current published reads and preserve last-good content. Notifications measured 1.28–3.90 seconds; request recovery 20.81 seconds; background recovery 59.98 seconds. GitHub Pages remains enabled. The Sanity dataset's current public visibility differs from the prior private-plan assumption; D-013 governs the plan/access decision and pending visibility review.
 
 ## D-012: Simultaneous homepage preview animation
 
@@ -103,6 +103,20 @@ Prove the Book page first during Phase 6, then cover all connected content and s
 Use the supplied GIFs as optimized, silent MP4 loops that autoplay together in the homepage hero. Preserve their individual aspect ratios and remove visible per-tile play icons. Keep whole-tile explicit full-video playback, keyboard focus, Close/Escape, reduced-motion stills, and a single section-level pause control. This supersedes the previous hover-only preview and no-simultaneous-autoplay guidance. Browser autoplay/power policies still apply.
 
 **Reason:** The artist requested an animated, energetic collage. Compact previews deliver that direction without downloading every full video automatically or adding a provider framework.
+
+## D-013: Sanity plan and client publishing access
+
+**Status:** Working plan agreed October 12, 2026; implementation deferred; dataset visibility undecided
+
+Troy's team will publish after handoff. Plan for Sanity Growth with Grey as Administrator and one named client publisher as Editor, using their own login. A shared team login was discussed and replaced by the named-publisher plan. The user's subsequent instruction deferred identifying/inviting that person. Do not request those details again until onboarding is resumed.
+
+Budget USD 30/month (USD 360/year) for two non-Viewer members before tax and usage overages, at the October 12 USD 15/member/month price. Grey alone would cost USD 15/month on Growth until the Editor is added. Reviewers with Viewer access are free. No subscription purchase, invitation, role change, or visibility change has occurred or is authorized merely by this planning decision.
+
+**Reason:** Growth permits client publishing without granting full project administration. Free permits publishing only with the broader Administrator role. Private content queries are not inherently necessary for Troy's intended public material; visibility is a separate decision after a read-only review of published fields and assets. Growth includes private datasets without an additional seat charge, but upgrading must not be treated as automatic private visibility.
+
+**Confirmed current state:** Free, active project `gknd24m7`; public `production`; Grey is the only listed project member and is Administrator. An anonymous query returned published content types and the Book document, with no drafts visible. Sanity documents automatic Free/public reversion after trial expiry. Authenticated website reads do not restrict other callers' anonymous access. Public readers cannot write; ordinary asset URLs can remain accessible even with a private dataset. Historical private-dataset references are not evidence of current privacy.
+
+[The launch plan](CLIENT_ACCOUNT_SETUP.md) holds the plain-language explanation, sources, cost assumptions, and deferred actions. Retain the repository, Sanity project/Studio, GitHub Pages and both user-owned Superdesign files. Cloudflare runtime testing is complete; domain/DNS cutover still requires explicit approval.
 
 ## New decision template
 

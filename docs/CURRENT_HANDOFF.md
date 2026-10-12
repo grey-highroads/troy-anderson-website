@@ -1,12 +1,18 @@
 # Current Project Handoff
 
+## October 12 contact delivery update
+
+The Cloudflare test Contact form now sends directly through the dedicated `Troy Contact — Test` Formspree form to verified `grey+troytest@higher-roads.com`. A real website test reached Formspree's normal inbox and the user confirmed receipt. Provider-side required-field/email/message-length validation, success/error handling, and desktop/mobile fit were checked. GitHub Pages retains disabled form delivery. Read [contact operations](CONTACT_DELIVERY.md) before continuing.
+
+The existing Formspree account is Free (50 monthly submissions shared across forms), not a paid Business subscription. No subscription was bought. Final client recipient, capacity/retention, production privacy review, bot-control/failure QA and release acceptance remain open. Sanity Growth/editor onboarding is still a deferred working plan under D-013. No domain/DNS cutover occurred. Preserve both user-owned Superdesign changes and the untracked `cloudflare.config 2.ts`; it appeared during this session and was not used or edited.
+
 ## October 12 Cloudflare migration update
 
 Authenticated Book was proved first on <https://troy-anderson-website.grey-4fe.workers.dev/book/>, followed by D-011 across all five routes and shared Site settings. The existing repository, Sanity project/Studio, GitHub Pages deployment and rebuild webhook remain intact. Live-domain cutover is not approved or performed.
 
 Published revision timing was 1.28–3.90 seconds; missed-notification recovery measured 20.81 seconds through ordinary requests and 59.98 seconds through a background alarm with no Book visits. Duplicate/out-of-order notifications, last-good content during CMS failure across Worker version changes, browser cache headers, desktop/mobile routes, Media's 17 photos, hero controls, and reduced-motion suppression were verified. Field values and existing drafts were preserved. Code commit `707948a` is published on main (the exact tested tree of local `2896077`). Cloudflare Actions run `38314286687` and retained GitHub Pages run `38314286625` both passed. All five routes and authenticated refresh were rechecked on the actual deployed sites.
 
-Read [Cloudflare runtime operations](CLOUDFLARE_RUNTIME.md) for the pinned beta integration, native build-output packaging, dedicated cache, secrets, commands, costs, measured limits and rollback evidence. Sanity now reports a Free project and **public** production dataset after its trial expired, contrary to the historical private-dataset notes below; no plan/visibility change was made. Resolve this before release. Contact delivery, privacy/security, editorial approval and other launch gates remain open. Preserve the two user-owned Superdesign changes exactly.
+Read [Cloudflare runtime operations](CLOUDFLARE_RUNTIME.md) for the pinned beta integration, native build-output packaging, dedicated cache, secrets, commands, costs, measured limits and rollback evidence. Sanity now reports a Free project and **public** production dataset after its trial expired, contrary to the historical private-dataset notes below; no plan/visibility change was made. The agreed working plan is Growth with Grey as Administrator plus one named client Editor, USD 30/month before tax/overages once both are active. The publisher identity/invitation is deferred; no subscription or visibility change is authorized by this documentation. Private visibility remains undecided. See D-013 and [the launch plan](CLIENT_ACCOUNT_SETUP.md) for confirmed facts, pricing and remaining decisions. Contact delivery, privacy/security, editorial approval and other launch gates remain open. Preserve the two user-owned Superdesign changes exactly.
 
 **Project:** Troy Anderson website  
 **Prepared:** October 9, 2026<br>
@@ -59,7 +65,7 @@ The original inherited handoff `90d249d` and Media poster implementation `d67a79
 - Current implementation baseline: `2890bfa`; October 7 verification documentation: `f645d60`, handoff refresh: `df2b86e`. Use the latest `main` revision as authoritative.
 - Sanity project: `Troy Anderson Website 1`
 - Sanity project ID: `gknd24m7`
-- Sanity dataset: `production` (private)
+- Sanity dataset: `production` (public, confirmed October 12; private visibility undecided under D-013)
 - Hosted Studio: <https://troy-anderson.sanity.studio/>
 - Hosted Studio application ID: `t79qynbc05nitxgc59r4fq63` (public deployment identifier, not a credential)
 - Local Studio URL when running: <http://127.0.0.1:3333/>
@@ -231,7 +237,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Contact content and publish-triggered deployment are connected and verified.
 - Media is now a public route. Its video entries are outbound provider-neutral links; clean in-site hosted playback and the homepage video experience remain separate parallel work.
 - Video poster selection occurs during the static build. Provider availability is checked at that time; later image removal requires a rebuild to select a fallback. The current sample has no Sanity override and displays its YouTube poster. Custom override precedence was checked with a fixture without changing the published or draft Media documents. Cloudflare Stream poster resolution remains deferred until the production provider and URL or identifier format are selected.
-- Contact form behavior is not connected to a delivery service.
+- Cloudflare test form delivery is verified to Grey’s test inbox; the final client recipient and production acceptance remain open. GitHub Pages delivery stays disabled. See `CONTACT_DELIVERY.md`.
 - No analytics, advertising pixels, consent manager, or cookie banner is currently installed.
 - Add a privacy notice before enabling real form submissions or analytics. Decide on a cookie banner only after inventorying the actual cookies, embeds, and browser storage introduced by approved integrations.
 - GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
@@ -301,7 +307,7 @@ The approved Testimonials content already lives in the connected Homepage model 
 - Keep rich-text Meet Troy paragraphs/soft breaks and the removed Book foreword fields/panel. Use Studio Draft for editing; Published is read-only.
 - Do not restore removed homepage taglines, card metadata, or instructional labels.
 - Do not expose the private Sanity token through a `NEXT_PUBLIC_` variable or browser request.
-- Do not replace the build-time CMS approach with client-side fetching for the private dataset.
+- Keep CMS reads server-side: runtime on Cloudflare, build-time on GitHub Pages. Authentication does not make the currently public dataset private; see D-013.
 - Do not remove fallback content; local builds currently depend on it when no private token is present.
 - Do not enable Sanity draft webhook events; they would deploy on routine editor keystrokes.
 - Do not broaden the webhook token beyond the single repository and Actions permission.

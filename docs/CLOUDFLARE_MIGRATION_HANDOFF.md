@@ -2,13 +2,13 @@
 
 Prepared October 12, 2026. Technical instructions for the next implementation chat.
 
-**October 12 implementation record:** Authenticated Book proof and site-wide D-011 are now deployed and measured on <https://troy-anderson-website.grey-4fe.workers.dev/>. Read [runtime operations](CLOUDFLARE_RUNTIME.md) and the current handoff update before continuing. The original sequence below is retained for release/cutover requirements. GitHub Pages remains active, no domain/DNS changed, and launch gates remain open. Current Sanity production visibility is public after the Growth trial expired; resolve the discrepancy with this handoff's historical private-dataset assumption before release.
+**October 12 implementation record:** Authenticated Book proof and site-wide D-011 are now deployed and measured on <https://troy-anderson-website.grey-4fe.workers.dev/>. Read [runtime operations](CLOUDFLARE_RUNTIME.md) and the current handoff update before continuing. The original sequence below is retained for release/cutover requirements. GitHub Pages remains active, no domain/DNS changed, and launch gates remain open. Current Sanity production visibility is public after the Growth trial expired; D-013 and [the launch plan](CLIENT_ACCOUNT_SETUP.md) supersede the historical private-dataset assumption. Growth with Grey plus one named Editor is the working plan, not an implemented upgrade; invitation is deferred and visibility remains undecided.
 
 Move Troy's website from the temporary GitHub Pages preview to permanent Cloudflare Workers hosting in Grey's existing business account. GitHub remains the code repository. Keep the existing Sanity project and editor address. Troy retains domain registration control; Grey manages hosting and service billing under D-006.
 
-This is an implementation handoff, not a completed deployment. Build and verify the Cloudflare version first; coordinate the live domain switch separately after approval.
+The original implementation sequence below is retained for reference. The Cloudflare test deployment is complete and verified; remaining release gates and any live domain switch still require acceptance and explicit cutover approval.
 
-## Current starting point
+## Original starting point (historical; implementation record above takes precedence)
 
 - Workspace: `/Users/greygarner/Documents/Codex/2026-09-10/referenced-chatgpt-conversation-this-is-an-2`.
 - Repository: `grey-highroads/troy-anderson-website`, branch `main`. Inspect its latest revision rather than resetting to an earlier milestone.
@@ -16,7 +16,7 @@ This is an implementation handoff, not a completed deployment. Build and verify 
 - Stack: Next.js 16.3.4, React 19.2.8, Node 24, pnpm 11.19.0.
 - `next.config.ts` always uses `output: "export"`. `GITHUB_PAGES=true` adds `/troy-anderson-website` to URLs.
 - `.github/workflows/pages.yml` builds `out/` and deploys GitHub Pages. Sanity publishes currently trigger this rebuild path.
-- CMS: project `gknd24m7`, private dataset `production`, API version `2026-09-11`. Studio: <https://troy-anderson.sanity.studio/>.
+- CMS: project `gknd24m7`, dataset `production` (originally assumed private; confirmed public October 12), API version `2026-09-11`. Studio: <https://troy-anderson.sanity.studio/>.
 - No Worker, runtime refresh endpoint, or production domain cutover is implemented.
 
 Read `AGENTS.md`, `CURRENT_HANDOFF.md`, D-006/D-011 in `DECISIONS.md`, and the installed Next.js deployment/cache guides before changes. Preserve the user-owned `.superdesign/design-system.md` and `.superdesign/resume.json`. Follow the October 12 documentation updates establishing the managed-service plan.

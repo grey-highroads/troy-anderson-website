@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { ContactForm } from "@/components/contact-form";
 import { SubpageShell } from "@/components/subpage-shell";
 import { getContactContent } from "@/lib/sanity/contact";
 
@@ -41,37 +42,7 @@ export default async function ContactPage() {
         <div className="contact-form-panel">
           <p className="section-label">Send a Note</p>
           <h2>{contact?.formHeading || "What would you like to talk about?"}</h2>
-          <form className="contact-form">
-            <label>
-              Name
-              <input type="text" name="name" autoComplete="name" />
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" autoComplete="email" />
-            </label>
-            <label>
-              Inquiry type
-              <select name="inquiry" defaultValue="">
-                <option value="" disabled>
-                  Choose one
-                </option>
-                <option>Coaching</option>
-                <option>Speaking</option>
-                <option>Media</option>
-                <option>Book</option>
-                <option>Other</option>
-              </select>
-            </label>
-            <label>
-              Message
-              <textarea name="message" rows={6} />
-            </label>
-            <button type="submit" disabled>
-              Send Message
-            </button>
-            <p className="form-note">Form delivery will be connected before launch.</p>
-          </form>
+          <ContactForm runtime={process.env.CLOUDFLARE_RUNTIME === "true"} />
         </div>
       </section>
     </SubpageShell>
