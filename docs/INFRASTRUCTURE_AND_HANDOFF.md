@@ -1,110 +1,37 @@
 # Infrastructure and Handoff
 
-## Actual state at October 7, 2026
+## Managed service plan
 
-The review site is GitHub Pages from `grey-highroads/troy-anderson-website` `main`, using Next.js static export and private authenticated Sanity build-time reads. Hosted Studio is <https://troy-anderson.sanity.studio/> on project `gknd24m7`, dataset `production`. Local/hosted Studio share that dataset; its name does not establish client ownership. No Cloudflare Workers deployment, production runtime refresh, client-owned migration, or DNS cutover has been completed.
+Plan revised October 12, 2026 to minimize client setup. See [the short launch plan](CLIENT_ACCOUNT_SETUP.md) and D-006. Agree the managed-service terms with Troy before launch; no account or infrastructure changes have been made by this documentation update.
 
-D-011 requires production on Cloudflare Workers: configure the compatible runtime/adapter, accounts, and secrets during Phase 6; prove Book content refresh then extend all connected types; verify rapid publishes/cache/failure recovery in Phase 7; reconfirm client-owned configuration and retire the CMS-to-GitHub rebuild trigger only after the replacement works, before Phase 8 cutover. Full builds remain for code/design. A static Cloudflare Pages migration does not satisfy this requirement.
+2520 Consulting manages production through Grey's existing business accounts. Keep Troy's repository, CMS project, Worker, and contact form distinct from other client resources. Troy retains domain-registration control and ownership of the website code, content, and supplied media. Client editors receive access to Sanity; form notifications go to their approved existing inbox. Separate client infrastructure accounts and ownership transfers are no longer launch prerequisites.
 
-The existing webhook credential expires December 10, 2026. Rotate it with the existing least-privilege scope before expiry; store the secret outside repository/docs. The current website uses Node 24. Node 20 warnings belong to older GitHub helper actions, not the application runtime; upgrading those declarations is separate maintenance, not a fix for publishing failures.
+## Current infrastructure
 
-See `CURRENT_HANDOFF.md` for measured failures, verified revisions, and the startup checklist. This file records production ownership requirements, not claims that the target services already exist.
+Use [the Cloudflare migration handoff](CLOUDFLARE_MIGRATION_HANDOFF.md) for the implementation sequence and next-chat prompt.
 
-## Ownership policy
+The review site is GitHub Pages from `grey-highroads/troy-anderson-website`, using static export and authenticated Sanity build-time reads. The hosted Studio is <https://troy-anderson.sanity.studio/>, project `gknd24m7`, private dataset `production`. Keep this project and content rather than migrating them for account ownership alone.
 
-The client will own all production accounts, billing relationships, domains, source code, content, and deployment configuration.
+Cloudflare Workers production hosting, runtime content refresh, form delivery, and domain cutover remain unfinished. D-011 still requires secure published-content refresh and missed-notification recovery before beta; full builds remain for code/design changes. Verify the runtime adapter against the installed Next.js version. Prove Book refresh, extend connected content/settings, and test rapid publishing and coordinated caches before cutover. The 30-second normal-condition freshness target remains unmeasured.
 
-To avoid blocking early work, 2520 Consulting may use existing accounts for local development, technical proofs, and staging. Those resources are temporary and must not become the production system by default.
+The temporary GitHub webhook credential expires December 10, 2026. Rotate it before expiry if still used. Retire CMS-triggered preview rebuilds only after the runtime replacement is verified.
 
-## Environment model
+## Operating responsibilities
 
-| Environment | Purpose | Ownership | Real data | Live domain |
-| --- | --- | --- | --- | --- |
-| Local | Daily implementation | 2520 Consulting | No | No |
-| Staging | Review and technical proof | Temporarily 2520 Consulting | Representative or approved test content | No |
-| Production | Public website | Client | Yes | Yes |
+- Grey handles service billing, deployment, credentials, renewals, backups, recovery, and infrastructure support. Agree the recurring charge and included support before launch; do not assume current subscriptions cover all usage.
+- Troy controls domain registration, approves content and launch, and designates editors and contact recipients.
+- Limit client editing access to Troy's project. Keep private credentials server-side, scope deployment access, and protect Grey's administrative logins with recovery methods.
+- Maintain a reproducible deployment and regular code/content/media backups. Keep a current recovery copy and configuration notes securely accessible to the client; agree backup frequency and retention before launch.
+- If service ends, supply the code, content, media, configuration, and transition assistance. Account transfers or recreation may be required. Record notice, charges, and support boundaries in the service agreement.
 
-## Safe temporary setup
+## Launch checks
 
-Development can begin with:
+1. Agree managed-service responsibilities and the recurring charge with Troy.
+2. Verify the Cloudflare runtime, publish freshness/recovery, draft exclusion, forms, and approved integrations on a test hostname.
+3. Verify the intended editor can publish and the approved inbox receives a test inquiry.
+4. Complete the existing privacy, security, accessibility, and performance launch checks.
+5. Record the current domain and email DNS settings and a rollback path.
+6. Coordinate cutover with the domain owner and verify the live website and existing email.
+7. Deliver the editing instructions and secure recovery copy.
 
-- A private repository in the 2520 GitHub organization
-- A Cloudflare staging project using a temporary preview hostname
-- A Sanity development project or dataset
-- Test-only form credentials
-- Representative content cleared for staging use
-
-Temporary infrastructure must not:
-
-- Own or control the client's registered domain
-- Become the only copy of production content
-- Receive real contact submissions without explicit approval
-- Contain client production secrets or personal billing details
-- Require a rewrite to deploy in a different account
-
-## Portability requirements
-
-- Keep account-specific identifiers in environment variables.
-- Maintain an up-to-date `.env.example` containing names and explanations, never values.
-- Keep deployment configuration in the repository wherever practical.
-- Document every external service and the reason it exists.
-- Avoid dependencies on personal user accounts when an organization or project account is available.
-- Make the production build reproducible from the repository and documented environment values.
-
-## Migration timing
-
-Client account setup should begin after the technical proof is approved and finish before client beta. Do not postpone infrastructure migration until launch day.
-
-Recommended checkpoints:
-
-1. **Prototype approved:** send the client a short account checklist.
-2. **Application foundation complete:** create client organizations and invite 2520.
-3. **Before client beta:** establish the client-owned production deployment and CMS.
-4. **Before DNS cutover:** verify billing, permissions, secrets, backups, forms, analytics, privacy disclosures, consent behavior, and security headers.
-5. **After launch:** remove temporary dependencies and confirm client access.
-
-## Resource handoff matrix
-
-| Resource | Temporary development state | Production target | Completion test |
-| --- | --- | --- | --- |
-| GitHub | Private 2520 repository | Client-owned organization/repository | Client administrator can manage access and the default branch deploys |
-| Cloudflare | No runtime deployment implemented; GitHub Pages is current review host | Client-owned Workers runtime deployment (D-011) | Runtime build and content-refresh proof succeeds; client controls billing/settings |
-| Sanity | Development project or dataset | Client-owned project/organization | Andrew can edit and publish approved content |
-| Sanity Studio | `https://troy-anderson.sanity.studio/` on the existing development project | Studio attached to the client-owned project | Confirm whether the address is retained during transfer/migration; authorized editors can sign in and publish |
-| Domain and DNS | Remain untouched | Existing client-controlled registrar/DNS | Site resolves correctly and email records remain valid |
-| Forms | Test credentials | Client-owned delivery credentials | Test submission reaches the approved recipient |
-| Analytics | None or test property | Client-owned property | Client can view verified production traffic |
-| Secrets | Local/staging values | Client production environment | No production secret depends on a personal account |
-| Privacy and consent | No banner before tracker inventory | Client-approved notice and consent configuration | Published disclosures and consent behavior match the production data flows |
-
-## Cutover procedure
-
-1. Freeze release-candidate code and record the deployed revision.
-2. Confirm the client can access every production service.
-3. Populate production environment variables from client-owned credentials.
-4. Deploy to the client's verified Cloudflare Workers runtime project with D-011 publishing and cache configuration.
-5. Validate production content, media, forms, metadata, and analytics on the temporary production hostname.
-6. Review current DNS records, especially mail-related records, before changing anything.
-7. Point the web records to the verified production deployment.
-8. Run launch smoke tests on the live domain.
-9. Deliver operating instructions and complete CMS training.
-10. Agree on a short rollback and temporary-resource retention window.
-
-## Final handoff checklist
-
-- [ ] Client administrator access is confirmed for every production service.
-- [ ] Client billing is active where required.
-- [ ] Repository ownership and branch permissions are confirmed.
-- [ ] Production deployment can be reproduced from the repository.
-- [ ] CMS editing and publishing are tested by Andrew or another designated editor.
-- [ ] Domain and DNS ownership remain with the client.
-- [ ] Existing email delivery is verified after DNS changes.
-- [ ] Forms and notifications use client-owned credentials.
-- [ ] Analytics belongs to the client.
-- [ ] The published privacy notice matches production forms, analytics, embeds, processors, retention, and contact details.
-- [ ] Consent controls are present only where required by the production cookie and storage inventory, and non-essential tools respect the selected choice.
-- [ ] Production response headers, dependencies, browser bundles, and repository history have passed the release security review.
-- [ ] Secrets and recovery methods are documented securely outside the repository.
-- [ ] Temporary credentials are rotated or revoked, and production credential owners and expiration dates are recorded securely.
-- [ ] 2520 and Jonathan access is removed or reduced according to the support agreement.
-- [ ] Temporary staging resources are archived after the agreed retention period.
+Account setup simplicity does not remove the site's existing production publishing and launch requirements.

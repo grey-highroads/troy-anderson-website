@@ -14,13 +14,13 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 | 5 | Content routes | In progress | Core public site is feature-complete |
 | 6 | Content and integrations | In progress; production runtime migration not started | Real content and external services work end to end |
 | 7 | QA and client beta | Not started | Release candidate is approved |
-| 8 | Migration, launch, and handoff | Not started | Client owns and operates production |
+| 8 | Migration, launch, and handoff | Not started | Managed production works; client edits content and controls the domain |
 
 ## October 9 continuation snapshot
 
 Current implementation is `2890bfa` (October 9), following the October 7 handoff refresh `df2b86e`. Five public routes, six CMS types, 17 Media photos/poster rendering, rich-text Meet Troy, and the four-clip hero proof are live. Recent creative refinements (charcoal/white/mint, flush SVG header reaching the menu, mobile top-anchored portraits, flat homepage cover, content-sized banners, and exact text accents) are complete; see the handoff's revision/evidence table.
 
-Open broad checkboxes below represent final scope or production acceptance, not absence of the partial proofs. Two collage tiles remain placeholders; reduced-motion browser emulation, real-device/media performance QA, final content/captions/titles, Appearances scope, clip CMS/production delivery, forms, metadata/analytics/privacy, and client-owned migration remain unresolved. No new implementation task was selected at handoff. D-011's Worker setup must precede QA/beta; do not interpret the Phase 7 tests as the place to first configure hosting.
+Open broad checkboxes below represent final scope or production acceptance, not absence of the partial proofs. Two collage tiles remain placeholders; reduced-motion browser emulation, real-device/media performance QA, final content/captions/titles, Appearances scope, clip CMS/production delivery, forms, metadata/analytics/privacy, and managed production launch remain unresolved. No new implementation task was selected at handoff. D-011's Worker setup must precede QA/beta; do not interpret the Phase 7 tests as the place to first configure hosting.
 
 ## Phase 0: Documentation and setup
 
@@ -115,7 +115,7 @@ Open broad checkboxes below represent final scope or production acceptance, not 
 
 ### Required production publishing migration (D-011)
 
-Approved October 7, 2026. Implement this as part of the production migration build, before client beta. Begin the Phase 8 client-account, runtime-hosting, and secret-configuration prerequisites here; the final domain cutover remains in Phase 8. GitHub Pages remains the temporary static review site until the replacement passes verification.
+Approved October 7, 2026. Implement this as part of the production migration build, before client beta. Begin the Phase 8 managed-account, runtime-hosting, and secret-configuration prerequisites here; the final domain cutover remains in Phase 8. GitHub Pages remains the temporary static review site until the replacement passes verification.
 
 - [ ] Establish a Cloudflare Workers review deployment and verify compatibility with the installed Next.js version using the supported adapter selected at implementation time.
 - [ ] Prove secure runtime fetching of published Book content, page-specific cache refresh on an authenticated Sanity publish notification, and automatic time-based recovery when a notification is missed. Keep private credentials on the server and preserve intentional local fallback content.
@@ -163,22 +163,22 @@ Approved October 7, 2026. Implement this as part of the production migration bui
 
 Account and hosting prerequisites begin during Phase 6 so the runtime publishing path can be verified before Phase 7 client beta. Complete the production-account verification below before DNS cutover.
 
-- [ ] Establish client-owned GitHub, Cloudflare, Sanity, analytics, and form-service access.
-- [ ] Transfer the repository or create the client-owned production source of truth.
-- [ ] Create and verify the production Cloudflare Workers deployment in the client's account with the runtime content-refresh approach from D-011; a static Pages migration alone does not meet this requirement.
-- [ ] Transfer or migrate the approved Sanity configuration and production content.
-- [ ] Configure production secrets and client billing.
-- [ ] Connect the authenticated Sanity publish notifications to the verified production refresh endpoint and reconfirm rapid-publish and missed-notification recovery with client-owned credentials. Retire the Sanity-to-GitHub rebuild trigger after the replacement is verified; retain code deployment independently.
+- [ ] Agree managed-service billing, support, backups, and exit terms with Troy (D-006).
+- [ ] Confirm dedicated Troy resources in Grey's existing business accounts and client editing access; retain the existing repository and CMS project.
+- [ ] Create and verify the production Cloudflare Workers deployment in Grey's managed business account with the runtime content-refresh approach from D-011; a static Pages migration alone does not meet this requirement.
+- [ ] Verify the existing Sanity project, private dataset, content, and intended editor access.
+- [ ] Configure production secrets and verify actual recurring service costs.
+- [ ] Connect the authenticated Sanity publish notifications to the verified production refresh endpoint and reconfirm rapid-publish and missed-notification recovery with managed production credentials. Retire the Sanity-to-GitHub rebuild trigger after the replacement is verified; retain code deployment independently.
 - [ ] Rotate temporary credentials, record expiration and ownership outside the repository, and enable available secret scanning or push protection.
 - [ ] Assign an owner for privacy-notice updates and consent configuration when services change.
 - [ ] Validate DNS changes without disturbing existing email records.
 - [ ] Launch and complete smoke testing.
 - [ ] Train the client team and deliver operating documentation.
 - [ ] Document expected publish-to-visible timing, automatic recovery, and the support escalation path; routine editing must not require GitHub access, manual rebuilds, cache-busting links, or hard refreshes.
-- [ ] Remove or downgrade 2520 and Jonathan access as agreed.
+- [ ] Retain Grey's operational access; remove or downgrade other access as agreed and supply the client recovery copy.
 - [ ] Archive temporary infrastructure after the retention period.
 
-**Milestone:** The client owns the functioning production system and can publish successive content updates without developer assistance or full-site rebuilds. The D-011 publishing checks must pass before launch.
+**Milestone:** The managed production site is operational. The client controls the domain, owns code/content, and can publish successive content updates without developer assistance or full-site rebuilds. The D-011 publishing checks must pass before launch.
 
 ## Later ideas
 

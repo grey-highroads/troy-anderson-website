@@ -15,7 +15,7 @@ The objective is not to make every website identical. The objective is to make d
 3. Prove the riskiest assumption early. For this project, those risks were the editorial homepage interaction and the CMS publishing path.
 4. Work in vertical slices. One complete page connected end to end is more valuable than many partially configured schemas.
 5. Keep the default branch deployable and make every milestone produce visible evidence.
-6. Let temporary 2520 infrastructure unblock development, but design every dependency for transfer to client-owned accounts.
+6. Choose the operating model early. Troy's October 12 plan uses managed 2520 business accounts with client domain control and code/content ownership; preserve a recovery and transition path.
 7. Never put credentials in source control, screenshots, chat, or documentation.
 8. Record decisions and current state in the repository instead of relying on conversation history.
 
@@ -32,7 +32,7 @@ The service can be sold and managed as eight chapters. Each chapter has a concre
 | 5. Content system | Remaining approved schemas and page integrations | Every launch content area has a deliberate model and safe empty state |
 | 6. Experience build | Final layouts, motion, media, and real content | Feature-complete review build passes responsive and accessibility checks |
 | 7. Client beta | Release candidate, editorial review, forms, metadata, and analytics | Stakeholders approve content and no launch blockers remain |
-| 8. Migration and launch | Client-owned production system and operating guide | Client controls every account and can perform routine updates independently |
+| 8. Migration and launch | Managed production and editing guide | Client can publish, controls the domain, and has a recovery copy |
 
 ## Standard build sequence
 
@@ -170,11 +170,11 @@ For each content type:
 
 ### 11. Migrate before launch pressure begins
 
-- Start client account creation after the technical proof is approved.
-- Move the repository, CMS, hosting, analytics, and form credentials before client beta.
-- Test a full deployment from the client-owned environment before DNS changes.
+- For Troy, retain the existing business accounts, repository, and CMS project under D-006; confirm managed-service terms and editor access.
+- Configure dedicated production resources and recovery copies before beta.
+- Test a full deployment from the managed production environment before DNS changes.
 - Inventory DNS records before touching the domain, especially mail-related records.
-- Rotate temporary credentials and reduce 2520 access after handoff.
+- Rotate temporary credentials; retain the agreed operational access and reduce other access after launch.
 
 ## Quality gates for every increment
 
@@ -206,7 +206,7 @@ Before calling an increment complete:
 | Failure mode | Response |
 | --- | --- |
 | Designing a large CMS before testing an editor | Build one vertical slice and conduct a real publish test first |
-| Local development blocked by client account setup | Use explicitly temporary 2520 infrastructure designed for later transfer |
+| Local development blocked by client account setup | Choose managed operation or client-owned operation early; avoid unnecessary ownership transfers |
 | Secrets accidentally treated as public configuration | Separate public identifiers from private build credentials and audit prefixes |
 | Static site does not update after CMS publish | Add a filtered publish webhook only after manual deployment is proven |
 | Command-line GitHub credential cannot modify workflows | Make the smallest workflow edit through an authenticated GitHub interface, then sync locally |
@@ -236,7 +236,7 @@ Track enough data to improve the service without creating administrative drag:
 - Build and deployment duration.
 - Defects found after each milestone gate.
 - Hours spent on account access and credential coordination.
-- Time required to migrate into client-owned infrastructure.
+- Time required to establish the chosen production operating model.
 
 Review these at project close and update this playbook with only the lessons that generalize.
 

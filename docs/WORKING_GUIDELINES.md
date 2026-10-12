@@ -68,10 +68,10 @@ These guidelines are the default rules for project decisions. Exceptions should 
 ## Environments and data
 
 - Local, staging, and production are separate environments.
-- Temporary 2520 accounts may host development and staging only.
+- Grey's existing business accounts may host development, staging, and managed production under D-006.
 - Do not connect the live domain to temporary 2520 infrastructure.
-- Do not collect real form submissions or store production secrets in temporary environments.
-- Production data and billing belong in client-owned accounts before launch.
+- Keep live form submissions and production secrets in the verified production resources.
+- The client owns code/content and controls domain registration. Grey manages service billing, backups, and recovery under agreed managed-service terms.
 
 ## Definition of done
 

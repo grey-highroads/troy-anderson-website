@@ -13,7 +13,7 @@ This is not a generic video gallery or a flexible page-builder project. The publ
 - Give Andrew and the client team straightforward content-editing workflows.
 - Support books, appearances, media, testimonials, biography, and contact information.
 - Establish durable routes that can support publicity and future campaigns.
-- Hand off a site that the client owns and can operate without routine developer assistance.
+- Give the client ownership of code/content and independent content editing, with Grey managing infrastructure.
 
 ## Homepage experience
 
@@ -63,8 +63,8 @@ The project is successful when:
 - Core pages have stable, shareable URLs.
 - Andrew can complete common content updates without developer help.
 - Performance, keyboard access, reduced motion, and basic SEO are verified.
-- The client owns the production accounts, code, deployment, and documentation.
-- 2520 Consulting and Jonathan can leave the project cleanly after handoff.
+- The client owns code/content and controls the domain; Grey manages production with a documented recovery and transition path.
+- Jonathan can finish creative delivery; Grey provides ongoing managed operation and an orderly transition if service ends.
 
 ## Explicit non-goals
 

@@ -8,7 +8,7 @@ The project centers on a full-width editorial homepage made from short video cli
 
 **Current state (October 7, 2026):** Core public routes and six CMS types are connected; creative review and the real-video homepage proof are in progress. Production migration and launch remain unfinished. Start with [the current handoff](docs/CURRENT_HANDOFF.md).
 
-The build has been approved at a fixed price of $9,500. Development may begin in temporary 2520 Consulting accounts so prototyping is not blocked by client account setup. All production infrastructure will be moved to or created in client-owned accounts before launch.
+The build has been approved at a fixed price of $9,500. The October 12 launch plan uses Grey's existing business accounts for managed production hosting. Troy retains domain control and ownership of code/content; his team uses Sanity. See [the short launch plan](docs/CLIENT_ACCOUNT_SETUP.md) and D-006 for support and recovery responsibilities.
 
 ## Core direction
 
@@ -40,7 +40,7 @@ The latest hero proof uses three real replacement clips with simultaneous silent
 2. Keep content editable and the visual system protected.
 3. Prove risky interactions before expanding the build.
 4. Treat mobile as an authored experience, not a compressed desktop layout.
-5. Keep production ownership with the client.
+5. Keep client domain control and code/content ownership; provide managed operation and a recovery copy.
 6. Avoid scope creep, feature creep, and infrastructure that does not earn its complexity.
 
 ## Current site areas
@@ -89,11 +89,11 @@ The hosted Studio and local Studio use the same content, not separate copies. A 
 pnpm --filter troy-anderson-website-1 deploy
 ```
 
-This hosted Studio remains in the current development infrastructure. Confirm ownership and the hosted address during the client transfer or migration before launch.
+This hosted Studio remains in the current development infrastructure. Retain the existing project and confirm editor access and the hosted address before launch.
 
 ## Ownership
 
-- **Troy Anderson / client team:** production accounts, domain, billing, and final content approval
+- **Troy Anderson / client team:** domain registration, content ownership, editor/recipient designation, and final approval
 - **Jonathan:** creative direction and approved visual compositions
 - **Andrew:** content direction and primary CMS workflow feedback
-- **2520 Consulting:** technical planning, implementation, deployment, migration, and handoff
+- **2520 Consulting:** technical planning, implementation, managed hosting/billing, backups, support, and transition assistance

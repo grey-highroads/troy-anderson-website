@@ -42,13 +42,15 @@ CMS users manage known content types, ordering, visibility, links, and media. Th
 
 **Reason:** This provides a simple handoff while protecting the approved design.
 
-## D-006: Temporary development infrastructure
+## D-006: Managed production service
 
-**Status:** Accepted
+**Status:** Plan revised October 12, 2026; agree managed-service terms with Troy before launch
 
-2520 Consulting may use existing GitHub, Cloudflare, and Sanity access for development and staging. The client will own production infrastructure before launch.
+Grey manages Troy's production site through existing business GitHub, Cloudflare, Sanity, and Formspree accounts, with separate Troy resources inside them. Keep the existing repository and CMS project. Troy controls domain registration and owns the code, content, and supplied media; editors use Sanity and inquiries reach the approved inbox. No separate client infrastructure accounts or ownership transfers are required for launch.
 
-**Reason:** Work can begin without waiting for account setup, while the handoff remains clean and the client avoids long-term dependency on 2520.
+Grey handles billing, infrastructure support, backups, and recovery. Agree one recurring charge and support/exit terms with Troy. Maintain a secure client-accessible recovery copy and provide transfer or recreation assistance if management changes.
+
+**Reason:** The nontechnical client needs content editing and reliable operation. Independent administration of every service adds onboarding and migration work without helping routine editing. The deliberate tradeoff is dependence on Grey for ongoing infrastructure operation. This supersedes the previous client-owned production-account requirement; D-011 runtime publishing remains required.
 
 ## D-007: Scope restraint
 
@@ -88,7 +90,7 @@ Use a clean, brand-neutral playback source for the site's primary video experien
 
 Run the production site on Cloudflare Workers with secure server-side reads of published Sanity content. Publish notifications refresh the affected cached content directly; a short time-based refresh provides recovery for missed notifications. Full builds remain for code and design changes. Configure application, CDN, and browser caching together. Preserve draft exclusion, least-privilege credentials, local fallback content, and the existing CMS and visual behavior.
 
-Prove the Book page first during Phase 6, then cover all connected content and shared settings. Select and verify the framework adapter against the installed Next.js version at implementation time. Complete rapid-publish, latest-value, missed-notification, and cache checks before client beta and repeat them with client-owned production configuration before DNS cutover. The initial normal-condition freshness target is 30 seconds; measure it and define a tested recovery bound before handoff. A static migration to Cloudflare Pages alone does not satisfy this decision.
+Prove the Book page first during Phase 6, then cover all connected content and shared settings. Select and verify the framework adapter against the installed Next.js version at implementation time. Complete rapid-publish, latest-value, missed-notification, and cache checks before client beta and repeat them with the managed production configuration before DNS cutover. The initial normal-condition freshness target is 30 seconds; measure it and define a tested recovery bound before handoff. A static migration to Cloudflare Pages alone does not satisfy this decision.
 
 **Reason:** Editors must be able to publish successive changes without deployment queues, manual rebuilds, or stale-page troubleshooting. Observed GitHub dispatch failures, Pages deployment delays, and ten-minute cache lifetimes make the temporary review publishing path unsuitable for the required production workflow.
 
