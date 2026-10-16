@@ -18,7 +18,7 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 
 ## October 16 continuation snapshot
 
-Latest hero/header implementation is `be59ead` (October 16), following the October 12 runtime/Contact work `38fad8f`. Five public routes, six CMS types, 17 Media photos/poster rendering, rich-text Meet Troy, and the complete 14-clip hero delivery are live. Recent creative refinements (charcoal/white/mint, flush SVG header reaching the menu, mobile top-anchored portraits, flat homepage cover, content-sized banners, and exact text accents) are complete; see the handoff's revision/evidence table.
+Latest hero layout is `ace47f1` following `fd54bd9` (D-014), using the October 16 assets/header from `be59ead`, following the October 12 runtime/Contact work `38fad8f`. Five public routes, six CMS types, 17 Media photos/poster rendering, rich-text Meet Troy, and the complete 14-clip hero delivery are live. Recent creative refinements (charcoal/white/mint, flush SVG header reaching the menu, mobile top-anchored portraits, flat homepage cover, content-sized banners, and exact text accents) are complete; see the handoff's revision/evidence table.
 
 Open broad checkboxes below represent final scope or production acceptance, not absence of the partial proofs. All hero placeholders are replaced; real-device/media performance QA, final content/captions/titles, Appearances scope, clip CMS/production delivery, forms, metadata/analytics/privacy, and managed production launch remain unresolved. No new implementation task was selected at handoff. D-011's Worker setup must precede QA/beta; do not interpret the Phase 7 tests as the place to first configure hosting.
 
@@ -83,6 +83,8 @@ Open broad checkboxes below represent final scope or production acceptance, not 
 **Milestone:** The application, CMS, and staging deployment work together using representative content.
 
 ## Phase 4: Homepage experience
+
+- [x] Contain all 14 clips and selected playback in the first stable viewport below the header (D-014). `fd54bd9` / `ace47f1`; final Cloudflare `38957016300` and Pages `38957016121` passed. Five responsive sizes, desktop/phone playback, keyboard/tap/Escape/focus, pause/stills and source containment were verified live. Real-device and final editorial acceptance remain open.
 
 - [ ] Implement the approved desktop compositions.
 - [ ] Implement authored tablet and mobile compositions.

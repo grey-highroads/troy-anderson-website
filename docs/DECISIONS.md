@@ -118,6 +118,18 @@ Budget USD 30/month (USD 360/year) for two non-Viewer members before tax and usa
 
 [The launch plan](CLIENT_ACCOUNT_SETUP.md) holds the plain-language explanation, sources, cost assumptions, and deferred actions. Retain the repository, Sanity project/Studio, GitHub Pages and both user-owned Superdesign files. Cloudflare runtime testing is complete; domain/DNS cutover still requires explicit approval.
 
+## D-014: One first-viewport homepage hero
+
+**Status:** Accepted and implemented October 16, 2026
+
+Keep all 14 supplied clips in one hero area occupying the first stable viewport beneath the shared header, with authored desktop, tablet, phone, and short landscape compositions. Book promotion and the remaining content start below that first screen. Selecting a clip keeps playback and the other thumbnails inside the same hero rather than lengthening the page.
+
+Preserve the complete source artwork through `contain`, including still posters on both renderers; dark letterboxing is allowed inside frames. This supersedes the old requirement for source-ratio tile heights and the scroll-through grid, while retaining D-012's silent loops, whole-tile activation, no per-tile play icons/labels, section pause, reduced-motion stills, native playback, switching, Close/Escape, and focus return. Keep the pause control visible without covering thumbnails. Small phone tiles are an accepted consequence of showing every clip; full playback remains larger.
+
+**Reason:** The client wants the complete media composition to read as a single homepage hero at each responsive size.
+
+Implementation `fd54bd9` plus poster-fit correction `ace47f1`; live responsive verification is recorded in `HOMEPAGE_VIDEO_POC.md` and `CURRENT_HANDOFF.md`. Device/performance and final editorial acceptance remain open.
+
 ## New decision template
 
 ### D-XXX: Short title

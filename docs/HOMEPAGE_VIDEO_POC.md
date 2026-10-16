@@ -4,6 +4,16 @@ The current hero uses all 14 supplied full-video/animated-poster pairs with no p
 
 Run `HOMEPAGE_VIDEO_POC=true pnpm dev` to enable it locally. It is also enabled when the existing deployment sets `GITHUB_PAGES=true`; builds with neither flag keep the placeholder prototype. Current prepared media files are committed in `public/videos/hero-20261016/` (84.9 MB total, including 2.14 MB of silent previews); older unreferenced files remain in `public/videos/collage-poc/` and served with the static website, using its deployment base path. Originals are not committed. No third-party player, streaming service, analytics, or browser storage is introduced.
 
+## Current first-viewport layout (D-014)
+
+`fd54bd9` contains the entire 14-clip collage in the first stable viewport below the shared header; `ace47f1` explicitly preserves uncropped Image stills on the Workers renderer. Both final deployments passed: Cloudflare `38957016300`, Pages `38957016121`. This supersedes the previous four-column/seven-row desktop and two-column/eleven-row mobile scroll-through compositions below.
+
+The collage height is `100svh` minus the actual observed header height. A CSS fallback based on the unchanged SVG dimensions covers first paint; ResizeObserver updates the measurement after mount and on width/orientation changes. The pause control occupies its own row within that height. Tile frames use desktop 6×4, tablet 5×5, or phone 4×7 grids; wide screens below 600px tall use 6×4. All 14 frames fit without gaps/overlap. Artwork retains its original proportions via `object-fit: contain`; dark letterboxing is intentional and frames need not share their source aspect ratio. The second idle arrangement mirrors columns.
+
+Selected playback occupies most of the same bounded area with 13 remaining thumbnails alongside it; phones place the player above four columns of thumbnails. Short landscape screens reserve half the columns for the player. Neither selection nor close grows the hero. Old expansion auto-scroll is removed; direct interaction preserves page scroll and Close/Escape returns focus. Source assets and native audio/controls are unchanged.
+
+Website lint/type/static build and Cloudflare build/types passed. Live checks at 1440×1000, 768×1024, 390×844, 320×568, and 844×390 confirmed the hero/book boundary equals viewport height, all 14 frames are contained, and no overlap or horizontal overflow. Final desktop and phone native taps/keyboard activation, contained playback, switching, Escape/focus return, paused stills, and resume were checked; 14 paused images loaded with `contain` on Workers. Pages was also browser-checked. No browser errors were recorded in the final Workers check. Mobile emulation is not physical-device acceptance; reduced-motion code remains intact, with no fresh OS emulation in this slice.
+
 ## October 16 complete replacement
 
 Implementation `be59ead`; Pages run `38909241985`, Cloudflare run `38909241416`, both successful. Source: `/Users/greygarner/Desktop/Higher Roads/Clients/Troy Anderson/Assets/Clips/New clips/TA_BB_delivery/`. The shared header is an unchanged copy of `/Users/greygarner/Desktop/TA_siteheader.svg`.
