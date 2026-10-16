@@ -16,26 +16,27 @@ type Tile = {
   tone: string;
   clip?: string;
   desktopArea: string;
+  tabletArea: string;
   mobileArea: string;
   previewDimensions?: [number, number];
   playbackDimensions?: [number, number];
 };
 
 const tiles: Tile[] = [
-  { id: "clip-02", eyebrow: "", title: "Troy Anderson — clip 02", tone: "ink", clip: "TA_BB_02", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "1 / 1 / 2 / 3", mobileArea: "1 / 1 / 2 / 3" },
-  { id: "clip-04", eyebrow: "", title: "Troy Anderson — clip 04", tone: "ink", clip: "TA_BB_04", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "1 / 3 / 3 / 5", mobileArea: "2 / 1 / 3 / 2" },
-  { id: "clip-05", eyebrow: "", title: "Troy Anderson — clip 05", tone: "ink", clip: "TA_BB_05", previewDimensions: [350, 700], playbackDimensions: [960, 540], desktopArea: "2 / 1 / 4 / 2", mobileArea: "2 / 2 / 4 / 3" },
-  { id: "clip-06", eyebrow: "", title: "Troy Anderson — clip 06", tone: "ink", clip: "TA_BB_06", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "3 / 2 / 4 / 4", mobileArea: "4 / 1 / 5 / 3" },
-  { id: "clip-07", eyebrow: "", title: "Troy Anderson — clip 07", tone: "ink", clip: "TA_BB_07", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "2 / 2 / 3 / 3", mobileArea: "3 / 1 / 4 / 2" },
-  { id: "clip-08", eyebrow: "", title: "Troy Anderson — clip 08", tone: "ink", clip: "TA_BB_08", previewDimensions: [350, 700], playbackDimensions: [960, 540], desktopArea: "3 / 4 / 5 / 5", mobileArea: "5 / 1 / 7 / 2" },
-  { id: "clip-09", eyebrow: "", title: "Troy Anderson — clip 09", tone: "ink", clip: "TA_BB_09", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "4 / 1 / 5 / 2", mobileArea: "5 / 2 / 6 / 3" },
-  { id: "clip-10", eyebrow: "", title: "Troy Anderson — clip 10", tone: "ink", clip: "TA_BB_10", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "4 / 2 / 5 / 4", mobileArea: "7 / 1 / 8 / 3" },
-  { id: "clip-11", eyebrow: "", title: "Troy Anderson — clip 11", tone: "ink", clip: "TA_BB_11", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "5 / 1 / 6 / 2", mobileArea: "6 / 2 / 7 / 3" },
-  { id: "clip-12", eyebrow: "", title: "Troy Anderson — clip 12", tone: "ink", clip: "TA_BB_12", previewDimensions: [350, 700], playbackDimensions: [960, 540], desktopArea: "5 / 2 / 7 / 3", mobileArea: "8 / 1 / 10 / 2" },
-  { id: "clip-13", eyebrow: "", title: "Troy Anderson — clip 13", tone: "ink", clip: "TA_BB_13", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "5 / 3 / 6 / 5", mobileArea: "10 / 1 / 11 / 3" },
-  { id: "clip-14", eyebrow: "", title: "Troy Anderson — clip 14", tone: "ink", clip: "TA_BB_14", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "7 / 1 / 8 / 3", mobileArea: "11 / 1 / 12 / 3" },
-  { id: "clip-15", eyebrow: "", title: "Troy Anderson — clip 15", tone: "ink", clip: "TA_BB_15", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "6 / 3 / 8 / 5", mobileArea: "8 / 2 / 9 / 3" },
-  { id: "clip-17", eyebrow: "", title: "Troy Anderson — clip 17", tone: "ink", clip: "TA_BB_17", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "6 / 1 / 7 / 2", mobileArea: "9 / 2 / 10 / 3" },
+  { id: "clip-02", eyebrow: "", title: "Troy Anderson — clip 02", tone: "ink", clip: "TA_BB_02", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "1 / 1 / 2 / 3", tabletArea: "1 / 1 / 2 / 3", mobileArea: "1 / 1 / 2 / 3" },
+  { id: "clip-04", eyebrow: "", title: "Troy Anderson — clip 04", tone: "ink", clip: "TA_BB_04", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "1 / 3 / 2 / 4", tabletArea: "1 / 3 / 3 / 5", mobileArea: "1 / 3 / 3 / 5" },
+  { id: "clip-05", eyebrow: "", title: "Troy Anderson — clip 05", tone: "ink", clip: "TA_BB_05", previewDimensions: [350, 700], playbackDimensions: [960, 540], desktopArea: "1 / 4 / 4 / 5", tabletArea: "1 / 5 / 3 / 6", mobileArea: "2 / 1 / 4 / 2" },
+  { id: "clip-06", eyebrow: "", title: "Troy Anderson — clip 06", tone: "ink", clip: "TA_BB_06", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "1 / 5 / 2 / 7", tabletArea: "2 / 1 / 3 / 3", mobileArea: "3 / 2 / 4 / 4" },
+  { id: "clip-07", eyebrow: "", title: "Troy Anderson — clip 07", tone: "ink", clip: "TA_BB_07", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "2 / 1 / 3 / 2", tabletArea: "3 / 1 / 4 / 2", mobileArea: "2 / 2 / 3 / 3" },
+  { id: "clip-08", eyebrow: "", title: "Troy Anderson — clip 08", tone: "ink", clip: "TA_BB_08", previewDimensions: [350, 700], playbackDimensions: [960, 540], desktopArea: "2 / 2 / 5 / 3", tabletArea: "3 / 2 / 5 / 3", mobileArea: "3 / 4 / 5 / 5" },
+  { id: "clip-09", eyebrow: "", title: "Troy Anderson — clip 09", tone: "ink", clip: "TA_BB_09", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "2 / 3 / 3 / 4", tabletArea: "3 / 3 / 4 / 4", mobileArea: "4 / 1 / 5 / 2" },
+  { id: "clip-10", eyebrow: "", title: "Troy Anderson — clip 10", tone: "ink", clip: "TA_BB_10", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "2 / 5 / 3 / 7", tabletArea: "3 / 4 / 4 / 6", mobileArea: "4 / 2 / 5 / 4" },
+  { id: "clip-11", eyebrow: "", title: "Troy Anderson — clip 11", tone: "ink", clip: "TA_BB_11", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "3 / 1 / 4 / 2", tabletArea: "4 / 1 / 5 / 2", mobileArea: "5 / 1 / 6 / 2" },
+  { id: "clip-12", eyebrow: "", title: "Troy Anderson — clip 12", tone: "ink", clip: "TA_BB_12", previewDimensions: [350, 700], playbackDimensions: [960, 540], desktopArea: "3 / 3 / 5 / 4", tabletArea: "4 / 3 / 6 / 4", mobileArea: "5 / 2 / 7 / 3" },
+  { id: "clip-13", eyebrow: "", title: "Troy Anderson — clip 13", tone: "ink", clip: "TA_BB_13", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "3 / 5 / 4 / 7", tabletArea: "4 / 4 / 5 / 6", mobileArea: "5 / 3 / 6 / 5" },
+  { id: "clip-14", eyebrow: "", title: "Troy Anderson — clip 14", tone: "ink", clip: "TA_BB_14", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "4 / 4 / 5 / 6", tabletArea: "5 / 1 / 6 / 3", mobileArea: "7 / 1 / 8 / 3" },
+  { id: "clip-15", eyebrow: "", title: "Troy Anderson — clip 15", tone: "ink", clip: "TA_BB_15", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "4 / 1 / 5 / 2", tabletArea: "5 / 4 / 6 / 5", mobileArea: "6 / 3 / 8 / 5" },
+  { id: "clip-17", eyebrow: "", title: "Troy Anderson — clip 17", tone: "ink", clip: "TA_BB_17", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "4 / 6 / 5 / 7", tabletArea: "5 / 5 / 6 / 6", mobileArea: "6 / 1 / 7 / 2" },
 ];
 
 function subscribeToReducedMotion(onChange: () => void) {
@@ -49,6 +50,7 @@ function getReducedMotion() {
 }
 
 export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
+  const collageRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const playerRef = useRef<HTMLVideoElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
@@ -58,6 +60,20 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
   const reducedMotion = useSyncExternalStore(subscribeToReducedMotion, getReducedMotion, () => true);
   const [failedId, setFailedId] = useState<string | null>(null);
   const [layoutIndex, setLayoutIndex] = useState(0);
+
+  useEffect(() => {
+    const header = document.querySelector<HTMLElement>(".site-header");
+    const collage = collageRef.current;
+    if (!header || !collage) return;
+
+    const measureHeader = () => {
+      collage.style.setProperty("--site-header-height", `${header.getBoundingClientRect().height}px`);
+    };
+    measureHeader();
+    const observer = new ResizeObserver(measureHeader);
+    observer.observe(header);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => () => {
     animationRef.current?.kill();
@@ -95,13 +111,6 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
           ?.focus({ preventScroll: true });
       }
 
-      const revealSelection = () => {
-        if (nextSelectedId) {
-          grid.querySelector<HTMLElement>(`[data-flip-id="${nextSelectedId}"]`)
-            ?.scrollIntoView({ block: "nearest", behavior: "instant" });
-        }
-      };
-
       if (state) {
         animationRef.current = Flip.from(state, {
           duration: 0.9,
@@ -109,17 +118,14 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
           absolute: true,
           scale: true,
           stagger: 0.025,
-          onComplete: revealSelection,
         });
-      } else {
-        revealSelection();
       }
     },
     [selectedId],
   );
 
   return (
-    <div className="collage">
+    <div ref={collageRef} className="collage collage--viewport">
       {videoBasePath && !reducedMotion && (
         <button
           type="button"
@@ -152,10 +158,8 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
               key={tile.id}
               data-flip-id={tile.id}
               style={tile.previewDimensions ? {
-                "--tile-area-a": tile.desktopArea,
-                "--tile-area-b": tile.desktopArea.split(" / ").map((value, index, area) =>
-                  index === 1 ? 6 - Number(area[3]) : index === 3 ? 6 - Number(area[1]) : value,
-                ).join(" / "),
+                "--tile-area-desktop": tile.desktopArea,
+                "--tile-area-tablet": tile.tabletArea,
                 "--tile-area-mobile": tile.mobileArea,
                 "--preview-ratio": `${tile.previewDimensions[0]} / ${tile.previewDimensions[1]}`,
                 "--playback-ratio": tile.playbackDimensions

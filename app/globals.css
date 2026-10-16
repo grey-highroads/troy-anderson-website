@@ -1695,61 +1695,93 @@ button {
   }
 }
 
-/* Authored layouts preserve every supplied preview shape without gaps. */
+/* Keep the header and all hero clips in the first stable viewport. */
+.collage--viewport {
+  --header-menu-width: clamp(5.75rem, 11vw, 7.5rem);
+  --site-header-height: calc((100vw - var(--header-menu-width)) * 0.1473355732 + clamp(0.75rem, 1.5vw, 1.5rem));
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  height: max(0px, calc(100svh - var(--site-header-height)));
+  background: var(--blue-black);
+  overflow: clip;
+  overflow-anchor: none;
+}
+.collage--viewport > .collage__motion-toggle {
+  position: static;
+  grid-row: 2;
+  justify-self: end;
+  margin: 0.25rem 0.5rem;
+}
 .editorial-grid.has-video-previews {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-template-rows: repeat(7, minmax(0, 1fr));
-  aspect-ratio: 4 / 7;
+  grid-row: 1;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
   min-height: 0;
+  height: 100%;
 }
-.has-video-previews .media-tile.has-preview {
-  align-self: start;
-  aspect-ratio: var(--preview-ratio);
+.has-video-previews .media-tile {
+  grid-area: var(--tile-area-desktop);
+  min-height: 0;
+  direction: ltr;
 }
-.has-video-previews.layout-a .media-tile { grid-area: var(--tile-area-a); }
-.has-video-previews.layout-b .media-tile { grid-area: var(--tile-area-b); }
+.has-video-previews.layout-b:not(.is-expanded) {
+  direction: rtl;
+}
 .editorial-grid.has-video-previews.is-expanded {
-  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
-  grid-template-rows: repeat(13, auto);
-  aspect-ratio: auto;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(7, minmax(0, 1fr));
 }
 .has-video-previews.is-expanded .media-tile.is-selected {
-  grid-area: 1 / 1 / 14 / 2;
-  align-self: start;
-  justify-self: center;
-  width: 100%;
-  max-width: calc(80svh * var(--playback-shape, 1.777778));
-  aspect-ratio: var(--playback-ratio, 16 / 9);
+  grid-area: 1 / 1 / 8 / 7;
 }
 .has-video-previews.is-expanded .media-tile.is-dimmed:nth-of-type(n) {
-  grid-column: 2;
+  grid-column: auto;
   grid-row: auto;
-  min-height: 3rem;
+}
+@media (max-width: 900px) {
+  .collage--viewport {
+    --header-menu-width: 5.75rem;
+  }
+  .editorial-grid.has-video-previews:not(.is-expanded) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+  }
+  .has-video-previews:not(.is-expanded) .media-tile {
+    grid-area: var(--tile-area-tablet);
+  }
 }
 @media (max-width: 640px) {
-  .editorial-grid.has-video-previews {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: repeat(11, minmax(0, 1fr));
-    aspect-ratio: 2 / 11;
+  .collage--viewport {
+    --header-menu-width: 4.5rem;
+  }
+  .editorial-grid.has-video-previews:not(.is-expanded) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(7, minmax(0, 1fr));
   }
   .has-video-previews:not(.is-expanded) .media-tile {
     grid-area: var(--tile-area-mobile);
   }
   .editorial-grid.has-video-previews.is-expanded {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-rows: none;
-    grid-auto-rows: auto;
-  }
-  .has-video-previews.is-expanded .media-tile.is-dimmed:nth-of-type(n) {
-    grid-column: auto;
-    grid-row: auto;
-  }
-  .has-video-previews .media-tile.has-preview {
-    min-height: 0;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: repeat(8, minmax(0, 1fr));
   }
   .has-video-previews.is-expanded .media-tile.is-selected {
-    grid-column: 1 / -1;
-    grid-row: 1;
+    grid-area: 1 / 1 / 5 / 5;
+  }
+}
+@media (min-width: 641px) and (max-height: 600px) {
+  .editorial-grid.has-video-previews:not(.is-expanded) {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+  .has-video-previews:not(.is-expanded) .media-tile {
+    grid-area: var(--tile-area-desktop);
+  }
+  .editorial-grid.has-video-previews.is-expanded {
+    grid-template-rows: repeat(4, minmax(0, 1fr));
+  }
+  .has-video-previews.is-expanded .media-tile.is-selected {
+    grid-area: 1 / 1 / 5 / 5;
   }
 }
 
