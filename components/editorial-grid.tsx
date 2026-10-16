@@ -176,7 +176,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                 <>
                   <Image
                     className="media-tile__poster"
-                    style={{ objectFit: "contain" }}
+                    style={{ objectFit: "cover", objectPosition: "center top" }}
                     src={`${previewPath}-poster.jpg`}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
