@@ -32,7 +32,7 @@ export default async function Home() {
       <section id="top" className="hero" aria-label="Featured stories">
         <EditorialGrid
           videoBasePath={process.env.HOMEPAGE_VIDEO_POC === "true" || process.env.GITHUB_PAGES === "true"
-            ? `${process.env.GITHUB_PAGES === "true" ? "/troy-anderson-website" : ""}/videos/collage-poc`
+            ? `${process.env.GITHUB_PAGES === "true" ? "/troy-anderson-website" : ""}/videos/hero-20261016`
             : undefined}
         />
       </section>
