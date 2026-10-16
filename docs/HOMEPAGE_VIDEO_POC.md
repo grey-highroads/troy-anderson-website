@@ -1,8 +1,26 @@
 # Homepage video review proof
 
-This proof uses four real clips in the existing six-tile collage. Two tiles remain visual placeholders. It is enabled for the GitHub Pages review build; no CMS fields or client production hosting have been selected or changed.
+The current hero uses all 14 supplied full-video/animated-poster pairs with no placeholder tiles. It is enabled on both Cloudflare Workers and GitHub Pages review sites. Hero assets remain code-managed; CMS clip controls and production video delivery remain separate release work.
 
-Run `HOMEPAGE_VIDEO_POC=true pnpm dev` to enable it locally. It is also enabled when the existing deployment sets `GITHUB_PAGES=true`; builds with neither flag keep the placeholder prototype. Prepared media files are committed in `public/videos/collage-poc/` (approximately 10.7 MB total; includes retained versioned assets) and served with the static website, using its deployment base path. Originals are not committed. No third-party player, streaming service, analytics, or browser storage is introduced.
+Run `HOMEPAGE_VIDEO_POC=true pnpm dev` to enable it locally. It is also enabled when the existing deployment sets `GITHUB_PAGES=true`; builds with neither flag keep the placeholder prototype. Current prepared media files are committed in `public/videos/hero-20261016/` (84.9 MB total, including 2.14 MB of silent previews); older unreferenced files remain in `public/videos/collage-poc/` and served with the static website, using its deployment base path. Originals are not committed. No third-party player, streaming service, analytics, or browser storage is introduced.
+
+## October 16 complete replacement
+
+Implementation `be59ead`; Pages run `38909241985`, Cloudflare run `38909241416`, both successful. Source: `/Users/greygarner/Desktop/Higher Roads/Clients/Troy Anderson/Assets/Clips/New clips/TA_BB_delivery/`. The shared header is an unchanged copy of `/Users/greygarner/Desktop/TA_siteheader.svg`.
+
+| Clips | Preview dimensions | Full dimensions |
+| --- | --- | --- |
+| 02, 06, 10, 13, 14 | 700 × 350 | 960 × 540 |
+| 04, 07, 09, 11, 15, 17 | 350 × 350 | 960 × 540 |
+| 05, 08, 12 | 350 × 700 | 960 × 540 |
+
+`TA_BB_10b.mp4` pairs with `TA_BB_10_gif.mp4`; all other full and preview names match by number. Each `_gif.mp4` is converted into a 12 fps silent H.264 loop with original dimensions and a JPEG first-frame fallback. Full videos retain all supplied footage/audio, H.264 CRF 24, AAC 96 kbps, and fast-start metadata. Each output stem has `.mp4`, `-preview.mp4`, and `-poster.jpg` files. No old clip/poster or placeholder tile is referenced by the current hero.
+
+The two desktop arrangements use four columns and seven proportional rows, with selected square previews enlarged within their original ratio; the second arrangement mirrors the first. Mobile has two columns and eleven proportional rows. Tile metadata supplies explicit positions so all rectangles cover the grid without gaps/overlap. Selection supports 13 remaining sidebar tiles and widescreen playback. Existing keyboard/touch selection, switching, pause, reduced-motion logic, and Escape/focus return are preserved.
+
+Website lint/type/static export and Cloudflare build/type checks passed. All 14 selections were exercised locally; live Workers checks at 1440px/390px confirmed all preview sources/dimensions, ratios and coverage, no overflow, representative full playback/switching, pause/resume, keyboard/Escape/focus behavior, and no recorded browser errors. All 42 media URLs on each host returned 200; both public header files match the supplied SVG exactly. GitHub Pages was browser-checked as well. Offscreen browser policies may pause previews. Reduced-motion logic was preserved; no new OS emulation/device acceptance was performed. Originals, CMS data, runtime publishing, Contact, and user-owned/unrelated files were preserved. Captions/titles, production hosting and performance/device acceptance remain open.
+
+Earlier sections below record historical deliveries, not current asset counts or filenames.
 
 Original proof source folder: `/Users/greygarner/Desktop/Higher Roads/Clients/Troy Anderson/Assets/Clips/TA_BB_output`. The original MP4 and GIF files are unchanged.
 
@@ -37,7 +55,7 @@ Implementation `2890bfa`, Actions run `37953816452` succeeded. Source folder: `/
 1. Inspect the supplied ZIP/folder before extraction; match all MP4/GIF pairs by source stem. Extract only the needed media to a temporary folder and leave originals unchanged. Inspect each delivery independently; the October 7 ZIP contains three pairs, while the October 9 folder contains one new full/preview pair and clip 08 preview exports.
 2. Inspect GIF dimensions and full-video dimensions/duration independently. Generate the preview from the GIF and the still from its first frame. Do not infer full-playback shape from the GIF: clip 08's preview is vertical while its full video is widescreen.
 3. Using a local FFmpeg tool, encode full videos with `libx264`, CRF 24, `yuv420p`, 960 × 540 for these widescreen sources, AAC 96 kbps, and `+faststart`. Encode GIF previews at their original even dimensions, 12 fps, `libx264`, CRF 24, `yuv420p`, `-an`, and `+faststart`. Save first-frame JPEGs at quality 85. A future portrait full source needs its own proportional encoding; do not force it to 960 × 540. Compression is adjustable; these settings are the current proof, not an immutable requirement.
-4. Commit prepared outputs only, under `public/videos/collage-poc/`. Current assets use `02`/`09` v2 triplets, a `04` v1 triplet, and `08` v3 preview/poster files paired with its v2 full video. Use fresh versioned filenames for subsequent replacements to avoid old cached media.
+4. Commit prepared outputs only, under `public/videos/collage-poc/`. The current delivery uses `public/videos/hero-20261016/TA_BB_<number>` triplets; older v1/v2/v3 assets are historical. Use fresh versioned filenames for subsequent replacements to avoid old cached media.
 5. Update `tiles` in `components/editorial-grid.tsx` with the matching stems and independent preview/playback dimensions. Preserve the authored grid, whole-tile playback, simultaneous loops, pause/reduced-motion behavior, and clean look unless the user changes that direction.
 6. Run `GITHUB_PAGES=true pnpm check`, then verify real desktop/mobile playback, simultaneous previews, source proportions, pause/resume, keyboard activation, switching, Escape/focus return, loading/error fallback, and no overflow. Reduced-motion browser verification remains a pending gate and must be explicitly checked rather than inferred.
 7. Push only related files, wait for the implementation deployment, verify actual live assets, and update the handoff/roadmap with measured evidence. No Studio deployment or Sanity mutation is needed for this local-file proof.

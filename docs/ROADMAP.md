@@ -16,11 +16,11 @@ The roadmap is organized around evidence-producing milestones. Dates can be adde
 | 7 | QA and client beta | Not started | Release candidate is approved |
 | 8 | Migration, launch, and handoff | Not started | Managed production works; client edits content and controls the domain |
 
-## October 9 continuation snapshot
+## October 16 continuation snapshot
 
-Current implementation is `2890bfa` (October 9), following the October 7 handoff refresh `df2b86e`. Five public routes, six CMS types, 17 Media photos/poster rendering, rich-text Meet Troy, and the four-clip hero proof are live. Recent creative refinements (charcoal/white/mint, flush SVG header reaching the menu, mobile top-anchored portraits, flat homepage cover, content-sized banners, and exact text accents) are complete; see the handoff's revision/evidence table.
+Latest hero/header implementation is `be59ead` (October 16), following the October 12 runtime/Contact work `38fad8f`. Five public routes, six CMS types, 17 Media photos/poster rendering, rich-text Meet Troy, and the complete 14-clip hero delivery are live. Recent creative refinements (charcoal/white/mint, flush SVG header reaching the menu, mobile top-anchored portraits, flat homepage cover, content-sized banners, and exact text accents) are complete; see the handoff's revision/evidence table.
 
-Open broad checkboxes below represent final scope or production acceptance, not absence of the partial proofs. Two collage tiles remain placeholders; reduced-motion browser emulation, real-device/media performance QA, final content/captions/titles, Appearances scope, clip CMS/production delivery, forms, metadata/analytics/privacy, and managed production launch remain unresolved. No new implementation task was selected at handoff. D-011's Worker setup must precede QA/beta; do not interpret the Phase 7 tests as the place to first configure hosting.
+Open broad checkboxes below represent final scope or production acceptance, not absence of the partial proofs. All hero placeholders are replaced; real-device/media performance QA, final content/captions/titles, Appearances scope, clip CMS/production delivery, forms, metadata/analytics/privacy, and managed production launch remain unresolved. No new implementation task was selected at handoff. D-011's Worker setup must precede QA/beta; do not interpret the Phase 7 tests as the place to first configure hosting.
 
 ## Phase 0: Documentation and setup
 
@@ -49,7 +49,7 @@ Open broad checkboxes below represent final scope or production acceptance, not 
 
 - [x] Build the header and first homepage composition with representative tiles.
 - [x] Prototype tile expansion and layout changes with GSAP Flip.
-- [ ] Complete replacement of representative tiles with approved clips. Four of six are live (`2890bfa`); the other two remain placeholders.
+- [x] Replace representative tiles with the supplied 14 full/preview pairs and no placeholders. `be59ead`, October 16; published on both review hosts. Final editorial/media acceptance remains open.
 - [ ] Test desktop, mobile, touch, keyboard, and reduced-motion behavior.
 - [x] Create the local Sanity Studio and prove the first structured Book schema.
 - [x] Let the intended editor populate and publish the first content type without coaching.
@@ -124,6 +124,8 @@ Approved October 7, 2026. Implement this as part of the production migration bui
 - [x] Define and measure the freshness targets before beta: revision-only publishes measured 1.28–3.90 seconds, missed-notification request recovery 20.81 seconds, background recovery 59.98 seconds. Active-content recovery operating target 70 seconds under healthy CMS/network conditions; last-good content and failure reporting tested. Repeat visible approved editorial changes and managed-production acceptance before beta/cutover.
 
 ### Other content and integrations
+
+- [x] Replace all hero clips/posters with the complete October 16 delivery and swap the supplied shared header SVG. `be59ead`; Pages `38909241985` and Cloudflare `38909241416` succeeded. Website/Worker checks passed; live desktop/mobile geometry, representative playback/switching, pause/keyboard/Escape, all media URLs, and exact header copies verified. No CMS or hosting configuration changed.
 
 - [x] Add clip 04 with its supplied square animated poster and refresh clip 08’s vertical poster/loop while retaining its existing full video. `2890bfa`, Actions `37953816452`, live-verified October 9 at 1440px/390px: four real clips, two placeholders, zero gutters, source proportions, full playback, switching, pause/resume, keyboard/Escape/focus return, and no overflow or browser errors. Lint/type/build passed; reduced-motion browser emulation remains open.
 

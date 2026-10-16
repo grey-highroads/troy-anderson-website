@@ -1,5 +1,15 @@
 # Current Project Handoff
 
+## October 16 complete hero delivery and header replacement
+
+`be59ead` replaces the homepage hero with all 14 pairs from `/Users/greygarner/Desktop/Higher Roads/Clients/Troy Anderson/Assets/Clips/New clips/TA_BB_delivery/` and swaps the shared header for an exact copy of `/Users/greygarner/Desktop/TA_siteheader.svg`. The hero has 14 real tiles and no placeholders; this supersedes the four-clip/six-tile counts in the historical October 9 notes below. Current assets are in `public/videos/hero-20261016/`; old `collage-poc` assets are retained but no longer referenced by the homepage. Full video `TA_BB_10b.mp4` is paired with `TA_BB_10_gif.mp4` under output stem `TA_BB_10`. Every other pair matches by number.
+
+All supplied `_gif.mp4` files provide the silent loop and first-frame still. Preview shapes remain 2:1, 1:1, or 1:2; full playback remains 960×540. Two authored desktop arrangements and a two-column mobile arrangement fit all 14 without gaps, overlap, cropping, or visible per-tile labels/icons. Whole-tile selection, native playback, switching, Close/Escape, focus return, section pause/resume, and reduced-motion stills remain. The supplied SVG is unchanged; the header still starts at (0,0) and reaches the mint menu.
+
+GitHub Pages run `38909241985` and Cloudflare run `38909241416` succeeded. `GITHUB_PAGES=true pnpm check` and `pnpm cloudflare:build` passed. Live Workers checks at 1440px/390px confirmed all 14 preview sources/dimensions, gap-free coverage, correct ratios, no overflow, representative full playback/switching, pause/resume, keyboard activation, and Escape/focus return. All 42 new media URLs on each host returned 200, with matching file sizes where reported; both deployed SVG files exactly match the supplied header. GitHub Pages was also browser-checked. No browser errors were recorded in the Workers check. Browser power/offscreen policies can pause offscreen previews; no hover requirement was added. Reduced-motion logic is preserved; no new OS/device emulation was performed for this delivery.
+
+Prepared delivery totals 84,935,562 bytes (about 84.9 MB), including 2,140,622 bytes of silent previews. Full videos still load only on selection. Originals, CMS content/drafts, Media's 17 photos, runtime refresh, Contact delivery, account settings, and DNS are unchanged. Captions/editorial titles, real-device/performance QA, production media delivery, and release acceptance remain open. Preserve the two Superdesign modifications and unrelated untracked `cloudflare.config 2.ts`, `vite.config 2.ts`, and `scripts/package-cloudflare 2.mjs`; none were edited or staged.
+
 ## October 12 contact delivery update
 
 The Cloudflare test Contact form now sends directly through the dedicated `Troy Contact — Test` Formspree form to verified `grey+troytest@higher-roads.com`. A real website test reached Formspree's normal inbox and the user confirmed receipt. Provider-side required-field/email/message-length validation, success/error handling, and desktop/mobile fit were checked. GitHub Pages retains disabled form delivery. Read [contact operations](CONTACT_DELIVERY.md) before continuing.
@@ -105,7 +115,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 - Static export configured in `next.config.ts`.
 - Shared site header, navigation, subpage shell, and footer.
 - Public routes currently present: `/`, `/about`, `/book`, `/contact`, and `/media`.
-- Homepage editorial grid uses GSAP/Flip, two authored layouts, zero gutters, four real clips, two placeholder tiles, simultaneous source-proportioned silent previews, native full playback, and Close/Escape controls. See `docs/HOMEPAGE_VIDEO_POC.md` and D-012. Hero media and homepage book promotion are still local/code-managed, not fields in the Homepage schema.
+- Homepage editorial grid uses GSAP/Flip, two authored layouts, zero gutters, 14 real clips, no placeholder tiles, simultaneous source-proportioned silent previews, native full playback, and Close/Escape controls. See `docs/HOMEPAGE_VIDEO_POC.md` and D-012. Hero media and homepage book promotion are still local/code-managed, not fields in the Homepage schema.
 - GitHub Pages publishes the `main` branch as the temporary browser review environment.
 - `pnpm check` runs linting, TypeScript validation, and the production build.
 
@@ -188,7 +198,7 @@ The repository documents are authoritative. Do not rely on a prior chat or a des
 | Global app and fonts | `app/layout.tsx` |
 | Homepage | `app/page.tsx` |
 | Hero interaction, clip names, dimension metadata | `components/editorial-grid.tsx` |
-| Current prepared hero files | `public/videos/collage-poc/` (`02`/`09` v2, `04` v1, `08` v3 preview/poster with v2 full video) |
+| Current prepared hero files | `public/videos/hero-20261016/TA_BB_*` (14 full/preview/poster triplets) |
 | Hero sources, encoding, operation, verification | `docs/HOMEPAGE_VIDEO_POC.md` |
 | Introduction migration (already completed) | `studio/scripts/migrate-homepage-introduction.ts` |
 | Book page integration | `app/book/page.tsx` |
