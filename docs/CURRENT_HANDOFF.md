@@ -1,5 +1,11 @@
 # Current Project Handoff
 
+## October 16 no-spacing correction
+
+Client review rejected the visible letterboxing in the first viewport version. `688003b` makes all preview loops and still posters fill their tile edge to edge with `cover`, anchored center/top to protect faces. Responsive preview/poster cropping is intentional; preserve source proportions without stretching. Full selected videos remain uncropped with `contain`. This supersedes the uncropped-poster/letterboxing guidance in the earlier viewport entry and D-014's initial implementation.
+
+Cloudflare `38958589695` and Pages `38958589927` succeeded. Website lint/type/static export and Cloudflare build/types passed. Actual desktop/390px phone checks confirmed 14 tiles, zero grid gaps, full-frame media including all 14 paused posters, hero end at viewport bottom, and no horizontal overflow. Pause/resume and phone selection/Escape remained functional; full-player fit remains `contain`. Source media, header, CMS, and unrelated user files were untouched.
+
 ## October 16 viewport-contained hero
 
 D-014 is implemented in `fd54bd9`, with the Workers still-poster correction in `ace47f1`. All 14 tiles now share the space remaining in the first stable viewport below the unchanged header; the book section starts at the next screen. This supersedes the earlier delivery's multi-screen grid dimensions. Header height is observed on resize, with a first-paint CSS fallback. Desktop, tablet, and phone use authored 6×4, 5×5, and 4×7 layouts; short wide screens use 6×4. Closing a clip mirrors the composition. Frames fit the available area; source posters/previews remain uncropped using `contain`, with dark letterboxing when needed. An explicit Image style preserves this on the Workers renderer as well as Next.js.
