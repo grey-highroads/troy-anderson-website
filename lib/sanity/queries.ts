@@ -28,6 +28,7 @@ export const contentQueries = {
   biographyBody,
   storyHeading,
   storyBody,
+  pullQuote,
   "storyVideoUrl": storyVideo.asset->url,
   "storyVideoPosterUrl": storyVideoPoster.asset->url
 }`,

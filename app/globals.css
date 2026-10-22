@@ -1848,3 +1848,18 @@ a.sample-action:focus-visible {
   color: var(--ink);
   border-style: dashed;
 }
+
+.story-media {
+  min-width: 0;
+}
+
+.story-pull-quote {
+  margin: clamp(1.5rem, 3vw, 3rem) 0 0;
+  padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
+  border-left: 0.45rem solid var(--soft-cyan);
+  color: var(--soft-cyan);
+  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+  font-size: clamp(2.4rem, 4.5vw, 5rem);
+  line-height: 0.98;
+  text-transform: uppercase;
+}

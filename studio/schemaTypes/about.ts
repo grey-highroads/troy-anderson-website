@@ -68,6 +68,13 @@ export const aboutType = defineType({
       validation: (rule) => rule.required().min(1),
     }),
     defineField({
+      name: 'pullQuote',
+      title: 'Pull quote',
+      type: 'text',
+      description: 'A quote from Troy shown below the backstory video.',
+      rows: 4,
+    }),
+    defineField({
       name: 'storyVideo',
       title: 'Backstory video',
       type: 'file',

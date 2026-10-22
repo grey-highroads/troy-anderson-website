@@ -12,6 +12,7 @@ export type AboutContent = {
   biographyBody?: PortableTextBlock[]
   storyHeading?: string
   storyBody?: PortableTextBlock[]
+  pullQuote?: string
   storyVideoUrl?: string
   storyVideoPosterUrl?: string
 }
