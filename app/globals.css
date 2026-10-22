@@ -1805,6 +1805,10 @@ button {
 }
 
 /* Compact interior openings and a stronger sample action. */
+.subpage--book .subpage-hero h1 {
+  max-width: none;
+}
+
 .subpage--about .subpage-hero,
 .subpage--book .subpage-hero {
   padding-block: clamp(2rem, 3.5vw, 4rem);
