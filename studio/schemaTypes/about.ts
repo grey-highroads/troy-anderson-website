@@ -68,12 +68,17 @@ export const aboutType = defineType({
       validation: (rule) => rule.required().min(1),
     }),
     defineField({
-      name: 'pullQuote',
-      title: 'Pull quote',
-      type: 'text',
-      description: 'A short quote from Troy that can stand beside the longer story.',
-      rows: 4,
-      validation: (rule) => rule.required(),
+      name: 'storyVideo',
+      title: 'Backstory video',
+      type: 'file',
+      options: {accept: 'video/mp4,video/webm'},
+      description: 'Shown beside My Backstory. Leave empty to use video #14, “How Troy Started Coaching.”',
+    }),
+    defineField({
+      name: 'storyVideoPoster',
+      title: 'Backstory video poster',
+      type: 'image',
+      description: 'Preview image shown before playback. Leave empty to use the default video #14 poster.',
     }),
   ],
   preview: {

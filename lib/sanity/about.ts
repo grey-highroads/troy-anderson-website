@@ -12,7 +12,8 @@ export type AboutContent = {
   biographyBody?: PortableTextBlock[]
   storyHeading?: string
   storyBody?: PortableTextBlock[]
-  pullQuote?: string
+  storyVideoUrl?: string
+  storyVideoPosterUrl?: string
 }
 
 function isWebUrl(value: unknown): value is string {
@@ -29,6 +30,8 @@ function isWebUrl(value: unknown): value is string {
 function cleanAboutContent(content: AboutContent): AboutContent {
   return {
     ...content,
+    storyVideoUrl: isWebUrl(content.storyVideoUrl) ? content.storyVideoUrl : undefined,
+    storyVideoPosterUrl: isWebUrl(content.storyVideoPosterUrl) ? content.storyVideoPosterUrl : undefined,
     portraitImageUrl: isWebUrl(content.portraitImageUrl)
       ? content.portraitImageUrl
       : undefined,

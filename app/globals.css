@@ -953,15 +953,25 @@ button {
   line-height: 1.65;
 }
 
-.copy-columns blockquote {
+.story-video {
+  min-width: 0;
   margin: 0;
-  padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
-  border-left: 0.45rem solid var(--soft-cyan);
-  color: var(--soft-cyan);
-  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(2.4rem, 4.5vw, 5rem);
-  line-height: 0.98;
-  text-transform: uppercase;
+}
+
+.story-video video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: var(--ink);
+}
+
+.story-video figcaption {
+  margin-top: 0.75rem;
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
 }
 
 .book-detail {

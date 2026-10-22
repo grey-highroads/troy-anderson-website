@@ -12,6 +12,9 @@ export const metadata: Metadata = {
 
 export default async function AboutPage() {
   const about = await getAboutContent();
+  const assetBase = process.env.GITHUB_PAGES === "true" ? "/troy-anderson-website" : "";
+  const storyVideoUrl = about?.storyVideoUrl || `${assetBase}/videos/hero-20261016/TA_BB_14.mp4`;
+  const storyVideoPoster = about?.storyVideoPosterUrl || `${assetBase}/videos/hero-20261016/TA_BB_14-poster.jpg`;
 
   return (
     <SubpageShell
@@ -82,10 +85,20 @@ export default async function AboutPage() {
                 personal experience to his work today.
               </p>
             )}
-            <blockquote>
-              {about?.pullQuote ||
-                "A pull quote from the prologue or Troy’s own words can anchor the story here."}
-            </blockquote>
+            <figure className="story-video">
+              <video
+                controls
+                playsInline
+                preload="none"
+                poster={storyVideoPoster}
+                src={storyVideoUrl}
+                aria-label="How Troy Started Coaching"
+              >
+                Your browser does not support video playback.{' '}
+                <a href={storyVideoUrl}>Watch How Troy Started Coaching</a>.
+              </video>
+              <figcaption>How Troy Started Coaching</figcaption>
+            </figure>
           </div>
         </div>
       </section>
