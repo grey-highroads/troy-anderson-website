@@ -99,6 +99,17 @@ export const contentQueries = {
     "originalFilename": file.asset->originalFilename
   }
 }`,
+  press: `*[_type == "press"] | order(_updatedAt desc)[0]{
+    _id, _rev, _updatedAt,
+    heading, intro, photographyHeading, photographyIntroduction, downloadLabel, emptyMessage,
+    photos[]{
+      _key, title,
+      "imageUrl": image.asset->url,
+      "width": image.asset->metadata.dimensions.width,
+      "height": image.asset->metadata.dimensions.height,
+      "alt": image.alt
+    }
+  }`,
   siteSettings: `*[_type == "siteSettings"] | order(_updatedAt desc)[0]{
   _id, _rev, _updatedAt,
   instagramUrl,

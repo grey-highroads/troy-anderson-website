@@ -4,7 +4,7 @@ import path from "node:path";
 import assert from "node:assert/strict";
 
 const origin = "https://troy-anderson-website.grey-4fe.workers.dev";
-const routes = { homepage: "/", about: "/about/", book: "/book/", contact: "/contact/", mediaPage: "/media/" };
+const routes = { homepage: "/", about: "/about/", book: "/book/", contact: "/contact/", mediaPage: "/media/", press: "/press/" };
 const secret = process.env.SANITY_PUBLISH_SECRET;
 const token = process.env.SANITY_API_READ_TOKEN;
 assert(secret && token, "Load the private runtime settings.");
@@ -36,7 +36,7 @@ assert.equal((await notify("unknown", "book")).status, 400);
 for (const type of [...Object.keys(routes), "siteSettings"]) {
   const result = await notify(type, type);
   assert.equal(result.status, 200);
-  if (type === "siteSettings") assert.equal(result.body.paths.length, 5);
+  if (type === "siteSettings") assert.equal(result.body.paths.length, 6);
   results.notifications.push(result.body);
 }
 const duplicate = await Promise.all([notify("book", "book"), notify("book", "book")]);
@@ -49,10 +49,10 @@ if (process.argv.includes("--publish-revisions")) {
   const api = "https://gknd24m7.api.sanity.io/v2026-09-11";
   const headers = { Authorization: `Bearer ${admin}`, "Content-Type": "application/json" };
   const query = new URL(`${api}/data/query/production`);
-  query.searchParams.set("query", '*[_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]');
+  query.searchParams.set("query", '*[_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage", "press"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]');
   query.searchParams.set("perspective", "published");
   const documents = (await (await fetch(query, { headers })).json()).result;
-  assert.equal(documents.length, 6);
+  assert.equal(documents.length, 7);
   async function patch(doc) {
     const field = Object.keys(doc).find((key) => !key.startsWith("_") && typeof doc[key] === "string");
     assert(field, "A scalar field is required for the revision-only proof.");

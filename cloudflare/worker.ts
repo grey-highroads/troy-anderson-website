@@ -8,8 +8,8 @@ export { ContentCache } from "./content-cache";
 
 const routes: Record<ContentType, string[]> = {
   homepage: ["/"], about: ["/about/"], book: ["/book/"],
-  contact: ["/contact/"], mediaPage: ["/media/"],
-  siteSettings: ["/", "/about/", "/book/", "/contact/", "/media/"],
+  contact: ["/contact/"], mediaPage: ["/media/"], press: ["/press/"],
+  siteSettings: ["/", "/about/", "/book/", "/contact/", "/media/", "/press/"],
 };
 
 async function refresh(request: Request): Promise<Response> {

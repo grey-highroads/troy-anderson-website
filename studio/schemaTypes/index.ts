@@ -1,3 +1,4 @@
+import {pressType} from './press'
 import {aboutType} from './about'
 import {bookType} from './book'
 import {contactType} from './contact'
@@ -12,4 +13,5 @@ export const schemaTypes = [
   contactType,
   siteSettingsType,
   mediaPageType,
+  pressType,
 ]

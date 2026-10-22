@@ -18,7 +18,7 @@ const body = {
   headers: { Authorization: `Bearer ${secret}` },
   rule: {
     on: ["create", "update", "delete"],
-    filter: '_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))',
+    filter: '_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage", "press"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))',
     projection: '{"_id": coalesce(after()._id, before()._id), "_type": coalesce(after()._type, before()._type), "projectId": "gknd24m7", "dataset": "production"}',
   },
 };
