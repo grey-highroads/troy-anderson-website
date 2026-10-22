@@ -42,7 +42,7 @@ export default async function ContactPage() {
         <div className="contact-form-panel">
 
           <h2>{contact?.formHeading || "What would you like to talk about?"}</h2>
-          <ContactForm runtime={process.env.CLOUDFLARE_RUNTIME === "true"} />
+          <ContactForm copy={contact?.formCopy} runtime={process.env.CLOUDFLARE_RUNTIME === "true"} />
         </div>
       </section>
     </SubpageShell>

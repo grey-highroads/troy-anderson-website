@@ -1,5 +1,7 @@
 import { readSanity } from "@/lib/sanity/client";
 
+import type { ContactFormCopy } from "@/lib/contact-form-copy";
+
 export type ContactContent = {
   title?: string
   intro?: string
@@ -8,6 +10,7 @@ export type ContactContent = {
   portraitImageHeight?: number
   portraitImageAlt?: string
   formHeading?: string
+  formCopy?: ContactFormCopy
 }
 
 function isWebUrl(value: unknown): value is string {

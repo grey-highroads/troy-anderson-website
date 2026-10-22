@@ -13,6 +13,7 @@ export type AboutContent = {
   storyHeading?: string
   storyBody?: PortableTextBlock[]
   pullQuote?: string
+  storyVideoTitle?: string
   storyVideoUrl?: string
   storyVideoPosterUrl?: string
 }

@@ -16,7 +16,7 @@ export const aboutType = defineType({
       name: 'intro',
       title: 'Introduction',
       type: 'text',
-      description: 'A short introduction shown directly below the page heading.',
+      description: 'Supporting copy beside the page heading on desktop and below it on mobile.',
       rows: 3,
       validation: (rule) => rule.required(),
     }),
@@ -74,6 +74,7 @@ export const aboutType = defineType({
       description: 'A quote from Troy shown below the backstory video.',
       rows: 4,
     }),
+    defineField({name: 'storyVideoTitle', title: 'Backstory video caption', type: 'string', description: 'Caption and accessible player title. Defaults to “How Troy Started Coaching” when not set.'}),
     defineField({
       name: 'storyVideo',
       title: 'Backstory video',

@@ -90,17 +90,17 @@ export default async function BookPage() {
           )}
           {book?.sampleUrl ? (
             <a className="sample-action" href={book.sampleUrl}>
-              Read a Sample
+              {book?.sampleButtonLabel ?? "Read a Sample"}
             </a>
           ) : (
-            <span className="sample-action sample-action--unavailable" aria-disabled="true">Read a Sample — Coming Soon</span>
+            <span className="sample-action sample-action--unavailable" aria-disabled="true">{book?.sampleUnavailableLabel ?? "Read a Sample — Coming Soon"}</span>
           )}
         </article>
       </section>
 
       <section className="retailers-panel">
 
-        <h2>Choose your bookseller.</h2>
+        <h2>{book?.retailersHeading ?? "Choose your bookseller."}</h2>
         <div className="retailer-list" aria-label="Book retailers">
           {retailerLinks
             ? retailerLinks.map((retailer) => (
@@ -116,7 +116,7 @@ export default async function BookPage() {
 
       <section className="endorsements-panel">
 
-        <h2>What people are saying.</h2>
+        <h2>{book?.endorsementsHeading ?? "What people are saying."}</h2>
         <div className="endorsement-grid">
           {endorsements
             ? endorsements.map((endorsement) => (

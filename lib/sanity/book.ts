@@ -25,6 +25,11 @@ export type BookContent = {
   inspirationHeading?: string;
   inspirationBody?: PortableTextBlock[];
   sampleUrl?: string;
+  retailersHeading?: string;
+  endorsementsHeading?: string;
+  sampleButtonLabel?: string;
+  sampleUnavailableLabel?: string;
+
   retailers?: Retailer[];
   endorsements?: Endorsement[];
 };

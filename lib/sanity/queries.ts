@@ -13,6 +13,11 @@ export const contentQueries = {
   inspirationHeading,
   inspirationBody,
   sampleUrl,
+  retailersHeading,
+  endorsementsHeading,
+  sampleButtonLabel,
+  sampleUnavailableLabel,
+
   retailers[]{name, url},
   endorsements[]{quote, name, attribution}
 }`,
@@ -29,6 +34,7 @@ export const contentQueries = {
   storyHeading,
   storyBody,
   pullQuote,
+  storyVideoTitle,
   "storyVideoUrl": storyVideo.asset->url,
   "storyVideoPosterUrl": storyVideoPoster.asset->url
 }`,
@@ -56,7 +62,8 @@ export const contentQueries = {
   "portraitImageWidth": portraitImage.asset->metadata.dimensions.width,
   "portraitImageHeight": portraitImage.asset->metadata.dimensions.height,
   "portraitImageAlt": portraitImage.alt,
-  formHeading
+  formHeading,
+  formCopy
 }`,
   mediaPage: `*[_type == "mediaPage"] | order(_updatedAt desc)[0]{
   _id, _rev, _updatedAt,

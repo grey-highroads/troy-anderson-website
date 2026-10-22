@@ -62,6 +62,10 @@ export const bookType = defineType({
       type: 'array',
       of: [defineArrayMember({type: 'block'})],
     }),
+    defineField({name: 'retailersHeading', title: 'Bookseller section heading', type: 'string', description: 'Defaults to “Choose your bookseller.” when not set.'}),
+    defineField({name: 'endorsementsHeading', title: 'Endorsements section heading', type: 'string', description: 'Defaults to “What people are saying.” when not set.'}),
+    defineField({name: 'sampleButtonLabel', title: 'Sample button label', type: 'string', description: 'Defaults to “Read a Sample” when not set.'}),
+    defineField({name: 'sampleUnavailableLabel', title: 'Sample unavailable label', type: 'string', description: 'Defaults to “Read a Sample — Coming Soon” when not set.'}),
     defineField({
       name: 'sampleUrl',
       title: 'Sample URL',
