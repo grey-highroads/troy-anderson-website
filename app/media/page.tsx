@@ -9,7 +9,7 @@ import { getMediaPageContent } from "@/lib/sanity/media";
 export const metadata: Metadata = {
   title: "Media",
   description:
-    "Watch and share Troy Anderson videos, approved photography, and publicity materials.",
+    "Watch Troy Anderson’s YouTube videos and explore podcast appearances.",
 };
 
 export default async function MediaPage() {
@@ -20,24 +20,18 @@ export default async function MediaPage() {
         poster: await resolveMediaPoster(video),
       })))
     : null;
-  const photos = media?.photos?.length ? media.photos : null;
-  const materials = media?.publicityMaterials?.length
-    ? media.publicityMaterials
-    : null;
 
   return (
     <SubpageShell
-
       title={media?.heading || "Media"}
-      intro={
-        media?.videoIntroduction ||
-        "Watch and share selected videos, then find approved photography and publicity materials below."
-      }
+      intro="Watch and share Troy’s YouTube videos and explore his podcast appearances."
     >
-      <section className="media-section media-section--paper">
+      <section
+        className="media-section media-section--paper"
+        aria-labelledby="youtube-title"
+      >
         <header className="media-section__heading">
-
-          <h2>Watch &amp; share.</h2>
+          <h2 id="youtube-title">Troy’s YouTube Channel</h2>
         </header>
         {videos ? (
           <div className="media-video-list">
@@ -84,77 +78,14 @@ export default async function MediaPage() {
         )}
       </section>
 
-      <section className="media-section media-section--ink">
+      <section
+        className="media-section media-section--ink"
+        aria-labelledby="podcasts-title"
+      >
         <header className="media-section__heading">
-
-          <h2>Approved images</h2>
-          <p>
-            {media?.photographyIntroduction ||
-              "Download approved photography for editorial and publicity use."}
-          </p>
+          <h2 id="podcasts-title">Podcast Appearances</h2>
         </header>
-        {photos ? (
-          <div className="media-photo-grid">
-            {photos.map((photo) => (
-              <article className="media-photo-card" key={photo.key}>
-                <div className="media-photo-card__image">
-                  <Image
-                    src={photo.imageUrl}
-                    width={photo.width}
-                    height={photo.height}
-                    alt={photo.alt}
-                    sizes="(max-width: 640px) 50vw, (max-width: 900px) 33vw, (max-width: 1200px) 25vw, 17vw"
-                  />
-                </div>
-                <a
-                  href={photo.imageUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  download
-                  aria-label={`Download ${photo.title}`}
-                >
-                  Download image <span aria-hidden="true">↓</span>
-                </a>
-              </article>
-            ))}
-          </div>
-        ) : (
-          <p className="media-empty-state">
-            Approved photography will be available here soon.
-          </p>
-        )}
-      </section>
-
-      <section className="media-section media-section--cyan">
-        <header className="media-section__heading">
-
-          <h2>Ready to use.</h2>
-          <p>
-            {media?.publicityIntroduction ||
-              "Download current one-sheets and other approved publicity materials."}
-          </p>
-        </header>
-        {materials ? (
-          <div className="media-download-list">
-            {materials.map((material) => (
-              <a
-                href={material.fileUrl}
-                target="_blank"
-                rel="noreferrer"
-                download
-                key={material.key}
-              >
-                <span>{material.title}</span>
-                <small>{material.originalFilename || "Download file"}</small>
-                <strong aria-hidden="true">↓</strong>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <p className="media-empty-state">
-            Publicity downloads will be available here soon.
-          </p>
-        )}
+        <p className="media-empty-state">Coming soon.</p>
       </section>
     </SubpageShell>
   );
