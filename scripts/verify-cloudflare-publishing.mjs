@@ -36,7 +36,7 @@ assert.equal((await notify("unknown", "book")).status, 400);
 for (const type of [...Object.keys(routes), "siteSettings"]) {
   const result = await notify(type, type);
   assert.equal(result.status, 200);
-  if (type === "siteSettings") assert.equal(result.body.paths.length, 6);
+  if (type === "siteSettings") assert.equal(result.body.paths.length, Object.keys(routes).length);
   results.notifications.push(result.body);
 }
 const duplicate = await Promise.all([notify("book", "book"), notify("book", "book")]);
@@ -52,7 +52,7 @@ if (process.argv.includes("--publish-revisions")) {
   query.searchParams.set("query", '*[_type in ["homepage", "book", "about", "contact", "siteSettings", "mediaPage", "press"] && !(_id in path("drafts.**")) && !(_id in path("versions.**"))]');
   query.searchParams.set("perspective", "published");
   const documents = (await (await fetch(query, { headers })).json()).result;
-  assert.equal(documents.length, 7);
+  assert.equal(documents.length, Object.keys(routes).length + 1);
   async function patch(doc) {
     const field = Object.keys(doc).find((key) => !key.startsWith("_") && typeof doc[key] === "string");
     assert(field, "A scalar field is required for the revision-only proof.");
