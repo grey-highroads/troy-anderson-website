@@ -62,6 +62,10 @@ export const contentQueries = {
   _id, _rev, _updatedAt,
   heading,
   videoIntroduction,
+  youtubeHeading,
+  videoEmptyMessage,
+  podcastHeading,
+  podcastIntroduction,
   videos[]{
     _key, title, mediaUrl, shareCopy,
     thumbnail{

@@ -32,6 +32,10 @@ export type PublicityMaterial = {
 export type MediaPageContent = {
   heading?: string;
   videoIntroduction?: string;
+  youtubeHeading?: string;
+  videoEmptyMessage?: string;
+  podcastHeading?: string;
+  podcastIntroduction?: string;
   videos?: MediaVideo[];
   photographyIntroduction?: string;
   photos?: MediaPhoto[];

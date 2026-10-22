@@ -24,14 +24,14 @@ export default async function MediaPage() {
   return (
     <SubpageShell
       title={media?.heading || "Media"}
-      intro="Watch and share Troy’s YouTube videos and explore his podcast appearances."
+      intro={media?.videoIntroduction || "Watch and share Troy’s YouTube videos and explore his podcast appearances."}
     >
       <section
         className="media-section media-section--paper"
         aria-labelledby="youtube-title"
       >
         <header className="media-section__heading">
-          <h2 id="youtube-title">Troy’s YouTube Channel</h2>
+          <h2 id="youtube-title">{media?.youtubeHeading || "Troy’s YouTube Channel"}</h2>
         </header>
         {videos ? (
           <div className="media-video-list">
@@ -73,7 +73,7 @@ export default async function MediaPage() {
           </div>
         ) : (
           <p className="media-empty-state">
-            Selected video links will be available here soon.
+            {media?.videoEmptyMessage || "Selected video links will be available here soon."}
           </p>
         )}
       </section>
@@ -83,9 +83,9 @@ export default async function MediaPage() {
         aria-labelledby="podcasts-title"
       >
         <header className="media-section__heading">
-          <h2 id="podcasts-title">Podcast Appearances</h2>
+          <h2 id="podcasts-title">{media?.podcastHeading || "Podcast Appearances"}</h2>
         </header>
-        <p className="media-empty-state">Coming soon.</p>
+        <p className="media-empty-state">{media?.podcastIntroduction || "Coming soon."}</p>
       </section>
     </SubpageShell>
   );

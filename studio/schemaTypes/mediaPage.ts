@@ -14,22 +14,35 @@ export const mediaPageType = defineType({
     }),
     defineField({
       name: 'videoIntroduction',
-      title: 'Video introduction',
+      title: 'Main subheadline',
       type: 'text',
-      description: 'Short copy introducing the promotional videos available below.',
+      description: 'Supporting copy beside the main page heading.',
       rows: 3,
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'youtubeHeading',
+      title: 'YouTube section heading',
+      type: 'string',
+      description: 'Defaults to “Troy’s YouTube Channel” when empty.',
+    }),
+    defineField({
+      name: 'videoEmptyMessage',
+      title: 'YouTube empty-state message',
+      type: 'text',
+      rows: 2,
+      description: 'Shown only when no videos are available.',
+    }),
+    defineField({
       name: 'videos',
-      title: 'Promotional videos',
+      title: 'YouTube videos',
       type: 'array',
       description: 'Add the approved hosted videos in the order they should appear.',
       validation: (rule) => rule.required().min(1),
       of: [
         defineArrayMember({
           name: 'promotionalVideo',
-          title: 'Promotional video',
+          title: 'YouTube video',
           type: 'object',
           fields: [
             defineField({
@@ -81,96 +94,32 @@ export const mediaPageType = defineType({
       ],
     }),
     defineField({
-      name: 'photographyIntroduction',
-      title: 'Photography introduction',
+      name: 'podcastHeading',
+      title: 'Podcast section heading',
+      type: 'string',
+      description: 'Defaults to “Podcast Appearances” when empty.',
+    }),
+    defineField({
+      name: 'podcastIntroduction',
+      title: 'Podcast section copy',
       type: 'text',
-      description: 'Short copy introducing the approved photos available for download.',
       rows: 3,
-      validation: (rule) => rule.required(),
+      description: 'The current placeholder or introduction. Defaults to “Coming soon.” when empty.',
     }),
-    defineField({
-      name: 'photos',
-      title: 'Downloadable photos',
-      type: 'array',
-      description: 'Upload the approved publicity photos in the order they should appear.',
-      validation: (rule) => rule.required().min(1),
-      of: [
-        defineArrayMember({
-          name: 'publicityPhoto',
-          title: 'Publicity photo',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-              description: 'A short label that helps visitors identify the photo.',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'image',
-              title: 'Photo',
-              type: 'image',
-              description: 'Upload the final high-resolution photo approved for publicity use.',
-              options: {hotspot: true},
-              validation: (rule) => rule.required(),
-              fields: [
-                defineField({
-                  name: 'alt',
-                  title: 'Alternative text',
-                  type: 'string',
-                  description: 'Briefly describe the photo for visitors using assistive technology.',
-                  validation: (rule) => rule.required(),
-                }),
-              ],
-            }),
-          ],
-          preview: {
-            select: {title: 'title', media: 'image'},
-          },
-        }),
-      ],
+    // Retain legacy data without exposing controls for removed public sections.
+    defineField({name: 'photographyIntroduction', type: 'text', hidden: true, readOnly: true}),
+    defineField({name: 'photos', type: 'array', hidden: true, readOnly: true,
+      of: [defineArrayMember({name: 'publicityPhoto', type: 'object', fields: [
+        defineField({name: 'title', type: 'string'}),
+        defineField({name: 'image', type: 'image', fields: [defineField({name: 'alt', type: 'string'})]}),
+      ]})],
     }),
-    defineField({
-      name: 'publicityIntroduction',
-      title: 'Publicity materials introduction',
-      type: 'text',
-      description: 'Short copy introducing the one-sheets and other downloadable materials.',
-      rows: 3,
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      name: 'publicityMaterials',
-      title: 'Publicity materials',
-      type: 'array',
-      description: 'Upload the approved one-sheets and other publicity files.',
-      validation: (rule) => rule.required().min(1),
-      of: [
-        defineArrayMember({
-          name: 'publicityMaterial',
-          title: 'Publicity material',
-          type: 'object',
-          fields: [
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-              description: 'The public-facing name of this download.',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'file',
-              title: 'File',
-              type: 'file',
-              description: 'Upload the final approved file with a clear, client-friendly filename.',
-              validation: (rule) => rule.required(),
-            }),
-          ],
-          preview: {
-            select: {title: 'title'},
-          },
-        }),
-      ],
+    defineField({name: 'publicityIntroduction', type: 'text', hidden: true, readOnly: true}),
+    defineField({name: 'publicityMaterials', type: 'array', hidden: true, readOnly: true,
+      of: [defineArrayMember({name: 'publicityMaterial', type: 'object', fields: [
+        defineField({name: 'title', type: 'string'}),
+        defineField({name: 'file', type: 'file'}),
+      ]})],
     }),
   ],
   preview: {
