@@ -4,6 +4,7 @@ export const bookType = defineType({
   name: 'book',
   title: 'Book',
   type: 'document',
+  fieldsets: [{name: 'sampleButton', title: 'Sample button', options: {collapsible: true, collapsed: false}}],
   fields: [
     defineField({
       name: 'title',
@@ -64,11 +65,12 @@ export const bookType = defineType({
     }),
     defineField({name: 'retailersHeading', title: 'Bookseller section heading', type: 'string', description: 'Defaults to “Choose your bookseller.” when not set.'}),
     defineField({name: 'endorsementsHeading', title: 'Endorsements section heading', type: 'string', description: 'Defaults to “What people are saying.” when not set.'}),
-    defineField({name: 'sampleButtonLabel', title: 'Sample button label', type: 'string', description: 'Defaults to “Read a Sample” when not set.'}),
-    defineField({name: 'sampleUnavailableLabel', title: 'Sample unavailable label', type: 'string', description: 'Defaults to “Read a Sample — Coming Soon” when not set.'}),
+    defineField({name: 'sampleButtonLabel', title: 'Button copy', fieldset: 'sampleButton', type: 'string', description: 'Text shown on the sample button. Defaults to “Read a Sample” when not set.'}),
+    defineField({name: 'sampleUnavailableLabel', title: 'Unavailable button copy', fieldset: 'sampleButton', type: 'string', description: 'Shown when no destination URL is provided. Defaults to “Read a Sample — Coming Soon” when not set.'}),
     defineField({
       name: 'sampleUrl',
-      title: 'Sample URL',
+      title: 'Destination URL',
+      fieldset: 'sampleButton',
       type: 'url',
       description: 'Optional link used by the Read a Sample button.',
     }),
