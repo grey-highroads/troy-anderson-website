@@ -16,8 +16,6 @@ export default async function AboutPage() {
   return (
     <SubpageShell
       variant="about"
-      subheader="Life Coach. Author. Instructor."
-
       title={about?.title || "A Life In Motion"}
       intro={
         about?.intro ||

@@ -795,7 +795,7 @@ button {
   margin: 0;
   color: var(--soft-cyan);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(3.5rem, 7vw, 7rem);
+  font-size: clamp(4.35rem, 10vw, 10rem);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -906,7 +906,7 @@ button {
 .contact-form-panel h2 {
   margin: 0.9rem 0 clamp(1.25rem, 2vw, 2.2rem);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(2.5rem, 4.5vw, 5rem);
+  font-size: clamp(3rem, 5.75vw, 6.5rem);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.86;
@@ -1241,7 +1241,7 @@ button {
 .media-section__heading h2 {
   margin: 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(2.5rem, 4.5vw, 5rem);
+  font-size: clamp(3.25rem, 6.25vw, 7rem);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.82;
@@ -1631,7 +1631,7 @@ button {
   }
 
   .subpage-hero h1 {
-    font-size: clamp(3rem, 15vw, 4.5rem);
+    font-size: clamp(3.75rem, 19.5vw, 5.75rem);
   }
 
   .subpage-split,
@@ -1799,20 +1799,6 @@ button {
 .subpage--book .subpage-hero {
   padding-block: clamp(2rem, 3.5vw, 4rem);
   gap: clamp(1.5rem, 3vw, 3rem);
-}
-
-.subpage--about .subpage-hero h1 {
-  font-size: clamp(2.75rem, 5vw, 5rem);
-}
-
-.subpage--about .subpage-hero__subheader {
-  max-width: 22ch;
-  color: var(--paper);
-  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(2.25rem, 4vw, 4rem);
-  font-weight: 400;
-  letter-spacing: 0.015em;
-  line-height: 1.05;
 }
 
 #my-backstory {
