@@ -19,7 +19,7 @@ async function createPress() {
     photos: media.photos,
   })
   const saved = await client.getDocument('press')
-  if (saved?.photos?.length !== media.photos.length) throw new Error('Press photo verification failed.')
+  if (!saved || saved.photos?.length !== media.photos.length) throw new Error('Press photo verification failed.')
   console.log(`Created Press page with ${saved.photos.length} existing photos; original Media content preserved.`)
 }
 
