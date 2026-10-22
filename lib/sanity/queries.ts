@@ -18,7 +18,11 @@ export const contentQueries = {
   sampleButtonLabel,
   sampleUnavailableLabel,
 
-  retailers[]{name, url},
+  retailers[]{name, url,
+    "logoUrl": logo.asset->url,
+    "logoWidth": logo.asset->metadata.dimensions.width,
+    "logoHeight": logo.asset->metadata.dimensions.height
+  },
   endorsements[]{quote, name, attribution}
 }`,
   about: `*[_type == "about"] | order(_updatedAt desc)[0]{
@@ -29,6 +33,7 @@ export const contentQueries = {
   "portraitImageWidth": portraitImage.asset->metadata.dimensions.width,
   "portraitImageHeight": portraitImage.asset->metadata.dimensions.height,
   "portraitImageAlt": portraitImage.alt,
+  portraitCredit,
   biographyHeading,
   biographyBody,
   storyHeading,

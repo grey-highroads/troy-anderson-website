@@ -4,6 +4,9 @@ import { PortableText } from "@portabletext/react";
 
 import { SubpageShell } from "@/components/subpage-shell";
 import { getBookContent } from "@/lib/sanity/book";
+import amazonLogo from "../../public/images/booksellers/amazon.png";
+import barnesNobleLogo from "../../public/images/booksellers/barnes-noble.svg";
+import bookshopLogo from "../../public/images/booksellers/bookshop.png";
 import bookCover from "../../public/images/troy-anderson-book-cover.png";
 
 export const metadata: Metadata = {
@@ -20,6 +23,14 @@ const retailers = [
   "Walmart",
   "Target",
 ];
+
+function defaultRetailerLogo(url: string) {
+  const host = new URL(url).hostname.replace(/^www\./, "");
+  if (host === "amazon.com" || host === "amzn.to") return amazonLogo;
+  if (host === "barnesandnoble.com") return barnesNobleLogo;
+  if (host === "bookshop.org") return bookshopLogo;
+  return undefined;
+}
 
 export default async function BookPage() {
   const book = await getBookContent();
@@ -103,11 +114,18 @@ export default async function BookPage() {
         <h2>{book?.retailersHeading ?? "Choose your bookseller."}</h2>
         <div className="retailer-list" aria-label="Book retailers">
           {retailerLinks
-            ? retailerLinks.map((retailer) => (
-                <a key={retailer.name} href={retailer.url}>
-                  {retailer.name}
-                </a>
-              ))
+            ? retailerLinks.map((retailer) => {
+                const logo = retailer.logoUrl || defaultRetailerLogo(retailer.url);
+                return (
+                  <a key={retailer.name} href={retailer.url} aria-label={`Buy from ${retailer.name}`}>
+                    {logo ? (
+                      <Image className="retailer-logo" src={logo}
+                        width={retailer.logoWidth || 400} height={retailer.logoHeight || 180}
+                        alt={retailer.name} sizes="(max-width: 640px) 80vw, 28vw" />
+                    ) : retailer.name}
+                  </a>
+                );
+              })
             : retailers.map((retailer) => (
                 <span key={retailer}>{retailer}</span>
               ))}

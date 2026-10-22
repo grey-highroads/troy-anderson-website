@@ -94,6 +94,7 @@ export const bookType = defineType({
               type: 'url',
               validation: (rule) => rule.required(),
             }),
+            defineField({name: 'logo', title: 'Bookseller logo', type: 'image', description: 'Optional replacement for the default bookseller graphic. Use the original logo colors on a transparent or white background.'}),
           ],
           preview: {
             select: {title: 'name', subtitle: 'url'},

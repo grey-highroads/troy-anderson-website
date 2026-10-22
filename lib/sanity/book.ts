@@ -4,6 +4,9 @@ import type { PortableTextBlock } from "@portabletext/react";
 type Retailer = {
   name: string;
   url: string;
+  logoUrl?: string;
+  logoWidth?: number;
+  logoHeight?: number;
 };
 
 type Endorsement = {
@@ -54,7 +57,7 @@ function cleanBookContent(content: BookContent): BookContent {
     sampleUrl: isWebUrl(content.sampleUrl) ? content.sampleUrl : undefined,
     retailers: content.retailers?.filter(
       (retailer) => retailer?.name && isWebUrl(retailer.url),
-    ),
+    ).map((retailer) => ({...retailer, logoUrl: isWebUrl(retailer.logoUrl) ? retailer.logoUrl : undefined})),
   };
 }
 

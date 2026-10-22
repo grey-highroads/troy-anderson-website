@@ -8,6 +8,7 @@ export type AboutContent = {
   portraitImageWidth?: number
   portraitImageHeight?: number
   portraitImageAlt?: string
+  portraitCredit?: string
   biographyHeading?: string
   biographyBody?: PortableTextBlock[]
   storyHeading?: string

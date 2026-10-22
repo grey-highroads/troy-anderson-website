@@ -37,6 +37,7 @@ export const aboutType = defineType({
         }),
       ],
     }),
+    defineField({name: 'portraitCredit', title: 'Biography photo credit', type: 'string', description: 'Shown directly beneath the biography photograph.'}),
     defineField({
       name: 'biographyHeading',
       title: 'Biography heading',

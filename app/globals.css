@@ -1867,3 +1867,40 @@ a.sample-action:focus-visible {
   line-height: 0.98;
   text-transform: uppercase;
 }
+
+.biography-portrait {
+  min-width: 0;
+  margin: 0;
+}
+
+.biography-portrait figcaption {
+  margin-top: 0.75rem;
+  color: var(--ink);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.retailer-list {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  border: 0;
+  gap: 1rem;
+}
+
+.retailer-list a {
+  background: var(--white);
+  color: var(--ink);
+  border: 0;
+}
+
+.retailer-list a:focus-visible {
+  outline: 3px solid var(--soft-cyan);
+  outline-offset: 4px;
+}
+
+.retailer-logo {
+  display: block;
+  width: 100%;
+  height: 7rem;
+  object-fit: contain;
+}

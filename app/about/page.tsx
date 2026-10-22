@@ -28,14 +28,17 @@ export default async function AboutPage() {
     >
       <section className="subpage-split subpage-split--paper">
         {about?.portraitImageUrl ? (
-          <Image
-            className="portrait-image"
-            src={about.portraitImageUrl}
-            width={about.portraitImageWidth || 1200}
-            height={about.portraitImageHeight || 1500}
-            alt={about.portraitImageAlt || "Portrait of Troy Anderson"}
-            sizes="(max-width: 900px) 91vw, 43vw"
-          />
+          <figure className="biography-portrait">
+            <Image
+              className="portrait-image"
+              src={about.portraitImageUrl}
+              width={about.portraitImageWidth || 1200}
+              height={about.portraitImageHeight || 1500}
+              alt={about.portraitImageAlt || "Portrait of Troy Anderson"}
+              sizes="(max-width: 900px) 91vw, 43vw"
+            />
+            {about.portraitCredit ? <figcaption>{about.portraitCredit}</figcaption> : null}
+          </figure>
         ) : (
           <div
             className="portrait-placeholder"
