@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 type SubpageShellProps = {
-  eyebrow: string;
+  variant?: "about" | "book";
   title: string;
   subheader?: string;
   intro: string;
@@ -9,16 +9,15 @@ type SubpageShellProps = {
 };
 
 export function SubpageShell({
-  eyebrow,
+  variant,
   title,
   subheader,
   intro,
   children,
 }: SubpageShellProps) {
   return (
-    <main className="subpage">
+    <main className={`subpage${variant ? ` subpage--${variant}` : ""}`}>
       <header className="subpage-hero">
-        <p className="subpage-hero__eyebrow">{eyebrow}</p>
         <div className="subpage-hero__title-group">
           <h1>{title}</h1>
           {subheader ? (

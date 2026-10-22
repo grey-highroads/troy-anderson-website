@@ -15,7 +15,7 @@ export default async function ContactPage() {
 
   return (
     <SubpageShell
-      eyebrow="Contact"
+
       title={contact?.title || "Let’s Connect"}
       intro={
         contact?.intro ||
@@ -40,7 +40,7 @@ export default async function ContactPage() {
         )}
 
         <div className="contact-form-panel">
-          <p className="section-label">Send a Note</p>
+
           <h2>{contact?.formHeading || "What would you like to talk about?"}</h2>
           <ContactForm runtime={process.env.CLOUDFLARE_RUNTIME === "true"} />
         </div>

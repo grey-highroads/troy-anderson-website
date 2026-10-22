@@ -15,7 +15,9 @@ export default async function AboutPage() {
 
   return (
     <SubpageShell
-      eyebrow="About Troy"
+      variant="about"
+      subheader="Life Coach. Author. Instructor."
+
       title={about?.title || "A Life In Motion"}
       intro={
         about?.intro ||
@@ -42,7 +44,7 @@ export default async function AboutPage() {
           </div>
         )}
         <article className="content-block">
-          <p className="section-label">Biography</p>
+
           <h2>{about?.biographyHeading || "Meet Troy"}</h2>
           {about?.biographyBody?.length ? (
             <div className="portable-copy">
@@ -64,9 +66,9 @@ export default async function AboutPage() {
         </article>
       </section>
 
-      <section className="story-panel">
+      <section id="my-backstory" className="story-panel">
         <div className="content-block content-block--wide">
-          <p className="section-label">Troy’s Story</p>
+
           <h2>
             {about?.storyHeading || "The road here was not a straight line."}
           </h2>

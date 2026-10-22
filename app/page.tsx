@@ -38,37 +38,12 @@ export default async function Home() {
       </section>
 
       <section
-        id="book-promo"
-        className="book-promo"
-        aria-labelledby="book-promo-title"
-      >
-        <Image
-          className="book-promo__cover"
-          src={bookCover}
-          alt="Never Waste a Kick in the Nuts by Troy Anderson"
-          sizes="(max-width: 640px) 28vw, 17vw"
-        />
-
-        <div className="book-promo__message">
-          <h2 id="book-promo-title" className="book-promo__title">
-            <span>Never Waste A</span>
-            <span>Kick In The Nuts</span>
-          </h2>
-
-          <div className="book-promo__availability">
-            <span className="book-promo__arrow" aria-hidden="true" />
-            <p>Available On Amazon</p>
-          </div>
-        </div>
-      </section>
-
-      <section
         id="meet-troy"
         className="meet-troy"
         aria-labelledby="meet-troy-title"
       >
         <div className="meet-troy__copy">
-          <p className="meet-troy__eyebrow">About Troy</p>
+
           <h2 id="meet-troy-title">
             {homepage?.meetTroyHeading || "Meet Troy"}
           </h2>
@@ -79,7 +54,7 @@ export default async function Home() {
               <p>Troy Anderson is a life coach and author who helps people turn difficult moments into useful perspective and purposeful action.</p>
             )}
           </div>
-          <Link className="meet-troy__link" href="/about">
+          <Link className="meet-troy__link" href="/about#my-backstory">
             Read Troy&apos;s story
             <span aria-hidden="true">↗</span>
           </Link>
@@ -111,7 +86,6 @@ export default async function Home() {
         aria-labelledby="testimonials-title"
       >
         <div className="testimonials__heading">
-          <p>Testimonials</p>
           <h2 id="testimonials-title">
             {homepage?.testimonialsHeading || "What they’re saying about Troy"}
           </h2>
@@ -130,6 +104,31 @@ export default async function Home() {
               </footer>
             </blockquote>
           ))}
+        </div>
+      </section>
+
+      <section
+        id="book-promo"
+        className="book-promo"
+        aria-labelledby="book-promo-title"
+      >
+        <Image
+          className="book-promo__cover"
+          src={bookCover}
+          alt="Never Waste a Kick in the Nuts by Troy Anderson"
+          sizes="(max-width: 640px) 28vw, 17vw"
+        />
+
+        <div className="book-promo__message">
+          <h2 id="book-promo-title" className="book-promo__title">
+            <span>Never Waste A</span>
+            <span>Kick In The Nuts</span>
+          </h2>
+
+          <div className="book-promo__availability">
+            <span className="book-promo__arrow" aria-hidden="true" />
+            <p>Available On Amazon</p>
+          </div>
         </div>
       </section>
     </main>

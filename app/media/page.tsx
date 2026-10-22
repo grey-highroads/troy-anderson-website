@@ -27,7 +27,7 @@ export default async function MediaPage() {
 
   return (
     <SubpageShell
-      eyebrow="Media"
+
       title={media?.heading || "Media"}
       intro={
         media?.videoIntroduction ||
@@ -36,7 +36,7 @@ export default async function MediaPage() {
     >
       <section className="media-section media-section--paper">
         <header className="media-section__heading">
-          <p className="section-label">Video</p>
+
           <h2>Watch &amp; share.</h2>
         </header>
         {videos ? (
@@ -86,7 +86,7 @@ export default async function MediaPage() {
 
       <section className="media-section media-section--ink">
         <header className="media-section__heading">
-          <p className="section-label">Photography</p>
+
           <h2>Approved images</h2>
           <p>
             {media?.photographyIntroduction ||
@@ -127,7 +127,7 @@ export default async function MediaPage() {
 
       <section className="media-section media-section--cyan">
         <header className="media-section__heading">
-          <p className="section-label">Publicity</p>
+
           <h2>Ready to use.</h2>
           <p>
             {media?.publicityIntroduction ||

@@ -795,7 +795,7 @@ button {
   margin: 0;
   color: var(--soft-cyan);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(5.2rem, 13vw, 13rem);
+  font-size: clamp(3.5rem, 7vw, 7rem);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -906,7 +906,7 @@ button {
 .contact-form-panel h2 {
   margin: 0.9rem 0 clamp(1.25rem, 2vw, 2.2rem);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(3.5rem, 7vw, 8rem);
+  font-size: clamp(2.5rem, 4.5vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.86;
@@ -1241,7 +1241,7 @@ button {
 .media-section__heading h2 {
   margin: 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(4rem, 8vw, 9rem);
+  font-size: clamp(2.5rem, 4.5vw, 5rem);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.82;
@@ -1631,7 +1631,7 @@ button {
   }
 
   .subpage-hero h1 {
-    font-size: clamp(4.5rem, 24vw, 7rem);
+    font-size: clamp(3rem, 15vw, 4.5rem);
   }
 
   .subpage-split,
@@ -1792,4 +1792,63 @@ button {
 .endorsements-panel .section-label,
 .contact-layout .section-label {
   color: var(--oxblood);
+}
+
+/* Compact interior openings and a stronger sample action. */
+.subpage--about .subpage-hero,
+.subpage--book .subpage-hero {
+  padding-block: clamp(2rem, 3.5vw, 4rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
+}
+
+.subpage--about .subpage-hero h1 {
+  font-size: clamp(2.75rem, 5vw, 5rem);
+}
+
+.subpage--about .subpage-hero__subheader {
+  max-width: 22ch;
+  color: var(--paper);
+  font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
+  font-size: clamp(2.25rem, 4vw, 4rem);
+  font-weight: 400;
+  letter-spacing: 0.015em;
+  line-height: 1.05;
+}
+
+#my-backstory {
+  scroll-margin-top: 7rem;
+}
+
+.sample-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  margin-top: 1.25rem;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.85rem, 1vw, 1rem);
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+a.sample-action:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+a.sample-action:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 4px;
+}
+
+.sample-action--unavailable {
+  background: transparent;
+  color: var(--ink);
+  border-style: dashed;
 }

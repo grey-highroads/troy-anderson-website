@@ -28,7 +28,8 @@ export default async function BookPage() {
 
   return (
     <SubpageShell
-      eyebrow="The Book"
+      variant="book"
+
       title={book?.title || "Never Waste A Kick In The Nuts"}
       subheader={book?.subheader || "Making Mentors Out of Tormentors"}
       intro={
@@ -55,7 +56,7 @@ export default async function BookPage() {
           />
         )}
         <article className="content-block book-detail__copy">
-          <p className="section-label">Overview</p>
+
           <h2>{book?.overviewHeading || "Making the most out of moments."}</h2>
           {book?.overviewBody?.length ? (
             <div className="portable-copy">
@@ -73,7 +74,7 @@ export default async function BookPage() {
 
       <section className="book-notes-grid">
         <article className="book-note book-note--cyan">
-          <p className="section-label">Behind the Book</p>
+
           <h2>
             {book?.inspirationHeading || "What inspired Troy to write it?"}
           </h2>
@@ -88,17 +89,17 @@ export default async function BookPage() {
             </p>
           )}
           {book?.sampleUrl ? (
-            <a className="stub-action" href={book.sampleUrl}>
+            <a className="sample-action" href={book.sampleUrl}>
               Read a Sample
             </a>
           ) : (
-            <span className="stub-action">Read a Sample — Coming Soon</span>
+            <span className="sample-action sample-action--unavailable" aria-disabled="true">Read a Sample — Coming Soon</span>
           )}
         </article>
       </section>
 
       <section className="retailers-panel">
-        <p className="section-label">Find the Book</p>
+
         <h2>Choose your bookseller.</h2>
         <div className="retailer-list" aria-label="Book retailers">
           {retailerLinks
@@ -114,7 +115,7 @@ export default async function BookPage() {
       </section>
 
       <section className="endorsements-panel">
-        <p className="section-label">Advance Praise</p>
+
         <h2>What people are saying.</h2>
         <div className="endorsement-grid">
           {endorsements
