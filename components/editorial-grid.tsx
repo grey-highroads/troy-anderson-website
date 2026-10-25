@@ -177,7 +177,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                   <Image
                     className="media-tile__poster"
                     style={{ objectFit: "cover", objectPosition: "center top" }}
-                    src={`${previewPath}-poster.jpg?v=20261023`}
+                    src={`${previewPath}-poster.jpg?v=20261025`}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
                     loading={index === 0 ? "eager" : "lazy"}
@@ -186,7 +186,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                   {!previewsPaused && !reducedMotion && (
                     <video
                       className="media-tile__preview"
-                      src={`${previewPath}-preview.mp4?v=20261023`}
+                      src={`${previewPath}-preview.mp4?v=20261025`}
                       autoPlay
                       muted
                       loop
@@ -204,7 +204,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                       ref={playerRef}
                       className="media-tile__player"
                       src={`${clipPath}.mp4`}
-                      poster={`${previewPath}-poster.jpg?v=20261023`}
+                      poster={`${previewPath}-poster.jpg?v=20261025`}
                       controls
                       playsInline
                       preload="none"
