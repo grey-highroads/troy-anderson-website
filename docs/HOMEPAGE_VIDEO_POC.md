@@ -2,7 +2,20 @@
 
 The current hero uses all 14 supplied full-video/animated-poster pairs with no placeholder tiles. It is enabled on both Cloudflare Workers and GitHub Pages review sites. Hero assets remain code-managed; CMS clip controls and production video delivery remain separate release work.
 
-Run `HOMEPAGE_VIDEO_POC=true pnpm dev` to enable it locally. It is also enabled when the existing deployment sets `GITHUB_PAGES=true`; builds with neither flag keep the placeholder prototype. Current prepared media files are committed in `public/videos/hero-20261016/` (84.9 MB total, including 2.14 MB of silent previews); older unreferenced files remain in `public/videos/collage-poc/` and served with the static website, using its deployment base path. Originals are not committed. No third-party player, streaming service, analytics, or browser storage is introduced.
+Run `HOMEPAGE_VIDEO_POC=true pnpm dev` to enable it locally. It is also enabled when the existing deployment sets `GITHUB_PAGES=true`; builds with neither flag keep the placeholder prototype. Current prepared media files are committed in `public/videos/hero-20261016/` (latest preview total and settings below); older unreferenced files remain in `public/videos/collage-poc/` and served with the static website, using its deployment base path. Originals are not committed. No third-party player, streaming service, analytics, or browser storage is introduced.
+
+## October 25 asset replacement — current
+
+Latest implementation `c0d82ff` supersedes the October 23 batch (`0ba6594`) and the earlier preview encoding/totals below. All 14 preview loops and JPEG posters were replaced; full click-to-play videos, About's dedicated poster, header, and layout/behavior remain unchanged. Source and verification details are in [the current handoff](CURRENT_HANDOFF.md).
+
+Latest loops total 5,261,215 bytes. Keep original dimensions/frame rate/duration; encode H.264 CRF 24, medium preset, yuv420p, no audio, faststart. For each supplied `TA_BB_XX_gif.mp4`, write `TA_BB_XX-preview.mp4` and extract `TA_BB_XX-poster.jpg` at 0.5 seconds in `public/videos/hero-20261016/`. The older folder date is intentional. Use trusted local ffmpeg tooling; no repository dependency is required. Example commands with actual source/output paths substituted:
+
+```sh
+ffmpeg -i INPUT_gif.mp4 -map 0:v:0 -an -c:v libx264 -crf 24 -preset medium -pix_fmt yuv420p -movflags +faststart OUTPUT-preview.mp4
+ffmpeg -ss 0.5 -i INPUT_gif.mp4 -frames:v 1 -q:v 2 OUTPUT-poster.jpg
+```
+
+Update the version on preview/poster URLs in `components/editorial-grid.tsx` (currently `v=20261025`). Check all output decodes and expected clip mappings, then verify code checks/deployments and all 14 live browser sources/playback. Do not overwrite full `TA_BB_XX.mp4` files for a preview-only request. Later layout sections preserve historical test evidence; final preview/poster fit is `cover`, full-player fit `contain`.
 
 ## Current first-viewport layout (D-014)
 

@@ -56,6 +56,14 @@ These guidelines are the default rules for project decisions. Exceptions should 
 - Color is not the only indicator of state.
 - Verify contrast after the visual design is implemented.
 
+## Client review workflow
+
+- Propose the intended punchlist changes as one coherent pass and wait for approval; a direct request authorizes its own stated scope.
+- Prioritize structure/CSS before unsettled copy. Content is the client's call; challenge feedback only for a concrete structural or engineering reason.
+- Retain all-caps headlines at the current rebalanced size. Leave homepage content/CMS expansion alone unless explicitly requested.
+- Push completed scoped work to GitHub under standing permission, then verify deployments and the real browser result. Studio changes need a separate hosted deployment.
+- Do not choose final copy from competing suggestions or replace the Book sample URL before approval.
+
 ## Source control and review
 
 - Keep the default branch deployable.

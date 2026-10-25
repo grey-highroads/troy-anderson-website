@@ -2,6 +2,10 @@
 
 The roadmap is organized around evidence-producing milestones. Dates can be added once design inputs, content readiness, and stakeholder availability are confirmed.
 
+## October 25 checkpoint
+
+Use [the current handoff](CURRENT_HANDOFF.md) for implemented behavior and remaining client decisions. The older dated snapshot and unchecked broad milestones below are historical/acceptance context, not a current task queue. Six routes/seven CMS types now include unlinked Press, restored 17-photo grid, About video/pull quote/credit, Book retailer graphics/button fields, and aligned Book/About/Contact/Media editing controls. October 22 structural passes and October 25 hero replacements are delivered. All 14 latest loops play on the deployed review site; both code deployments passed. Client-domain launch and final editorial/release acceptance remain open.
+
 ## Progress overview
 
 | Phase | Chapter | Status | Milestone |

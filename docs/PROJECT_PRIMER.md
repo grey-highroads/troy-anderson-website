@@ -19,7 +19,7 @@ This is not a generic video gallery or a flexible page-builder project. The publ
 
 The homepage is a full-width editorial composition rather than a gallery with a sidebar.
 
-- Short, muted video loops preserve the supplied GIF aspect ratios without cropping; tile dimensions follow those proportions. Full videos use their own source proportions.
+- Fourteen short muted loops fill a viewport-contained grid with intentional `cover` cropping anchored center/top. Selected full videos retain their proportions with `contain` (October 16 correction; see current handoff).
 - Typography, book promotion, appearances, quotes, and similar blocks may share the same visual field.
 - All available hero previews loop together without hover, per the October 7 creative direction (D-012); the grid itself only moves on selection/close.
 - Selecting a clip expands it into the primary viewing position.
@@ -35,7 +35,7 @@ Mobile should use its own editorial sequence. It may alternate full-width and pa
 
 ## Content model
 
-The implemented CMS types are `homepage`, `book`, `about`, `contact`, `siteSettings`, and `mediaPage`. Homepage includes Meet Troy and testimonials. Media includes outbound video links, photo downloads, and publicity files. Hero clips and the homepage book promotion remain code-managed.
+The implemented CMS types are `homepage`, `book`, `about`, `contact`, `siteSettings`, `mediaPage`, and `press`. Homepage includes Meet Troy and testimonials. Media features YouTube links and podcast appearances. The restored photo downloads live on an unlinked, noindex Press page; that page is not access-controlled. Hero clips and the homepage book promotion remain code-managed.
 
 Clip CMS controls and Appearances require approved requirements before modeling; a separate Testimonials route/type is not approved. Editors control structured content and supported ordering, images, and links. Layout, typography, responsive rules, and motion remain in code.
 

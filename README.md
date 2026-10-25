@@ -6,7 +6,7 @@ The project centers on a full-width editorial homepage made from short video cli
 
 ## Project status
 
-**Current state (October 7, 2026):** Core public routes and six CMS types are connected; creative review and the real-video homepage proof are in progress. Production migration and launch remain unfinished. Start with [the current handoff](docs/CURRENT_HANDOFF.md).
+**Current state (October 25, 2026):** Six routes and seven Sanity types are implemented, including an unlinked Press photography page. The 14-tile hero, October 22 layout/CMS refinements, and October 25 replacement loops are live. Cloudflare runtime content publishing is implemented on the review host; client-domain launch remains unfinished. Start with [the current handoff](docs/CURRENT_HANDOFF.md), then use [the next-session prompt](docs/NEW_BUILDER_PROMPT.md).
 
 The build has been approved at a fixed price of $9,500. The October 12 launch plan uses Grey's existing business accounts for managed production hosting. Troy retains domain control and ownership of code/content; his team uses Sanity. See [the short launch plan](docs/CLIENT_ACCOUNT_SETUP.md) and D-006 for support and recovery responsibilities.
 
@@ -20,7 +20,7 @@ The build has been approved at a fixed price of $9,500. The October 12 launch pl
 - GitHub for source control
 - Existing client email remains with its current provider
 
-The latest hero proof uses three real replacement clips with simultaneous silent previews, native expansion/playback, and source preview proportions. Three tiles remain placeholders. Production requires Cloudflare Workers runtime content refresh (D-011), not full-site rebuilds after each CMS publish; that migration is planned, not implemented.
+The hero has 14 real tiles with simultaneous silent previews and selected full-video playback, contained in the first viewport. Posters/previews fill tiles with intentional cropping; full playback uses `contain`. The homepage book promotion sits immediately above the footer. Workers refreshes published Sanity content without rebuilding; GitHub Pages remains a secondary static preview.
 
 ## Documentation
 
@@ -45,7 +45,7 @@ The latest hero proof uses three real replacement clips with simultaneous silent
 
 ## Current site areas
 
-Public routes are `/`, `/about`, `/book`, `/media`, and `/contact`. Testimonials is a connected Homepage section, not a separate route. Appearances has no route/schema and requires confirmed launch scope before implementation. Homepage hero files and the book promotion remain code-managed; Homepage CMS fields cover Meet Troy and testimonials.
+Routes are `/`, `/about`, `/book`, `/media`, `/contact`, and unlinked `/press` (noindex, publicly reachable by URL; no authentication). Testimonials is a connected Homepage section, not a separate route. Appearances has no route/schema and requires confirmed launch scope before implementation. Homepage hero files and the book promotion remain code-managed; Homepage CMS fields cover Meet Troy and testimonials.
 
 ## Getting started
 
@@ -69,7 +69,7 @@ HOMEPAGE_VIDEO_POC=true pnpm dev
 
 Local builds without `SANITY_API_READ_TOKEN` intentionally show fallback content. Copy `.env.example` to `.env.local` if authenticated CMS reads are needed; never commit or print the token. Read `AGENTS.md` and the relevant installed Next.js documentation before modifying framework code.
 
-The latest version pushed to `main` is also published as a browser preview at [grey-highroads.github.io/troy-anderson-website](https://grey-highroads.github.io/troy-anderson-website/). GitHub Pages is a temporary review surface; Cloudflare remains the intended production host.
+The latest version pushed to `main` is also published as a browser preview at [grey-highroads.github.io/troy-anderson-website](https://grey-highroads.github.io/troy-anderson-website/). GitHub Pages is a secondary static review surface. The primary runtime review site is [Cloudflare Workers](https://troy-anderson-website.grey-4fe.workers.dev/); client-domain cutover has not occurred.
 
 Run the complete local verification:
 
@@ -77,11 +77,11 @@ Run the complete local verification:
 pnpm check
 ```
 
-The current review build is statically exported to `out/`. `GITHUB_PAGES=true pnpm check` exercises the deployed configuration, including repository-prefixed URLs and real hero media. GitHub Pages is temporary. Production is required to use a compatible Next.js runtime on Cloudflare Workers with secure published-content refresh, missed-notification recovery, and coordinated caching; see D-011 and the Phase 6 → Phase 7 → Phase 8 sequence in the roadmap. No Worker, runtime refresh endpoint, or production migration exists yet.
+`GITHUB_PAGES=true pnpm check` exercises the static review configuration, repository-prefixed URLs, and real hero media. `pnpm cloudflare:build` checks the Worker build; `pnpm cloudflare:dev` runs the runtime locally. Read [runtime operations](docs/CLOUDFLARE_RUNTIME.md) before changing hosting, secrets, refresh, or caches. Production acceptance/domain cutover remain open; runtime refresh itself is already implemented.
 
 ## Content editing
 
-Open [Troy Anderson Sanity Studio](https://troy-anderson.sanity.studio/) and sign in with an account authorized for the existing Sanity project. Select Homepage, Book, About, Contact, Media page, or Site settings. Use the Draft perspective to edit; Published is read-only. Rich-text fields use Enter for paragraphs and Shift+Enter for soft line breaks. Click Publish when ready. Publishing triggers the temporary GitHub preview build. Dispatch/deployment failures and a ten-minute cache lifetime have been observed; this path has no reliable freshness guarantee. Production will replace CMS-triggered builds through D-011.
+Open [Troy Anderson Sanity Studio](https://troy-anderson.sanity.studio/) and sign in with an account authorized for the existing Sanity project. Select Homepage, Book, About, Contact, Media page, Press page, or Site settings. Use the Draft perspective to edit; Published is read-only. Rich-text fields use Enter for paragraphs and Shift+Enter for soft line breaks. Click Publish when ready. Publishing refreshes the Workers review site without rebuilding and also triggers the retained legacy GitHub Pages build. See [runtime operations](docs/CLOUDFLARE_RUNTIME.md) for freshness/recovery behavior. Do not remove the legacy webhook until retirement is approved.
 
 The hosted Studio and local Studio use the same content, not separate copies. A local server is no longer needed for routine editing. Schema or Studio-code changes still require a separate Studio deployment:
 
