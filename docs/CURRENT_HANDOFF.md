@@ -1,6 +1,6 @@
 # Current builder handoff — November 2, 2026
 
-This is the starting point for a new session. It supersedes the October 7–16 snapshots in older documents. Read current code and latest `main` alongside this document. Historical handoff: [through October 16](archive/HANDOFF_THROUGH_2026-10-16.md). No new implementation batch is pending approval or half-finished at this checkpoint.
+This is the starting point for a new session. It supersedes the October 7–16 snapshots in older documents. Read current code and latest `main` alongside this document. Historical handoff: [through October 16](archive/HANDOFF_THROUGH_2026-10-16.md). The November 2 testimonial trial is implemented and checked locally; website publishing is pending approval after automatic review rejected the push. See its checkpoint below.
 
 ## Start here
 
@@ -11,7 +11,7 @@ This is the starting point for a new session. It supersedes the October 7–16 s
 
 Workspace: `/Users/greygarner/Documents/Codex/2026-09-10/referenced-chatgpt-conversation-this-is-an-2`.
 Repository: <https://github.com/grey-highroads/troy-anderson-website>, branch `main`.
-Latest implementation at preparation: `23fe5b4` (November 2 optional Book hero text), following `7bbcce0` (Contact disclaimer/options); hero assets remain `c0d82ff` (October 25). The handoff documentation commit will follow it; start from current HEAD.
+Latest local implementation: `99341f8` (November 2 expandable testimonials trial), not yet pushed. Latest deployed website implementation remains `23fe5b4` (optional Book hero text), following `7bbcce0` (Contact disclaimer/options); hero assets remain `c0d82ff` (October 25). Start from current HEAD and inspect remote synchronization.
 
 ## User preferences and scope
 
@@ -50,6 +50,22 @@ Code pushes to `main` run `.github/workflows/pages.yml`. Website/runtime paths a
 - Hero assets refreshed October 23 and again October 25. Latest batch is committed in `c0d82ff`; both deployments succeeded and all 14 new loops were observed playing in the live browser.
 
 Key revisions: `c701d83` structural pass; `982c901` Media restructuring; `cfee2c5` headline/About correction; `83e80c7` About video; `6cf31f5` pull quote/poster; `a2dd9d9` Book wrap; `815d96f` Media schema; `121e9f3` Book/About/Contact schema; `a63f11f` Press; `00b8a8c`/`8763725` publishing checks; `962debb` logos/credit; `63e5eda` Book button controls; `0ba6594`/`c0d82ff` hero batches.
+
+## November 2 testimonials trial — local website complete, push awaiting approval
+
+The user approved trying the proposed homepage layout while retaining ticker/separate-page alternatives for later. `99341f8` implements two desktop columns, one phone column, sentence-case readable excerpts, individual accessible expand/collapse controls, full short quotes, and optional credentials. The section headline retains its size/all-caps/mint styling and now sits above the grid. No ticker, motion, new route, dependencies, or unrelated homepage changes were added.
+
+The supplied final-copy document contains **11**, not 10, testimonials. All 11 complete quotes and direct excerpts are in `lib/testimonials.ts`, replacing the two old local fallback/test quotes. Source wording is preserved with physical line wraps normalized. Trial order begins Mike Fernandez, Brandon Willie, Rick Bailard. The frontend still prefers existing published Sanity testimonials; the new source has **not** been imported/published yet. The user can review the local fallback preview. Keep source count/selection subject to client review.
+
+Studio schema adds **Short excerpt**, labels the existing quote **Full testimonial**, and makes Credentials optional. Excerpt validation requires an exact passage from the original. The query and loader support this optional field and no longer drop people without credentials. The hosted Studio/schema was deployed successfully with schema-required verification. No draft was published or CMS content written.
+
+`studio/scripts/import-homepage-testimonials.ts` defaults to a dry run, backs up documents privately under the system temporary directory on apply, revision-guards a testimonials-only transaction, and verifies all other fields. It supplies Sanity object types/keys. It aborts on independent testimonial draft edits rather than overwriting them. The inspected dry run found one pending published Homepage and no conflicting draft. Re-run the dry run before a future apply. **Deploy website code first**, then apply this approved testimonial-only import with `sanity exec scripts/import-homepage-testimonials.ts --with-user-token -- --apply` from `studio/`; the current old public layout would make these long quotes oversized. Do not publish any unrelated drafts.
+
+Website lint/type/static build, Cloudflare build/types, Studio build, and Studio types with the previously documented temporary root-alias config passed. Wrangler emitted an existing local log-directory permission warning; the build completed. Original next-env.d.ts bytes and all four pre-existing duplicate generated type files were restored after checks. React component checks covered a narrow client boundary, stable identities, native buttons with unique controlled IDs and expanded state, visible keyboard focus, no new motion, and full quote preservation.
+
+Actual local browser checks: 11 entries, eight independent expandable quotes and three immediately full quotes; all eight toggles expanded/collapsed successfully on a 390px phone; Enter/Space worked; the 145-word Rick quote expanded without overflow. Desktop 1280px, tablet 768px, phones 390px/320px had no horizontal overflow and expected columns. No recorded browser errors. Screenshots: `outputs/troy-testimonials-desktop-20261102.jpg` and `outputs/troy-testimonials-phone-20261102.jpg` (local/ignored). This is **local verification**, not deployed website verification.
+
+Automatic approval review twice rejected `git push origin main`, including after read-only checks of the committed standing authorization, because a direct default-branch push triggers external deployments and it did not accept repository documents as authorization. Do not bypass the rejection with another route/tool. Ask the user to explicitly approve this exact push, then continue deployment, import, hosted-editor inspection, both Actions runs, and live browser verification. The local website preview is served at `http://127.0.0.1:3012/troy-anderson-website/#testimonials` during this checkpoint; stop/recreate the temporary preview as needed.
 
 ## November 2 Book hero empty-state correction
 
