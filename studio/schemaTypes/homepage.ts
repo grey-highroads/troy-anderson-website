@@ -61,11 +61,26 @@ export const homepageType = defineType({
           fields: [
             defineField({
               name: 'quote',
-              title: 'Quote',
+              title: 'Full testimonial',
               type: 'text',
-              description: 'Enter the testimonial without quotation marks.',
-              rows: 4,
+              description: 'The complete original testimonial, without surrounding quotation marks. Short testimonials appear in full.',
+              rows: 8,
               validation: (rule) => rule.required(),
+            }),
+            defineField({
+              name: 'excerpt',
+              title: 'Short excerpt',
+              type: 'text',
+              description: 'Optional: use a short passage from the full testimonial. Visitors can expand it to read the original. Leave blank to show the full testimonial immediately.',
+              rows: 3,
+              validation: (rule) => rule.custom((value, context) => {
+                if (!value?.trim()) return true
+                const quote = (context.parent as {quote?: string} | undefined)?.quote
+                const normalize = (text: string) => text.replace(/\s+/g, ' ').trim()
+                return typeof quote === 'string' && normalize(quote).includes(normalize(value))
+                  ? true
+                  : 'Use an exact passage from the full testimonial.'
+              }),
             }),
             defineField({
               name: 'name',
@@ -78,8 +93,7 @@ export const homepageType = defineType({
               name: 'credentials',
               title: 'Credentials',
               type: 'string',
-              description: 'Their role, organization, or relationship to Troy.',
-              validation: (rule) => rule.required(),
+              description: 'Optional: their role, organization, or relationship to Troy. Leave blank when no attribution was supplied.',
             }),
           ],
           preview: {

@@ -1,31 +1,17 @@
 import { EditorialGrid } from "@/components/editorial-grid";
+import { Testimonial } from "@/components/testimonial";
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
 
-import {
-  getHomepageContent,
-  type HomepageTestimonial,
-} from "@/lib/sanity/homepage";
+import { getHomepageContent } from "@/lib/sanity/homepage";
+import { defaultTestimonials } from "@/lib/testimonials";
 
 import bookCover from "../public/images/troy-anderson-book-flat.jpg";
 
-const fallbackTestimonials: HomepageTestimonial[] = [
-  {
-    quote: "Troy doesn’t mess around.",
-    name: "Grey Garner",
-    credentials: "Web Builder",
-  },
-  {
-    quote: "Wish I’d met Troy 10 years ago.",
-    name: "Jonathan Richter",
-    credentials: "Person",
-  },
-];
-
 export default async function Home() {
   const homepage = await getHomepageContent();
-  const testimonials = homepage?.testimonials || fallbackTestimonials;
+  const testimonials = homepage?.testimonials || defaultTestimonials;
 
   return (
     <main>
@@ -93,16 +79,10 @@ export default async function Home() {
 
         <div className="testimonials__list">
           {testimonials.map((testimonial, index) => (
-            <blockquote
-              className="testimonial"
+            <Testimonial
               key={testimonial._key || `${testimonial.name}-${index}`}
-            >
-              <p>“{testimonial.quote}”</p>
-              <footer>
-                <cite>{testimonial.name}</cite>
-                <span>{testimonial.credentials}</span>
-              </footer>
-            </blockquote>
+              testimonial={testimonial}
+            />
           ))}
         </div>
       </section>

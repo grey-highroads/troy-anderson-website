@@ -15,8 +15,9 @@ export type HomepageContent = {
 export type HomepageTestimonial = {
   _key?: string
   quote: string
+  excerpt?: string
   name: string
-  credentials: string
+  credentials?: string
 }
 
 function isWebUrl(value: unknown): value is string {
@@ -51,9 +52,7 @@ function cleanHomepageContent(content: HomepageQueryContent): HomepageContent {
       typeof testimonial.quote === 'string' &&
       testimonial.quote.trim().length > 0 &&
       typeof testimonial.name === 'string' &&
-      testimonial.name.trim().length > 0 &&
-      typeof testimonial.credentials === 'string' &&
-      testimonial.credentials.trim().length > 0,
+      testimonial.name.trim().length > 0,
   )
 
   return {

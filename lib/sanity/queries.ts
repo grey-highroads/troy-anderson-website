@@ -55,6 +55,7 @@ export const contentQueries = {
   testimonials[]{
     _key,
     quote,
+    excerpt,
     name,
     credentials
   }
