@@ -16,14 +16,13 @@ export const bookType = defineType({
       name: 'subheader',
       title: 'Subheader',
       type: 'string',
-      description: 'The supporting line shown between the book title and introduction.',
-      validation: (rule) => rule.required(),
+      description: 'Optional supporting line beneath the book title. Leave blank to hide it on the website.',
     }),
     defineField({
       name: 'intro',
       title: 'Introduction',
       type: 'text',
-      description: 'The short introduction shown at the top of the Book page.',
+      description: 'Optional introduction in the Book page hero. Leave blank to hide it on the website.',
       rows: 3,
     }),
     defineField({

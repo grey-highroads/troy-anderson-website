@@ -4,7 +4,7 @@ type SubpageShellProps = {
   variant?: "about" | "book";
   title: string;
   subheader?: string;
-  intro: string;
+  intro?: string;
   children: ReactNode;
 };
 
@@ -24,7 +24,7 @@ export function SubpageShell({
             <p className="subpage-hero__subheader">{subheader}</p>
           ) : null}
         </div>
-        <p className="subpage-hero__intro">{intro}</p>
+        {intro ? <p className="subpage-hero__intro">{intro}</p> : null}
       </header>
       {children}
     </main>
