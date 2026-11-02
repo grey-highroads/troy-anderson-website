@@ -1436,6 +1436,13 @@ button {
   text-transform: uppercase;
 }
 
+.contact-form-panel > p.contact-form-disclaimer {
+  margin: 0.5rem 0 0;
+  font-family: var(--font-source-code-pro), monospace;
+  font-size: clamp(0.75rem, 0.85vw, 0.9rem);
+  line-height: 1.5;
+}
+
 @media (max-width: 1200px) {
   .media-photo-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

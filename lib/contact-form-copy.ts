@@ -11,10 +11,9 @@ export const defaultContactFormCopy = {
   "rateLimitMessage": "Please wait a minute before sending another message.",
   "validationMessage": "Please check your email and complete all fields, then try again.",
   "errorMessage": "We couldn’t confirm your message was sent. Please wait a moment and try again.",
-  "deliveryNotice": "Test form: your name, email, inquiry type, and message are processed by Formspree and sent to the site administrator for testing. Formspree stores a submission record, and a copy remains in the test inbox. Please don’t include sensitive personal information.",
+  "deliveryNotice": "NOTE: I am not accepting new clients for coaching at the moment.",
   "unavailableMessage": "Form delivery will be connected before launch.",
   "inquiryOptions": [
-    "Coaching",
     "Speaking",
     "Media",
     "Book",

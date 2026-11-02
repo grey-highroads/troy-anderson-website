@@ -64,19 +64,22 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
   }
 
   return (
-    <form className="contact-form" onSubmit={submit} aria-busy={status === "sending"}>
-      <label>{text.nameLabel}<input type="text" name="name" autoComplete="name" required maxLength={100} /></label>
-      <label>{text.emailLabel}<input type="email" name="email" autoComplete="email" required maxLength={254} /></label>
-      <label>{text.inquiryLabel}<select name="inquiry" defaultValue="" required>
-        <option value="" disabled>{text.inquiryPlaceholder}</option>
-        {text.inquiryOptions.map((option) => <option key={option} value={option}>{option}</option>)}
-      </select></label>
-      <label>{text.messageLabel}<textarea name="message" rows={6} required maxLength={5000} /></label>
-      <div hidden aria-hidden="true"><label>Leave empty<input name="_gotcha" tabIndex={-1} autoComplete="off" /></label></div>
-      <button type="submit" disabled={!available || status === "sending"}>{status === "sending" ? text.sendingLabel : text.submitLabel}</button>
-      <p className="form-note" ref={statusRef} tabIndex={-1} role="status" aria-live="polite">
-        {notice || (available ? text.deliveryNotice : text.unavailableMessage)}
-      </p>
-    </form>
+    <>
+      <form className="contact-form" onSubmit={submit} aria-busy={status === "sending"}>
+        <label>{text.nameLabel}<input type="text" name="name" autoComplete="name" required maxLength={100} /></label>
+        <label>{text.emailLabel}<input type="email" name="email" autoComplete="email" required maxLength={254} /></label>
+        <label>{text.inquiryLabel}<select name="inquiry" defaultValue="" required>
+          <option value="" disabled>{text.inquiryPlaceholder}</option>
+          {text.inquiryOptions.map((option) => <option key={option} value={option}>{option}</option>)}
+        </select></label>
+        <label>{text.messageLabel}<textarea name="message" rows={6} required maxLength={5000} /></label>
+        <div hidden aria-hidden="true"><label>Leave empty<input name="_gotcha" tabIndex={-1} autoComplete="off" /></label></div>
+        <button type="submit" disabled={!available || status === "sending"}>{status === "sending" ? text.sendingLabel : text.submitLabel}</button>
+        <p className="form-note" ref={statusRef} tabIndex={-1} role="status" aria-live="polite">
+          {notice || (!available ? text.unavailableMessage : "")}
+        </p>
+      </form>
+      <p className="contact-form-disclaimer">{text.deliveryNotice}</p>
+    </>
   );
 }
