@@ -1,4 +1,4 @@
-# Current builder handoff — October 25, 2026
+# Current builder handoff — November 2, 2026
 
 This is the starting point for a new session. It supersedes the October 7–16 snapshots in older documents. Read current code and latest `main` alongside this document. Historical handoff: [through October 16](archive/HANDOFF_THROUGH_2026-10-16.md). No new implementation batch is pending approval or half-finished at this checkpoint.
 
@@ -11,7 +11,7 @@ This is the starting point for a new session. It supersedes the October 7–16 s
 
 Workspace: `/Users/greygarner/Documents/Codex/2026-09-10/referenced-chatgpt-conversation-this-is-an-2`.
 Repository: <https://github.com/grey-highroads/troy-anderson-website>, branch `main`.
-Latest implementation at preparation: `c0d82ff` (October 25 hero assets). The handoff documentation commit will follow it; start from current HEAD.
+Latest implementation at preparation: `7bbcce0` (November 2 Contact disclaimer/options); hero assets remain `c0d82ff` (October 25). The handoff documentation commit will follow it; start from current HEAD.
 
 ## User preferences and scope
 
@@ -50,6 +50,12 @@ Code pushes to `main` run `.github/workflows/pages.yml`. Website/runtime paths a
 - Hero assets refreshed October 23 and again October 25. Latest batch is committed in `c0d82ff`; both deployments succeeded and all 14 new loops were observed playing in the live browser.
 
 Key revisions: `c701d83` structural pass; `982c901` Media restructuring; `cfee2c5` headline/About correction; `83e80c7` About video; `6cf31f5` pull quote/poster; `a2dd9d9` Book wrap; `815d96f` Media schema; `121e9f3` Book/About/Contact schema; `a63f11f` Press; `00b8a8c`/`8763725` publishing checks; `962debb` logos/credit; `63e5eda` Book button controls; `0ba6594`/`c0d82ff` hero batches.
+
+## November 2 Contact copy update
+
+`7bbcce0` replaces the old test-form disclaimer with “NOTE: I am not accepting new clients for coaching at the moment.” and removes Coaching from the default Inquiry Type options. Remaining options are Speaking, Media, Book, and Other. The note is a persistent paragraph underneath/outside the form, separate from live submission/unavailability status. Existing `formCopy.deliveryNotice` remains its CMS override; the published Contact document had no formCopy overrides, so no CMS write, draft publication, or Studio deployment was required.
+
+Website lint/type/static build and Cloudflare build/type checks passed. Cloudflare run `41536175202` and Pages run `41536175142` succeeded. Actual Workers desktop/390px phone checks confirmed the exact note, no old disclaimer, four inquiry choices, working local option selection, no horizontal overflow, and enabled delivery after configuration loaded. Pages retains disabled delivery and displays the same note/options. No test message was submitted and no recipient/provider configuration changed. All unrelated working-tree changes listed below were preserved, including the original next-env.d.ts bytes across builds.
 
 ## Hero asset maintenance
 

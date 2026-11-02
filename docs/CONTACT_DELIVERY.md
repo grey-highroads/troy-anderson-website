@@ -2,6 +2,12 @@
 
 Verified October 12, 2026. This is a test-recipient setup, not approval for client launch or domain cutover.
 
+## November 2 visible-copy update
+
+User-approved implementation `7bbcce0` replaces the original test-processing notice with “NOTE: I am not accepting new clients for coaching at the moment.” underneath/outside the form. It remains visible independently of sending/success/error messages. Coaching was removed from default inquiry choices; Speaking, Media, Book, and Other remain. Copy is still editable through existing Contact formCopy controls. No CMS document or draft, provider validation, recipient, or delivery configuration changed.
+
+Both build pipelines passed (Workers `41536175202`, Pages `41536175142`). Desktop/390px phone browser checks verified the exact note, old notice removal, options/selection, and no overflow. Workers delivery remains enabled after configuration loads; Pages remains disabled. No message was submitted during this copy-only verification.
+
 ## Working setup
 
 The Cloudflare Contact page retains its existing design and fields: name, email, inquiry type, and message. `components/contact-form.tsx` supplies required-field checks, length limits, sending/success/error states, duplicate-click prevention, and a hidden `_gotcha` honeypot. Success clears the form and focuses its status message; a sending failure preserves the entered fields. There is no message persistence in browser storage.
@@ -14,10 +20,10 @@ Formspree's server enforces these rules, independently of browser validation:
 | --- | --- |
 | `name` | Required text, 1–100 characters |
 | `email` | Required valid email; consumer email providers allowed |
-| `inquiry` | Required text, 4–8 characters; the website offers Coaching, Speaking, Media, Book, Other |
+| `inquiry` | Required text, 4–8 characters; the default website options are Speaking, Media, Book, Other |
 | `message` | Required text, 1–5,000 characters |
 
-The recipient is fixed in Formspree's workflow; visitors do not select a recipient. No submissions are written into Sanity, Cloudflare content-cache storage, or application logs. Formspree stores submission records and emails the recipient; both provider records and inbox copies must be included in the production retention/privacy policy. The test form displays a limited notice explaining processing and storage; the complete production privacy review remains open.
+The recipient is fixed in Formspree's workflow; visitors do not select a recipient. No submissions are written into Sanity, Cloudflare content-cache storage, or application logs. Formspree stores submission records and emails the recipient; both provider records and inbox copies must be included in the production retention/privacy policy. The original test-processing notice was replaced with the user-approved coaching-availability note on November 2; the complete production privacy review remains open.
 
 ## Dedicated Formspree resources and actual cost
 
