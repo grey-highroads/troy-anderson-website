@@ -7,6 +7,7 @@ The hosted editor is <https://troy-anderson.sanity.studio/>. Project `gknd24m7`,
 Sign in with an authorized account and use **Draft** to edit; **Published** is read-only. The registered types are Homepage, Book, About, Contact, Site settings, Media page, and Press page.
 
 - Homepage manages Meet Troy heading, rich-text introduction, portrait/alt text, and testimonials. Hero clips and the homepage book promotion are not CMS fields.
+- Book hero **Subheader** and **Introduction** are optional. Clearing either (including whitespace-only values) hides that text without inserting placeholder copy. This behavior and the hosted optional-field descriptions were verified November 2, 2026.
 - Book overview/inspiration and About biography/story use Portable Text. The Book foreword fields and public panel were deliberately removed.
 - Enter creates a paragraph; Shift+Enter adds a line break. Formatting survives through the site's Portable Text renderer.
 - Media exposes its main subheadline, YouTube videos/thumbnail overrides, podcast heading/copy, and empty-state copy. Legacy photography/publicity fields remain hidden/read-only to preserve data.

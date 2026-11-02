@@ -11,7 +11,7 @@ This is the starting point for a new session. It supersedes the October 7–16 s
 
 Workspace: `/Users/greygarner/Documents/Codex/2026-09-10/referenced-chatgpt-conversation-this-is-an-2`.
 Repository: <https://github.com/grey-highroads/troy-anderson-website>, branch `main`.
-Latest implementation at preparation: `7bbcce0` (November 2 Contact disclaimer/options); hero assets remain `c0d82ff` (October 25). The handoff documentation commit will follow it; start from current HEAD.
+Latest implementation at preparation: `23fe5b4` (November 2 optional Book hero text), following `7bbcce0` (Contact disclaimer/options); hero assets remain `c0d82ff` (October 25). The handoff documentation commit will follow it; start from current HEAD.
 
 ## User preferences and scope
 
@@ -50,6 +50,14 @@ Code pushes to `main` run `.github/workflows/pages.yml`. Website/runtime paths a
 - Hero assets refreshed October 23 and again October 25. Latest batch is committed in `c0d82ff`; both deployments succeeded and all 14 new loops were observed playing in the live browser.
 
 Key revisions: `c701d83` structural pass; `982c901` Media restructuring; `cfee2c5` headline/About correction; `83e80c7` About video; `6cf31f5` pull quote/poster; `a2dd9d9` Book wrap; `815d96f` Media schema; `121e9f3` Book/About/Contact schema; `a63f11f` Press; `00b8a8c`/`8763725` publishing checks; `962debb` logos/credit; `63e5eda` Book button controls; `0ba6594`/`c0d82ff` hero batches.
+
+## November 2 Book hero empty-state correction
+
+`23fe5b4` removes placeholder fallbacks from Book Subheader and Introduction, trims whitespace, and renders neither paragraph when cleared. The Book title and other fallback content remain unchanged. The shared shell now permits an absent intro but still renders nonempty intros normally. Book Subheader is optional in Studio, and both field descriptions explicitly say leaving them blank hides them. Existing published values were whitespace-only Subheader and missing Introduction; no document/draft was rewritten or published.
+
+Website lint/type/static build, Cloudflare build/types, and Studio build passed. The ordinary Studio standalone type command exposed an existing migration-script alias issue (`studio/scripts/migrate-homepage-introduction.ts` imports homepage.ts, whose `@/lib/sanity/client` alias is missing from Studio tsconfig). A temporary external config resolving the existing root alias passed Studio type validation; no tsconfig was changed. Old duplicate generated `.next/types/* 2.ts` artifacts were temporarily isolated for checks and restored afterward, along with the original next-env.d.ts bytes.
+
+Cloudflare `41537385524` and Pages `41537385568` succeeded. The hosted Studio was separately deployed with schema-required verification and browser-confirmed showing both optional-field descriptions. Actual Workers desktop/390px phone and Pages checks confirmed the current Book title, no hero intro/subheader elements or old placeholders, and no horizontal overflow. Other Book content and all unrelated local files were preserved.
 
 ## November 2 Contact copy update
 
