@@ -11,7 +11,7 @@ export function CopyShareText({copy, url}: CopyShareTextProps) {
   const [copied, setCopied] = useState(false);
 
   async function copyShareText() {
-    await navigator.clipboard.writeText(`${copy}\n${url}`);
+    await navigator.clipboard.writeText(`${copy}\n${new URL(url, window.location.href).href}`);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
   }

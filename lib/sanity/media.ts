@@ -1,9 +1,11 @@
 import { readSanity } from "@/lib/sanity/client";
+import { getWebsiteClip, type WebsiteClipId } from "@/lib/media-clips";
 
 export type MediaVideo = {
   key: string;
   title: string;
   mediaUrl: string;
+  hostedClip?: WebsiteClipId;
   shareCopy: string;
   thumbnail?: {
     imageUrl: string;
@@ -51,6 +53,7 @@ type MediaPageResult = Omit<
     _key?: string;
     title?: string;
     mediaUrl?: string;
+    hostedClip?: string;
     shareCopy?: string;
     thumbnail?: {
       imageUrl?: string;
@@ -88,11 +91,13 @@ function isWebUrl(value: unknown): value is string {
 
 function cleanMediaPage(content: MediaPageResult): MediaPageContent {
   const videos = content.videos?.flatMap((video) => {
+    const clip = getWebsiteClip(video.hostedClip);
+    const mediaUrl = clip?.src || (isWebUrl(video.mediaUrl) ? video.mediaUrl : undefined);
     if (
       !video._key ||
       !video.title ||
-      !isWebUrl(video.mediaUrl) ||
-      !video.shareCopy
+      (video.hostedClip && !clip) ||
+      !mediaUrl
     ) {
       return [];
     }
@@ -101,8 +106,9 @@ function cleanMediaPage(content: MediaPageResult): MediaPageContent {
       {
         key: video._key,
         title: video.title,
-        mediaUrl: video.mediaUrl,
-        shareCopy: video.shareCopy,
+        mediaUrl,
+        hostedClip: clip?.id,
+        shareCopy: video.shareCopy?.trim() || video.title,
         thumbnail: isWebUrl(video.thumbnail?.imageUrl)
           ? {
               imageUrl: video.thumbnail.imageUrl,

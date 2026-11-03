@@ -1,4 +1,5 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
+import {websiteClipOptions} from '../../lib/media-clips'
 
 export const mediaPageType = defineType({
   name: 'mediaPage',
@@ -22,27 +23,27 @@ export const mediaPageType = defineType({
     }),
     defineField({
       name: 'youtubeHeading',
-      title: 'YouTube section heading',
+      title: 'Video section heading',
       type: 'string',
-      description: 'Defaults to “Troy’s YouTube Channel” when empty.',
+      description: 'Defaults to “Troy’s Videos” when empty.',
     }),
     defineField({
       name: 'videoEmptyMessage',
-      title: 'YouTube empty-state message',
+      title: 'Video empty-state message',
       type: 'text',
       rows: 2,
       description: 'Shown only when no videos are available.',
     }),
     defineField({
       name: 'videos',
-      title: 'YouTube videos',
+      title: 'Videos',
       type: 'array',
-      description: 'Add the approved hosted videos in the order they should appear.',
+      description: 'Choose website clips or external video links in the order they should appear.',
       validation: (rule) => rule.required().min(1),
       of: [
         defineArrayMember({
           name: 'promotionalVideo',
-          title: 'YouTube video',
+          title: 'Video',
           type: 'object',
           fields: [
             defineField({
@@ -53,11 +54,19 @@ export const mediaPageType = defineType({
               validation: (rule) => rule.required(),
             }),
             defineField({
+              name: 'hostedClip',
+              title: 'Website video',
+              type: 'string',
+              options: {list: websiteClipOptions},
+              description: 'Choose an existing full clip to play on this page with audio and controls. Leave blank to use an external URL.',
+              validation: (rule) => rule.custom((value) => !value || websiteClipOptions.some((clip) => clip.value === value) ? true : 'Choose one of the available website videos.'),
+            }),
+            defineField({
               name: 'thumbnail',
               title: 'Custom thumbnail override',
               type: 'image',
               description:
-                'Optional. Upload an approved poster only when it should replace the thumbnail supplied automatically by the video host.',
+                'Optional. Replaces the default poster for the selected website clip or external video.',
               options: {hotspot: true},
               fields: [
                 defineField({
@@ -72,19 +81,22 @@ export const mediaPageType = defineType({
             }),
             defineField({
               name: 'mediaUrl',
-              title: 'Video or channel URL',
+              title: 'External video or channel URL',
               type: 'url',
+              hidden: ({parent}) => Boolean(parent?.hostedClip),
               description:
-                'The full approved destination, including https://. Use the clean hosted playback URL for video shown on this site, or an external video or channel URL when the link should intentionally open that platform.',
-              validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
+                'The full external destination, including https://. Used only when Website video is blank.',
+              validation: (rule) => rule.uri({scheme: ['http', 'https']}).custom((value, context) => {
+                const parent = context.parent as {hostedClip?: string} | undefined
+                return parent?.hostedClip || value ? true : 'Choose a website video or enter an external URL.'
+              }),
             }),
             defineField({
               name: 'shareCopy',
               title: 'Share copy',
               type: 'text',
-              description: 'Approved text visitors can copy when sharing this video.',
+              description: 'Optional description shown below the title and copied when sharing. Leave blank to use the title as the sharing text.',
               rows: 4,
-              validation: (rule) => rule.required(),
             }),
           ],
           preview: {

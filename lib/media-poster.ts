@@ -1,6 +1,7 @@
 import "server-only";
 
 import type { MediaVideo } from "@/lib/sanity/media";
+import { getWebsiteClip } from "@/lib/media-clips";
 
 type MediaPoster = NonNullable<MediaVideo["thumbnail"]>;
 
@@ -27,6 +28,11 @@ function youtubeVideoId(mediaUrl: string): string | null {
 
 export async function resolveMediaPoster(video: MediaVideo): Promise<MediaPoster> {
   if (video.thumbnail) return video.thumbnail;
+
+  const clip = getWebsiteClip(video.hostedClip);
+  if (clip) {
+    return {imageUrl: clip.poster, width: clip.width, height: clip.height, alt: `Video poster for ${video.title}`};
+  }
 
   const id = youtubeVideoId(video.mediaUrl);
   if (id) {

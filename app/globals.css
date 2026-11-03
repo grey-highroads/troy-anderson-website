@@ -1340,6 +1340,16 @@ button {
   background: var(--ink);
 }
 
+.media-video-card__player {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin-top: 1.5rem;
+  object-fit: contain;
+  background: var(--ink);
+}
+
 .media-video-card__poster img {
   display: block;
   width: 100%;
@@ -1348,6 +1358,7 @@ button {
 }
 
 .media-video-card__poster:focus-visible,
+.media-video-card__player:focus-visible,
 .media-card-actions a:focus-visible {
   outline: 0.2rem solid var(--oxblood);
   outline-offset: 0.3rem;

@@ -81,7 +81,7 @@ export const contentQueries = {
   podcastHeading,
   podcastIntroduction,
   videos[]{
-    _key, title, mediaUrl, shareCopy,
+    _key, title, mediaUrl, hostedClip, shareCopy,
     thumbnail{
       "imageUrl": asset->url,
       "width": asset->metadata.dimensions.width,
