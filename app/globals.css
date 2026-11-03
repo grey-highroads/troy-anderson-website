@@ -1915,15 +1915,19 @@ a.sample-action:focus-visible {
 }
 
 .retailer-list {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border: 0;
   gap: 1rem;
 }
 
 .retailer-list a {
+  min-width: 0;
+  min-height: clamp(6rem, 8vw, 8rem);
+  padding: 1rem;
   background: var(--white);
   color: var(--ink);
   border: 0;
+  font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
 .retailer-list a:focus-visible {
@@ -1934,6 +1938,12 @@ a.sample-action:focus-visible {
 .retailer-logo {
   display: block;
   width: 100%;
-  height: 7rem;
+  height: 5rem;
   object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .retailer-list {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr));
+  }
 }
