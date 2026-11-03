@@ -5,7 +5,7 @@ import { getSiteSettingsContent } from "@/lib/sanity/site-settings";
 const fallbackSocialLinks = {
   instagramUrl: "https://www.instagram.com/lifecoachtroy/",
   youtubeUrl: "https://www.youtube.com/@troyhinotelc",
-  linkedinUrl: "https://www.linkedin.com/in/troyandersonwriter/",
+  threadsUrl: "https://www.threads.com/lifecoachtroy",
 };
 
 export async function SiteFooter() {
@@ -14,7 +14,7 @@ export async function SiteFooter() {
     instagramUrl:
       siteSettings?.instagramUrl || fallbackSocialLinks.instagramUrl,
     youtubeUrl: siteSettings?.youtubeUrl || fallbackSocialLinks.youtubeUrl,
-    linkedinUrl: siteSettings?.linkedinUrl || fallbackSocialLinks.linkedinUrl,
+    threadsUrl: siteSettings?.threadsUrl || fallbackSocialLinks.threadsUrl,
   };
 
   return (
@@ -33,7 +33,7 @@ export async function SiteFooter() {
           <Link href="/contact">Contact</Link>
           <a href={socialLinks.instagramUrl}>Instagram</a>
           <a href={socialLinks.youtubeUrl}>YouTube</a>
-          <a href={socialLinks.linkedinUrl}>LinkedIn</a>
+          <a href={socialLinks.threadsUrl}>Threads</a>
         </div>
       </div>
 

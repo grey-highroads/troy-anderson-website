@@ -3,7 +3,7 @@ import { readSanity } from "@/lib/sanity/client";
 export type SiteSettingsContent = {
   instagramUrl?: string;
   youtubeUrl?: string;
-  linkedinUrl?: string;
+  threadsUrl?: string;
 };
 
 function isWebUrl(value: unknown): value is string {
@@ -25,8 +25,8 @@ function cleanSiteSettingsContent(
       ? content.instagramUrl
       : undefined,
     youtubeUrl: isWebUrl(content.youtubeUrl) ? content.youtubeUrl : undefined,
-    linkedinUrl: isWebUrl(content.linkedinUrl)
-      ? content.linkedinUrl
+    threadsUrl: isWebUrl(content.threadsUrl)
+      ? content.threadsUrl
       : undefined,
   };
 }

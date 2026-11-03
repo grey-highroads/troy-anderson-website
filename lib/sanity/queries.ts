@@ -120,7 +120,7 @@ export const contentQueries = {
   _id, _rev, _updatedAt,
   instagramUrl,
   youtubeUrl,
-  linkedinUrl
+  threadsUrl
 }`,
 } as const;
 

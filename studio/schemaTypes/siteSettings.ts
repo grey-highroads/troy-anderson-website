@@ -20,11 +20,19 @@ export const siteSettingsType = defineType({
       validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
     }),
     defineField({
-      name: 'linkedinUrl',
-      title: 'LinkedIn URL',
+      name: 'threadsUrl',
+      title: 'Threads URL',
       type: 'url',
-      description: "The full link to Troy's LinkedIn profile, including https://.",
+      description: "The full link to Troy's Threads profile, including https://.",
       validation: (rule) => rule.required().uri({scheme: ['http', 'https']}),
+    }),
+    // Preserve the former value without exposing it in the editor or footer.
+    defineField({
+      name: 'linkedinUrl',
+      title: 'Legacy LinkedIn URL',
+      type: 'url',
+      hidden: true,
+      readOnly: true,
     }),
   ],
   preview: {
