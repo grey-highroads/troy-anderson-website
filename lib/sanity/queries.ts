@@ -13,6 +13,7 @@ export const contentQueries = {
   inspirationHeading,
   inspirationBody,
   sampleUrl,
+  "samplePdfUrl": select(samplePdf.asset->mimeType == "application/pdf" => samplePdf.asset->url),
   retailersHeading,
   endorsementsHeading,
   sampleButtonLabel,

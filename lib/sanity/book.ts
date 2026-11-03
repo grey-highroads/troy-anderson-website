@@ -28,6 +28,7 @@ export type BookContent = {
   inspirationHeading?: string;
   inspirationBody?: PortableTextBlock[];
   sampleUrl?: string;
+  samplePdfUrl?: string;
   retailersHeading?: string;
   endorsementsHeading?: string;
   sampleButtonLabel?: string;
@@ -49,12 +50,15 @@ function isWebUrl(value: unknown): value is string {
 }
 
 function cleanBookContent(content: BookContent): BookContent {
+  const samplePdfUrl = isWebUrl(content.samplePdfUrl) ? content.samplePdfUrl : undefined;
+
   return {
     ...content,
     coverImageUrl: isWebUrl(content.coverImageUrl)
       ? content.coverImageUrl
       : undefined,
-    sampleUrl: isWebUrl(content.sampleUrl) ? content.sampleUrl : undefined,
+    samplePdfUrl,
+    sampleUrl: samplePdfUrl || (isWebUrl(content.sampleUrl) ? content.sampleUrl : undefined),
     retailers: content.retailers?.filter(
       (retailer) => retailer?.name && isWebUrl(retailer.url),
     ).map((retailer) => ({...retailer, logoUrl: isWebUrl(retailer.logoUrl) ? retailer.logoUrl : undefined})),
