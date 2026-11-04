@@ -9,6 +9,9 @@ import { defaultTestimonials } from "@/lib/testimonials";
 
 import bookCover from "../public/images/troy-anderson-book-flat.jpg";
 
+// Toggle to true to restore the approved announcement experiment (copy + layout).
+const showBookAnnouncement = false;
+
 export default async function Home() {
   const homepage = await getHomepageContent();
   const testimonials = homepage?.testimonials || defaultTestimonials;
@@ -89,30 +92,30 @@ export default async function Home() {
 
       <section
         id="book-promo"
-        className="book-promo"
+        className={`book-promo${showBookAnnouncement ? " book-promo--announcement" : ""}`}
         aria-labelledby="book-promo-title"
       >
         <Image
           className="book-promo__cover"
           src={bookCover}
           alt="Never Waste a Kick in the Nuts by Troy Anderson"
-          sizes="(max-width: 640px) 34vw, 23vw"
+          sizes={showBookAnnouncement ? "(max-width: 640px) 34vw, 23vw" : "(max-width: 640px) 28vw, 17vw"}
         />
 
         <div className="book-promo__message">
           <h2 id="book-promo-title" className="book-promo__title">
-            <span>Troy’s</span>
-            <span>New Book</span>
+            <span>{showBookAnnouncement ? "Troy’s" : "Never Waste A"}</span>
+            <span>{showBookAnnouncement ? "New Book" : "Kick In The Nuts"}</span>
           </h2>
 
           <div className="book-promo__availability">
             <span className="book-promo__arrow" aria-hidden="true" />
-            <p>Now Available</p>
+            <p>{showBookAnnouncement ? "Now Available" : "Available On Amazon"}</p>
           </div>
-          <p className="book-promo__summary">
+          {showBookAnnouncement && <p className="book-promo__summary">
             Life is going to hit you. That much is certain. The only real question
             is whether you’ll waste the pain.
-          </p>
+          </p>}
         </div>
       </section>
     </main>
