@@ -96,19 +96,23 @@ export default async function Home() {
           className="book-promo__cover"
           src={bookCover}
           alt="Never Waste a Kick in the Nuts by Troy Anderson"
-          sizes="(max-width: 640px) 28vw, 17vw"
+          sizes="(max-width: 640px) 34vw, 23vw"
         />
 
         <div className="book-promo__message">
           <h2 id="book-promo-title" className="book-promo__title">
-            <span>Never Waste A</span>
-            <span>Kick In The Nuts</span>
+            <span>Troy’s</span>
+            <span>New Book</span>
           </h2>
 
           <div className="book-promo__availability">
             <span className="book-promo__arrow" aria-hidden="true" />
-            <p>Available On Amazon</p>
+            <p>Now Available</p>
           </div>
+          <p className="book-promo__summary">
+            Life is going to hit you. That much is certain. The only real question
+            is whether you’ll waste the pain.
+          </p>
         </div>
       </section>
     </main>
