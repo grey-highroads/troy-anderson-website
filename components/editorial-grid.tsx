@@ -22,6 +22,11 @@ type Tile = {
   playbackDimensions?: [number, number];
 };
 
+// Current October 25 previews were supplied at half speed. 1.5x splits the
+// difference with the original pace. Reassess on EVERY asset replacement:
+// set to 1 for native-speed files. Applies only to muted homepage previews.
+const HERO_PREVIEW_PLAYBACK_RATE = 1.5;
+
 const tiles: Tile[] = [
   { id: "clip-02", eyebrow: "", title: "Troy Anderson — clip 02", tone: "ink", clip: "TA_BB_02", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "1 / 1 / 2 / 3", tabletArea: "1 / 1 / 2 / 3", mobileArea: "1 / 1 / 2 / 3" },
   { id: "clip-04", eyebrow: "", title: "Troy Anderson — clip 04", tone: "ink", clip: "TA_BB_04", previewDimensions: [350, 350], playbackDimensions: [960, 540], desktopArea: "1 / 3 / 2 / 4", tabletArea: "1 / 3 / 3 / 5", mobileArea: "1 / 3 / 3 / 5" },
@@ -186,6 +191,11 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                   {!previewsPaused && !reducedMotion && (
                     <video
                       className="media-tile__preview"
+                      ref={(video) => {
+                        if (!video) return;
+                        video.defaultPlaybackRate = HERO_PREVIEW_PLAYBACK_RATE;
+                        video.playbackRate = HERO_PREVIEW_PLAYBACK_RATE;
+                      }}
                       src={`${previewPath}-preview.mp4?v=20261025`}
                       autoPlay
                       muted
