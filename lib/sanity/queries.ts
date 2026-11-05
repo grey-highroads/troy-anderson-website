@@ -46,6 +46,7 @@ export const contentQueries = {
 }`,
   homepage: `*[_type == "homepage"] | order(_updatedAt desc)[0]{
   _id, _rev, _updatedAt,
+  bookPromotion{headline, subhead, supportingCopy},
   meetTroyHeading,
   meetTroySummary,
   "meetTroyPortraitUrl": meetTroyPortrait.asset->url,

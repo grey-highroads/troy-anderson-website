@@ -6,6 +6,20 @@ export const homepageType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'bookPromotion',
+      title: 'Book promotion',
+      type: 'object',
+      description: 'Copy for the book panel above the footer. The cover, arrow, uppercase styling and overlapping subhead stay fixed.',
+      fields: [
+        defineField({name: 'headline', title: 'Headline', type: 'text', rows: 2,
+          description: 'Use Enter to choose line breaks. Keep each line short for the oversized design. Leave blank for the original book title.'}),
+        defineField({name: 'subhead', title: 'Subhead', type: 'string',
+          description: 'For example: Available on Amazon or Now available. Leave blank for Available on Amazon.'}),
+        defineField({name: 'supportingCopy', title: 'Supporting copy', type: 'text', rows: 3,
+          description: 'Optional sentence-case copy below the announcement. Leave blank to hide it.'}),
+      ],
+    }),
+    defineField({
       name: 'meetTroyHeading',
       title: 'Meet Troy heading',
       type: 'string',

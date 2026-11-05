@@ -2,6 +2,7 @@ import { readSanity } from "@/lib/sanity/client";
 import type {PortableTextBlock} from '@portabletext/react'
 
 export type HomepageContent = {
+  bookPromotion?: {headline?: string; subhead?: string; supportingCopy?: string}
   meetTroyHeading?: string
   meetTroySummary?: PortableTextBlock[]
   meetTroyPortraitUrl?: string
@@ -57,6 +58,11 @@ function cleanHomepageContent(content: HomepageQueryContent): HomepageContent {
 
   return {
     ...content,
+    bookPromotion: content.bookPromotion ? {
+      headline: typeof content.bookPromotion.headline === 'string' ? content.bookPromotion.headline.trim() || undefined : undefined,
+      subhead: typeof content.bookPromotion.subhead === 'string' ? content.bookPromotion.subhead.trim() || undefined : undefined,
+      supportingCopy: typeof content.bookPromotion.supportingCopy === 'string' ? content.bookPromotion.supportingCopy.trim() || undefined : undefined,
+    } : undefined,
     meetTroySummary: typeof content.meetTroySummary === 'string'
       ? introductionToBlocks(content.meetTroySummary)
       : content.meetTroySummary,

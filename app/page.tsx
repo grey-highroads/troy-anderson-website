@@ -14,6 +14,10 @@ const showBookAnnouncement = false;
 
 export default async function Home() {
   const homepage = await getHomepageContent();
+  const promotion = homepage?.bookPromotion;
+  const headline = promotion?.headline || (showBookAnnouncement ? "Troy’s\nNew Book" : "Never Waste A\nKick In The Nuts");
+  const subhead = promotion?.subhead || (showBookAnnouncement ? "Now Available" : "Available On Amazon");
+  const supportingCopy = promotion?.supportingCopy || (showBookAnnouncement ? "Life is going to hit you. That much is certain. The only real question is whether you’ll waste the pain." : undefined);
   const testimonials = homepage?.testimonials || defaultTestimonials;
 
   return (
@@ -103,19 +107,17 @@ export default async function Home() {
         />
 
         <div className="book-promo__message">
+          <div className="book-promo__heading-group">
           <h2 id="book-promo-title" className="book-promo__title">
-            <span>{showBookAnnouncement ? "Troy’s" : "Never Waste A"}</span>
-            <span>{showBookAnnouncement ? "New Book" : "Kick In The Nuts"}</span>
+            {headline.split(/\r?\n/).map((line, index) => <span key={index}>{line}</span>)}
           </h2>
 
           <div className="book-promo__availability">
             <span className="book-promo__arrow" aria-hidden="true" />
-            <p>{showBookAnnouncement ? "Now Available" : "Available On Amazon"}</p>
+            <p>{subhead}</p>
           </div>
-          {showBookAnnouncement && <p className="book-promo__summary">
-            Life is going to hit you. That much is certain. The only real question
-            is whether you’ll waste the pain.
-          </p>}
+          </div>
+          {supportingCopy && <p className="book-promo__summary">{supportingCopy}</p>}
         </div>
       </section>
     </main>
