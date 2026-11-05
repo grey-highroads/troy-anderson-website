@@ -2,7 +2,7 @@ import { readSanity } from "@/lib/sanity/client";
 import type {PortableTextBlock} from '@portabletext/react'
 
 export type HomepageContent = {
-  bookPromotion?: {headline?: string; subhead?: string; supportingCopy?: string}
+  bookPromotion?: {headline?: string; subhead?: string; supportingCopy?: string; imageUrl?: string; imageAlt?: string; imageWidth?: number; imageHeight?: number}
   meetTroyHeading?: string
   meetTroySummary?: PortableTextBlock[]
   meetTroyPortraitUrl?: string
@@ -59,6 +59,10 @@ function cleanHomepageContent(content: HomepageQueryContent): HomepageContent {
   return {
     ...content,
     bookPromotion: content.bookPromotion ? {
+      imageUrl: isWebUrl(content.bookPromotion.imageUrl) ? content.bookPromotion.imageUrl : undefined,
+      imageAlt: typeof content.bookPromotion.imageAlt === 'string' ? content.bookPromotion.imageAlt.trim() || undefined : undefined,
+      imageWidth: typeof content.bookPromotion.imageWidth === 'number' && Number.isFinite(content.bookPromotion.imageWidth) && content.bookPromotion.imageWidth > 0 ? content.bookPromotion.imageWidth : undefined,
+      imageHeight: typeof content.bookPromotion.imageHeight === 'number' && Number.isFinite(content.bookPromotion.imageHeight) && content.bookPromotion.imageHeight > 0 ? content.bookPromotion.imageHeight : undefined,
       headline: typeof content.bookPromotion.headline === 'string' ? content.bookPromotion.headline.trim() || undefined : undefined,
       subhead: typeof content.bookPromotion.subhead === 'string' ? content.bookPromotion.subhead.trim() || undefined : undefined,
       supportingCopy: typeof content.bookPromotion.supportingCopy === 'string' ? content.bookPromotion.supportingCopy.trim() || undefined : undefined,

@@ -9,9 +9,17 @@ export const homepageType = defineType({
       name: 'bookPromotion',
       title: 'Book promotion',
       type: 'object',
-      description: 'Copy for the book panel above the footer. The cover, arrow, uppercase styling and overlapping subhead stay fixed.',
+      description: 'Copy for the book panel above the footer. The arrow, uppercase styling and overlapping subhead stay fixed.',
       fields: [
-        defineField({name: 'headline', title: 'Headline', type: 'text', rows: 2,
+        defineField({name: 'image', title: 'Book image', type: 'image',
+          description: 'Optional replacement cover. Leave empty to keep the current book cover. The full image is shown without cropping.'}),
+        defineField({name: 'imageAlt', title: 'Book image alt text', type: 'string',
+          description: 'Describe the cover, including the book title and author. Required for a replacement image; also overrides the current cover’s description.',
+          validation: (rule) => rule.custom((value, context) => {
+            const parent = context.parent as {image?: {asset?: {_ref?: string}}} | undefined
+            return !parent?.image?.asset?._ref || Boolean(value?.trim()) || 'Add alt text for the replacement book image.'
+          })}),
+        defineField({name: 'headline' , title: 'Headline', type: 'text', rows: 2,
           description: 'Use Enter to choose line breaks. Keep each line short for the oversized design. Leave blank for the original book title.'}),
         defineField({name: 'subhead', title: 'Subhead', type: 'string',
           description: 'For example: Available on Amazon or Now available. Leave blank for Available on Amazon.'}),
