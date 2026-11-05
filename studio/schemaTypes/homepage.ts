@@ -6,28 +6,6 @@ export const homepageType = defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'bookPromotion',
-      title: 'Book promotion',
-      type: 'object',
-      description: 'Copy for the book panel above the footer. The arrow, uppercase styling and overlapping subhead stay fixed.',
-      fields: [
-        defineField({name: 'image', title: 'Book image', type: 'image',
-          description: 'Optional replacement cover. Leave empty to keep the current book cover. The full image is shown without cropping.'}),
-        defineField({name: 'imageAlt', title: 'Book image alt text', type: 'string',
-          description: 'Describe the cover, including the book title and author. Required for a replacement image; also overrides the current cover’s description.',
-          validation: (rule) => rule.custom((value, context) => {
-            const parent = context.parent as {image?: {asset?: {_ref?: string}}} | undefined
-            return !parent?.image?.asset?._ref || Boolean(value?.trim()) || 'Add alt text for the replacement book image.'
-          })}),
-        defineField({name: 'headline' , title: 'Headline', type: 'text', rows: 2,
-          description: 'Use Enter to choose line breaks. Keep each line short for the oversized design. Leave blank for the original book title.'}),
-        defineField({name: 'subhead', title: 'Subhead', type: 'string',
-          description: 'For example: Available on Amazon or Now available. Leave blank for Available on Amazon.'}),
-        defineField({name: 'supportingCopy', title: 'Supporting copy', type: 'text', rows: 3,
-          description: 'Optional sentence-case copy below the announcement. Leave blank to hide it.'}),
-      ],
-    }),
-    defineField({
       name: 'meetTroyHeading',
       title: 'Meet Troy heading',
       type: 'string',
@@ -125,6 +103,34 @@ export const homepageType = defineType({
             },
           },
         }),
+      ],
+    }),
+    defineField({
+      name: 'bookPromotion',
+      title: 'Book promotion',
+      type: 'object',
+      description: 'Book panel above the footer. The arrow and typography are fixed.',
+      initialValue: {
+        headline: 'Never Waste A\nKick In The Nuts',
+        subhead: 'Available On Amazon',
+        imageAlt: 'Never Waste a Kick in the Nuts by Troy Anderson',
+        image: {_type: 'image', asset: {_type: 'reference', _ref: 'image-d34b63aea7a0519b0c803d329548c983acab6d3b-1651x2589-jpg'}},
+      },
+      fields: [
+        defineField({name: 'image', title: 'Book image', type: 'image',
+          description: 'The full cover is shown without cropping.'}),
+        defineField({name: 'imageAlt', title: 'Book image alt text', type: 'string',
+          description: 'Describe the cover, including the book title and author.',
+          validation: (rule) => rule.custom((value, context) => {
+            const parent = context.parent as {image?: {asset?: {_ref?: string}}} | undefined
+            return !parent?.image?.asset?._ref || Boolean(value?.trim()) || 'Add alt text for the replacement book image.'
+          })}),
+        defineField({name: 'headline' , title: 'Headline', type: 'text', rows: 2,
+          description: 'Use Enter for line breaks. Keep each line short.'}),
+        defineField({name: 'subhead', title: 'Subhead', type: 'string',
+          description: 'Availability line overlapping the headline.'}),
+        defineField({name: 'supportingCopy', title: 'Supporting copy', type: 'text', rows: 3,
+          description: 'Optional. Leave blank to hide it.'}),
       ],
     }),
   ],

@@ -41,3 +41,5 @@ Local editing is normally at <http://127.0.0.1:3333/>. Website pushes do not dep
 The script defaults to a dry run. Application requires `--apply`, writes a private local backup, and revision-guards a field-only transaction. Do not rerun it for routine editing or deployment diagnosis. Inspect it and obtain a deliberate migration scope before any future application; backups and credentials stay outside source control.
 
 Read [the current handoff](../docs/CURRENT_HANDOFF.md) and [ownership/migration policy](../docs/INFRASTRUCTURE_AND_HANDOFF.md) before changing infrastructure.
+
+Homepage fields follow the live page: Meet Troy, Testimonials, then Book promotion. Existing book fields are populated with current content, and new book-promotion groups start with the original cover/title/availability. Supporting copy stays optional.
