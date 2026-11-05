@@ -2114,7 +2114,7 @@ a.sample-action:focus-visible {
 
 /* CMS copy can grow without colliding with the supporting paragraph. */
 .book-promo__message { height: auto; }
-.book-promo__heading-group { position: relative; min-height: 25.67vw; padding-bottom: 5.2vw; }
+.book-promo__heading-group { display: flow-root; position: relative; min-height: 25.67vw; padding-bottom: 5.2vw; }
 .book-promo__summary {
   margin: 2rem 0 0;
   max-width: 52ch;
