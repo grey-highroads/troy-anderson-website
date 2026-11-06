@@ -89,6 +89,8 @@ The last conversion used temporary Python-installed FFmpeg/Pillow tools in `/pri
 
 ## Preview playback speed — check on every replacement
 
-The October 25 preview files are already half speed. `HERO_PREVIEW_PLAYBACK_RATE` in `components/editorial-grid.tsx` is **1.5**, giving approximately 75% of the original pace. This changes only the muted homepage preview elements; selected full clips, About, and Media retain native 1× playback. Both defaultPlaybackRate and playbackRate are set when a preview mounts, including after Pause/Resume.
+The November 6 full-speed batch replaces the October 25 half-speed previews. `HERO_PREVIEW_PLAYBACK_RATE` in `components/editorial-grid.tsx` is now **1**, native speed. The previous half-speed batch used 1.5×; that compensation has been removed. This changes only the muted homepage preview elements; selected full clips, About, and Media retain native 1× playback. Both defaultPlaybackRate and playbackRate are set when a preview mounts, including after Pause/Resume.
 
 When replacing preview files, explicitly reassess this constant. Use **1** for native-speed footage rather than carrying the current compensation forward automatically. No file is re-encoded by this setting. Preserve reduced-motion and animation-pause behavior.
+
+November 6 source: `7-6 versions/newGIFSfullspeed.zip`,14 matching MP4 previews. Updated existing preview/poster filenames with cache version20261106; original full playback files are preserved. Encoded H.264 CRF24, medium, yuv420p, faststart, no audio, source frame rate/dimensions/timing retained; posters at0.5s.

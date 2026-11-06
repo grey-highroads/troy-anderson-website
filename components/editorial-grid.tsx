@@ -22,10 +22,9 @@ type Tile = {
   playbackDimensions?: [number, number];
 };
 
-// Current October 25 previews were supplied at half speed. 1.5x splits the
-// difference with the original pace. Reassess on EVERY asset replacement:
-// set to 1 for native-speed files. Applies only to muted homepage previews.
-const HERO_PREVIEW_PLAYBACK_RATE = 1.5;
+// November 6 full-speed previews play at native speed. Reassess on EVERY
+// asset replacement; keep 1 for native-speed files. Only muted hero previews.
+const HERO_PREVIEW_PLAYBACK_RATE = 1;
 
 const tiles: Tile[] = [
   { id: "clip-02", eyebrow: "", title: "Troy Anderson — clip 02", tone: "ink", clip: "TA_BB_02", previewDimensions: [700, 350], playbackDimensions: [960, 540], desktopArea: "1 / 1 / 2 / 3", tabletArea: "1 / 1 / 2 / 3", mobileArea: "1 / 1 / 2 / 3" },
@@ -182,7 +181,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                   <Image
                     className="media-tile__poster"
                     style={{ objectFit: "cover", objectPosition: "center top" }}
-                    src={`${previewPath}-poster.jpg?v=20261025`}
+                    src={`${previewPath}-poster.jpg?v=20261106`}
                     fill
                     sizes="(max-width: 640px) 100vw, 50vw"
                     loading={index === 0 ? "eager" : "lazy"}
@@ -196,7 +195,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                         video.defaultPlaybackRate = HERO_PREVIEW_PLAYBACK_RATE;
                         video.playbackRate = HERO_PREVIEW_PLAYBACK_RATE;
                       }}
-                      src={`${previewPath}-preview.mp4?v=20261025`}
+                      src={`${previewPath}-preview.mp4?v=20261106`}
                       autoPlay
                       muted
                       loop
@@ -214,7 +213,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                       ref={playerRef}
                       className="media-tile__player"
                       src={`${clipPath}.mp4`}
-                      poster={`${previewPath}-poster.jpg?v=20261025`}
+                      poster={`${previewPath}-poster.jpg?v=20261106`}
                       controls
                       playsInline
                       preload="none"
