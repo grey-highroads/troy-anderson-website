@@ -16,12 +16,10 @@ const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: r
 export function TestimonialCarousel({ testimonials }: { testimonials: HomepageTestimonial[] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const [focused, setFocused] = useState(false);
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useSyncExternalStore(subscribe, prefersReducedMotion, () => true);
-  const canRotate = !paused && !hovered && !focused && visible && !reducedMotion && testimonials.length > 1;
+  const canRotate = !paused && visible && !reducedMotion && testimonials.length > 1;
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {threshold: 0.25});
@@ -43,8 +41,10 @@ export function TestimonialCarousel({ testimonials }: { testimonials: HomepageTe
 
   return (
     <div ref={ref} className="testimonial-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials"
-      onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)}
-      onFocusCapture={() => setFocused(true)} onBlurCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false); }}>
+      // Interaction stops rotation until explicit Play. Play must work even
+      // while its button retains hover/focus; otherwise it looks broken.
+      onMouseEnter={() => setPaused(true)}
+      onFocusCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(true); }}>
       <div className="testimonial-carousel__slides" aria-live={canRotate ? "off" : "polite"}>
         {testimonials.map((testimonial, index) => (
           <div key={testimonial._key || index} className={`testimonial-carousel__slide${index === active ? " is-active" : ""}`}
