@@ -1,11 +1,11 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Testimonial } from "@/components/testimonial";
 import type { HomepageTestimonial } from "@/lib/sanity/homepage";
 
-const READING_MS = 8000;
-const DISSOLVE_MS = 1000;
+// Start a new one-second dissolve every six seconds.
+const ADVANCE_MS = 6000;
 function subscribe(onChange: () => void) {
   const query = window.matchMedia("(prefers-reduced-motion: reduce)");
   query.addEventListener("change", onChange);
@@ -16,20 +16,12 @@ const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: r
 export function TestimonialCarousel({ testimonials }: { testimonials: HomepageTestimonial[] }) {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
   const reducedMotion = useSyncExternalStore(subscribe, prefersReducedMotion, () => true);
-  const canRotate = !paused && visible && !reducedMotion && testimonials.length > 1;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), {threshold: 0.25});
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
+  const canRotate = !paused && !reducedMotion && testimonials.length > 1;
 
   useEffect(() => {
     if (!canRotate) return;
-    const timer = window.setTimeout(() => setActive((index) => (index + 1) % testimonials.length), READING_MS + DISSOLVE_MS);
+    const timer = window.setTimeout(() => setActive((index) => (index + 1) % testimonials.length), ADVANCE_MS);
     return () => window.clearTimeout(timer);
   }, [canRotate, active, testimonials.length]);
 
@@ -40,11 +32,7 @@ export function TestimonialCarousel({ testimonials }: { testimonials: HomepageTe
   if (!testimonials.length) return null;
 
   return (
-    <div ref={ref} className="testimonial-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials"
-      // Interaction stops rotation until explicit Play. Play must work even
-      // while its button retains hover/focus; otherwise it looks broken.
-      onMouseEnter={() => setPaused(true)}
-      onFocusCapture={(event) => { if (!event.currentTarget.contains(event.relatedTarget)) setPaused(true); }}>
+    <div className="testimonial-carousel" role="region" aria-roledescription="carousel" aria-label="Testimonials">
       <div className="testimonial-carousel__slides" aria-live={canRotate ? "off" : "polite"}>
         {testimonials.map((testimonial, index) => (
           <div key={testimonial._key || index} className={`testimonial-carousel__slide${index === active ? " is-active" : ""}`}
