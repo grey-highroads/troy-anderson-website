@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 
 import Image from "next/image";
+import { HeroPreview } from "@/components/hero-preview";
 import { NINE_CLIP_HERO, initialHeroPool, rotateHeroPool } from "@/lib/hero-pool";
 import { heroLayout } from "@/lib/hero-layout";
 
@@ -220,20 +221,9 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
                     alt=""
                   />
                   {!previewsPaused && !reducedMotion && (
-                    <video
-                      className="media-tile__preview"
-                      ref={(video) => {
-                        if (!video) return;
-                        video.defaultPlaybackRate = HERO_PREVIEW_PLAYBACK_RATE;
-                        video.playbackRate = HERO_PREVIEW_PLAYBACK_RATE;
-                      }}
+                    <HeroPreview
                       src={`${previewPath}-preview.mp4?v=20261106`}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      aria-hidden="true"
-                      onError={(event) => { event.currentTarget.style.visibility = "hidden"; }}
+                      playbackRate={HERO_PREVIEW_PLAYBACK_RATE}
                     />
                   )}
                 </>

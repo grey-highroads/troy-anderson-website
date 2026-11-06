@@ -108,3 +108,7 @@ The nine-clip layout now uses justified rows from `lib/hero-layout.ts`. Tile wid
 ### Random initial selection — November 6
 
 HomepageHero is a client-only dynamic boundary with reserved viewport space. Before any poster/video mounts, EditorialGrid shuffles all14 catalogue indices once with Fisher–Yates, selects9, and puts5 in the waiting queue. Initial mirror direction is randomized too. Selection stays stable through resize, Pause/Resume and other React renders; reload/mount chooses anew. Shape-aware layout and two replacements on close are unchanged. No default-media preload occurs in SSR. Blank loading placeholder reserves the viewport until client initialization; JavaScript is required for the interactive hero.
+
+### Mobile preview startup
+
+HeroPreview explicitly sets native muted/defaultMuted/playsInline plus attributes before calling play after mount. Readiness and intersection/visibility events retry an initially rejected startup attempt. Cleanup disconnects callbacks and pauses the removed element; Pause/reduced-motion still unmount previews, so retries cannot override them. This is homepage-preview-only; full video audio/playback unchanged. Device autoplay/power policies can still reject playback; no physical iPhone browser acceptance is implied by desktop phone-size tests.
