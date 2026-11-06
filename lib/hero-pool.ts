@@ -19,5 +19,3 @@ export function rotateHeroPool(pool: HeroPool, watched: number): HeroPool {
   }
   return {visible, waiting, cursor: cursor % visible.length};
 }
-export const nineDesktopAreas = ["1 / 1 / 2 / 3", "1 / 3 / 3 / 4", "1 / 4 / 2 / 7", "2 / 1 / 4 / 3", "2 / 4 / 5 / 5", "2 / 5 / 3 / 7", "3 / 3 / 5 / 4", "3 / 5 / 5 / 7", "4 / 1 / 5 / 3"];
-export const nineMobileAreas = ["1 / 1 / 2 / 3", "1 / 3 / 3 / 5", "2 / 1 / 4 / 2", "2 / 2 / 4 / 3", "3 / 3 / 5 / 5", "4 / 1 / 5 / 3", "5 / 1 / 7 / 2", "5 / 2 / 7 / 3", "5 / 3 / 7 / 5"];

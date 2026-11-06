@@ -2167,3 +2167,14 @@ a.sample-action:focus-visible {
   .editorial-grid.is-nine:not(.is-expanded) .media-tile { grid-area: var(--tile-area-mobile); }
   .editorial-grid.is-nine.is-expanded { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); }
 }
+
+/* Shape-compatible nine-clip rows. Source-proportional widths avoid putting
+   portrait footage in shallow landscape slots. No transformed video pixels. */
+.editorial-grid.is-nine:not(.is-expanded) { position: relative; display: block; direction: ltr; }
+.editorial-grid.is-nine:not(.is-expanded) .media-tile {
+  position: absolute;
+  left: var(--hero-left);
+  top: var(--hero-top);
+  width: var(--hero-width);
+  height: var(--hero-height);
+}

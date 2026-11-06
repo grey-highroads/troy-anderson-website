@@ -6,7 +6,8 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 
 import Image from "next/image";
-import { NINE_CLIP_HERO, initialHeroPool, rotateHeroPool, nineDesktopAreas, nineMobileAreas } from "@/lib/hero-pool";
+import { NINE_CLIP_HERO, initialHeroPool, rotateHeroPool } from "@/lib/hero-pool";
+import { heroLayout } from "@/lib/hero-layout";
 
 gsap.registerPlugin(Flip);
 
@@ -66,7 +67,20 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
   const [failedId, setFailedId] = useState<string | null>(null);
   const [layoutIndex, setLayoutIndex] = useState(0);
   const [pool, setPool] = useState(() => initialHeroPool(tiles.length));
+  const [gridAspect, setGridAspect] = useState(8 / 3);
   const visibleTiles = NINE_CLIP_HERO ? pool.visible.map((index) => tiles[index]) : tiles;
+  const layout = NINE_CLIP_HERO ? heroLayout(visibleTiles.map((tile) => tile.previewDimensions ? tile.previewDimensions[0] / tile.previewDimensions[1] : 1), gridAspect) : [];
+
+  useEffect(() => {
+    const grid = gridRef.current;
+    if (!grid || !NINE_CLIP_HERO) return;
+    const observer = new ResizeObserver(([entry]) => {
+      const {width, height} = entry.contentRect;
+      if (height > 0) setGridAspect(width / height);
+    });
+    observer.observe(grid);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     const header = document.querySelector<HTMLElement>(".site-header");
@@ -101,7 +115,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
       const tilesToAnimate = Array.from(grid.querySelectorAll<HTMLElement>("[data-flip-id]"))
         .filter((node) => !NINE_CLIP_HERO || retainedIds.has(node.dataset.flipId || ""));
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const state = reducedMotion ? null : Flip.getState(tilesToAnimate);
+      const state = reducedMotion || NINE_CLIP_HERO ? null : Flip.getState(tilesToAnimate);
 
       flushSync(() => {
         setSelectedId(nextSelectedId);
@@ -123,6 +137,11 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
           ?.focus({ preventScroll: true });
       }
 
+      if (NINE_CLIP_HERO && !reducedMotion) {
+        // Geometry changes immediately; fade only. Never scale video pixels.
+        animationRef.current = gsap.timeline().fromTo(grid.querySelectorAll("[data-flip-id]"),
+          {opacity: 0.7}, {opacity: 1, duration: 0.35, clearProps: "opacity"});
+      }
       if (state) {
         animationRef.current = Flip.from(state, {
           duration: 0.9,
@@ -159,6 +178,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
         }}
       >
         {visibleTiles.map((tile, index) => {
+          const rect = layout[index] || {left: 0, top: 0, width: 1, height: 1};
           const isSelected = selectedId === tile.id;
           const isDimmed = Boolean(selectedId && !isSelected);
           const clipPath = videoBasePath && tile.clip ? `${videoBasePath}/${tile.clip}` : null;
@@ -170,9 +190,13 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
               key={tile.id}
               data-flip-id={tile.id}
               style={tile.previewDimensions ? {
-                "--tile-area-desktop": NINE_CLIP_HERO ? nineDesktopAreas[index] : tile.desktopArea,
-                "--tile-area-tablet": NINE_CLIP_HERO ? nineDesktopAreas[index] : tile.tabletArea,
-                "--tile-area-mobile": NINE_CLIP_HERO ? nineMobileAreas[index] : tile.mobileArea,
+                "--tile-area-desktop": tile.desktopArea,
+                "--tile-area-tablet": tile.tabletArea,
+                "--tile-area-mobile": tile.mobileArea,
+                "--hero-left": `${(layoutIndex ? 1 - rect.left - rect.width : rect.left) * 100}%`,
+                "--hero-top": `${rect.top * 100}%`,
+                "--hero-width": `${rect.width * 100}%`,
+                "--hero-height": `${rect.height * 100}%`,
                 "--preview-ratio": `${tile.previewDimensions[0]} / ${tile.previewDimensions[1]}`,
                 "--playback-ratio": tile.playbackDimensions
                   ? `${tile.playbackDimensions[0]} / ${tile.playbackDimensions[1]}`

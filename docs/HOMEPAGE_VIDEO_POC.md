@@ -100,3 +100,7 @@ November 6 source: `7-6 versions/newGIFSfullspeed.zip`,14 matching MP4 previews.
 `NINE_CLIP_HERO` in `lib/hero-pool.ts` enables nine visible clips from the14-clip catalogue. Only visible clips render posters/previews; others load when introduced. Closing (including Escape) replaces two other slots with waiting clips, retains the watched clip for focus return, alternates the mirrored composition, and queues outgoing clips behind waiting ones. Full playback sources/native speed, reduced-motion and pause controls remain unchanged. Desktop/tablet use a6×4 authored composition; phones4×6. Expanded layouts have one full player plus8 surrounding tiles.
 
 To restore the exact prior14-tile layout, set `NINE_CLIP_HERO = false`. Original tile areas/CSS remain intact; original deployed baseline is14c9adb. This is a code toggle, not a Sanity setting.
+
+### Shape-fitting correction
+
+The nine-clip layout now uses justified rows from `lib/hero-layout.ts`. Tile widths follow each source aspect ratio, and row breaks minimize cropping for the measured hero width/height. The layout recomputes after two-clip swaps and viewport resizing. All tiles share a proportional fit adjustment; `object-fit: cover` preserves pixels without squashing. Some proportional crop remains necessary to fill arbitrary viewport shapes. Nine-clip open/close uses a brief opacity fade with immediate geometry changes, not GSAP scale transforms. Original14-clip layouts/Flip behavior remain behind the preserved toggle. Full-video playback still uses contain.
