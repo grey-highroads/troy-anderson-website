@@ -1,5 +1,5 @@
 import { EditorialGrid } from "@/components/editorial-grid";
-import { TestimonialCarousel } from "@/components/testimonial-carousel";
+import { Testimonial } from "@/components/testimonial";
 import Image from "next/image";
 import Link from "next/link";
 import { PortableText } from "@portabletext/react";
@@ -84,7 +84,14 @@ export default async function Home() {
           </h2>
         </div>
 
-        <TestimonialCarousel testimonials={testimonials} />
+        <div className="testimonials__list">
+          {testimonials.map((testimonial, index) => (
+            <Testimonial
+              key={testimonial._key || `${testimonial.name}-${index}`}
+              testimonial={testimonial}
+            />
+          ))}
+        </div>
       </section>
 
       <section
