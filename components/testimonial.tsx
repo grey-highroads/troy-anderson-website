@@ -3,7 +3,7 @@
 import { useId, useState } from "react";
 import type { HomepageTestimonial } from "@/lib/sanity/homepage";
 
-export function Testimonial({ testimonial }: { testimonial: HomepageTestimonial }) {
+export function Testimonial({ testimonial, onExpand }: { testimonial: HomepageTestimonial; onExpand?: () => void }) {
   const [expanded, setExpanded] = useState(false);
   const quoteId = useId();
   const quote = testimonial.quote.trim();
@@ -31,7 +31,7 @@ export function Testimonial({ testimonial }: { testimonial: HomepageTestimonial 
           aria-expanded={expanded}
           aria-controls={quoteId}
           aria-label={`${expanded ? "Show less" : "Read full testimonial"} — ${testimonial.name}`}
-          onClick={() => setExpanded((value) => !value)}
+          onClick={() => { if (!expanded) onExpand?.(); setExpanded((value) => !value); }}
         >
           {expanded ? "Show less" : "Read full testimonial"}
           <span aria-hidden="true">{expanded ? "−" : "+"}</span>

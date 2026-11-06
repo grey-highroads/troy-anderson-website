@@ -2127,3 +2127,23 @@ a.sample-action:focus-visible {
   overflow-wrap: anywhere;
 }
 .book-promo--announcement .book-promo__heading-group { display: contents; }
+
+.testimonial-carousel { border-top: 0.3rem solid var(--soft-cyan); }
+.testimonial-carousel__slides { display: grid; }
+.testimonial-carousel__slide {
+  grid-area: 1 / 1;
+  min-width: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out, visibility 1s;
+  pointer-events: none;
+}
+.testimonial-carousel__slide.is-active { opacity: 1; visibility: visible; pointer-events: auto; }
+.testimonial-carousel .testimonial { height: 100%; border: 0; }
+.testimonial-carousel .testimonial__quote { max-width: 60ch; font-size: clamp(1.15rem, 2vw, 1.8rem); }
+.testimonial-carousel__controls { display: flex; align-items: center; gap: 1.25rem; border-top: 1px solid var(--soft-cyan); padding-top: 1.5rem; font-family: var(--font-source-code-pro), monospace; }
+.testimonial-carousel__controls button { min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--soft-cyan); background: transparent; color: var(--soft-cyan); font: inherit; cursor: pointer; }
+.testimonial-carousel__controls button:hover { background: var(--soft-cyan); color: var(--oxblood); }
+.testimonial-carousel__controls button:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
+.testimonial-carousel__controls .testimonial-carousel__rotation { margin-left: auto; padding: 0.5rem 1rem; }
+@media (prefers-reduced-motion: reduce) { .testimonial-carousel__slide { transition: none; } }
