@@ -2147,3 +2147,23 @@ a.sample-action:focus-visible {
 .testimonial-carousel__controls button:focus-visible { outline: 2px solid var(--white); outline-offset: 4px; }
 .testimonial-carousel__controls .testimonial-carousel__rotation { margin-left: auto; padding: 0.5rem 1rem; }
 @media (prefers-reduced-motion: reduce) { .testimonial-carousel__slide { transition: none; } }
+
+/* Nine-clip trial: authored slots always cover the viewport, regardless of clip. */
+.editorial-grid.is-nine:not(.is-expanded) {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+  min-height: 0;
+  height: 100%;
+}
+.editorial-grid.is-nine:not(.is-expanded) .media-tile { grid-area: var(--tile-area-desktop); }
+.editorial-grid.is-nine.is-expanded {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(4, minmax(0, 1fr));
+}
+.editorial-grid.is-nine.is-expanded .media-tile.is-selected { grid-area: 1 / 1 / 5 / 5; }
+.editorial-grid.is-nine.is-expanded .media-tile.is-dimmed:nth-of-type(n) { grid-column: auto; grid-row: auto; }
+@media (max-width: 640px) {
+  .editorial-grid.is-nine:not(.is-expanded) { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); }
+  .editorial-grid.is-nine:not(.is-expanded) .media-tile { grid-area: var(--tile-area-mobile); }
+  .editorial-grid.is-nine.is-expanded { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); }
+}

@@ -94,3 +94,9 @@ The November 6 full-speed batch replaces the October 25 half-speed previews. `HE
 When replacing preview files, explicitly reassess this constant. Use **1** for native-speed footage rather than carrying the current compensation forward automatically. No file is re-encoded by this setting. Preserve reduced-motion and animation-pause behavior.
 
 November 6 source: `7-6 versions/newGIFSfullspeed.zip`,14 matching MP4 previews. Updated existing preview/poster filenames with cache version20261106; original full playback files are preserved. Encoded H.264 CRF24, medium, yuv420p, faststart, no audio, source frame rate/dimensions/timing retained; posters at0.5s.
+
+## Nine-clip rotation trial — November 6
+
+`NINE_CLIP_HERO` in `lib/hero-pool.ts` enables nine visible clips from the14-clip catalogue. Only visible clips render posters/previews; others load when introduced. Closing (including Escape) replaces two other slots with waiting clips, retains the watched clip for focus return, alternates the mirrored composition, and queues outgoing clips behind waiting ones. Full playback sources/native speed, reduced-motion and pause controls remain unchanged. Desktop/tablet use a6×4 authored composition; phones4×6. Expanded layouts have one full player plus8 surrounding tiles.
+
+To restore the exact prior14-tile layout, set `NINE_CLIP_HERO = false`. Original tile areas/CSS remain intact; original deployed baseline is14c9adb. This is a code toggle, not a Sanity setting.

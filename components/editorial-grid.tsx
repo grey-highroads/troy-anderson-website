@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { Flip } from "gsap/Flip";
 
 import Image from "next/image";
+import { NINE_CLIP_HERO, initialHeroPool, rotateHeroPool, nineDesktopAreas, nineMobileAreas } from "@/lib/hero-pool";
 
 gsap.registerPlugin(Flip);
 
@@ -64,6 +65,8 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
   const reducedMotion = useSyncExternalStore(subscribeToReducedMotion, getReducedMotion, () => true);
   const [failedId, setFailedId] = useState<string | null>(null);
   const [layoutIndex, setLayoutIndex] = useState(0);
+  const [pool, setPool] = useState(() => initialHeroPool(tiles.length));
+  const visibleTiles = NINE_CLIP_HERO ? pool.visible.map((index) => tiles[index]) : tiles;
 
   useEffect(() => {
     const header = document.querySelector<HTMLElement>(".site-header");
@@ -91,16 +94,21 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
       playerRef.current?.pause();
       // Finish any previous transition before capturing the next arrangement.
       animationRef.current?.progress(1).kill();
-      const tilesToAnimate = grid.querySelectorAll("[data-flip-id]");
+      const previousId = selectedId;
+      const nextPool = NINE_CLIP_HERO && previousId && !nextSelectedId
+        ? rotateHeroPool(pool, tiles.findIndex((tile) => tile.id === previousId)) : pool;
+      const retainedIds = new Set(nextPool.visible.map((index) => tiles[index].id));
+      const tilesToAnimate = Array.from(grid.querySelectorAll<HTMLElement>("[data-flip-id]"))
+        .filter((node) => !NINE_CLIP_HERO || retainedIds.has(node.dataset.flipId || ""));
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       const state = reducedMotion ? null : Flip.getState(tilesToAnimate);
-      const previousId = selectedId;
 
       flushSync(() => {
         setSelectedId(nextSelectedId);
         setFailedId(null);
         if (previousId && !nextSelectedId) {
           setLayoutIndex((current) => (current + 1) % 2);
+          if (NINE_CLIP_HERO) setPool(nextPool);
         }
       });
 
@@ -125,7 +133,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
         });
       }
     },
-    [selectedId],
+    [selectedId, pool],
   );
 
   return (
@@ -142,7 +150,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
       )}
       <div
         ref={gridRef}
-        className={`editorial-grid layout-${layoutIndex === 0 ? "a" : "b"} ${videoBasePath ? "has-video-previews" : ""} ${selectedId ? "is-expanded" : ""}`}
+        className={`editorial-grid ${NINE_CLIP_HERO ? "is-nine" : ""} layout-${layoutIndex === 0 ? "a" : "b"} ${videoBasePath ? "has-video-previews" : ""} ${selectedId ? "is-expanded" : ""}`}
         onKeyDown={(event) => {
           if (event.key === "Escape" && selectedId) {
             event.preventDefault();
@@ -150,7 +158,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
           }
         }}
       >
-        {tiles.map((tile, index) => {
+        {visibleTiles.map((tile, index) => {
           const isSelected = selectedId === tile.id;
           const isDimmed = Boolean(selectedId && !isSelected);
           const clipPath = videoBasePath && tile.clip ? `${videoBasePath}/${tile.clip}` : null;
@@ -162,9 +170,9 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
               key={tile.id}
               data-flip-id={tile.id}
               style={tile.previewDimensions ? {
-                "--tile-area-desktop": tile.desktopArea,
-                "--tile-area-tablet": tile.tabletArea,
-                "--tile-area-mobile": tile.mobileArea,
+                "--tile-area-desktop": NINE_CLIP_HERO ? nineDesktopAreas[index] : tile.desktopArea,
+                "--tile-area-tablet": NINE_CLIP_HERO ? nineDesktopAreas[index] : tile.tabletArea,
+                "--tile-area-mobile": NINE_CLIP_HERO ? nineMobileAreas[index] : tile.mobileArea,
                 "--preview-ratio": `${tile.previewDimensions[0]} / ${tile.previewDimensions[1]}`,
                 "--playback-ratio": tile.playbackDimensions
                   ? `${tile.playbackDimensions[0]} / ${tile.playbackDimensions[1]}`
