@@ -65,7 +65,7 @@ export function EditorialGrid({ videoBasePath }: { videoBasePath?: string }) {
   const [previewsPaused, setPreviewsPaused] = useState(false);
   const reducedMotion = useSyncExternalStore(subscribeToReducedMotion, getReducedMotion, () => true);
   const [failedId, setFailedId] = useState<string | null>(null);
-  const [layoutIndex, setLayoutIndex] = useState(0);
+  const [layoutIndex, setLayoutIndex] = useState(() => NINE_CLIP_HERO && Math.random() < 0.5 ? 1 : 0);
   const [pool, setPool] = useState(() => initialHeroPool(tiles.length));
   const [gridAspect, setGridAspect] = useState(8 / 3);
   const visibleTiles = NINE_CLIP_HERO ? pool.visible.map((index) => tiles[index]) : tiles;

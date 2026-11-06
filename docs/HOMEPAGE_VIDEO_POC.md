@@ -104,3 +104,7 @@ To restore the exact prior14-tile layout, set `NINE_CLIP_HERO = false`. Original
 ### Shape-fitting correction
 
 The nine-clip layout now uses justified rows from `lib/hero-layout.ts`. Tile widths follow each source aspect ratio, and row breaks minimize cropping for the measured hero width/height. The layout recomputes after two-clip swaps and viewport resizing. All tiles share a proportional fit adjustment; `object-fit: cover` preserves pixels without squashing. Some proportional crop remains necessary to fill arbitrary viewport shapes. Nine-clip open/close uses a brief opacity fade with immediate geometry changes, not GSAP scale transforms. Original14-clip layouts/Flip behavior remain behind the preserved toggle. Full-video playback still uses contain.
+
+### Random initial selection — November 6
+
+HomepageHero is a client-only dynamic boundary with reserved viewport space. Before any poster/video mounts, EditorialGrid shuffles all14 catalogue indices once with Fisher–Yates, selects9, and puts5 in the waiting queue. Initial mirror direction is randomized too. Selection stays stable through resize, Pause/Resume and other React renders; reload/mount chooses anew. Shape-aware layout and two replacements on close are unchanged. No default-media preload occurs in SSR. Blank loading placeholder reserves the viewport until client initialization; JavaScript is required for the interactive hero.

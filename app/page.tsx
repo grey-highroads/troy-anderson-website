@@ -1,4 +1,4 @@
-import { EditorialGrid } from "@/components/editorial-grid";
+import { HomepageHero } from "@/components/homepage-hero";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import Image from "next/image";
 import Link from "next/link";
@@ -23,7 +23,7 @@ export default async function Home() {
   return (
     <main>
       <section id="top" className="hero" aria-label="Featured stories">
-        <EditorialGrid
+        <HomepageHero
           videoBasePath={process.env.HOMEPAGE_VIDEO_POC === "true" || process.env.GITHUB_PAGES === "true"
             ? `${process.env.GITHUB_PAGES === "true" ? "/troy-anderson-website" : ""}/videos/hero-20261016`
             : undefined}

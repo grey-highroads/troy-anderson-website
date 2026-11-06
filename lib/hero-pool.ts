@@ -1,8 +1,15 @@
 // Toggle off to restore the preserved fourteen-clip composition.
 export const NINE_CLIP_HERO = true;
 export type HeroPool = { visible: number[]; waiting: number[]; cursor: number };
-export function initialHeroPool(total: number): HeroPool {
-  return {visible: Array.from({length: Math.min(9, total)}, (_, i) => i), waiting: Array.from({length: Math.max(0, total - 9)}, (_, i) => i + 9), cursor: 0};
+// Fisher–Yates: one fresh, stable selection per browser mount. An injectable
+// RNG lets QA repeat a particular sequence without affecting production.
+export function initialHeroPool(total: number, random = Math.random): HeroPool {
+  const catalogue = Array.from({length: total}, (_, index) => index);
+  for (let index = catalogue.length - 1; index > 0; index--) {
+    const other = Math.floor(random() * (index + 1));
+    [catalogue[index], catalogue[other]] = [catalogue[other], catalogue[index]];
+  }
+  return {visible: catalogue.slice(0, 9), waiting: catalogue.slice(9), cursor: 0};
 }
 // Cycle through the waiting clips before returning outgoing ones to the pool.
 // Keep the watched tile for focus return; replace exactly two other slots.
