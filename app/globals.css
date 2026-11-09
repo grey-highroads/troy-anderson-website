@@ -832,7 +832,7 @@ button {
   margin: 0;
   color: var(--soft-cyan);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(4.35rem, 10vw, 10rem);
+  font-size: clamp(3.48rem, 8vw, 8rem);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -1685,7 +1685,7 @@ button {
   }
 
   .subpage-hero h1 {
-    font-size: clamp(3.75rem, 19.5vw, 5.75rem);
+    font-size: clamp(3rem, 15.6vw, 4.6rem);
   }
 
   .subpage-split,
