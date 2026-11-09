@@ -423,6 +423,17 @@ button {
   height: auto;
 }
 
+.book-promo__cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.book-promo__cover:focus-visible {
+  outline: 3px solid var(--soft-cyan);
+  outline-offset: 6px;
+}
+
 .book-promo__message {
   position: relative;
   min-width: 0;
@@ -433,7 +444,7 @@ button {
   color: var(--soft-cyan);
   margin: 0.8vw 0 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: 13.8vw;
+  font-size: 10.35vw;
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
@@ -462,7 +473,7 @@ button {
   color: var(--white);
   margin: 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: 8.4vw;
+  font-size: 6.3vw;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 0.714;
@@ -2114,7 +2125,7 @@ a.sample-action:focus-visible {
 
 /* CMS copy can grow without colliding with the supporting paragraph. */
 .book-promo__message { height: auto; }
-.book-promo__heading-group { display: flow-root; position: relative; min-height: 25.67vw; padding-bottom: 5.2vw; }
+.book-promo__heading-group { display: flow-root; position: relative; min-height: 19.2525vw; padding-bottom: 3.9vw; }
 .book-promo__summary {
   margin: 2rem 0 0;
   max-width: 52ch;

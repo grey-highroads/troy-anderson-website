@@ -92,14 +92,15 @@ export default async function Home() {
         className={`book-promo${showBookAnnouncement ? " book-promo--announcement" : ""}`}
         aria-labelledby="book-promo-title"
       >
-        <Image
-          className="book-promo__cover"
-          src={promotion?.imageUrl || bookCover}
-          width={promotion?.imageUrl ? promotion.imageWidth || bookCover.width : undefined}
-          height={promotion?.imageUrl ? promotion.imageHeight || bookCover.height : undefined}
-          alt={promotion?.imageAlt || "Never Waste a Kick in the Nuts by Troy Anderson"}
-          sizes={showBookAnnouncement ? "(max-width: 640px) 34vw, 23vw" : "(max-width: 640px) 28vw, 17vw"}
-        />
+        <Link className="book-promo__cover" href="/book#booksellers" aria-label="Choose your bookseller">
+          <Image
+            src={promotion?.imageUrl || bookCover}
+            width={promotion?.imageUrl ? promotion.imageWidth || bookCover.width : undefined}
+            height={promotion?.imageUrl ? promotion.imageHeight || bookCover.height : undefined}
+            alt={promotion?.imageAlt || "Never Waste a Kick in the Nuts by Troy Anderson"}
+            sizes={showBookAnnouncement ? "(max-width: 640px) 34vw, 23vw" : "(max-width: 640px) 28vw, 17vw"}
+          />
+        </Link>
 
         <div className="book-promo__message">
           <div className="book-promo__heading-group">

@@ -106,7 +106,7 @@ export default async function BookPage() {
         </article>
       </section>
 
-      <section className="retailers-panel">
+      <section id="booksellers" className="retailers-panel">
 
         <h2>{book?.retailersHeading ?? "Choose your bookseller."}</h2>
         <div className="retailer-list" aria-label="Book retailers">
