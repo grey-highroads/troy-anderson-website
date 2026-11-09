@@ -2178,3 +2178,5 @@ a.sample-action:focus-visible {
   width: var(--hero-width);
   height: var(--hero-height);
 }
+
+.contact-form .contact-verification { grid-column: 1 / -1; min-width: 0; }

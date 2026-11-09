@@ -22,6 +22,9 @@ export default defineConfig({
       SANITY_PUBLISH_SECRET: bindings.secret(),
       // Dedicated test recipient; production delivery requires release approval.
       CONTACT_FORM_ID: bindings.text("xbgdabdr"),
+      // Set the public site key before rollout; Formspree holds its secret.
+      // Empty means delivery stays unavailable in this unconfigured branch.
+      CONTACT_TURNSTILE_SITE_KEY: bindings.text(""),
       CONTENT_CACHE: bindings.durableObject({ worker: "troy-anderson-website", exportName: "ContentCache" }),
     },
     exports: { ContentCache: exports.durableObject({ storage: "sqlite" }) },

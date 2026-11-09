@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 
+import { ContactTurnstile, type ContactTurnstileHandle } from "@/components/contact-turnstile";
+
 import { defaultContactFormCopy, type ContactFormCopy } from "@/lib/contact-form-copy";
 
 export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: ContactFormCopy }) {
@@ -16,7 +18,10 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
   );
   text.inquiryOptions = inquiryOptions?.length ? [...new Set(inquiryOptions)] : defaultContactFormCopy.inquiryOptions;
   const [formId, setFormId] = useState("");
-  const available = Boolean(formId);
+  const [siteKey, setSiteKey] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
+  const captchaRef = useRef<ContactTurnstileHandle>(null);
+  const available = Boolean(formId && siteKey);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [notice, setNotice] = useState("");
   const statusRef = useRef<HTMLParagraphElement>(null);
@@ -27,7 +32,11 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
     const controller = new AbortController();
     fetch("/api/contact", { cache: "no-store", signal: controller.signal })
       .then(response => response.ok ? response.json() : null)
-      .then(data => setFormId(data?.available === true && /^[a-z0-9]{8,}$/.test(data.formId) ? data.formId : ""))
+      .then(data => {
+        if (data?.available !== true || !/^[a-z0-9]{8,}$/.test(data.formId) || typeof data.turnstileSiteKey !== "string" || !/^[A-Za-z0-9_-]{20,100}$/.test(data.turnstileSiteKey)) return;
+        setFormId(data.formId);
+        setSiteKey(data.turnstileSiteKey);
+      })
       .catch(() => {});
     return () => controller.abort();
   }, [runtime]);
@@ -35,6 +44,12 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!available || submitting.current) return;
+    if (!captchaToken) {
+      setStatus("error");
+      setNotice("Please complete the bot verification, then try again.");
+      statusRef.current?.focus();
+      return;
+    }
     submitting.current = true;
     const form = event.currentTarget;
     const fields = Object.fromEntries(new FormData(form));
@@ -43,7 +58,7 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
     try {
       const response = await fetch(`https://formspree.io/f/${formId}`, {
         method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ ...fields, subject: `Troy Anderson website: ${fields.inquiry}` }), signal: AbortSignal.timeout(15000),
+        body: JSON.stringify({ ...fields, "cf-turnstile-response": captchaToken, subject: `Troy Anderson website: ${fields.inquiry}` }), signal: AbortSignal.timeout(15000),
       });
       const result = await response.json();
       if (!response.ok || result.ok !== true) throw new Error(response.status === 429
@@ -58,6 +73,8 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
       setNotice(error instanceof Error && error.name !== "TimeoutError" && error.name !== "TypeError"
         ? error.message : text.errorMessage);
     } finally {
+      captchaRef.current?.reset();
+      setCaptchaToken("");
       submitting.current = false;
       statusRef.current?.focus();
     }
@@ -74,7 +91,8 @@ export function ContactForm({ runtime, copy }: { runtime: boolean; copy?: Contac
         </select></label>
         <label>{text.messageLabel}<textarea name="message" rows={6} required maxLength={5000} /></label>
         <div hidden aria-hidden="true"><label>Leave empty<input name="_gotcha" tabIndex={-1} autoComplete="off" /></label></div>
-        <button type="submit" disabled={!available || status === "sending"}>{status === "sending" ? text.sendingLabel : text.submitLabel}</button>
+        {available && <ContactTurnstile key={siteKey} ref={captchaRef} siteKey={siteKey} onTokenChange={setCaptchaToken} />}
+        <button type="submit" disabled={!available || !captchaToken || status === "sending"}>{status === "sending" ? text.sendingLabel : text.submitLabel}</button>
         <p className="form-note" ref={statusRef} tabIndex={-1} role="status" aria-live="polite">
           {notice || (!available ? text.unavailableMessage : "")}
         </p>
