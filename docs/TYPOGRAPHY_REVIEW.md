@@ -1,6 +1,6 @@
-# November 17 typography review — local only
+# November 17 typography review and approved release
 
-User authorized a coordinated pass and explicitly held release until their go-ahead. Branch: codex/typography-balance-review. Based on published origin/main b84a45a, isolated from the original workspace's local-only history and user edits. No push, merge into main, deployment or CMS write is part of this pass.
+User authorized a coordinated pass and explicitly held release until their go-ahead. Branch: codex/typography-balance-review. Based on published origin/main b84a45a, isolated from the original workspace's local-only history and user edits. The user subsequently approved pushing this scoped pass to main on November 17. CMS writes and client-domain cutover remain outside its scope.
 
 ## Scope
 
@@ -23,4 +23,4 @@ Checks passed: targeted ESLint; website TypeScript; Next.js webpack production/s
 
 Preview: <http://localhost:3020/media/> and <http://localhost:3020/contact/>. Local server is left running for review. Screenshot/measurement evidence is in the original workspace's ignored outputs/typography-review-20261117 directory. Review checkout: /Users/greygarner/Documents/Codex/worktrees/troy-typography-review. It was moved outside the main source tree to avoid its files being picked up by the original project's TypeScript glob. Browser viewport override was reset.
 
-Release status: **HOLD. Await explicit user approval before pushing or deploying.** Future release should use this isolated branch's scoped diff; never push the original local main wholesale. Existing style guide is unchanged; its social type suggestions are not website vw specifications.
+Release status: **Approved for main on November 17.** Publish this isolated branch's scoped diff and verify both review-site workflows; never push the original local main wholesale. Existing style guide is unchanged; its social type suggestions are not website vw specifications.
