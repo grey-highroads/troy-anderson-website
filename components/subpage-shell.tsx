@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 type SubpageShellProps = {
-  variant?: "about" | "book";
+  variant?: "about" | "book" | "media" | "contact";
   title: string;
   subheader?: string;
   intro?: string;

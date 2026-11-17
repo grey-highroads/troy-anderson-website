@@ -9,6 +9,9 @@
   --teal: #285b66;
   --cyan: #cee5de;
   --soft-cyan: #cee5de;
+  --type-page-title: clamp(2.784rem, 6.4vw, 6.4rem);
+  --type-section-title: clamp(2.55rem, 4.9vw, 5.525rem);
+  --type-item-title: clamp(2rem, 3.2vw, 3.6rem);
 }
 
 * {
@@ -444,7 +447,7 @@ button {
   color: var(--soft-cyan);
   margin: 0.8vw 0 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: 10.35vw;
+  font-size: 8.28vw;
   font-style: italic;
   font-weight: 400;
   letter-spacing: 0;
@@ -473,7 +476,7 @@ button {
   color: var(--white);
   margin: 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: 6.3vw;
+  font-size: 5.67vw;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 0.714;
@@ -534,7 +537,7 @@ button {
   max-width: 8ch;
   margin: 0;
   color: var(--oxblood);
-  font-size: clamp(6rem, 12vw, 13rem);
+  font-size: clamp(4.8rem, 9.6vw, 10.4rem);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.025em;
@@ -626,7 +629,7 @@ button {
   color: var(--soft-cyan);
   max-width: 18ch;
   margin: 0;
-  font-size: clamp(4.75rem, 8.6vw, 10rem);
+  font-size: clamp(3.8rem, 6.88vw, 8rem);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.025em;
@@ -809,8 +812,8 @@ button {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(16rem, 30vw);
   align-items: end;
-  gap: clamp(2rem, 5vw, 7rem);
-  padding: clamp(3rem, 6vw, 7rem) 4.6vw clamp(3.5rem, 5vw, 6rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
+  padding: clamp(2rem, 3.5vw, 4rem) 4.6vw;
   overflow: hidden;
   background: var(--oxblood);
   color: var(--paper);
@@ -835,6 +838,7 @@ button {
 
 .subpage-hero__title-group {
   display: grid;
+  min-width: 0;
   gap: clamp(1rem, 1.8vw, 1.75rem);
 }
 
@@ -843,7 +847,7 @@ button {
   margin: 0;
   color: var(--soft-cyan);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(3.48rem, 8vw, 8rem);
+  font-size: var(--type-page-title);
   font-style: italic;
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -874,6 +878,11 @@ button {
 }
 
 @media (min-width: 901px) {
+  .subpage--media .subpage-hero h1,
+  .subpage--contact .subpage-hero h1 {
+    max-width: none;
+  }
+
   .subpage-hero__title-group {
     gap: clamp(0.7rem, 1vw, 1.15rem);
   }
@@ -882,7 +891,7 @@ button {
     max-width: none;
     color: var(--paper);
     font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-    font-size: clamp(1.65rem, 2.2vw, 2.5rem);
+    font-size: clamp(1.485rem, 1.98vw, 2.25rem);
     font-weight: 600;
     letter-spacing: 0.035em;
     line-height: 1;
@@ -954,7 +963,7 @@ button {
 .contact-form-panel h2 {
   margin: 0.9rem 0 clamp(1.25rem, 2vw, 2.2rem);
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(3rem, 5.75vw, 6.5rem);
+  font-size: var(--type-section-title);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.86;
@@ -1299,7 +1308,7 @@ button {
 .media-section__heading h2 {
   margin: 0;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(3.25rem, 6.25vw, 7rem);
+  font-size: var(--type-section-title);
   font-weight: 400;
   letter-spacing: -0.01em;
   line-height: 0.82;
@@ -1378,7 +1387,7 @@ button {
 .media-video-card h3 {
   margin: 1.5rem 0 1rem;
   font-family: var(--font-bebas-neue), "Arial Narrow", sans-serif;
-  font-size: clamp(2.5rem, 4vw, 4.5rem);
+  font-size: var(--type-item-title);
   font-weight: 400;
   line-height: 0.9;
   text-transform: uppercase;
@@ -1583,6 +1592,12 @@ button {
 }
 
 @media (max-width: 640px) {
+  :root {
+    --type-page-title: clamp(2.4rem, 12.48vw, 3.68rem);
+    --type-section-title: clamp(2rem, 8.5vw, 3rem);
+    --type-item-title: clamp(1.6rem, 6.5vw, 2.25rem);
+  }
+
   .site-header {
     grid-template-columns: minmax(0, 1fr) 4.5rem;
   }
@@ -1656,7 +1671,7 @@ button {
   }
 
   .meet-troy h2 {
-    font-size: clamp(5rem, 24vw, 8rem);
+    font-size: clamp(4rem, 19.2vw, 6.4rem);
   }
 
   .meet-troy__portrait,
@@ -1669,7 +1684,7 @@ button {
   }
 
   .testimonials__heading h2 {
-    font-size: clamp(4.5rem, 22vw, 7rem);
+    font-size: clamp(3.6rem, 17.6vw, 5.6rem);
   }
 
   .testimonials__list {
@@ -1692,11 +1707,7 @@ button {
   }
 
   .subpage-hero {
-    padding: 2.5rem 1.25rem 3rem;
-  }
-
-  .subpage-hero h1 {
-    font-size: clamp(3rem, 15.6vw, 4.6rem);
+    padding: 1.75rem 1.25rem 2rem;
   }
 
   .subpage-split,
@@ -1862,12 +1873,6 @@ button {
 /* Compact interior openings and a stronger sample action. */
 .subpage--book .subpage-hero h1 {
   max-width: none;
-}
-
-.subpage--about .subpage-hero,
-.subpage--book .subpage-hero {
-  padding-block: clamp(2rem, 3.5vw, 4rem);
-  gap: clamp(1.5rem, 3vw, 3rem);
 }
 
 #my-backstory {
@@ -2125,7 +2130,7 @@ a.sample-action:focus-visible {
 
 /* CMS copy can grow without colliding with the supporting paragraph. */
 .book-promo__message { height: auto; }
-.book-promo__heading-group { display: flow-root; position: relative; min-height: 19.2525vw; padding-bottom: 3.9vw; }
+.book-promo__heading-group { display: flow-root; position: relative; min-height: 16vw; padding-bottom: 3.4vw; }
 .book-promo__summary {
   margin: 2rem 0 0;
   max-width: 52ch;

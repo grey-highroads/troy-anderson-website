@@ -15,7 +15,7 @@ export default async function ContactPage() {
 
   return (
     <SubpageShell
-
+      variant="contact"
       title={contact?.title || "Let’s Connect"}
       intro={
         contact?.intro ||

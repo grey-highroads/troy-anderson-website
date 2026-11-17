@@ -24,6 +24,7 @@ export default async function MediaPage() {
 
   return (
     <SubpageShell
+      variant="media"
       title={media?.heading || "Media"}
       intro={media?.videoIntroduction || "Watch and share videos from Troy Anderson and explore his podcast appearances."}
     >
