@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://troy-test.hr-host.com/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 200 ",
+    "location": null,
+    "revision": "PlOGOGpub00zK9JBXskDa9",
+    "cache": "private, no-store, max-age=0",
+    "error": null
+  },
+  {
+    "url": "https://troy-test.hr-host.com/about/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 200 ",
+    "location": null,
+    "revision": "jhsaj7C4PXnnkXvhBMEZWw",
+    "cache": "private, no-store, max-age=0",
+    "error": null
+  },
+  {
+    "url": "https://troy-test.hr-host.com/book/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 200 ",
+    "location": null,
+    "revision": "Hyj4MQviGxDbuX0qoe9PbQ",
+    "cache": "private, no-store, max-age=0",
+    "error": null
+  },
+  {
+    "url": "https://troy-test.hr-host.com/media/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 200 ",
+    "location": null,
+    "revision": "Z73K6vxLdzWNPvyDf5Czup",
+    "cache": "private, no-store, max-age=0",
+    "error": null
+  },
+  {
+    "url": "https://troy-test.hr-host.com/contact/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 200 ",
+    "location": null,
+    "revision": "XxynK8OFGs3KOfdzycZMu3",
+    "cache": "private, no-store, max-age=0",
+    "error": null
+  },
+  {
+    "url": "https://troy-test.hr-host.com/press/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 200 ",
+    "location": null,
+    "revision": "50V2pYs9MYQbEzL6At8t1Q",
+    "cache": "private, no-store, max-age=0",
+    "error": null
+  },
+  {
+    "url": "https://hr-host.com/",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 404 ",
+    "location": null,
+    "revision": null,
+    "cache": "no-store",
+    "error": null
+  },
+  {
+    "url": "https://troy-root-test.hr-host.com/book/?x=1&x=2",
+    "dns_override": "current public Cloudflare address; TLS checks enabled",
+    "status": "HTTP/2 301 ",
+    "location": "https://troy-test.hr-host.com/book/?x=1&x=2",
+    "revision": null,
+    "cache": "no-store",
+    "error": null
+  }
+]

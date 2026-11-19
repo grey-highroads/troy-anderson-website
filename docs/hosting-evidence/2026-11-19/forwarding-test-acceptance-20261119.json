@@ -1,0 +1,83 @@
+{
+  "checked_at": "2026-11-19T18:51:43.494033+00:00",
+  "all_passed": true,
+  "results": [
+    {
+      "url": "http://forward-test.hr-host.com/",
+      "status": 301,
+      "location": "https://troy-test.hr-host.com",
+      "passed": true
+    },
+    {
+      "url": "http://forward-test.hr-host.com/book/?x=1&x=2",
+      "status": 301,
+      "location": "https://troy-test.hr-host.com/book/?x=1&x=2",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/",
+      "status": 301,
+      "location": "https://troy-test.hr-host.com",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/book/?x=1&x=2",
+      "status": 301,
+      "location": "https://troy-test.hr-host.com/book/?x=1&x=2",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/book%20excerpt/?source=prelaunch%20test",
+      "status": 301,
+      "location": "https://troy-test.hr-host.com/book%20excerpt/?source=prelaunch+test",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com//other.test/book/?x=1",
+      "status": 307,
+      "location": "/other.test/book/?x=1",
+      "passed": true
+    },
+    {
+      "check": "double-slash normalized, stays on approved host, unknown page returns expected 404",
+      "final_url": "https://troy-test.hr-host.com/other.test/book/?x=1",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/",
+      "status": 200,
+      "final_url": "https://troy-test.hr-host.com/",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/about/",
+      "status": 200,
+      "final_url": "https://troy-test.hr-host.com/about/",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/book/",
+      "status": 200,
+      "final_url": "https://troy-test.hr-host.com/book/",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/media/",
+      "status": 200,
+      "final_url": "https://troy-test.hr-host.com/media/",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/contact/",
+      "status": 200,
+      "final_url": "https://troy-test.hr-host.com/contact/",
+      "passed": true
+    },
+    {
+      "url": "https://forward-test.hr-host.com/press/",
+      "status": 200,
+      "final_url": "https://troy-test.hr-host.com/press/",
+      "passed": true
+    }
+  ]
+}

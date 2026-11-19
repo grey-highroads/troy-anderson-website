@@ -1,0 +1,26 @@
+{
+  "checked_at": "2026-11-19T18:48:39.215244+00:00",
+  "results": [
+    {
+      "url": "http://forward-test.hr-host.com/",
+      "status": 404,
+      "location": null
+    },
+    {
+      "url": "https://forward-test.hr-host.com/",
+      "error": "<urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1129)>"
+    },
+    {
+      "url": "https://forward-test.hr-host.com/book/?x=1&x=2",
+      "error": "<urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1129)>"
+    },
+    {
+      "url": "https://forward-test.hr-host.com/book%20excerpt/?source=prelaunch%20test",
+      "error": "<urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1129)>"
+    },
+    {
+      "url": "https://forward-test.hr-host.com//other.test/book/?x=1",
+      "error": "<urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1129)>"
+    }
+  ]
+}
