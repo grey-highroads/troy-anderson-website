@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 
+import { Backstory } from "@/components/backstory";
 import { SubpageShell } from "@/components/subpage-shell";
 import { getAboutContent } from "@/lib/sanity/about";
 
@@ -79,9 +80,7 @@ export default async function AboutPage() {
           </h2>
           <div className="copy-columns">
             {about?.storyBody?.length ? (
-              <div className="portable-copy">
-                <PortableText value={about.storyBody} />
-              </div>
+              <Backstory blocks={about.storyBody} />
             ) : (
               <p>
                 This area can hold the longer-form story: formative moments,

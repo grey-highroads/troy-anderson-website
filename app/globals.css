@@ -2196,3 +2196,37 @@ a.sample-action:focus-visible {
 }
 
 .contact-form .contact-verification { grid-column: 1 / -1; min-width: 0; }
+
+/* Preserve the complete supplied portrait instead of cropping the head. */
+.biography-portrait .portrait-image {
+  height: auto;
+  object-fit: contain;
+}
+
+.backstory-section {
+  border-top: 1px solid currentColor;
+  margin-top: 1.5rem;
+}
+.backstory-section summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.5rem;
+  padding: 1rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+.backstory-section summary::-webkit-details-marker { display: none; }
+.backstory-section summary h3 {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.56vw, 3rem);
+}
+.backstory-section summary:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+.backstory-section__indicator::before { content: "+"; }
+.backstory-section[open] .backstory-section__indicator::before { content: "−"; }
+.backstory-section__indicator { flex: 0 0 auto; font-size: 1.75rem; }
+.backstory-section__body { padding-bottom: 0.5rem; }
