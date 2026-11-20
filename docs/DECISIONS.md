@@ -1,5 +1,10 @@
 # Decision Log
 
+## November 20 follow-up — single-step launch approved
+
+Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.
+
+
 ## November 20 implementation status (D-006, D-011, D-015, D-016)
 
 Grey authorized launch work in existing services, confirmed lifecoachtroy.com with www canonical and Matthew expected within 24–48 hours. Existing managed ownership/runtime/Free contact decisions remain. Actual www registered pending ownership/certificate validation; production contact restrictions saved, admin recipient freshly verified, usage 6/50, delivery/reply pending. Router mapping prepared but waits for verification after automatic review rejected earlier deployment; active source/live mappings match. No bare SaaS mapping, DNS/email changes, messages, CMS updates, paid upgrades or unrelated application releases. LAUNCH_STATUS.md is the current acceptance/rollback record and MATTHEW_DNS_RECORDS.md contains actual verification and launch records. Older “documentation only/no launch authorized” entries describe earlier sessions and do not override the current explicit launch scope.

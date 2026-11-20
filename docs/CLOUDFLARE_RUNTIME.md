@@ -1,5 +1,10 @@
 # Cloudflare runtime and publishing operations
 
+## November 20 follow-up — single-step launch approved
+
+Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.
+
+
 ## November 20 deployment/launch status
 
 Cloudflare dashboard shows website version prefix 714482cc at 100%, GitHub commit dfded0db8b569429d66b01877008ef64bd839ee9. All six current provider/test/review routes returned HTTPS200 and no-store/Sanity revisions. No application redeploy in launch preparation. SaaS www registered pending validation; separate router www mapping prepared but not deployed until verification. See LAUNCH_STATUS.md and MATTHEW_DNS_RECORDS.md. Historical test-only/no-domain and older version summaries below are superseded by this launch record.

@@ -1,5 +1,10 @@
 # Hosting preparation: hr-host.com
 
+## November 20 follow-up — single-step launch approved
+
+Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.
+
+
 ## November 20 production preparation
 
 Actual www.lifecoachtroy.com registered with TLS 1.2/TXT validation/default origin; hostname and certificate pending Matthew’s verification records. Exact generated ownership TXT and account-specific delegated DCV CNAME, plus the later www CNAME/bare A switch, are in [MATTHEW_DNS_RECORDS.md](MATTHEW_DNS_RECORDS.md). Grey confirmed domain and Matthew availability within 24–48 hours. Prepared www HOST_ROUTES file is not deployed because automatic review required verification first; active host-routes.json still matches live. Contact production permissions saved, current recipient verified, Free usage 6/50; no form sent. All six provider/test/review HTTPS routes and redirects rechecked. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md) for evidence, remaining gates and rollback. This supersedes “not generated/registered” and other current-state wording below; older test evidence remains historical. No client DNS, mail records, CMS, messages or website code deployment changed.

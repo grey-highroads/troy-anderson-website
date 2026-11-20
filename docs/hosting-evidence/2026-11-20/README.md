@@ -1,6 +1,6 @@
 # Launch preparation evidence — November 20, 2026
 
-No client DNS changed and no inquiries were submitted. Actual domain verification/certificate/routing and final live acceptance remain pending Matthew's records. Read ../../LAUNCH_STATUS.md.
+No client DNS changed and no inquiries were submitted. Production www routing was subsequently deployed under Grey’s simpler-launch instruction; actual domain verification/certificate and final live acceptance remain pending Matthew’s records. Read ../../LAUNCH_STATUS.md.
 
 - client-dns-before-launch.json: public DNS snapshot, not complete zone inventory or email-service acceptance.
 - provider-http.json: successful curl HTTPS page/redirect/guard checks using ordinary DNS and normal certificate validation. Tests are provider/review/test hosts, not Troy's real addresses.
@@ -12,3 +12,5 @@ No client DNS changed and no inquiries were submitted. Actual domain verificatio
 - github-runs.json: compact public deployment history.
 
 All screenshot contents were inspected before publication. These contain public/domain configuration and concealed private-key controls, not secret values. Current ownership verification value is intentionally included in the Matthew record sheet because it must be placed in public DNS.
+
+Follow-up: screenshots/router-production.jpg shows the saved HOST_ROUTES control and preserved TROY binding. The full saved value was confirmed in the dashboard text and matches host-routes.json, including www.lifecoachtroy.com. post-router-http.json records checks after deployment. The earlier staged-launch notes and pending mapping are superseded.

@@ -1,5 +1,10 @@
 # Contact delivery — Cloudflare test site
 
+## November 20 follow-up — single-step launch approved
+
+Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.
+
+
 ## November 20 production permissions saved
 
 Fresh workflow/account inspection confirms enabled verified admin@lifecoachtroy.com, visitor email Reply-to, CAPTCHA and Formshield retained. Troy project only now restricts to www.lifecoachtroy.com (saved/reloaded). Its single-domain setting sends review-origin inquiries to Spam; review site remains online. Existing Managed Turnstile widget now includes www alongside its original three hosts; no pre-clearance/key changes. Formspree Free usage 6/50 shared monthly submissions (44 remaining at inspection), two verified linked addresses; no current quota issue. No inquiries were sent. Planned labelled production delivery/reply test uses grey@higher-roads.com as visitor, confirmed by Grey. Actual mailbox delivery/reply, privacy/retention and production-origin acceptance remain open. Higher Roads form unchanged. See LAUNCH_STATUS.md. This supersedes historical active-configuration/recipient statements below; known duplicate limitation remains accepted.

@@ -6,7 +6,7 @@ The project centers on a full-width editorial homepage made from short video cli
 
 ## Project status
 
-**November 20 launch preparation:** See [launch status](docs/LAUNCH_STATUS.md), [Matthew’s exact DNS sheet](docs/MATTHEW_DNS_RECORDS.md), and [unsent email](docs/MATTHEW_LAUNCH_EMAIL.txt). Production www registration and contact permissions are prepared; DNS verification, router activation and traffic switch remain pending. Older snapshots below are historical.
+**November 20 launch preparation:** See [launch status](docs/LAUNCH_STATUS.md), [Matthew’s exact DNS sheet](docs/MATTHEW_DNS_RECORDS.md), and [unsent email](docs/MATTHEW_LAUNCH_EMAIL.txt). Production hostname routing and contact permissions are configured. Matthew can add all four DNS records together; actual-domain and mailbox checks follow. Older snapshots below are historical.
 
 
 **Current state (October 25, 2026):** Six routes and seven Sanity types are implemented, including an unlinked Press photography page. The 14-tile hero, October 22 layout/CMS refinements, and October 25 replacement loops are live. Cloudflare runtime content publishing is implemented on the review host; client-domain launch remains unfinished. Start with [the current handoff](docs/CURRENT_HANDOFF.md), then use [the next-session prompt](docs/NEW_BUILDER_PROMPT.md).

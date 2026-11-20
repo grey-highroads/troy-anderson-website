@@ -1,5 +1,10 @@
 # Troy Anderson website launch plan
 
+## November 20 follow-up — single-step launch approved
+
+Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.
+
+
 ## November 20 launch preparation update
 
 Current recipient is verified admin@lifecoachtroy.com; production contact permissions saved, Free account usage 6/50 shared monthly submissions, labelled delivery/reply acceptance still pending. Grey confirmed lifecoachtroy.com/www; Matthew keeps DNS/email at Namecheap. Exact verification-first and later traffic-switch records are in MATTHEW_DNS_RECORDS.md; operational state and rollback are in LAUNCH_STATUS.md. No paid plan/account transfer, invitation or email service change performed. Older test-recipient statements below are historical.

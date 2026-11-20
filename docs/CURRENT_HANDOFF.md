@@ -1,5 +1,10 @@
 # Current builder handoff: launch preparation November 20, 2026
 
+## November 20 follow-up — single-step launch approved
+
+Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.
+
+
 ## November 20 launch preparation — verification records ready
 
 Grey authorized launch preparation and confirmed lifecoachtroy.com/www, with Matthew expected in 24–48 hours. Actual www is registered in SaaS; exact ownership and delegated certificate records plus later launch records are in MATTHEW_DNS_RECORDS.md. Neither hostname nor certificate is Active yet. Production Formspree restriction and Turnstile www permission are saved; enabled verified admin@lifecoachtroy.com recipient and visitor reply-to freshly confirmed, Free usage 6/50. Contact test visitor is grey@higher-roads.com; mailbox/reply acceptance pending. Review-site inquiries now go to Spam under the single production restriction; review sites remain available. Router www value is prepared separately, not deployed: automatic review required verification first, so active source/live mapping remains provider/test only. No client DNS, messages, inquiry submissions, CMS or application deployments changed. All six provider/test/review HTTPS routes and both test redirects passed. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md) for exact current state, pre-switch gates, evidence and rollback, plus the unsent Matthew email. This supersedes older recipient, published-version and launch-status summaries below.
