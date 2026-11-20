@@ -1,5 +1,10 @@
 # Troy Anderson website launch plan
 
+## November 20 launch preparation update
+
+Current recipient is verified admin@lifecoachtroy.com; production contact permissions saved, Free account usage 6/50 shared monthly submissions, labelled delivery/reply acceptance still pending. Grey confirmed lifecoachtroy.com/www; Matthew keeps DNS/email at Namecheap. Exact verification-first and later traffic-switch records are in MATTHEW_DNS_RECORDS.md; operational state and rollback are in LAUNCH_STATUS.md. No paid plan/account transfer, invitation or email service change performed. Older test-recipient statements below are historical.
+
+
 Plan revised October 12, 2026.
 
 Grey manages the website through his existing business accounts. Troy keeps control of his domain and owns the website code and content. His team uses Sanity to edit and publish; contact inquiries arrive in their existing email inbox.

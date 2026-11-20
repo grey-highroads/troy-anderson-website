@@ -1,5 +1,10 @@
 # Cloudflare runtime and publishing operations
 
+## November 20 deployment/launch status
+
+Cloudflare dashboard shows website version prefix 714482cc at 100%, GitHub commit dfded0db8b569429d66b01877008ef64bd839ee9. All six current provider/test/review routes returned HTTPS200 and no-store/Sanity revisions. No application redeploy in launch preparation. SaaS www registered pending validation; separate router www mapping prepared but not deployed until verification. See LAUNCH_STATUS.md and MATTHEW_DNS_RECORDS.md. Historical test-only/no-domain and older version summaries below are superseded by this launch record.
+
+
 Verified October 12, 2026. This is a tested Workers review deployment, not approval to switch the live domain.
 
 ## Resources and integration

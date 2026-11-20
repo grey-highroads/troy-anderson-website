@@ -1,0 +1,123 @@
+{
+  "checked_at": "2026-11-20T16:53:13.559619+00:00",
+  "records": [
+    {
+      "name": "lifecoachtroy.com",
+      "type": "NS",
+      "status": 0,
+      "answers": [
+        {
+          "name": "lifecoachtroy.com.",
+          "type": 2,
+          "TTL": 1800,
+          "data": "dns2.registrar-servers.com."
+        },
+        {
+          "name": "lifecoachtroy.com.",
+          "type": 2,
+          "TTL": 1800,
+          "data": "dns1.registrar-servers.com."
+        }
+      ]
+    },
+    {
+      "name": "lifecoachtroy.com",
+      "type": "A",
+      "status": 0,
+      "answers": [
+        {
+          "name": "lifecoachtroy.com.",
+          "type": 1,
+          "TTL": 1800,
+          "data": "162.255.119.223"
+        }
+      ]
+    },
+    {
+      "name": "lifecoachtroy.com",
+      "type": "AAAA",
+      "status": 0,
+      "answers": []
+    },
+    {
+      "name": "lifecoachtroy.com",
+      "type": "MX",
+      "status": 0,
+      "answers": [
+        {
+          "name": "lifecoachtroy.com.",
+          "type": 15,
+          "TTL": 1800,
+          "data": "10 mx2.privateemail.com."
+        },
+        {
+          "name": "lifecoachtroy.com.",
+          "type": 15,
+          "TTL": 1800,
+          "data": "10 mx1.privateemail.com."
+        }
+      ]
+    },
+    {
+      "name": "lifecoachtroy.com",
+      "type": "TXT",
+      "status": 0,
+      "answers": [
+        {
+          "name": "lifecoachtroy.com.",
+          "type": 16,
+          "TTL": 1800,
+          "data": "v=spf1 include:spf.privateemail.com ~all"
+        }
+      ]
+    },
+    {
+      "name": "lifecoachtroy.com",
+      "type": "CAA",
+      "status": 0,
+      "answers": []
+    },
+    {
+      "name": "www.lifecoachtroy.com",
+      "type": "A",
+      "status": 3,
+      "answers": []
+    },
+    {
+      "name": "www.lifecoachtroy.com",
+      "type": "AAAA",
+      "status": 3,
+      "answers": []
+    },
+    {
+      "name": "www.lifecoachtroy.com",
+      "type": "CNAME",
+      "status": 3,
+      "answers": []
+    },
+    {
+      "name": "www.lifecoachtroy.com",
+      "type": "CAA",
+      "status": 3,
+      "answers": []
+    },
+    {
+      "name": "_acme-challenge.www.lifecoachtroy.com",
+      "type": "CNAME",
+      "status": 3,
+      "answers": []
+    },
+    {
+      "name": "_acme-challenge.www.lifecoachtroy.com",
+      "type": "TXT",
+      "status": 3,
+      "answers": []
+    },
+    {
+      "name": "_cf-custom-hostname.www.lifecoachtroy.com",
+      "type": "TXT",
+      "status": 3,
+      "answers": []
+    }
+  ]
+}

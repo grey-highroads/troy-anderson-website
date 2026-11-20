@@ -1,5 +1,10 @@
 # Decision Log
 
+## November 20 implementation status (D-006, D-011, D-015, D-016)
+
+Grey authorized launch work in existing services, confirmed lifecoachtroy.com with www canonical and Matthew expected within 24–48 hours. Existing managed ownership/runtime/Free contact decisions remain. Actual www registered pending ownership/certificate validation; production contact restrictions saved, admin recipient freshly verified, usage 6/50, delivery/reply pending. Router mapping prepared but waits for verification after automatic review rejected earlier deployment; active source/live mappings match. No bare SaaS mapping, DNS/email changes, messages, CMS updates, paid upgrades or unrelated application releases. LAUNCH_STATUS.md is the current acceptance/rollback record and MATTHEW_DNS_RECORDS.md contains actual verification and launch records. Older “documentation only/no launch authorized” entries describe earlier sessions and do not override the current explicit launch scope.
+
+
 This file records decisions that affect architecture, scope, ownership, or the client workflow. Update a decision rather than relying on chat history.
 
 ## D-001: Custom front end with a structured CMS

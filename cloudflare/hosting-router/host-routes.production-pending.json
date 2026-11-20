@@ -1,0 +1,15 @@
+{
+  "sites.hr-host.com": {
+    "site": "troy"
+  },
+  "troy-test.hr-host.com": {
+    "site": "troy"
+  },
+  "troy-root-test.hr-host.com": {
+    "site": "troy",
+    "redirect": "troy-test.hr-host.com"
+  },
+  "www.lifecoachtroy.com": {
+    "site": "troy"
+  }
+}

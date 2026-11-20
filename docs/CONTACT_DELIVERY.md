@@ -1,5 +1,10 @@
 # Contact delivery — Cloudflare test site
 
+## November 20 production permissions saved
+
+Fresh workflow/account inspection confirms enabled verified admin@lifecoachtroy.com, visitor email Reply-to, CAPTCHA and Formshield retained. Troy project only now restricts to www.lifecoachtroy.com (saved/reloaded). Its single-domain setting sends review-origin inquiries to Spam; review site remains online. Existing Managed Turnstile widget now includes www alongside its original three hosts; no pre-clearance/key changes. Formspree Free usage 6/50 shared monthly submissions (44 remaining at inspection), two verified linked addresses; no current quota issue. No inquiries were sent. Planned labelled production delivery/reply test uses grey@higher-roads.com as visitor, confirmed by Grey. Actual mailbox delivery/reply, privacy/retention and production-origin acceptance remain open. Higher Roads form unchanged. See LAUNCH_STATUS.md. This supersedes historical active-configuration/recipient statements below; known duplicate limitation remains accepted.
+
+
 Verified October 12, 2026. This is a test-recipient setup, not approval for client launch or domain cutover.
 
 ## November 2 visible-copy update

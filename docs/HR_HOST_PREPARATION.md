@@ -1,5 +1,10 @@
 # Hosting preparation: hr-host.com
 
+## November 20 production preparation
+
+Actual www.lifecoachtroy.com registered with TLS 1.2/TXT validation/default origin; hostname and certificate pending Matthew’s verification records. Exact generated ownership TXT and account-specific delegated DCV CNAME, plus the later www CNAME/bare A switch, are in [MATTHEW_DNS_RECORDS.md](MATTHEW_DNS_RECORDS.md). Grey confirmed domain and Matthew availability within 24–48 hours. Prepared www HOST_ROUTES file is not deployed because automatic review required verification first; active host-routes.json still matches live. Contact production permissions saved, current recipient verified, Free usage 6/50; no form sent. All six provider/test/review HTTPS routes and redirects rechecked. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md) for evidence, remaining gates and rollback. This supersedes “not generated/registered” and other current-state wording below; older test evidence remains historical. No client DNS, mail records, CMS, messages or website code deployment changed.
+
+
 ## Published evidence
 
 The current rationale, router source/configuration/tests and shareable HTTP/DNS/certificate results are committed with this hosting-only update. Raw results are in [hosting-evidence/2026-11-19](hosting-evidence/2026-11-19/). Screenshots and other work/ artifacts mentioned in historical notes remain local and are not required to understand the recorded results. No credentials, client certificate tokens or browser session data are included. Publication does not deploy or change hosting resources.

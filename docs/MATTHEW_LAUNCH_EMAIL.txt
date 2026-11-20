@@ -1,0 +1,27 @@
+Subject: Troy Anderson website — verification records, then scheduled launch
+
+Hi Matthew,
+
+We’re preparing lifecoachtroy.com to launch at https://www.lifecoachtroy.com. Please first add these two records in Namecheap, leaving the current website records unchanged (TTL Automatic):
+
+TXT | Host: _cf-custom-hostname.www
+Value: 7a19064a-e38d-4179-8a29-c8f2e09d146c
+
+CNAME | Host: _acme-challenge.www
+Value: www.lifecoachtroy.com.410cf7fe4f2cd5f1.dcv.cloudflare.com
+
+Please check for existing records at those exact names and flag any conflict before replacing them. Keep the certificate CNAME in place for automatic renewals. Let me know when both are saved so I can verify ownership and the certificate and complete our acceptance checks.
+
+For the later, agreed launch time, the website records will be:
+CNAME | Host: www | Value: sites.hr-host.com
+A | Host: @ | Value: 89.106.200.1
+TTL: Automatic
+
+Please send me the current web A/AAAA/CNAME and Namecheap forwarding entries so we can preserve rollback details and identify conflicts. Replace only conflicting website records at the switch; leave registration, nameservers and all existing email records/services unchanged. The attached DNS record sheet gives the full sequence and rollback.
+
+Changing those two website records is the launch. Please wait for my verification/checks confirmation and an agreed observation time before switching. The bare address will then obtain its HTTPS certificate and permanently forward to www, retaining paths and queries; there may be a short HTTPS activation interval, with no fixed duration guaranteed. I’ll monitor it and verify both addresses after the switch.
+
+What time in the next 24–48 hours works for you? Please also have the mailbox owner available to confirm the labelled contact test at admin@lifecoachtroy.com and reply to it.
+
+Thanks,
+Grey
