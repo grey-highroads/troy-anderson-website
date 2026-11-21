@@ -2198,7 +2198,8 @@ a.sample-action:focus-visible {
 .contact-form .contact-verification { grid-column: 1 / -1; min-width: 0; }
 
 /* Preserve the complete supplied portrait instead of cropping the head. */
-.biography-portrait .portrait-image {
+.biography-portrait .portrait-image,
+.contact-layout .portrait-image {
   height: auto;
   object-fit: contain;
 }
