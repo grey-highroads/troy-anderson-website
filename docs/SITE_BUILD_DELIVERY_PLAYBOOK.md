@@ -1,3 +1,5 @@
+> Historical planning/review reference. Start with [the current handoff](CURRENT_HANDOFF.md) for implemented behavior and remaining work. This document does not select new scope or authorize rerunning earlier tasks.
+
 # 2520 Site Build Delivery Playbook
 
 ## Purpose

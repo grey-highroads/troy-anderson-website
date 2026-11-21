@@ -6,7 +6,7 @@ The hosted editor is <https://troy-anderson.sanity.studio/>. Project `gknd24m7`,
 
 Sign in with an authorized account and use **Draft** to edit; **Published** is read-only. The registered types are Homepage, Book, About, Contact, Site settings, Media page, and Press page.
 
-- Homepage manages Meet Troy heading, rich-text introduction, portrait/alt text, and ordered testimonials. Each testimonial now has Full testimonial, optional Short excerpt (an exact passage from the full quote), Name, and optional Credentials. The new controls were deployed November 2; the website trial and source-content import are still awaiting the publishing approval recorded in the current handoff. Homepage → Book promotion now includes Headline (Enter controls line breaks), Subhead, optional Supporting copy, Book image upload, and Book image alt text. A replacement image requires alt text; removing it restores the current cover. Blank headline/subhead use the original title/Available on Amazon; blank Supporting copy hides it. Publish the Homepage document when ready. The arrow remains fixed. Hero clips are not CMS fields.
+- Homepage manages Meet Troy heading, rich-text introduction, portrait/alt text, and ordered testimonials. Each testimonial now has Full testimonial, optional Short excerpt (an exact passage from the full quote), Name, and optional Credentials. The controls are implemented in current main; see the current handoff for source behavior and the separate launch acceptance record. Homepage → Book promotion now includes Headline (Enter controls line breaks), Subhead, optional Supporting copy, Book image upload, and Book image alt text. A replacement image requires alt text; removing it restores the current cover. Blank headline/subhead use the original title/Available on Amazon; blank Supporting copy hides it. Publish the Homepage document when ready. The arrow remains fixed. Hero clips are not CMS fields.
 - Book hero **Subheader** and **Introduction** are optional. Clearing either (including whitespace-only values) hides that text without inserting placeholder copy. This behavior and the hosted optional-field descriptions were verified November 2, 2026.
 - Book overview/inspiration and About biography/story use Portable Text. The Book foreword fields and public panel were deliberately removed.
 - Enter creates a paragraph; Shift+Enter adds a line break. Formatting survives through the site's Portable Text renderer.
@@ -43,3 +43,7 @@ The script defaults to a dry run. Application requires `--apply`, writes a priva
 Read [the current handoff](../docs/CURRENT_HANDOFF.md) and [ownership/migration policy](../docs/INFRASTRUCTURE_AND_HANDOFF.md) before changing infrastructure.
 
 Homepage fields follow the live page: Meet Troy, Testimonials, then Book promotion. Existing book fields are populated with current content, and new book-promotion groups start with the original cover/title/availability. Supporting copy stays optional.
+
+## Content utilities
+
+`studio/scripts/` contains completed, task-specific imports and migrations, not fresh-checkout setup. They may write published CMS content; read the script and confirm the requested target before using one. Keep their existing paths for historical reproducibility. The [archived Studio guide](../docs/archive/2026-11-20-before-housekeeping/studio/README.md) preserves earlier release notes.
