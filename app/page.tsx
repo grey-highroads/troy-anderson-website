@@ -1,3 +1,5 @@
+import type { Metadata } from "next";
+
 import { HomepageHero } from "@/components/homepage-hero";
 import { TestimonialCarousel } from "@/components/testimonial-carousel";
 import Image from "next/image";
@@ -8,6 +10,10 @@ import { getHomepageContent } from "@/lib/sanity/homepage";
 import { defaultTestimonials } from "@/lib/testimonials";
 
 import bookCover from "../public/images/troy-anderson-book-flat.jpg";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 // Toggle to true to restore the approved announcement experiment (copy + layout).
 const showBookAnnouncement = false;

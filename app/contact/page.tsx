@@ -8,6 +8,7 @@ import { getContactContent } from "@/lib/sanity/contact";
 export const metadata: Metadata = {
   title: "Contact",
   description: "Connect with Troy Anderson.",
+  alternates: { canonical: "/contact/" },
 };
 
 export default async function ContactPage() {

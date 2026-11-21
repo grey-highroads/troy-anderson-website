@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "Media",
   description:
     "Watch videos from Troy Anderson and explore podcast appearances.",
+  alternates: { canonical: "/media/" },
 };
 
 export default async function MediaPage() {
