@@ -1,5 +1,7 @@
 # Decision Log
 
+Dated decisions and evidence are retained in chronological context. Use [the current handoff](CURRENT_HANDOFF.md) and [launch status](LAUNCH_STATUS.md) for current guidance; older account state, permissions and deployment labels may be superseded.
+
 ## November 20 search setup: canonical address, sitemap and robots
 
 Grey asked for repository-level work so Google gets a clean read of the site. `lib/site.ts` holds the public address (default https://www.lifecoachtroy.com, optional `NEXT_PUBLIC_SITE_URL` override). The five indexable pages now carry a canonical tag for their www address, so review and provider hosts serving the same pages point search engines to www. `app/sitemap.ts` lists those five pages and `app/robots.ts` allows crawling and names the sitemap. Press stays noindex and is left out of the sitemap. Search Console and Bing registration are account steps outside the repository and are not done here.

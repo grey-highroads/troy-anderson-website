@@ -1,102 +1,50 @@
 # Troy Anderson Website
 
-Custom website build for author, speaker, and podcaster Troy Anderson.
+Custom editorial website for Troy Anderson, built with Next.js, TypeScript, React, GSAP and Sanity. Cloudflare Workers serves runtime content; GitHub Pages remains a secondary static preview.
 
-The project centers on a full-width editorial homepage made from short video clips, bold typography, and selected promotional content. The site pairs a custom Next.js front end with a structured Sanity CMS so the client team can update content without changing the design.
+## Start here
 
-## Project status
+Read [the current handoff](docs/CURRENT_HANDOFF.md), [working guidelines](docs/WORKING_GUIDELINES.md), and `AGENTS.md` before making changes. The handoff describes implemented behavior, remaining work and the relevant operating guides. [Launch status](docs/LAUNCH_STATUS.md) records external setup and outstanding acceptance checks; a repository commit alone does not prove deployment or domain activation.
 
-**November 20 launch preparation:** See [launch status](docs/LAUNCH_STATUS.md), [Matthew’s exact DNS sheet](docs/MATTHEW_DNS_RECORDS.md), and [unsent email](docs/MATTHEW_LAUNCH_EMAIL.txt). Production hostname routing and contact permissions are configured. Matthew can add all four DNS records together; actual-domain and mailbox checks follow. Older snapshots below are historical.
+## Current site
 
+- Six routes: `/`, `/about/`, `/book/`, `/media/`, `/contact/`, and unlinked `/press/`. Press is publicly reachable and noindex, not authenticated.
+- Homepage shows nine clips selected from a fourteen-clip catalogue, with two other clips replaced when playback closes. Preview speed is 1×. The preserved fourteen-tile alternative remains in code.
+- Sanity manages Homepage, About, Book, Contact, Media page, Press page, and Site settings. Homepage includes Meet Troy, testimonials and book-promotion copy/image controls; hero clips/layout remain code-managed.
+- Five indexable pages have canonical URLs at `https://www.lifecoachtroy.com`; sitemap and robots use the same address. `NEXT_PUBLIC_SITE_URL` can override it.
 
-**Current state (October 25, 2026):** Six routes and seven Sanity types are implemented, including an unlinked Press photography page. The 14-tile hero, October 22 layout/CMS refinements, and October 25 replacement loops are live. Cloudflare runtime content publishing is implemented on the review host; client-domain launch remains unfinished. Start with [the current handoff](docs/CURRENT_HANDOFF.md), then use [the next-session prompt](docs/NEW_BUILDER_PROMPT.md).
+## Local development and checks
 
-The build has been approved at a fixed price of $9,500. The October 12 launch plan uses Grey's existing business accounts for managed production hosting. Troy retains domain control and ownership of code/content; his team uses Sanity. See [the short launch plan](docs/CLIENT_ACCOUNT_SETUP.md) and D-006 for support and recovery responsibilities.
+Use Node.js 24 and the pnpm version pinned in `package.json`.
 
-## Core direction
-
-- Next.js and TypeScript for the website
-- CSS Grid for authored editorial layouts
-- GSAP and Flip for grid transitions and clip expansion
-- Sanity for structured content editing
-- Cloudflare for production hosting
-- GitHub for source control
-- Existing client email remains with its current provider
-
-The hero has 14 real tiles with simultaneous silent previews and selected full-video playback, contained in the first viewport. Posters/previews fill tiles with intentional cropping; full playback uses `contain`. The homepage book promotion sits immediately above the footer. Workers refreshes published Sanity content without rebuilding; GitHub Pages remains a secondary static preview.
-
-## Documentation
-
-- [Project primer](docs/PROJECT_PRIMER.md)
-- [Working guidelines](docs/WORKING_GUIDELINES.md)
-- [Roadmap](docs/ROADMAP.md)
-- [Infrastructure and handoff](docs/INFRASTRUCTURE_AND_HANDOFF.md)
-- [Decision log](docs/DECISIONS.md)
-- [2520 site build delivery playbook](docs/SITE_BUILD_DELIVERY_PLAYBOOK.md)
-- [Current project handoff — read first](docs/CURRENT_HANDOFF.md)
-- [Homepage video proof and source preparation](docs/HOMEPAGE_VIDEO_POC.md)
-- [Studio editing and deployment](studio/README.md)
-
-## Working principles
-
-1. Build the simplest thing that fully solves the need.
-2. Keep content editable and the visual system protected.
-3. Prove risky interactions before expanding the build.
-4. Treat mobile as an authored experience, not a compressed desktop layout.
-5. Keep client domain control and code/content ownership; provide managed operation and a recovery copy.
-6. Avoid scope creep, feature creep, and infrastructure that does not earn its complexity.
-
-## Current site areas
-
-Routes are `/`, `/about`, `/book`, `/media`, `/contact`, and unlinked `/press` (noindex, publicly reachable by URL; no authentication). Testimonials is a connected Homepage section, not a separate route. Appearances has no route/schema and requires confirmed launch scope before implementation. Homepage hero files and the book promotion remain code-managed; Homepage CMS fields cover Meet Troy and testimonials.
-
-## Getting started
-
-Requirements:
-
-- Node.js 24
-- pnpm 11
-
-Install dependencies and start the development server:
-
-```bash
-pnpm install
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000). Plain development uses the placeholder hero prototype. To review the current real clips locally, use:
-
-```bash
+```sh
+pnpm install --frozen-lockfile
 HOMEPAGE_VIDEO_POC=true pnpm dev
 ```
 
-Local builds without `SANITY_API_READ_TOKEN` intentionally show fallback content. Copy `.env.example` to `.env.local` if authenticated CMS reads are needed; never commit or print the token. Read `AGENTS.md` and the relevant installed Next.js documentation before modifying framework code.
+Open [localhost:3000](http://localhost:3000). Plain `pnpm dev` retains the placeholder hero mode. Copy `.env.example` to `.env.local` for authenticated local CMS reads; without the read token, static/local Next.js uses fallback content. Never commit credentials.
 
-The latest version pushed to `main` is also published as a browser preview at [grey-highroads.github.io/troy-anderson-website](https://grey-highroads.github.io/troy-anderson-website/). GitHub Pages is a secondary static review surface. The primary runtime review site is [Cloudflare Workers](https://troy-anderson-website.grey-4fe.workers.dev/); client-domain cutover has not occurred.
-
-Run the complete local verification:
-
-```bash
+```sh
+pnpm exec next typegen
 pnpm check
+GITHUB_PAGES=true pnpm check
+pnpm cloudflare:build
+node --test cloudflare/hosting-router/worker.test.mjs
 ```
 
-`GITHUB_PAGES=true pnpm check` exercises the static review configuration, repository-prefixed URLs, and real hero media. `pnpm cloudflare:build` checks the Worker build; `pnpm cloudflare:dev` runs the runtime locally. Read [runtime operations](docs/CLOUDFLARE_RUNTIME.md) before changing hosting, secrets, refresh, or caches. Production acceptance/domain cutover remain open; runtime refresh itself is already implemented.
+Generate Next.js route types before the first type check in a fresh checkout. The Pages check exercises repository-prefixed paths and real hero media. The Cloudflare build checks the runtime package and Worker types; it does not deploy. See [runtime operations](docs/CLOUDFLARE_RUNTIME.md) for local Worker credentials and commands.
 
-## Content editing
+## Editing and operations
 
-Open [Troy Anderson Sanity Studio](https://troy-anderson.sanity.studio/) and sign in with an account authorized for the existing Sanity project. Select Homepage, Book, About, Contact, Media page, Press page, or Site settings. Use the Draft perspective to edit; Published is read-only. Rich-text fields use Enter for paragraphs and Shift+Enter for soft line breaks. Click Publish when ready. Publishing refreshes the Workers review site without rebuilding and also triggers the retained legacy GitHub Pages build. See [runtime operations](docs/CLOUDFLARE_RUNTIME.md) for freshness/recovery behavior. Do not remove the legacy webhook until retirement is approved.
+- [Sanity Studio editing and deployment](studio/README.md)
+- [Runtime publishing and recovery](docs/CLOUDFLARE_RUNTIME.md)
+- [Contact delivery and limitations](docs/CONTACT_DELIVERY.md)
+- [Hosting router](cloudflare/hosting-router/README.md)
+- [Launch status](docs/LAUNCH_STATUS.md) and [DNS record sheet](docs/MATTHEW_DNS_RECORDS.md)
+- [Media preparation](docs/HOMEPAGE_VIDEO_POC.md)
+- [Ownership and service responsibilities](docs/INFRASTRUCTURE_AND_HANDOFF.md)
+- [Remaining work](docs/ROADMAP.md), [decision log](docs/DECISIONS.md), and [documentation archive](docs/archive/README.md)
 
-The hosted Studio and local Studio use the same content, not separate copies. A local server is no longer needed for routine editing. Schema or Studio-code changes still require a separate Studio deployment:
+Primary runtime review: [Workers](https://troy-anderson-website.grey-4fe.workers.dev/). Secondary preview: [GitHub Pages](https://grey-highroads.github.io/troy-anderson-website/). Hosted editor: [Sanity Studio](https://troy-anderson.sanity.studio/).
 
-```bash
-pnpm --filter troy-anderson-website-1 deploy
-```
-
-This hosted Studio remains in the current development infrastructure. Retain the existing project and confirm editor access and the hosted address before launch.
-
-## Ownership
-
-- **Troy Anderson / client team:** domain registration, content ownership, editor/recipient designation, and final approval
-- **Jonathan:** creative direction and approved visual compositions
-- **Andrew:** content direction and primary CMS workflow feedback
-- **2520 Consulting:** technical planning, implementation, managed hosting/billing, backups, support, and transition assistance
+Main pushes trigger the workflows in `.github/workflows/`; the workflow named `cloudflare-test` deploys the website Worker also used by the production routing setup. The separate ingress router is not deployed by that workflow. Keep Pages and its CMS webhook until retirement is explicitly agreed.

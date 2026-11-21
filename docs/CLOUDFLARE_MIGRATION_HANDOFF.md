@@ -1,3 +1,5 @@
+> Historical planning/review reference. Start with [the current handoff](CURRENT_HANDOFF.md) for implemented behavior and remaining work. This document does not select new scope or authorize rerunning earlier tasks.
+
 # Cloudflare migration handoff
 
 Prepared October 12, 2026. Technical instructions for the next implementation chat.

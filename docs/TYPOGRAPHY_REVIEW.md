@@ -1,3 +1,5 @@
+> Historical planning/review reference. Start with [the current handoff](CURRENT_HANDOFF.md) for implemented behavior and remaining work. This document does not select new scope or authorize rerunning earlier tasks.
+
 # November 17 typography review and approved release
 
 User authorized a coordinated pass and explicitly held release until their go-ahead. Branch: codex/typography-balance-review. Based on published origin/main b84a45a, isolated from the original workspace's local-only history and user edits. The user subsequently approved pushing this scoped pass to main on November 17. CMS writes and client-domain cutover remain outside its scope.
