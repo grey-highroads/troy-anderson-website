@@ -1,5 +1,9 @@
 # Decision Log
 
+## November 20 search setup: canonical address, sitemap and robots
+
+Grey asked for repository-level work so Google gets a clean read of the site. `lib/site.ts` holds the public address (default https://www.lifecoachtroy.com, optional `NEXT_PUBLIC_SITE_URL` override). The five indexable pages now carry a canonical tag for their www address, so review and provider hosts serving the same pages point search engines to www. `app/sitemap.ts` lists those five pages and `app/robots.ts` allows crawling and names the sitemap. Press stays noindex and is left out of the sitemap. Search Console and Bing registration are account steps outside the repository and are not done here.
+
 ## November 20 follow-up — single-step launch approved
 
 Grey clarified that Troy has no existing website and the team is ready to go live. All four DNS records may be added together; no staged verification or coordinated cutover is required. The www mapping is now deployed in hr-host-router and active source matches live settings. Production contact permissions/verified admin recipient remain configured. Actual domain/certificate and mailbox acceptance follow Matthew’s DNS update. See [LAUNCH_STATUS.md](LAUNCH_STATUS.md), [the complete record sheet](MATTHEW_DNS_RECORDS.md) and [concise unsent email](MATTHEW_LAUNCH_EMAIL.txt). This supersedes earlier verification-first/router-pending instructions below. Client DNS/email and unrelated site work remain untouched.

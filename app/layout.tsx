@@ -4,6 +4,7 @@ import { Bebas_Neue, Source_Code_Pro } from "next/font/google";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { ContentFreshness } from "@/components/content-freshness";
+import { siteUrl } from "@/lib/site";
 
 import "./globals.css";
 
@@ -23,6 +24,7 @@ const bebasNeue = Bebas_Neue({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Troy Anderson | Life Coach & Author",
     template: "%s | Troy Anderson",

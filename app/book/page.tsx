@@ -12,6 +12,7 @@ import bookCover from "../../public/images/troy-anderson-book-cover.png";
 export const metadata: Metadata = {
   title: "The Book",
   description: "Explore Never Waste a Kick in the Nuts by Troy Anderson.",
+  alternates: { canonical: "/book/" },
 };
 
 const retailers = [

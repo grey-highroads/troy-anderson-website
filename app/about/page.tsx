@@ -9,6 +9,7 @@ import { getAboutContent } from "@/lib/sanity/about";
 export const metadata: Metadata = {
   title: "About",
   description: "Learn about Troy Anderson's story, work, and approach.",
+  alternates: { canonical: "/about/" },
 };
 
 export default async function AboutPage() {
